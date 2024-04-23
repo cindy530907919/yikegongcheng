@@ -1,52 +1,32 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">hhhhhhhhhh</text>
-		</view>
-	</view>
+  <view>
+    <view v-for="user in users" :key="user.id">
+      <text>{{ user.name }}</text>
+    </view>
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+import IndexApi from '../../api/index';
 
-		},
-		methods: {
-
-		}
-	}
+export default {
+  data() {
+    return {
+      users: []
+    };
+  },
+  methods: {
+   getindexData(){
+	   const { memberInfo } = await MemberApi.list({ memberId: this.memberInfo.memberId }, true);
+	   //const { memberInfo }后台给我数组
+	   // { memberId: this.memberInfo.memberId }  我给后台传的数据
+   },
+   goodsList(){
+	   const {goodsList } = await MemberApi.goodsList({ memberId: this.memberInfo.memberId }, true);
+   }
+  },
+  mounted() {
+    this.getindexData(); // 组件加载时获取数据
+  }
+};
 </script>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
-</style>

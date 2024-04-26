@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "亦可工程",
+  "navigationBarBackgroundColor": "#adfdc0",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "uni-swiper-dot": "../../uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot",
+    "uni-data-picker": "../../node-modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker"
+  }
+}

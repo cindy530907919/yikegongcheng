@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/Merchant/signin",
+    "pages/index/index",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "亦可工程",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#ffffff"
+  },
+  "usingComponents": {}
+}

@@ -3,7 +3,9 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "亦可工程"
+				"navigationBarTitleText": "亦可工程",
+				"navigationBarBackgroundColor":"#adfdc0",
+				"navigationBarTextStyle":"black"
 			}
 		},{
 			"path": "pages/Merchant/signin",

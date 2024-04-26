@@ -11,19 +11,19 @@ if (typeof Promise !== "undefined" && !Promise.prototype.finally) {
 }
 ;
 if (typeof uni !== "undefined" && uni && uni.requireGlobal) {
-  const global = uni.requireGlobal();
-  ArrayBuffer = global.ArrayBuffer;
-  Int8Array = global.Int8Array;
-  Uint8Array = global.Uint8Array;
-  Uint8ClampedArray = global.Uint8ClampedArray;
-  Int16Array = global.Int16Array;
-  Uint16Array = global.Uint16Array;
-  Int32Array = global.Int32Array;
-  Uint32Array = global.Uint32Array;
-  Float32Array = global.Float32Array;
-  Float64Array = global.Float64Array;
-  BigInt64Array = global.BigInt64Array;
-  BigUint64Array = global.BigUint64Array;
+  const global2 = uni.requireGlobal();
+  ArrayBuffer = global2.ArrayBuffer;
+  Int8Array = global2.Int8Array;
+  Uint8Array = global2.Uint8Array;
+  Uint8ClampedArray = global2.Uint8ClampedArray;
+  Int16Array = global2.Int16Array;
+  Uint16Array = global2.Uint16Array;
+  Int32Array = global2.Int32Array;
+  Uint32Array = global2.Uint32Array;
+  Float32Array = global2.Float32Array;
+  Float64Array = global2.Float64Array;
+  BigInt64Array = global2.BigInt64Array;
+  BigUint64Array = global2.BigUint64Array;
 }
 ;
 if (uni.restoreGlobal) {
@@ -31,6 +31,310 @@ if (uni.restoreGlobal) {
 }
 (function(vue, shared) {
   "use strict";
+  const isObject = (val) => val !== null && typeof val === "object";
+  const defaultDelimiters = ["{", "}"];
+  class BaseFormatter {
+    constructor() {
+      this._caches = /* @__PURE__ */ Object.create(null);
+    }
+    interpolate(message, values, delimiters = defaultDelimiters) {
+      if (!values) {
+        return [message];
+      }
+      let tokens = this._caches[message];
+      if (!tokens) {
+        tokens = parse(message, delimiters);
+        this._caches[message] = tokens;
+      }
+      return compile(tokens, values);
+    }
+  }
+  const RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
+  const RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
+  function parse(format, [startDelimiter, endDelimiter]) {
+    const tokens = [];
+    let position = 0;
+    let text = "";
+    while (position < format.length) {
+      let char = format[position++];
+      if (char === startDelimiter) {
+        if (text) {
+          tokens.push({ type: "text", value: text });
+        }
+        text = "";
+        let sub = "";
+        char = format[position++];
+        while (char !== void 0 && char !== endDelimiter) {
+          sub += char;
+          char = format[position++];
+        }
+        const isClosed = char === endDelimiter;
+        const type = RE_TOKEN_LIST_VALUE.test(sub) ? "list" : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? "named" : "unknown";
+        tokens.push({ value: sub, type });
+      } else {
+        text += char;
+      }
+    }
+    text && tokens.push({ type: "text", value: text });
+    return tokens;
+  }
+  function compile(tokens, values) {
+    const compiled = [];
+    let index = 0;
+    const mode = Array.isArray(values) ? "list" : isObject(values) ? "named" : "unknown";
+    if (mode === "unknown") {
+      return compiled;
+    }
+    while (index < tokens.length) {
+      const token = tokens[index];
+      switch (token.type) {
+        case "text":
+          compiled.push(token.value);
+          break;
+        case "list":
+          compiled.push(values[parseInt(token.value, 10)]);
+          break;
+        case "named":
+          if (mode === "named") {
+            compiled.push(values[token.value]);
+          } else {
+            {
+              console.warn(`Type of token '${token.type}' and format of value '${mode}' don't match!`);
+            }
+          }
+          break;
+        case "unknown":
+          {
+            console.warn(`Detect 'unknown' type of token!`);
+          }
+          break;
+      }
+      index++;
+    }
+    return compiled;
+  }
+  const LOCALE_ZH_HANS = "zh-Hans";
+  const LOCALE_ZH_HANT = "zh-Hant";
+  const LOCALE_EN = "en";
+  const LOCALE_FR = "fr";
+  const LOCALE_ES = "es";
+  const hasOwnProperty = Object.prototype.hasOwnProperty;
+  const hasOwn = (val, key) => hasOwnProperty.call(val, key);
+  const defaultFormatter = new BaseFormatter();
+  function include(str, parts) {
+    return !!parts.find((part) => str.indexOf(part) !== -1);
+  }
+  function startsWith(str, parts) {
+    return parts.find((part) => str.indexOf(part) === 0);
+  }
+  function normalizeLocale(locale, messages2) {
+    if (!locale) {
+      return;
+    }
+    locale = locale.trim().replace(/_/g, "-");
+    if (messages2 && messages2[locale]) {
+      return locale;
+    }
+    locale = locale.toLowerCase();
+    if (locale === "chinese") {
+      return LOCALE_ZH_HANS;
+    }
+    if (locale.indexOf("zh") === 0) {
+      if (locale.indexOf("-hans") > -1) {
+        return LOCALE_ZH_HANS;
+      }
+      if (locale.indexOf("-hant") > -1) {
+        return LOCALE_ZH_HANT;
+      }
+      if (include(locale, ["-tw", "-hk", "-mo", "-cht"])) {
+        return LOCALE_ZH_HANT;
+      }
+      return LOCALE_ZH_HANS;
+    }
+    let locales = [LOCALE_EN, LOCALE_FR, LOCALE_ES];
+    if (messages2 && Object.keys(messages2).length > 0) {
+      locales = Object.keys(messages2);
+    }
+    const lang = startsWith(locale, locales);
+    if (lang) {
+      return lang;
+    }
+  }
+  class I18n {
+    constructor({ locale, fallbackLocale, messages: messages2, watcher, formater }) {
+      this.locale = LOCALE_EN;
+      this.fallbackLocale = LOCALE_EN;
+      this.message = {};
+      this.messages = {};
+      this.watchers = [];
+      if (fallbackLocale) {
+        this.fallbackLocale = fallbackLocale;
+      }
+      this.formater = formater || defaultFormatter;
+      this.messages = messages2 || {};
+      this.setLocale(locale || LOCALE_EN);
+      if (watcher) {
+        this.watchLocale(watcher);
+      }
+    }
+    setLocale(locale) {
+      const oldLocale = this.locale;
+      this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
+      if (!this.messages[this.locale]) {
+        this.messages[this.locale] = {};
+      }
+      this.message = this.messages[this.locale];
+      if (oldLocale !== this.locale) {
+        this.watchers.forEach((watcher) => {
+          watcher(this.locale, oldLocale);
+        });
+      }
+    }
+    getLocale() {
+      return this.locale;
+    }
+    watchLocale(fn) {
+      const index = this.watchers.push(fn) - 1;
+      return () => {
+        this.watchers.splice(index, 1);
+      };
+    }
+    add(locale, message, override = true) {
+      const curMessages = this.messages[locale];
+      if (curMessages) {
+        if (override) {
+          Object.assign(curMessages, message);
+        } else {
+          Object.keys(message).forEach((key) => {
+            if (!hasOwn(curMessages, key)) {
+              curMessages[key] = message[key];
+            }
+          });
+        }
+      } else {
+        this.messages[locale] = message;
+      }
+    }
+    f(message, values, delimiters) {
+      return this.formater.interpolate(message, values, delimiters).join("");
+    }
+    t(key, locale, values) {
+      let message = this.message;
+      if (typeof locale === "string") {
+        locale = normalizeLocale(locale, this.messages);
+        locale && (message = this.messages[locale]);
+      } else {
+        values = locale;
+      }
+      if (!hasOwn(message, key)) {
+        console.warn(`Cannot translate the value of keypath ${key}. Use the value of keypath as default.`);
+        return key;
+      }
+      return this.formater.interpolate(message[key], values).join("");
+    }
+  }
+  function watchAppLocale(appVm, i18n) {
+    if (appVm.$watchLocale) {
+      appVm.$watchLocale((newLocale) => {
+        i18n.setLocale(newLocale);
+      });
+    } else {
+      appVm.$watch(() => appVm.$locale, (newLocale) => {
+        i18n.setLocale(newLocale);
+      });
+    }
+  }
+  function getDefaultLocale() {
+    if (typeof uni !== "undefined" && uni.getLocale) {
+      return uni.getLocale();
+    }
+    if (typeof global !== "undefined" && global.getLocale) {
+      return global.getLocale();
+    }
+    return LOCALE_EN;
+  }
+  function initVueI18n(locale, messages2 = {}, fallbackLocale, watcher) {
+    if (typeof locale !== "string") {
+      [locale, messages2] = [
+        messages2,
+        locale
+      ];
+    }
+    if (typeof locale !== "string") {
+      locale = getDefaultLocale();
+    }
+    if (typeof fallbackLocale !== "string") {
+      fallbackLocale = typeof __uniConfig !== "undefined" && __uniConfig.fallbackLocale || LOCALE_EN;
+    }
+    const i18n = new I18n({
+      locale,
+      fallbackLocale,
+      messages: messages2,
+      watcher
+    });
+    let t2 = (key, values) => {
+      if (typeof getApp !== "function") {
+        t2 = function(key2, values2) {
+          return i18n.t(key2, values2);
+        };
+      } else {
+        let isWatchedAppLocale = false;
+        t2 = function(key2, values2) {
+          const appVm = getApp().$vm;
+          if (appVm) {
+            appVm.$locale;
+            if (!isWatchedAppLocale) {
+              isWatchedAppLocale = true;
+              watchAppLocale(appVm, i18n);
+            }
+          }
+          return i18n.t(key2, values2);
+        };
+      }
+      return t2(key, values);
+    };
+    return {
+      i18n,
+      f(message, values, delimiters) {
+        return i18n.f(message, values, delimiters);
+      },
+      t(key, values) {
+        return t2(key, values);
+      },
+      add(locale2, message, override = true) {
+        return i18n.add(locale2, message, override);
+      },
+      watch(fn) {
+        return i18n.watchLocale(fn);
+      },
+      getLocale() {
+        return i18n.getLocale();
+      },
+      setLocale(newLocale) {
+        return i18n.setLocale(newLocale);
+      }
+    };
+  }
+  const en = {
+    "uni-load-more.contentdown": "Pull up to show more",
+    "uni-load-more.contentrefresh": "loading...",
+    "uni-load-more.contentnomore": "No more data"
+  };
+  const zhHans = {
+    "uni-load-more.contentdown": "上拉显示更多",
+    "uni-load-more.contentrefresh": "正在加载...",
+    "uni-load-more.contentnomore": "没有更多数据了"
+  };
+  const zhHant = {
+    "uni-load-more.contentdown": "上拉顯示更多",
+    "uni-load-more.contentrefresh": "正在加載...",
+    "uni-load-more.contentnomore": "沒有更多數據了"
+  };
+  const messages = {
+    en,
+    "zh-Hans": zhHans,
+    "zh-Hant": zhHant
+  };
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -38,23 +342,171 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$6 = {
+  let platform;
+  setTimeout(() => {
+    platform = uni.getSystemInfoSync().platform;
+  }, 16);
+  const {
+    t: t$1
+  } = initVueI18n(messages);
+  const _sfc_main$b = {
+    name: "UniLoadMore",
+    emits: ["clickLoadMore"],
+    props: {
+      status: {
+        // 上拉的状态：more-loading前；loading-loading中；noMore-没有更多了
+        type: String,
+        default: "more"
+      },
+      showIcon: {
+        type: Boolean,
+        default: true
+      },
+      iconType: {
+        type: String,
+        default: "auto"
+      },
+      iconSize: {
+        type: Number,
+        default: 24
+      },
+      color: {
+        type: String,
+        default: "#777777"
+      },
+      contentText: {
+        type: Object,
+        default() {
+          return {
+            contentdown: "",
+            contentrefresh: "",
+            contentnomore: ""
+          };
+        }
+      },
+      showText: {
+        type: Boolean,
+        default: true
+      }
+    },
     data() {
       return {
-        users: []
+        webviewHide: false,
+        platform,
+        imgBase64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzlBMzU3OTlEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzlBMzU3OUFEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOUEzNTc5N0Q5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOUEzNTc5OEQ5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pt+ALSwAAA6CSURBVHja1FsLkFZV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"
       };
     },
-    methods: {},
+    computed: {
+      iconSnowWidth() {
+        return (Math.floor(this.iconSize / 24) || 1) * 2;
+      },
+      contentdownText() {
+        return this.contentText.contentdown || t$1("uni-load-more.contentdown");
+      },
+      contentrefreshText() {
+        return this.contentText.contentrefresh || t$1("uni-load-more.contentrefresh");
+      },
+      contentnomoreText() {
+        return this.contentText.contentnomore || t$1("uni-load-more.contentnomore");
+      }
+    },
     mounted() {
+      var pages2 = getCurrentPages();
+      var page = pages2[pages2.length - 1];
+      var currentWebview = page.$getAppWebview();
+      currentWebview.addEventListener("hide", () => {
+        this.webviewHide = true;
+      });
+      currentWebview.addEventListener("show", () => {
+        this.webviewHide = false;
+      });
+    },
+    methods: {
+      onClick() {
+        this.$emit("clickLoadMore", {
+          detail: {
+            status: this.status
+          }
+        });
+      }
     }
   };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", null, [
-      vue.createCommentVNode(' <view v-for="user in users" :key="user.id">\n      <text>{{ user.name }}</text>\n    </view> '),
-      vue.createTextVNode(" 444555 ")
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", {
+      class: "uni-load-more",
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
+    }, [
+      !$data.webviewHide && ($props.iconType === "circle" || $props.iconType === "auto" && $data.platform === "android") && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: 0,
+          style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
+          class: "uni-load-more__img uni-load-more__img--android-MP"
+        },
+        [
+          vue.createElementVNode(
+            "view",
+            {
+              class: "uni-load-more__img-icon",
+              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
+            },
+            null,
+            4
+            /* STYLE */
+          ),
+          vue.createElementVNode(
+            "view",
+            {
+              class: "uni-load-more__img-icon",
+              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
+            },
+            null,
+            4
+            /* STYLE */
+          ),
+          vue.createElementVNode(
+            "view",
+            {
+              class: "uni-load-more__img-icon",
+              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
+            },
+            null,
+            4
+            /* STYLE */
+          )
+        ],
+        4
+        /* STYLE */
+      )) : !$data.webviewHide && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: 1,
+          style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
+          class: "uni-load-more__img uni-load-more__img--ios-H5"
+        },
+        [
+          vue.createElementVNode("image", {
+            src: $data.imgBase64,
+            mode: "widthFix"
+          }, null, 8, ["src"])
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true),
+      $props.showText ? (vue.openBlock(), vue.createElementBlock(
+        "text",
+        {
+          key: 2,
+          class: "uni-load-more__text",
+          style: vue.normalizeStyle({ color: $props.color })
+        },
+        vue.toDisplayString($props.status === "more" ? $options.contentdownText : $props.status === "loading" ? $options.contentrefreshText : $options.contentnomoreText),
+        5
+        /* TEXT, STYLE */
+      )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__file", "E:/yikegongcheng/yike/pages/index/index.vue"]]);
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -65,11 +517,733 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom2) {
     return shared.isString(component) ? easycom2 : component;
   }
+  const fontData = [
+    {
+      "font_class": "arrow-down",
+      "unicode": ""
+    },
+    {
+      "font_class": "arrow-left",
+      "unicode": ""
+    },
+    {
+      "font_class": "arrow-right",
+      "unicode": ""
+    },
+    {
+      "font_class": "arrow-up",
+      "unicode": ""
+    },
+    {
+      "font_class": "auth",
+      "unicode": ""
+    },
+    {
+      "font_class": "auth-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "back",
+      "unicode": ""
+    },
+    {
+      "font_class": "bars",
+      "unicode": ""
+    },
+    {
+      "font_class": "calendar",
+      "unicode": ""
+    },
+    {
+      "font_class": "calendar-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "camera",
+      "unicode": ""
+    },
+    {
+      "font_class": "camera-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "cart",
+      "unicode": ""
+    },
+    {
+      "font_class": "cart-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "chat",
+      "unicode": ""
+    },
+    {
+      "font_class": "chat-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatboxes",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatboxes-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatbubble",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatbubble-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "checkbox",
+      "unicode": ""
+    },
+    {
+      "font_class": "checkbox-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "checkmarkempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "circle",
+      "unicode": ""
+    },
+    {
+      "font_class": "circle-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "clear",
+      "unicode": ""
+    },
+    {
+      "font_class": "close",
+      "unicode": ""
+    },
+    {
+      "font_class": "closeempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-download",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-download-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-upload",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-upload-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "color",
+      "unicode": ""
+    },
+    {
+      "font_class": "color-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "compose",
+      "unicode": ""
+    },
+    {
+      "font_class": "contact",
+      "unicode": ""
+    },
+    {
+      "font_class": "contact-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "down",
+      "unicode": ""
+    },
+    {
+      "font_class": "bottom",
+      "unicode": ""
+    },
+    {
+      "font_class": "download",
+      "unicode": ""
+    },
+    {
+      "font_class": "download-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "email",
+      "unicode": ""
+    },
+    {
+      "font_class": "email-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye-slash",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye-slash-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "fire",
+      "unicode": ""
+    },
+    {
+      "font_class": "fire-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "flag",
+      "unicode": ""
+    },
+    {
+      "font_class": "flag-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "folder-add",
+      "unicode": ""
+    },
+    {
+      "font_class": "folder-add-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "font",
+      "unicode": ""
+    },
+    {
+      "font_class": "forward",
+      "unicode": ""
+    },
+    {
+      "font_class": "gear",
+      "unicode": ""
+    },
+    {
+      "font_class": "gear-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "gift",
+      "unicode": ""
+    },
+    {
+      "font_class": "gift-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-down",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-down-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-up",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-up-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "headphones",
+      "unicode": ""
+    },
+    {
+      "font_class": "heart",
+      "unicode": ""
+    },
+    {
+      "font_class": "heart-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "help",
+      "unicode": ""
+    },
+    {
+      "font_class": "help-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "home",
+      "unicode": ""
+    },
+    {
+      "font_class": "home-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "image",
+      "unicode": ""
+    },
+    {
+      "font_class": "image-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "images",
+      "unicode": ""
+    },
+    {
+      "font_class": "images-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "info",
+      "unicode": ""
+    },
+    {
+      "font_class": "info-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "left",
+      "unicode": ""
+    },
+    {
+      "font_class": "link",
+      "unicode": ""
+    },
+    {
+      "font_class": "list",
+      "unicode": ""
+    },
+    {
+      "font_class": "location",
+      "unicode": ""
+    },
+    {
+      "font_class": "location-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "locked",
+      "unicode": ""
+    },
+    {
+      "font_class": "locked-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "loop",
+      "unicode": ""
+    },
+    {
+      "font_class": "mail-open",
+      "unicode": ""
+    },
+    {
+      "font_class": "mail-open-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "map",
+      "unicode": ""
+    },
+    {
+      "font_class": "map-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "map-pin",
+      "unicode": ""
+    },
+    {
+      "font_class": "map-pin-ellipse",
+      "unicode": ""
+    },
+    {
+      "font_class": "medal",
+      "unicode": ""
+    },
+    {
+      "font_class": "medal-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "mic",
+      "unicode": ""
+    },
+    {
+      "font_class": "mic-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "micoff",
+      "unicode": ""
+    },
+    {
+      "font_class": "micoff-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "minus",
+      "unicode": ""
+    },
+    {
+      "font_class": "minus-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "more",
+      "unicode": ""
+    },
+    {
+      "font_class": "more-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "navigate",
+      "unicode": ""
+    },
+    {
+      "font_class": "navigate-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "notification",
+      "unicode": ""
+    },
+    {
+      "font_class": "notification-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "paperclip",
+      "unicode": ""
+    },
+    {
+      "font_class": "paperplane",
+      "unicode": ""
+    },
+    {
+      "font_class": "paperplane-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "person",
+      "unicode": ""
+    },
+    {
+      "font_class": "person-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "personadd",
+      "unicode": ""
+    },
+    {
+      "font_class": "personadd-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "personadd-filled-copy",
+      "unicode": ""
+    },
+    {
+      "font_class": "phone",
+      "unicode": ""
+    },
+    {
+      "font_class": "phone-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "plus",
+      "unicode": ""
+    },
+    {
+      "font_class": "plus-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "plusempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "pulldown",
+      "unicode": ""
+    },
+    {
+      "font_class": "pyq",
+      "unicode": ""
+    },
+    {
+      "font_class": "qq",
+      "unicode": ""
+    },
+    {
+      "font_class": "redo",
+      "unicode": ""
+    },
+    {
+      "font_class": "redo-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "refresh",
+      "unicode": ""
+    },
+    {
+      "font_class": "refresh-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "refreshempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "reload",
+      "unicode": ""
+    },
+    {
+      "font_class": "right",
+      "unicode": ""
+    },
+    {
+      "font_class": "scan",
+      "unicode": ""
+    },
+    {
+      "font_class": "search",
+      "unicode": ""
+    },
+    {
+      "font_class": "settings",
+      "unicode": ""
+    },
+    {
+      "font_class": "settings-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "shop",
+      "unicode": ""
+    },
+    {
+      "font_class": "shop-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "smallcircle",
+      "unicode": ""
+    },
+    {
+      "font_class": "smallcircle-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "sound",
+      "unicode": ""
+    },
+    {
+      "font_class": "sound-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "spinner-cycle",
+      "unicode": ""
+    },
+    {
+      "font_class": "staff",
+      "unicode": ""
+    },
+    {
+      "font_class": "staff-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "star",
+      "unicode": ""
+    },
+    {
+      "font_class": "star-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "starhalf",
+      "unicode": ""
+    },
+    {
+      "font_class": "trash",
+      "unicode": ""
+    },
+    {
+      "font_class": "trash-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "tune",
+      "unicode": ""
+    },
+    {
+      "font_class": "tune-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "undo",
+      "unicode": ""
+    },
+    {
+      "font_class": "undo-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "up",
+      "unicode": ""
+    },
+    {
+      "font_class": "top",
+      "unicode": ""
+    },
+    {
+      "font_class": "upload",
+      "unicode": ""
+    },
+    {
+      "font_class": "upload-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "videocam",
+      "unicode": ""
+    },
+    {
+      "font_class": "videocam-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "vip",
+      "unicode": ""
+    },
+    {
+      "font_class": "vip-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "wallet",
+      "unicode": ""
+    },
+    {
+      "font_class": "wallet-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "weibo",
+      "unicode": ""
+    },
+    {
+      "font_class": "weixin",
+      "unicode": ""
+    }
+  ];
+  const getVal = (val) => {
+    const reg = /^[0-9]*$/g;
+    return typeof val === "number" || reg.test(val) ? val + "px" : val;
+  };
+  const _sfc_main$a = {
+    name: "UniIcons",
+    emits: ["click"],
+    props: {
+      type: {
+        type: String,
+        default: ""
+      },
+      color: {
+        type: String,
+        default: "#333333"
+      },
+      size: {
+        type: [Number, String],
+        default: 16
+      },
+      customPrefix: {
+        type: String,
+        default: ""
+      },
+      fontFamily: {
+        type: String,
+        default: ""
+      }
+    },
+    data() {
+      return {
+        icons: fontData
+      };
+    },
+    computed: {
+      unicode() {
+        let code = this.icons.find((v2) => v2.font_class === this.type);
+        if (code) {
+          return code.unicode;
+        }
+        return "";
+      },
+      iconSize() {
+        return getVal(this.size);
+      },
+      styleObj() {
+        if (this.fontFamily !== "") {
+          return `color: ${this.color}; font-size: ${this.iconSize}; font-family: ${this.fontFamily};`;
+        }
+        return `color: ${this.color}; font-size: ${this.iconSize};`;
+      }
+    },
+    methods: {
+      _onClick() {
+        this.$emit("click");
+      }
+    }
+  };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      "text",
+      {
+        style: vue.normalizeStyle($options.styleObj),
+        class: vue.normalizeClass(["uni-icons", ["uniui-" + $props.type, $props.customPrefix, $props.customPrefix ? $props.type : ""]]),
+        onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
+      },
+      [
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+      ],
+      6
+      /* CLASS, STYLE */
+    );
+  }
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const pages = [
     {
       path: "pages/index/index",
       style: {
-        navigationBarTitleText: "亦可工程"
+        navigationBarTitleText: "亦可工程",
+        navigationBarBackgroundColor: "#adfdc0",
+        navigationBarTextStyle: "black"
       }
     },
     {
@@ -2787,6 +3961,1571 @@ ${i3}
     } }), bs(Bs), Bs.addInterceptor = N, Bs.removeInterceptor = D, Bs.interceptObject = F;
   })();
   var Ws = Bs;
+  const dataPicker = {
+    props: {
+      localdata: {
+        type: [Array, Object],
+        default() {
+          return [];
+        }
+      },
+      spaceInfo: {
+        type: Object,
+        default() {
+          return {};
+        }
+      },
+      collection: {
+        type: String,
+        default: ""
+      },
+      action: {
+        type: String,
+        default: ""
+      },
+      field: {
+        type: String,
+        default: ""
+      },
+      orderby: {
+        type: String,
+        default: ""
+      },
+      where: {
+        type: [String, Object],
+        default: ""
+      },
+      pageData: {
+        type: String,
+        default: "add"
+      },
+      pageCurrent: {
+        type: Number,
+        default: 1
+      },
+      pageSize: {
+        type: Number,
+        default: 500
+      },
+      getcount: {
+        type: [Boolean, String],
+        default: false
+      },
+      getone: {
+        type: [Boolean, String],
+        default: false
+      },
+      gettree: {
+        type: [Boolean, String],
+        default: false
+      },
+      manual: {
+        type: Boolean,
+        default: false
+      },
+      value: {
+        type: [Array, String, Number],
+        default() {
+          return [];
+        }
+      },
+      modelValue: {
+        type: [Array, String, Number],
+        default() {
+          return [];
+        }
+      },
+      preload: {
+        type: Boolean,
+        default: false
+      },
+      stepSearh: {
+        type: Boolean,
+        default: true
+      },
+      selfField: {
+        type: String,
+        default: ""
+      },
+      parentField: {
+        type: String,
+        default: ""
+      },
+      multiple: {
+        type: Boolean,
+        default: false
+      },
+      map: {
+        type: Object,
+        default() {
+          return {
+            text: "text",
+            value: "value"
+          };
+        }
+      }
+    },
+    data() {
+      return {
+        loading: false,
+        errorMessage: "",
+        loadMore: {
+          contentdown: "",
+          contentrefresh: "",
+          contentnomore: ""
+        },
+        dataList: [],
+        selected: [],
+        selectedIndex: 0,
+        page: {
+          current: this.pageCurrent,
+          size: this.pageSize,
+          count: 0
+        }
+      };
+    },
+    computed: {
+      isLocalData() {
+        return !this.collection.length;
+      },
+      isCloudData() {
+        return this.collection.length > 0;
+      },
+      isCloudDataList() {
+        return this.isCloudData && (!this.parentField && !this.selfField);
+      },
+      isCloudDataTree() {
+        return this.isCloudData && this.parentField && this.selfField;
+      },
+      dataValue() {
+        let isModelValue = Array.isArray(this.modelValue) ? this.modelValue.length > 0 : this.modelValue !== null || this.modelValue !== void 0;
+        return isModelValue ? this.modelValue : this.value;
+      },
+      hasValue() {
+        if (typeof this.dataValue === "number") {
+          return true;
+        }
+        return this.dataValue != null && this.dataValue.length > 0;
+      }
+    },
+    created() {
+      this.$watch(() => {
+        var al = [];
+        [
+          "pageCurrent",
+          "pageSize",
+          "spaceInfo",
+          "value",
+          "modelValue",
+          "localdata",
+          "collection",
+          "action",
+          "field",
+          "orderby",
+          "where",
+          "getont",
+          "getcount",
+          "gettree"
+        ].forEach((key) => {
+          al.push(this[key]);
+        });
+        return al;
+      }, (newValue, oldValue) => {
+        for (let i2 = 2; i2 < newValue.length; i2++) {
+          if (newValue[i2] != oldValue[i2]) {
+            break;
+          }
+        }
+        if (newValue[0] != oldValue[0]) {
+          this.page.current = this.pageCurrent;
+        }
+        this.page.size = this.pageSize;
+        this.onPropsChange();
+      });
+      this._treeData = [];
+    },
+    methods: {
+      onPropsChange() {
+        this._treeData = [];
+      },
+      // 填充 pickview 数据
+      async loadData() {
+        if (this.isLocalData) {
+          this.loadLocalData();
+        } else if (this.isCloudDataList) {
+          this.loadCloudDataList();
+        } else if (this.isCloudDataTree) {
+          this.loadCloudDataTree();
+        }
+      },
+      // 加载本地数据
+      async loadLocalData() {
+        this._treeData = [];
+        this._extractTree(this.localdata, this._treeData);
+        let inputValue = this.dataValue;
+        if (inputValue === void 0) {
+          return;
+        }
+        if (Array.isArray(inputValue)) {
+          inputValue = inputValue[inputValue.length - 1];
+          if (typeof inputValue === "object" && inputValue[this.map.value]) {
+            inputValue = inputValue[this.map.value];
+          }
+        }
+        this.selected = this._findNodePath(inputValue, this.localdata);
+      },
+      // 加载 Cloud 数据 (单列)
+      async loadCloudDataList() {
+        if (this.loading) {
+          return;
+        }
+        this.loading = true;
+        try {
+          let response = await this.getCommand();
+          let responseData = response.result.data;
+          this._treeData = responseData;
+          this._updateBindData();
+          this._updateSelected();
+          this.onDataChange();
+        } catch (e2) {
+          this.errorMessage = e2;
+        } finally {
+          this.loading = false;
+        }
+      },
+      // 加载 Cloud 数据 (树形)
+      async loadCloudDataTree() {
+        if (this.loading) {
+          return;
+        }
+        this.loading = true;
+        try {
+          let commandOptions = {
+            field: this._cloudDataPostField(),
+            where: this._cloudDataTreeWhere()
+          };
+          if (this.gettree) {
+            commandOptions.startwith = `${this.selfField}=='${this.dataValue}'`;
+          }
+          let response = await this.getCommand(commandOptions);
+          let responseData = response.result.data;
+          this._treeData = responseData;
+          this._updateBindData();
+          this._updateSelected();
+          this.onDataChange();
+        } catch (e2) {
+          this.errorMessage = e2;
+        } finally {
+          this.loading = false;
+        }
+      },
+      // 加载 Cloud 数据 (节点)
+      async loadCloudDataNode(callback) {
+        if (this.loading) {
+          return;
+        }
+        this.loading = true;
+        try {
+          let commandOptions = {
+            field: this._cloudDataPostField(),
+            where: this._cloudDataNodeWhere()
+          };
+          let response = await this.getCommand(commandOptions);
+          let responseData = response.result.data;
+          callback(responseData);
+        } catch (e2) {
+          this.errorMessage = e2;
+        } finally {
+          this.loading = false;
+        }
+      },
+      // 回显 Cloud 数据
+      getCloudDataValue() {
+        if (this.isCloudDataList) {
+          return this.getCloudDataListValue();
+        }
+        if (this.isCloudDataTree) {
+          return this.getCloudDataTreeValue();
+        }
+      },
+      // 回显 Cloud 数据 (单列)
+      getCloudDataListValue() {
+        let where = [];
+        let whereField = this._getForeignKeyByField();
+        if (whereField) {
+          where.push(`${whereField} == '${this.dataValue}'`);
+        }
+        where = where.join(" || ");
+        if (this.where) {
+          where = `(${this.where}) && (${where})`;
+        }
+        return this.getCommand({
+          field: this._cloudDataPostField(),
+          where
+        }).then((res) => {
+          this.selected = res.result.data;
+          return res.result.data;
+        });
+      },
+      // 回显 Cloud 数据 (树形)
+      getCloudDataTreeValue() {
+        return this.getCommand({
+          field: this._cloudDataPostField(),
+          getTreePath: {
+            startWith: `${this.selfField}=='${this.dataValue}'`
+          }
+        }).then((res) => {
+          let treePath = [];
+          this._extractTreePath(res.result.data, treePath);
+          this.selected = treePath;
+          return treePath;
+        });
+      },
+      getCommand(options = {}) {
+        let db = Ws.database(this.spaceInfo);
+        const action = options.action || this.action;
+        if (action) {
+          db = db.action(action);
+        }
+        const collection = options.collection || this.collection;
+        db = db.collection(collection);
+        const where = options.where || this.where;
+        if (!(!where || !Object.keys(where).length)) {
+          db = db.where(where);
+        }
+        const field = options.field || this.field;
+        if (field) {
+          db = db.field(field);
+        }
+        const orderby = options.orderby || this.orderby;
+        if (orderby) {
+          db = db.orderBy(orderby);
+        }
+        const current = options.pageCurrent !== void 0 ? options.pageCurrent : this.page.current;
+        const size = options.pageSize !== void 0 ? options.pageSize : this.page.size;
+        const getCount = options.getcount !== void 0 ? options.getcount : this.getcount;
+        const getTree = options.gettree !== void 0 ? options.gettree : this.gettree;
+        const getOptions = {
+          getCount,
+          getTree
+        };
+        if (options.getTreePath) {
+          getOptions.getTreePath = options.getTreePath;
+        }
+        db = db.skip(size * (current - 1)).limit(size).get(getOptions);
+        return db;
+      },
+      _cloudDataPostField() {
+        let fields = [this.field];
+        if (this.parentField) {
+          fields.push(`${this.parentField} as parent_value`);
+        }
+        return fields.join(",");
+      },
+      _cloudDataTreeWhere() {
+        let result = [];
+        let selected = this.selected;
+        let parentField = this.parentField;
+        if (parentField) {
+          result.push(`${parentField} == null || ${parentField} == ""`);
+        }
+        if (selected.length) {
+          for (var i2 = 0; i2 < selected.length - 1; i2++) {
+            result.push(`${parentField} == '${selected[i2].value}'`);
+          }
+        }
+        let where = [];
+        if (this.where) {
+          where.push(`(${this.where})`);
+        }
+        if (result.length) {
+          where.push(`(${result.join(" || ")})`);
+        }
+        return where.join(" && ");
+      },
+      _cloudDataNodeWhere() {
+        let where = [];
+        let selected = this.selected;
+        if (selected.length) {
+          where.push(`${this.parentField} == '${selected[selected.length - 1].value}'`);
+        }
+        where = where.join(" || ");
+        if (this.where) {
+          return `(${this.where}) && (${where})`;
+        }
+        return where;
+      },
+      _getWhereByForeignKey() {
+        let result = [];
+        let whereField = this._getForeignKeyByField();
+        if (whereField) {
+          result.push(`${whereField} == '${this.dataValue}'`);
+        }
+        if (this.where) {
+          return `(${this.where}) && (${result.join(" || ")})`;
+        }
+        return result.join(" || ");
+      },
+      _getForeignKeyByField() {
+        let fields = this.field.split(",");
+        let whereField = null;
+        for (let i2 = 0; i2 < fields.length; i2++) {
+          const items = fields[i2].split("as");
+          if (items.length < 2) {
+            continue;
+          }
+          if (items[1].trim() === "value") {
+            whereField = items[0].trim();
+            break;
+          }
+        }
+        return whereField;
+      },
+      _updateBindData(node) {
+        const {
+          dataList,
+          hasNodes
+        } = this._filterData(this._treeData, this.selected);
+        let isleaf = this._stepSearh === false && !hasNodes;
+        if (node) {
+          node.isleaf = isleaf;
+        }
+        this.dataList = dataList;
+        this.selectedIndex = dataList.length - 1;
+        if (!isleaf && this.selected.length < dataList.length) {
+          this.selected.push({
+            value: null,
+            text: "请选择"
+          });
+        }
+        return {
+          isleaf,
+          hasNodes
+        };
+      },
+      _updateSelected() {
+        let dl = this.dataList;
+        let sl = this.selected;
+        let textField = this.map.text;
+        let valueField = this.map.value;
+        for (let i2 = 0; i2 < sl.length; i2++) {
+          let value = sl[i2].value;
+          let dl2 = dl[i2];
+          for (let j2 = 0; j2 < dl2.length; j2++) {
+            let item2 = dl2[j2];
+            if (item2[valueField] === value) {
+              sl[i2].text = item2[textField];
+              break;
+            }
+          }
+        }
+      },
+      _filterData(data, paths) {
+        let dataList = [];
+        let hasNodes = true;
+        dataList.push(data.filter((item) => {
+          return item.parent_value === null || item.parent_value === void 0 || item.parent_value === "";
+        }));
+        for (let i2 = 0; i2 < paths.length; i2++) {
+          let value = paths[i2].value;
+          let nodes = data.filter((item) => {
+            return item.parent_value === value;
+          });
+          if (nodes.length) {
+            dataList.push(nodes);
+          } else {
+            hasNodes = false;
+          }
+        }
+        return {
+          dataList,
+          hasNodes
+        };
+      },
+      _extractTree(nodes, result, parent_value) {
+        let valueField = this.map.value;
+        for (let i2 = 0; i2 < nodes.length; i2++) {
+          let node = nodes[i2];
+          let child = {};
+          for (let key in node) {
+            if (key !== "children") {
+              child[key] = node[key];
+            }
+          }
+          if (parent_value !== null && parent_value !== void 0 && parent_value !== "") {
+            child.parent_value = parent_value;
+          }
+          result.push(child);
+          let children = node.children;
+          if (children) {
+            this._extractTree(children, result, node[valueField]);
+          }
+        }
+      },
+      _extractTreePath(nodes, result) {
+        for (let i2 = 0; i2 < nodes.length; i2++) {
+          let node = nodes[i2];
+          let child = {};
+          for (let key in node) {
+            if (key !== "children") {
+              child[key] = node[key];
+            }
+          }
+          result.push(child);
+          let children = node.children;
+          if (children) {
+            this._extractTreePath(children, result);
+          }
+        }
+      },
+      _findNodePath(key, nodes, path = []) {
+        let textField = this.map.text;
+        let valueField = this.map.value;
+        for (let i2 = 0; i2 < nodes.length; i2++) {
+          let node = nodes[i2];
+          let children = node.children;
+          let text = node[textField];
+          let value = node[valueField];
+          path.push({
+            value,
+            text
+          });
+          if (value === key) {
+            return path;
+          }
+          if (children) {
+            const p2 = this._findNodePath(key, children, path);
+            if (p2.length) {
+              return p2;
+            }
+          }
+          path.pop();
+        }
+        return [];
+      }
+    }
+  };
+  const _sfc_main$9 = {
+    name: "UniDataPickerView",
+    emits: ["nodeclick", "change", "datachange", "update:modelValue"],
+    mixins: [dataPicker],
+    props: {
+      managedMode: {
+        type: Boolean,
+        default: false
+      },
+      ellipsis: {
+        type: Boolean,
+        default: true
+      }
+    },
+    created() {
+      if (!this.managedMode) {
+        this.$nextTick(() => {
+          this.loadData();
+        });
+      }
+    },
+    methods: {
+      onPropsChange() {
+        this._treeData = [];
+        this.selectedIndex = 0;
+        this.$nextTick(() => {
+          this.loadData();
+        });
+      },
+      handleSelect(index) {
+        this.selectedIndex = index;
+      },
+      handleNodeClick(item, i2, j2) {
+        if (item.disable) {
+          return;
+        }
+        const node = this.dataList[i2][j2];
+        const text = node[this.map.text];
+        const value = node[this.map.value];
+        if (i2 < this.selected.length - 1) {
+          this.selected.splice(i2, this.selected.length - i2);
+          this.selected.push({
+            text,
+            value
+          });
+        } else if (i2 === this.selected.length - 1) {
+          this.selected.splice(i2, 1, {
+            text,
+            value
+          });
+        }
+        if (node.isleaf) {
+          this.onSelectedChange(node, node.isleaf);
+          return;
+        }
+        const {
+          isleaf,
+          hasNodes
+        } = this._updateBindData();
+        if (this.isLocalData) {
+          this.onSelectedChange(node, !hasNodes || isleaf);
+        } else if (this.isCloudDataList) {
+          this.onSelectedChange(node, true);
+        } else if (this.isCloudDataTree) {
+          if (isleaf) {
+            this.onSelectedChange(node, node.isleaf);
+          } else if (!hasNodes) {
+            this.loadCloudDataNode((data) => {
+              if (!data.length) {
+                node.isleaf = true;
+              } else {
+                this._treeData.push(...data);
+                this._updateBindData(node);
+              }
+              this.onSelectedChange(node, node.isleaf);
+            });
+          }
+        }
+      },
+      updateData(data) {
+        this._treeData = data.treeData;
+        this.selected = data.selected;
+        if (!this._treeData.length) {
+          this.loadData();
+        } else {
+          this._updateBindData();
+        }
+      },
+      onDataChange() {
+        this.$emit("datachange");
+      },
+      onSelectedChange(node, isleaf) {
+        if (isleaf) {
+          this._dispatchEvent();
+        }
+        if (node) {
+          this.$emit("nodeclick", node);
+        }
+      },
+      _dispatchEvent() {
+        this.$emit("change", this.selected.slice(0));
+      }
+    }
+  };
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-pickerview" }, [
+      !_ctx.isCloudDataList ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
+        key: 0,
+        class: "selected-area",
+        "scroll-x": "true"
+      }, [
+        vue.createElementVNode("view", { class: "selected-list" }, [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList(_ctx.selected, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                class: vue.normalizeClass(["selected-item", {
+                  "selected-item-active": index == _ctx.selectedIndex
+                }]),
+                key: index,
+                onClick: ($event) => $options.handleSelect(index)
+              }, [
+                vue.createElementVNode(
+                  "text",
+                  null,
+                  vue.toDisplayString(item.text || ""),
+                  1
+                  /* TEXT */
+                )
+              ], 10, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ])
+      ])) : vue.createCommentVNode("v-if", true),
+      vue.createElementVNode("view", { class: "tab-c" }, [
+        vue.createElementVNode("scroll-view", {
+          class: "list",
+          "scroll-y": true
+        }, [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList(_ctx.dataList[_ctx.selectedIndex], (item, j2) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                class: vue.normalizeClass(["item", { "is-disabled": !!item.disable }]),
+                key: j2,
+                onClick: ($event) => $options.handleNodeClick(item, _ctx.selectedIndex, j2)
+              }, [
+                vue.createElementVNode(
+                  "text",
+                  { class: "item-text" },
+                  vue.toDisplayString(item[_ctx.map.text]),
+                  1
+                  /* TEXT */
+                ),
+                _ctx.selected.length > _ctx.selectedIndex && item[_ctx.map.value] == _ctx.selected[_ctx.selectedIndex].value ? (vue.openBlock(), vue.createElementBlock("view", {
+                  key: 0,
+                  class: "check"
+                })) : vue.createCommentVNode("v-if", true)
+              ], 10, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ]),
+        _ctx.loading ? (vue.openBlock(), vue.createElementBlock("view", {
+          key: 0,
+          class: "loading-cover"
+        }, [
+          vue.createVNode(_component_uni_load_more, {
+            class: "load-more",
+            contentText: _ctx.loadMore,
+            status: "loading"
+          }, null, 8, ["contentText"])
+        ])) : vue.createCommentVNode("v-if", true),
+        _ctx.errorMessage ? (vue.openBlock(), vue.createElementBlock("view", {
+          key: 1,
+          class: "error-message"
+        }, [
+          vue.createElementVNode(
+            "text",
+            { class: "error-text" },
+            vue.toDisplayString(_ctx.errorMessage),
+            1
+            /* TEXT */
+          )
+        ])) : vue.createCommentVNode("v-if", true)
+      ])
+    ]);
+  }
+  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
+  const _sfc_main$8 = {
+    name: "UniDataPicker",
+    emits: ["popupopened", "popupclosed", "nodeclick", "input", "change", "update:modelValue", "inputclick"],
+    mixins: [dataPicker],
+    components: {
+      DataPickerView
+    },
+    props: {
+      options: {
+        type: [Object, Array],
+        default() {
+          return {};
+        }
+      },
+      popupTitle: {
+        type: String,
+        default: "请选择"
+      },
+      placeholder: {
+        type: String,
+        default: "请选择"
+      },
+      heightMobile: {
+        type: String,
+        default: ""
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+      clearIcon: {
+        type: Boolean,
+        default: true
+      },
+      border: {
+        type: Boolean,
+        default: true
+      },
+      split: {
+        type: String,
+        default: "/"
+      },
+      ellipsis: {
+        type: Boolean,
+        default: true
+      }
+    },
+    data() {
+      return {
+        isOpened: false,
+        inputSelected: []
+      };
+    },
+    created() {
+      this.$nextTick(() => {
+        this.load();
+      });
+    },
+    watch: {
+      localdata: {
+        handler() {
+          this.load();
+        },
+        deep: true
+      }
+    },
+    methods: {
+      clear() {
+        this._dispatchEvent([]);
+      },
+      onPropsChange() {
+        this._treeData = [];
+        this.selectedIndex = 0;
+        this.load();
+      },
+      load() {
+        if (this.readonly) {
+          this._processReadonly(this.localdata, this.dataValue);
+          return;
+        }
+        if (this.isLocalData) {
+          this.loadData();
+          this.inputSelected = this.selected.slice(0);
+        } else if (this.isCloudDataList || this.isCloudDataTree) {
+          this.loading = true;
+          this.getCloudDataValue().then((res) => {
+            this.loading = false;
+            this.inputSelected = res;
+          }).catch((err) => {
+            this.loading = false;
+            this.errorMessage = err;
+          });
+        }
+      },
+      show() {
+        this.isOpened = true;
+        setTimeout(() => {
+          this.$refs.pickerView.updateData({
+            treeData: this._treeData,
+            selected: this.selected,
+            selectedIndex: this.selectedIndex
+          });
+        }, 200);
+        this.$emit("popupopened");
+      },
+      hide() {
+        this.isOpened = false;
+        this.$emit("popupclosed");
+      },
+      handleInput() {
+        if (this.readonly) {
+          this.$emit("inputclick");
+          return;
+        }
+        this.show();
+      },
+      handleClose(e2) {
+        this.hide();
+      },
+      onnodeclick(e2) {
+        this.$emit("nodeclick", e2);
+      },
+      ondatachange(e2) {
+        this._treeData = this.$refs.pickerView._treeData;
+      },
+      onchange(e2) {
+        this.hide();
+        this.$nextTick(() => {
+          this.inputSelected = e2;
+        });
+        this._dispatchEvent(e2);
+      },
+      _processReadonly(dataList, value) {
+        var isTree = dataList.findIndex((item2) => {
+          return item2.children;
+        });
+        if (isTree > -1) {
+          let inputValue;
+          if (Array.isArray(value)) {
+            inputValue = value[value.length - 1];
+            if (typeof inputValue === "object" && inputValue.value) {
+              inputValue = inputValue.value;
+            }
+          } else {
+            inputValue = value;
+          }
+          this.inputSelected = this._findNodePath(inputValue, this.localdata);
+          return;
+        }
+        if (!this.hasValue) {
+          this.inputSelected = [];
+          return;
+        }
+        let result = [];
+        for (let i2 = 0; i2 < value.length; i2++) {
+          var val = value[i2];
+          var item = dataList.find((v2) => {
+            return v2.value == val;
+          });
+          if (item) {
+            result.push(item);
+          }
+        }
+        if (result.length) {
+          this.inputSelected = result;
+        }
+      },
+      _filterForArray(data, valueArray) {
+        var result = [];
+        for (let i2 = 0; i2 < valueArray.length; i2++) {
+          var value = valueArray[i2];
+          var found = data.find((item) => {
+            return item.value == value;
+          });
+          if (found) {
+            result.push(found);
+          }
+        }
+        return result;
+      },
+      _dispatchEvent(selected) {
+        let item = {};
+        if (selected.length) {
+          var value = new Array(selected.length);
+          for (var i2 = 0; i2 < selected.length; i2++) {
+            value[i2] = selected[i2].value;
+          }
+          item = selected[selected.length - 1];
+        } else {
+          item.value = "";
+        }
+        if (this.formItem) {
+          this.formItem.setValue(item.value);
+        }
+        this.$emit("input", item.value);
+        this.$emit("update:modelValue", item.value);
+        this.$emit("change", {
+          detail: {
+            value: selected
+          }
+        });
+      }
+    }
+  };
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_1$1);
+    const _component_data_picker_view = vue.resolveComponent("data-picker-view");
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-tree" }, [
+      vue.createElementVNode("view", {
+        class: "uni-data-tree-input",
+        onClick: _cache[1] || (_cache[1] = (...args) => $options.handleInput && $options.handleInput(...args))
+      }, [
+        vue.renderSlot(_ctx.$slots, "default", {
+          options: $props.options,
+          data: $data.inputSelected,
+          error: _ctx.errorMessage
+        }, () => [
+          vue.createElementVNode(
+            "view",
+            {
+              class: vue.normalizeClass(["input-value", { "input-value-border": $props.border }])
+            },
+            [
+              _ctx.errorMessage ? (vue.openBlock(), vue.createElementBlock(
+                "text",
+                {
+                  key: 0,
+                  class: "selected-area error-text"
+                },
+                vue.toDisplayString(_ctx.errorMessage),
+                1
+                /* TEXT */
+              )) : _ctx.loading && !$data.isOpened ? (vue.openBlock(), vue.createElementBlock("view", {
+                key: 1,
+                class: "selected-area"
+              }, [
+                vue.createVNode(_component_uni_load_more, {
+                  class: "load-more",
+                  contentText: _ctx.loadMore,
+                  status: "loading"
+                }, null, 8, ["contentText"])
+              ])) : $data.inputSelected.length ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
+                key: 2,
+                class: "selected-area",
+                "scroll-x": "true"
+              }, [
+                vue.createElementVNode("view", { class: "selected-list" }, [
+                  (vue.openBlock(true), vue.createElementBlock(
+                    vue.Fragment,
+                    null,
+                    vue.renderList($data.inputSelected, (item, index) => {
+                      return vue.openBlock(), vue.createElementBlock("view", {
+                        class: "selected-item",
+                        key: index
+                      }, [
+                        vue.createElementVNode(
+                          "text",
+                          { class: "text-color" },
+                          vue.toDisplayString(item.text),
+                          1
+                          /* TEXT */
+                        ),
+                        index < $data.inputSelected.length - 1 ? (vue.openBlock(), vue.createElementBlock(
+                          "text",
+                          {
+                            key: 0,
+                            class: "input-split-line"
+                          },
+                          vue.toDisplayString($props.split),
+                          1
+                          /* TEXT */
+                        )) : vue.createCommentVNode("v-if", true)
+                      ]);
+                    }),
+                    128
+                    /* KEYED_FRAGMENT */
+                  ))
+                ])
+              ])) : (vue.openBlock(), vue.createElementBlock(
+                "text",
+                {
+                  key: 3,
+                  class: "selected-area placeholder"
+                },
+                vue.toDisplayString($props.placeholder),
+                1
+                /* TEXT */
+              )),
+              $props.clearIcon && !$props.readonly && $data.inputSelected.length ? (vue.openBlock(), vue.createElementBlock("view", {
+                key: 4,
+                class: "icon-clear",
+                onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => $options.clear && $options.clear(...args), ["stop"]))
+              }, [
+                vue.createVNode(_component_uni_icons, {
+                  type: "clear",
+                  color: "#c0c4cc",
+                  size: "24"
+                })
+              ])) : vue.createCommentVNode("v-if", true),
+              (!$props.clearIcon || !$data.inputSelected.length) && !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
+                key: 5,
+                class: "arrow-area"
+              }, [
+                vue.createElementVNode("view", { class: "input-arrow" })
+              ])) : vue.createCommentVNode("v-if", true)
+            ],
+            2
+            /* CLASS */
+          )
+        ], true)
+      ]),
+      $data.isOpened ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "uni-data-tree-cover",
+        onClick: _cache[2] || (_cache[2] = (...args) => $options.handleClose && $options.handleClose(...args))
+      })) : vue.createCommentVNode("v-if", true),
+      $data.isOpened ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 1,
+        class: "uni-data-tree-dialog"
+      }, [
+        vue.createElementVNode("view", { class: "uni-popper__arrow" }),
+        vue.createElementVNode("view", { class: "dialog-caption" }, [
+          vue.createElementVNode("view", { class: "title-area" }, [
+            vue.createElementVNode(
+              "text",
+              { class: "dialog-title" },
+              vue.toDisplayString($props.popupTitle),
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createElementVNode("view", {
+            class: "dialog-close",
+            onClick: _cache[3] || (_cache[3] = (...args) => $options.handleClose && $options.handleClose(...args))
+          }, [
+            vue.createElementVNode("view", {
+              class: "dialog-close-plus",
+              "data-id": "close"
+            }),
+            vue.createElementVNode("view", {
+              class: "dialog-close-plus dialog-close-rotate",
+              "data-id": "close"
+            })
+          ])
+        ]),
+        vue.createVNode(_component_data_picker_view, {
+          class: "picker-view",
+          ref: "pickerView",
+          modelValue: _ctx.dataValue,
+          "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => _ctx.dataValue = $event),
+          localdata: _ctx.localdata,
+          preload: _ctx.preload,
+          collection: _ctx.collection,
+          field: _ctx.field,
+          orderby: _ctx.orderby,
+          where: _ctx.where,
+          "step-searh": _ctx.stepSearh,
+          "self-field": _ctx.selfField,
+          "parent-field": _ctx.parentField,
+          "managed-mode": true,
+          map: _ctx.map,
+          ellipsis: $props.ellipsis,
+          onChange: $options.onchange,
+          onDatachange: $options.ondatachange,
+          onNodeclick: $options.onnodeclick
+        }, null, 8, ["modelValue", "localdata", "preload", "collection", "field", "orderby", "where", "step-searh", "self-field", "parent-field", "map", "ellipsis", "onChange", "onDatachange", "onNodeclick"])
+      ])) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
+  const _sfc_main$7 = {
+    name: "UniSwiperDot",
+    emits: ["clickItem"],
+    props: {
+      info: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+      current: {
+        type: Number,
+        default: 0
+      },
+      dotsStyles: {
+        type: Object,
+        default() {
+          return {};
+        }
+      },
+      // 类型 ：default(默认) indexes long nav
+      mode: {
+        type: String,
+        default: "default"
+      },
+      // 只在 nav 模式下生效，变量名称
+      field: {
+        type: String,
+        default: ""
+      }
+    },
+    data() {
+      return {
+        dots: {
+          width: 6,
+          height: 6,
+          bottom: 10,
+          color: "#fff",
+          backgroundColor: "rgba(0, 0, 0, .3)",
+          border: "1px rgba(0, 0, 0, .3) solid",
+          selectedBackgroundColor: "#333",
+          selectedBorder: "1px rgba(0, 0, 0, .9) solid"
+        }
+      };
+    },
+    watch: {
+      dotsStyles(newVal) {
+        this.dots = Object.assign(this.dots, this.dotsStyles);
+      },
+      mode(newVal) {
+        if (newVal === "indexes") {
+          this.dots.width = 14;
+          this.dots.height = 14;
+        } else {
+          this.dots.width = 6;
+          this.dots.height = 6;
+        }
+      }
+    },
+    created() {
+      if (this.mode === "indexes") {
+        this.dots.width = 12;
+        this.dots.height = 12;
+      }
+      this.dots = Object.assign(this.dots, this.dotsStyles);
+    },
+    methods: {
+      clickItem(index) {
+        this.$emit("clickItem", index);
+      }
+    }
+  };
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-swiper__warp" }, [
+      vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
+      $props.mode === "default" ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          style: vue.normalizeStyle({ "bottom": $data.dots.bottom + "px" }),
+          class: "uni-swiper__dots-box",
+          key: "default"
+        },
+        [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($props.info, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                onClick: ($event) => $options.clickItem(index),
+                style: vue.normalizeStyle({
+                  "width": (index === $props.current ? $data.dots.width * 2 : $data.dots.width) + "px",
+                  "height": $data.dots.width / 2 + "px",
+                  "background-color": index !== $props.current ? $data.dots.backgroundColor : $data.dots.selectedBackgroundColor,
+                  "border-radius": "0px"
+                }),
+                key: index,
+                class: "uni-swiper__dots-item uni-swiper__dots-bar"
+              }, null, 12, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true),
+      $props.mode === "dot" ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          style: vue.normalizeStyle({ "bottom": $data.dots.bottom + "px" }),
+          class: "uni-swiper__dots-box",
+          key: "dot"
+        },
+        [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($props.info, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                onClick: ($event) => $options.clickItem(index),
+                style: vue.normalizeStyle({
+                  "width": $data.dots.width + "px",
+                  "height": $data.dots.height + "px",
+                  "background-color": index !== $props.current ? $data.dots.backgroundColor : $data.dots.selectedBackgroundColor,
+                  "border": index !== $props.current ? $data.dots.border : $data.dots.selectedBorder
+                }),
+                key: index,
+                class: "uni-swiper__dots-item"
+              }, null, 12, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true),
+      $props.mode === "round" ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          style: vue.normalizeStyle({ "bottom": $data.dots.bottom + "px" }),
+          class: "uni-swiper__dots-box",
+          key: "round"
+        },
+        [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($props.info, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                onClick: ($event) => $options.clickItem(index),
+                class: vue.normalizeClass([[index === $props.current && "uni-swiper__dots-long"], "uni-swiper__dots-item"]),
+                style: vue.normalizeStyle({
+                  "width": (index === $props.current ? $data.dots.width * 3 : $data.dots.width) + "px",
+                  "height": $data.dots.height + "px",
+                  "background-color": index !== $props.current ? $data.dots.backgroundColor : $data.dots.selectedBackgroundColor,
+                  "border": index !== $props.current ? $data.dots.border : $data.dots.selectedBorder
+                }),
+                key: index
+              }, null, 14, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true),
+      $props.mode === "nav" ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: "nav",
+          style: vue.normalizeStyle({ "background-color": $props.dotsStyles.backgroundColor, "bottom": "0" }),
+          class: "uni-swiper__dots-box uni-swiper__dots-nav"
+        },
+        [
+          vue.createElementVNode(
+            "text",
+            {
+              style: vue.normalizeStyle({ "color": $props.dotsStyles.color }),
+              class: "uni-swiper__dots-nav-item"
+            },
+            vue.toDisplayString($props.current + 1 + "/" + $props.info.length + " " + $props.info[$props.current][$props.field]),
+            5
+            /* TEXT, STYLE */
+          )
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true),
+      $props.mode === "indexes" ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: "indexes",
+          style: vue.normalizeStyle({ "bottom": $data.dots.bottom + "px" }),
+          class: "uni-swiper__dots-box"
+        },
+        [
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($props.info, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock("view", {
+                onClick: ($event) => $options.clickItem(index),
+                style: vue.normalizeStyle({
+                  "width": $data.dots.width + "px",
+                  "height": $data.dots.height + "px",
+                  "color": index === $props.current ? $data.dots.selectedColor : $data.dots.color,
+                  "background-color": index !== $props.current ? $data.dots.backgroundColor : $data.dots.selectedBackgroundColor,
+                  "border": index !== $props.current ? $data.dots.border : $data.dots.selectedBorder
+                }),
+                key: index,
+                class: "uni-swiper__dots-item uni-swiper__dots-indexes"
+              }, [
+                vue.createElementVNode(
+                  "text",
+                  { class: "uni-swiper__dots-indexes-text" },
+                  vue.toDisplayString(index + 1),
+                  1
+                  /* TEXT */
+                )
+              ], 12, ["onClick"]);
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-0667e3db"], ["__file", "E:/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
+  const _sfc_main$6 = {
+    data() {
+      return {
+        items: [
+          {
+            text: "吉林",
+            value: "1-0",
+            children: [
+              {
+                text: "长春",
+                value: "1-1"
+              },
+              {
+                text: "四平",
+                value: "1-2"
+              }
+            ]
+          },
+          {
+            text: "辽宁",
+            value: "2-0"
+          },
+          {
+            text: "黑龙江",
+            value: "3-0"
+          }
+        ],
+        info: [{
+          content: "../../static/images/banner.png"
+        }, {
+          content: "../../static/images/banner.png"
+        }, {
+          content: "../../static/images/banner.png"
+        }],
+        current: 0,
+        mode: "round",
+        scrollText: ["哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈", "嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+        scrollHeight: 40,
+        // 滚动区域的高度，根据实际情况调整
+        scrollTimer: null
+        // 定时器
+      };
+    },
+    mounted() {
+      this.startScroll();
+    },
+    beforeDestroy() {
+      clearInterval(this.scrollTimer);
+    },
+    methods: {
+      onchange(e2) {
+        e2.detail.value;
+      },
+      change(e2) {
+        this.current = e2.detail.current;
+      },
+      startScroll() {
+        this.scrollTimer = setInterval(() => {
+          this.scrollText.push(this.scrollText.shift());
+          this.$forceUpdate();
+        }, 8e3);
+      },
+      onScrollToLower() {
+        this.$refs.scrollView.scrollTo(0, 0);
+      }
+    }
+  };
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$1);
+    const _component_uni_swiper_dot = resolveEasycom(vue.resolveDynamicComponent("uni-swiper-dot"), __easycom_1);
+    return vue.openBlock(), vue.createElementBlock("view", null, [
+      vue.createElementVNode("view", { class: "indexTopPosition" }, [
+        vue.createElementVNode("image", {
+          src: "/static/images/indexBack.png",
+          class: "indexTopPositionBack",
+          mode: "widthFix"
+        }),
+        vue.createElementVNode("view", { class: "indexTopPositionCon" }, [
+          vue.createElementVNode("view", { class: "indexTopPositionConSearch" }, [
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchCity" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index_1.png",
+                class: "indexTopPositionConSearchCityIcon",
+                mode: "widthFix"
+              }),
+              vue.createVNode(_component_uni_data_picker, {
+                "clear-icon": false,
+                class: "indexTopPositionConSearchCityPick",
+                localdata: $data.items,
+                "popup-title": "城市",
+                onChange: $options.onchange
+              }, null, 8, ["localdata", "onChange"])
+            ]),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index_6.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("input", {
+                type: "text",
+                placeholder: "请输入商品名称"
+              })
+            ]),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchMesR" }, [
+              vue.createElementVNode("view", { class: "indexTopPositionConSearchMesNew" }),
+              vue.createElementVNode("image", {
+                src: "/static/images/index_2.png",
+                class: "indexTopPositionConSearchMes",
+                mode: "widthFix"
+              })
+            ]),
+            vue.createVNode(_component_uni_swiper_dot, {
+              info: $data.info,
+              current: $data.current,
+              field: "content",
+              mode: $data.mode,
+              class: "indexTopPositionConBanner"
+            }, {
+              default: vue.withCtx(() => [
+                vue.createElementVNode(
+                  "swiper",
+                  {
+                    class: "swiper-box",
+                    onChange: _cache[0] || (_cache[0] = (...args) => $options.change && $options.change(...args))
+                  },
+                  [
+                    (vue.openBlock(true), vue.createElementBlock(
+                      vue.Fragment,
+                      null,
+                      vue.renderList($data.info, (item, index) => {
+                        return vue.openBlock(), vue.createElementBlock("swiper-item", { key: index }, [
+                          vue.createElementVNode("view", { class: "swiper-item" }, [
+                            vue.createElementVNode("image", {
+                              src: item.content
+                            }, null, 8, ["src"])
+                          ])
+                        ]);
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
+                  ],
+                  32
+                  /* HYDRATE_EVENTS */
+                )
+              ]),
+              _: 1
+              /* STABLE */
+            }, 8, ["info", "current", "mode"])
+          ])
+        ])
+      ]),
+      vue.createElementVNode("view", { class: "indexFourClass" }, [
+        vue.createElementVNode("navigator", { url: "" }, [
+          vue.createElementVNode("view", { class: "indexFourClassLi indexFourClassLiY" }, [
+            vue.createElementVNode("text", null, "配件商城"),
+            vue.createElementVNode("image", { src: "/static/images/index_3.png" })
+          ])
+        ]),
+        vue.createElementVNode("navigator", { url: "" }, [
+          vue.createElementVNode("view", { class: "indexFourClassLi indexFourClassLiG" }, [
+            vue.createElementVNode("text", null, "车辆租赁"),
+            vue.createElementVNode("image", { src: "/static/images/index_3.png" })
+          ])
+        ])
+      ]),
+      vue.createElementVNode("view", { class: "indexNewTask" }, [
+        vue.createElementVNode("image", {
+          src: "/static/images/index_5.png",
+          mode: "widthFix",
+          class: "indexNewTaskImg"
+        }),
+        vue.createElementVNode("view", { class: "baishanLine" }),
+        vue.createElementVNode(
+          "scroll-view",
+          {
+            class: "scroll-text",
+            "scroll-y": "",
+            style: vue.normalizeStyle({ height: $data.scrollHeight + "px" }),
+            onScrolltolower: _cache[1] || (_cache[1] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
+          },
+          [
+            (vue.openBlock(true), vue.createElementBlock(
+              vue.Fragment,
+              null,
+              vue.renderList($data.scrollText, (item, index) => {
+                return vue.openBlock(), vue.createElementBlock(
+                  "view",
+                  {
+                    class: "scroll-item",
+                    key: index
+                  },
+                  vue.toDisplayString(item),
+                  1
+                  /* TEXT */
+                );
+              }),
+              128
+              /* KEYED_FRAGMENT */
+            ))
+          ],
+          36
+          /* STYLE, HYDRATE_EVENTS */
+        )
+      ]),
+      vue.createElementVNode("view", { class: "indexFourClass" }, [
+        vue.createElementVNode("navigator", { url: "" }, [
+          vue.createElementVNode("view", { class: "indexFourClassLi indexFourClassLiB" }, [
+            vue.createElementVNode("text", null, "设备商城"),
+            vue.createElementVNode("image", { src: "/static/images/index_3.png" })
+          ])
+        ]),
+        vue.createElementVNode("navigator", { url: "" }, [
+          vue.createElementVNode("view", { class: "indexFourClassLi indexFourClassLiP" }, [
+            vue.createElementVNode("text", null, "本地服务"),
+            vue.createElementVNode("image", { src: "/static/images/index_3.png" })
+          ])
+        ])
+      ])
+    ]);
+  }
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__file", "E:/yikegongcheng/yike/pages/index/index.vue"]]);
   const ERR_MSG_OK = "chooseAndUploadFile:ok";
   const ERR_MSG_FAIL = "chooseAndUploadFile:fail";
   function chooseImage(opts) {
@@ -4129,7 +6868,7 @@ ${i3}
           });
           return;
         }
-        formatAppLog("log", "at pages/Merchant/signin.vue:80", 11111111);
+        formatAppLog("log", "at pages/Merchant/signin.vue:80", 111111112);
       }
     }
   };

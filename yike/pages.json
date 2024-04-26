@@ -17,6 +17,38 @@
 			"style": {
 				"navigationBarTitleText": "微信登录"
 			}
+		},
+		{
+		  "path": "pages/forum/forum-index",
+		  "style": {
+		    "navigationBarTitleText": "订单记录"
+		  }
+		},
+		{
+		  "path": "pages/task/task-index",
+		  "style": {
+		    "navigationBarTitleText": "订单记录"
+		  }
+		},
+		{
+		  "path": "pages/goods/goods-index",
+		  "style": {
+		    "navigationBarTitleText": "订单记录"
+		  }
+		},
+		{
+		  "path": "pages/user/user",
+		  "style": {
+		    "navigationBarTitleText": "订单记录"
+		  }
+		},
+		{
+			"path" : "pages/user/user/user",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"easycom": {
@@ -32,6 +64,45 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#ffffff"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"tabBar": {
+	  "color": "#666",
+	  "selectedColor": "#f08800",
+	  "backgroundColor": "#fff",
+		"custom": true
+	  // "list": [
+	 //    {
+	 //      "pagePath": "pages/index/index",
+	 //      "iconPath": "static/images/meun_1.png",
+	 //      "selectedIconPath": "static/images/meun_1_on.png",
+	 //      "text": "首页"
+	 //    },
+	 //    {
+	 //      "pagePath": "pages/forum/forum-index",
+	 //      "iconPath": "static/images/meun_2.png",
+	 //      "selectedIconPath": "static/images/meun_2_on.png",
+	 //      "text": "友圈"
+	 //    },
+	 //    {
+	 //      "pagePath": "pages/task/task-index",
+	 //      "iconPath": "static/images/meun_3.png",
+	 //      "selectedIconPath": "static/images/meun_3_on.png",
+	 //      "text": "适时任务"
+	 //    },
+		// {
+		//     "pagePath": "pages/goods/goods-index",
+		//     "iconPath": "static/images/meun_4.png",
+		//     "selectedIconPath": "static/images/meun_4_on.png",
+		//     "text": "商城"
+		// },
+		  
+	 //    {
+	 //      "pagePath": "pages/user/user",
+	 //      "iconPath": "static/images/meun_5.png",
+	 //      "selectedIconPath": "static/images/meun_5_on",
+	 //      "text": "我的"
+	 //    }
+	  // ]
+	}
 	
 }

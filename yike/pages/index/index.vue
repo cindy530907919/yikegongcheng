@@ -4,18 +4,22 @@
 		<image src="../../static/images/indexBack.png" class="indexTopPositionBack" mode="widthFix"></image>
     	<view class="indexTopPositionCon">
     		<view class="indexTopPositionConSearch">
+				<!-- 选择城市 -->
 				<view class="indexTopPositionConSearchCity">
 					<image src="../../static/images/index_1.png" class="indexTopPositionConSearchCityIcon" mode="widthFix"></image>
 					<uni-data-picker :clear-icon="false" class="indexTopPositionConSearchCityPick" :localdata="items" popup-title="城市" @change="onchange"></uni-data-picker>
 				</view>
+				<!-- 搜索 -->
     			<view class="indexTopPositionConSearchInput">
     				<image src="../../static/images/index_6.png" mode="widthFix"></image>
 					<input type="text" placeholder="请输入商品名称" />
     			</view>
+				<!-- 消息 -->
 				<view class="indexTopPositionConSearchMesR">
 					<view class="indexTopPositionConSearchMesNew"></view>
 					<image src="../../static/images/index_2.png" class="indexTopPositionConSearchMes" mode="widthFix"></image>
 				</view>
+				<!-- 轮播 -->
 				<uni-swiper-dot :info="info" :current="current" field="content" :mode="mode" class="indexTopPositionConBanner">
 					<swiper class="swiper-box" @change="change">
 						<swiper-item v-for="(item ,index) in info" :key="index">
@@ -28,6 +32,7 @@
     		</view>
     	</view>
     </view>
+	<!-- 板块图片 -->
 	<view class="indexFourClass">
 		<navigator url="">
 		<view class="indexFourClassLi  indexFourClassLiY">
@@ -42,6 +47,7 @@
 		</view>
 		</navigator>
 	</view>
+	<!-- 适时任务 -->
 	<view class="indexNewTask">
 		<image src="../../static/images/index_5.png" mode="widthFix" class="indexNewTaskImg"></image>
 		<view class="baishanLine"></view>
@@ -51,6 +57,7 @@
 			</view>
 	    </scroll-view>
 	</view>
+	<!-- 板块图片 -->
 	<view class="indexFourClass">
 		<navigator url="">
 	  	<view class="indexFourClassLi indexFourClassLiB">
@@ -65,12 +72,72 @@
 	  	</view>
 		</navigator>
 	</view>
+	<!-- 文字菜单 -->
+	<view class="indexNewTask">
+		<navigator url="" class="indexMeunTextLi">配件</navigator>
+		<navigator url="" class="indexMeunTextLi">设备</navigator>
+		<navigator url="" class="indexMeunTextLi">招聘求职</navigator>
+		<navigator url="" class="indexMeunTextLi">论坛</navigator>
+		<navigator url="" class="indexMeunTextLi"> 充值</navigator>
+	</view>
+	<!-- 本地服务 -->
+	<view class="indexService">
+		<navigator url=""  class="indexServiceLi">
+			<image src="../../static/images/index_7.png" class="indexServiceLiImg"></image>
+			<view class="indexServiceLiT">
+				<text class="indexServiceLiTT1">本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题</text>
+				<text class="indexServiceLiTT2">发布人：谁谁谁</text>
+				<view class="indexServiceLiTT1Label">
+					<text style="background: #71e58d;">电工</text>
+					<text style="background: #ffdb00;">车主</text>
+				</view>
+			</view>
+		</navigator>
+		<navigator url=""  class="indexServiceLi">
+			<image src="../../static/images/index_7.png" class="indexServiceLiImg"></image>
+			<view class="indexServiceLiT">
+				<text class="indexServiceLiTT1">本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题</text>
+				<text class="indexServiceLiTT2">发布人：谁谁谁</text>
+				<view class="indexServiceLiTT1Label">
+					<text style="background: #71e58d;">电工</text>
+					<text style="background: #ffdb00;">车主</text>
+				</view>
+			</view>
+		</navigator>
+		<navigator url=""  class="indexServiceLi">
+			<image src="../../static/images/index_7.png" class="indexServiceLiImg"></image>
+			<view class="indexServiceLiT">
+				<text class="indexServiceLiTT1">本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题</text>
+				<text class="indexServiceLiTT2">发布人：谁谁谁</text>
+				<view class="indexServiceLiTT1Label">
+					<text style="background: #71e58d;">电工</text>
+					<text style="background: #ffdb00;">车主</text>
+				</view>
+			</view>
+		</navigator>
+		<navigator url=""  class="indexServiceLi">
+			<image src="../../static/images/index_7.png" class="indexServiceLiImg"></image>
+			<view class="indexServiceLiT">
+				<text class="indexServiceLiTT1">本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题</text>
+				<text class="indexServiceLiTT2">发布人：谁谁谁</text>
+				<view class="indexServiceLiTT1Label">
+					<text style="background: #71e58d;">电工</text>
+					<text style="background: #ffdb00;">车主</text>
+				</view>
+			</view>
+		</navigator>
+	</view>
+	<custom-tabs-bar :activePage="activePage"></custom-tabs-bar> <!-- current属性指示哪个tab是活跃的 -->
   </view>
 </template>
 
 <script>
 import IndexApi from '../../api/index';
+import CustomTabsBar from '@/components/custom-tabs-bar/custom-tabs-bar.vue';
 export default {
+	components: {
+		CustomTabsBar
+	},
   data() {
    return {
 		items: [{
@@ -96,7 +163,7 @@ export default {
 			 value: "3-0"
 		}],
 		   
-		   
+		activePage: 0,   
 		info: [{
 			content: '../../static/images/banner.png'
 		}, {
@@ -169,7 +236,7 @@ export default {
 	}
 	.indexTopPositionConSearchCity{
 		float: left;
-		margin-top: 16rpx;
+		margin-top: 10rpx;
 	}
 	.input-value-border{
 		border: none !important;
@@ -394,5 +461,69 @@ export default {
 		height: 400rpx;
 		border-top: none;
 		border: 2px dashed #c9b2f7;
+	}
+	.indexMeunTextLi{
+		width: 20%;
+		float: left;
+		text-align: center;
+		font-size: 14px;
+		color: #222;
+	}
+	.indexService{
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		padding-bottom: 50rpx;
+	}
+	.indexServiceLi{
+		width: 100%;
+		float: left;
+		margin-top: 20rpx;
+		background: #fff;
+		box-shadow: 0 2px 10px #eee;
+		border-radius: 20rpx;
+		padding: 20rpx;
+		box-sizing: border-box;
+	}
+	.indexServiceLiImg{
+		width: 160rpx;
+		height: 160rpx;
+		float: left;
+		border-radius: 20rpx;
+	}
+	.indexServiceLiT{
+		width: calc(100% - 180rpx);
+		float: right;
+	}
+	.indexServiceLiTT1{
+		width: 100%;
+		float: left;
+		font-size: 16px;
+		color: #222;
+		white-space: nowrap; /* 确保文本在一行内显示 */
+		overflow: hidden; /* 隐藏超出容器的文本 */
+		text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+		margin-top: 8rpx;
+	}
+	.indexServiceLiTT2{
+		width: 100%;
+		float: left;
+		font-size: 14px;
+		color: #999;
+		margin-top: 5rpx;
+	}
+	.indexServiceLiTT1Label{
+		width: 100%;
+		float: left;
+		margin-top: 10rpx;
+	}
+	.indexServiceLiTT1Label text{
+		padding: 2rpx 20rpx;
+		color: #fff;
+		border-radius: 100px;
+		float: left;
+		margin-right: 10rpx;
+		font-size: 14px;
+		text-shadow: 0px 1px 1px #bbb;
 	}
 </style>

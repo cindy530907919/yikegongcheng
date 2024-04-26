@@ -1164,6 +1164,63 @@
   line-height: 14px;
 }
 
+.custom-tab-bar[data-v-a6d140ed] {
+  /* display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #fff; */
+  display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px; /* 可根据实际需要调整 */
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 1000; /* 确保tabbar在其他内容之上 */
+	padding-top: 0.3125rem;
+}
+.tab-item[data-v-a6d140ed] {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+	/* width: 180rpx; */
+	text-align: center;
+	display: inline-table;
+	background: none;
+}
+.tab-item.active[data-v-a6d140ed] {
+  color: #007AFF; /* 选中项的颜色 */
+}
+.nav-icon[data-v-a6d140ed] {
+		width: 1.5625rem;
+		height: 1.5625rem;
+}
+	/* 导航 */
+.nav-text[data-v-a6d140ed] {
+		font-size: 0.75rem;
+		font-weight: 500;
+		color: #666;
+}
+.nav-icon-scan[data-v-a6d140ed]{
+		width: 3.125rem;
+		height: 3.125rem;
+		margin-top: -2.03125rem;
+		border-radius: 50%;
+		border: 0.3125rem solid #fff;
+		background: #fff;
+		font-size: 0.75rem;
+}
+.active[data-v-a6d140ed]{
+		font-size: 0.75rem;
+		font-weight: 500;
+		color: #222;
+		font-weight: bold;
+}
+
+
 body{
 		background: #f3feee;
 }
@@ -1194,7 +1251,7 @@ body{
 }
 .indexTopPositionConSearchCity{
 		float: left;
-		margin-top: 0.5rem;
+		margin-top: 0.3125rem;
 }
 .input-value-border{
 		border: none !important;
@@ -1415,4 +1472,68 @@ body{
 		height: 12.5rem;
 		border-top: none;
 		border: 2px dashed #c9b2f7;
+}
+.indexMeunTextLi{
+		width: 20%;
+		float: left;
+		text-align: center;
+		font-size: 14px;
+		color: #222;
+}
+.indexService{
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		padding-bottom: 1.5625rem;
+}
+.indexServiceLi{
+		width: 100%;
+		float: left;
+		margin-top: 0.625rem;
+		background: #fff;
+		box-shadow: 0 2px 10px #eee;
+		border-radius: 0.625rem;
+		padding: 0.625rem;
+		box-sizing: border-box;
+}
+.indexServiceLiImg{
+		width: 5rem;
+		height: 5rem;
+		float: left;
+		border-radius: 0.625rem;
+}
+.indexServiceLiT{
+		width: calc(100% - 5.625rem);
+		float: right;
+}
+.indexServiceLiTT1{
+		width: 100%;
+		float: left;
+		font-size: 16px;
+		color: #222;
+		white-space: nowrap; /* 确保文本在一行内显示 */
+		overflow: hidden; /* 隐藏超出容器的文本 */
+		text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+		margin-top: 0.25rem;
+}
+.indexServiceLiTT2{
+		width: 100%;
+		float: left;
+		font-size: 14px;
+		color: #999;
+		margin-top: 0.15625rem;
+}
+.indexServiceLiTT1Label{
+		width: 100%;
+		float: left;
+		margin-top: 0.3125rem;
+}
+.indexServiceLiTT1Label uni-text{
+		padding: 0.0625rem 0.625rem;
+		color: #fff;
+		border-radius: 100px;
+		float: left;
+		margin-right: 0.3125rem;
+		font-size: 14px;
+		text-shadow: 0px 1px 1px #bbb;
 }

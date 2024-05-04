@@ -1239,6 +1239,14 @@ if (uni.restoreGlobal) {
   const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const pages = [
     {
+      path: "pages/forum/forum-index",
+      style: {
+        navigationBarTitleText: "友圈",
+        navigationBarBackgroundColor: "#ffdb00",
+        navigationBarTextStyle: "black"
+      }
+    },
+    {
       path: "pages/index/index",
       style: {
         navigationBarTitleText: "亦可工程",
@@ -1259,34 +1267,21 @@ if (uni.restoreGlobal) {
       }
     },
     {
-      path: "pages/forum/forum-index",
-      style: {
-        navigationBarTitleText: "订单记录"
-      }
-    },
-    {
       path: "pages/task/task-index",
       style: {
-        navigationBarTitleText: "订单记录"
+        navigationBarTitleText: "适时任务"
       }
     },
     {
       path: "pages/goods/goods-index",
       style: {
-        navigationBarTitleText: "订单记录"
+        navigationBarTitleText: "配件商城"
       }
     },
     {
       path: "pages/user/user",
       style: {
-        navigationBarTitleText: "订单记录"
-      }
-    },
-    {
-      path: "pages/user/user/user",
-      style: {
-        navigationBarTitleText: "",
-        enablePullDownRefresh: false
+        navigationBarTitleText: "我的"
       }
     }
   ];
@@ -1307,7 +1302,39 @@ if (uni.restoreGlobal) {
     color: "#666",
     selectedColor: "#f08800",
     backgroundColor: "#fff",
-    custom: true
+    custom: true,
+    list: [
+      {
+        pagePath: "pages/index/index",
+        iconPath: "static/images/meun_1.png",
+        selectedIconPath: "static/images/meun_1_on.png",
+        text: "首页"
+      },
+      {
+        pagePath: "pages/forum/forum-index",
+        iconPath: "static/images/meun_2.png",
+        selectedIconPath: "static/images/meun_2_on.png",
+        text: "友圈"
+      },
+      {
+        pagePath: "pages/task/task-index",
+        iconPath: "static/images/meun_3.png",
+        selectedIconPath: "static/images/meun_3_on.png",
+        text: "适时任务"
+      },
+      {
+        pagePath: "pages/goods/goods-index",
+        iconPath: "static/images/meun_4.png",
+        selectedIconPath: "static/images/meun_4_on.png",
+        text: "商城"
+      },
+      {
+        pagePath: "pages/user/user",
+        iconPath: "static/images/meun_5.png",
+        selectedIconPath: "static/images/meun_5_on",
+        text: "我的"
+      }
+    ]
   };
   const e = {
     pages,
@@ -5110,6 +5137,224 @@ ${i3}
   }
   const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
   const _sfc_main$c = {
+    props: {
+      activePage: {
+        type: Number,
+        default: 0
+      }
+    },
+    data() {
+      return {
+        currentIndex: 0,
+        // 当前选中的tab索引
+        tabs: [
+          {
+            "pagePath": "/pages/index/index",
+            "iconPath": "/static/images/meun_1.png",
+            "selectedIconPath": "/static/images/meun_1_on.png",
+            "text": "首页"
+          },
+          {
+            "pagePath": "/pages/forum/forum-index",
+            "iconPath": "/static/images/meun_2.png",
+            "selectedIconPath": "/static/images/meun_2_on.png",
+            "text": "友圈"
+          },
+          {
+            pagePath: "/pages/task/task-index",
+            iconPath: "/static/images/meun_3.png",
+            selectedIconPath: "/static/images/meun_3_on.png",
+            text: "适时任务"
+          },
+          {
+            "pagePath": "/pages/goods/goods-index",
+            "iconPath": "/static/images/meun_4.png",
+            "selectedIconPath": "/static/images/meun_4_on.png",
+            "text": "商城"
+          },
+          {
+            "pagePath": "/pages/user/user",
+            "iconPath": "/static/images/meun_5.png",
+            "selectedIconPath": "/static/images/meun_5_on",
+            "text": "我的"
+          }
+        ]
+      };
+    },
+    methods: {
+      onChange(index) {
+        if (index == 1) {
+          this.scanQRCode();
+        } else {
+          uni.switchTab({
+            url: this.tabs[index].pagePath
+          });
+        }
+      }
+    }
+  };
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
+      (vue.openBlock(true), vue.createElementBlock(
+        vue.Fragment,
+        null,
+        vue.renderList($data.tabs, (item, index) => {
+          return vue.openBlock(), vue.createElementBlock("view", {
+            class: "tab-item",
+            key: index,
+            onClick: ($event) => $options.onChange(index)
+          }, [
+            index == 2 ? (vue.openBlock(), vue.createElementBlock("image", {
+              key: 0,
+              class: "nav-icon-scan",
+              src: item.iconPath
+            }, null, 8, ["src"])) : (vue.openBlock(), vue.createElementBlock("image", {
+              key: 1,
+              class: "nav-icon",
+              src: $props.activePage == index ? item.selectedIconPath : item.iconPath
+            }, null, 8, ["src"])),
+            vue.createElementVNode(
+              "view",
+              {
+                class: vue.normalizeClass($props.activePage == index ? "active" : "nav-text")
+              },
+              vue.toDisplayString(item.text),
+              3
+              /* TEXT, CLASS */
+            )
+          ], 8, ["onClick"]);
+        }),
+        128
+        /* KEYED_FRAGMENT */
+      ))
+    ]);
+  }
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
+  const _sfc_main$b = {
+    components: {
+      CustomTabsBar: __easycom_2
+    },
+    data() {
+      return {
+        items: [
+          {
+            text: "吉林",
+            value: "1-0",
+            children: [
+              {
+                text: "长春",
+                value: "1-1"
+              },
+              {
+                text: "四平",
+                value: "1-2"
+              }
+            ]
+          },
+          {
+            text: "辽宁",
+            value: "2-0"
+          },
+          {
+            text: "黑龙江",
+            value: "3-0"
+          }
+        ],
+        activePage: 1
+      };
+    },
+    mounted() {
+    },
+    beforeDestroy() {
+    },
+    methods: {}
+  };
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$1);
+    const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
+      vue.createElementVNode("view", { class: "indexTopPosition" }, [
+        vue.createElementVNode("image", {
+          src: "/static/images/forumBack.png",
+          class: "indexTopPositionBack",
+          mode: "widthFix"
+        }),
+        vue.createElementVNode("view", { class: "indexTopPositionCon" }, [
+          vue.createElementVNode("view", { class: "indexTopPositionConSearch" }, [
+            vue.createCommentVNode(" 选择城市 "),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchCity" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index_1.png",
+                class: "indexTopPositionConSearchCityIcon",
+                mode: "widthFix"
+              }),
+              vue.createVNode(_component_uni_data_picker, {
+                "clear-icon": false,
+                class: "indexTopPositionConSearchCityPick",
+                localdata: $data.items,
+                "popup-title": "城市"
+              }, null, 8, ["localdata"])
+            ]),
+            vue.createCommentVNode(" 搜索 "),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index_6.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("input", {
+                type: "text",
+                placeholder: "请输入商品名称"
+              })
+            ]),
+            vue.createCommentVNode(" 消息 "),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchMesR" }, [
+              vue.createElementVNode("view", { class: "indexTopPositionConSearchMesNew" }),
+              vue.createElementVNode("image", {
+                src: "/static/images/index_2.png",
+                class: "indexTopPositionConSearchMes",
+                mode: "widthFix"
+              })
+            ])
+          ])
+        ])
+      ]),
+      vue.createElementVNode("view", { class: "fourmRecommend" }, [
+        vue.createElementVNode("view", { class: "fourmRecommendTop" }, [
+          vue.createElementVNode("image", {
+            src: "/static/images/forum_16.png",
+            class: "fourmRecommendTopImg1"
+          }),
+          vue.createElementVNode("view", { class: "fourmRecommendTopLine" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_1.png",
+              mode: "widthFix",
+              class: "fourmRecommendTopImg2"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendTopT1" }, "吉林长春 · 推荐圈子")
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "fourmRecommendBot" }, [
+          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_2.png",
+              class: "fourmRecommendBotLiImg"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                vue.createTextVNode(" 200万发帖 "),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      vue.createVNode(_component_custom_tabs_bar, { activePage: $data.activePage }, null, 8, ["activePage"]),
+      vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
+    ]);
+  }
+  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const _sfc_main$a = {
     name: "UniSwiperDot",
     emits: ["clickItem"],
     props: {
@@ -5181,7 +5426,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-swiper__warp" }, [
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
       $props.mode === "default" ? (vue.openBlock(), vue.createElementBlock(
@@ -5341,92 +5586,8 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-0667e3db"], ["__file", "E:/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
-  const _sfc_main$b = {
-    props: {
-      activePage: {
-        type: Number,
-        default: 0
-      }
-    },
-    data() {
-      return {
-        currentIndex: 0,
-        // 当前选中的tab索引
-        tabs: [
-          {
-            "pagePath": "/pages/index/index",
-            "iconPath": "/static/images/meun_1.png",
-            "selectedIconPath": "/static/images/meun_1_on.png",
-            "text": "首页"
-          },
-          {
-            "pagePath": "/pages/forum/forum-index",
-            "iconPath": "/static/images/meun_2.png",
-            "selectedIconPath": "/static/images/meun_2_on.png",
-            "text": "友圈"
-          },
-          {
-            pagePath: "/pages/task/task-index",
-            iconPath: "/static/images/meun_3.png",
-            selectedIconPath: "/static/images/meun_3_on.png",
-            text: "适时任务"
-          },
-          {
-            "pagePath": "/pages/goods/goods-index",
-            "iconPath": "/static/images/meun_4.png",
-            "selectedIconPath": "/static/images/meun_4_on.png",
-            "text": "商城"
-          },
-          {
-            "pagePath": "/pages/user/user",
-            "iconPath": "/static/images/meun_5.png",
-            "selectedIconPath": "/static/images/meun_5_on",
-            "text": "我的"
-          }
-        ]
-      };
-    },
-    methods: {}
-  };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
-      (vue.openBlock(true), vue.createElementBlock(
-        vue.Fragment,
-        null,
-        vue.renderList($data.tabs, (item, index) => {
-          return vue.openBlock(), vue.createElementBlock("view", {
-            class: "tab-item",
-            key: index,
-            onClick: ($event) => _ctx.onChange(index)
-          }, [
-            index == 2 ? (vue.openBlock(), vue.createElementBlock("image", {
-              key: 0,
-              class: "nav-icon-scan",
-              src: item.iconPath
-            }, null, 8, ["src"])) : (vue.openBlock(), vue.createElementBlock("image", {
-              key: 1,
-              class: "nav-icon",
-              src: $props.activePage == index ? item.selectedIconPath : item.iconPath
-            }, null, 8, ["src"])),
-            vue.createElementVNode(
-              "view",
-              {
-                class: vue.normalizeClass($props.activePage == index ? "active" : "nav-text")
-              },
-              vue.toDisplayString(item.text),
-              3
-              /* TEXT, CLASS */
-            )
-          ], 8, ["onClick"]);
-        }),
-        128
-        /* KEYED_FRAGMENT */
-      ))
-    ]);
-  }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
-  const _sfc_main$a = {
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-0667e3db"], ["__file", "E:/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
+  const _sfc_main$9 = {
     components: {
       CustomTabsBar: __easycom_2
     },
@@ -5480,9 +5641,6 @@ ${i3}
       clearInterval(this.scrollTimer);
     },
     methods: {
-      onchange(e2) {
-        e2.detail.value;
-      },
       change(e2) {
         this.current = e2.detail.current;
       },
@@ -5497,11 +5655,11 @@ ${i3}
       }
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$1);
     const _component_uni_swiper_dot = resolveEasycom(vue.resolveDynamicComponent("uni-swiper-dot"), __easycom_1);
     const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
-    return vue.openBlock(), vue.createElementBlock("view", null, [
+    return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
       vue.createElementVNode("view", { class: "indexTopPosition" }, [
         vue.createElementVNode("image", {
           src: "/static/images/indexBack.png",
@@ -5521,9 +5679,8 @@ ${i3}
                 "clear-icon": false,
                 class: "indexTopPositionConSearchCityPick",
                 localdata: $data.items,
-                "popup-title": "城市",
-                onChange: $options.onchange
-              }, null, 8, ["localdata", "onChange"])
+                "popup-title": "城市"
+              }, null, 8, ["localdata"])
             ]),
             vue.createCommentVNode(" 搜索 "),
             vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
@@ -5603,45 +5760,54 @@ ${i3}
         ])
       ]),
       vue.createCommentVNode(" 适时任务 "),
-      vue.createElementVNode("view", { class: "indexNewTask" }, [
-        vue.createElementVNode("image", {
-          src: "/static/images/index_5.png",
-          mode: "widthFix",
-          class: "indexNewTaskImg"
-        }),
-        vue.createElementVNode("view", { class: "baishanLine" }),
-        vue.createElementVNode(
-          "scroll-view",
-          {
-            class: "scroll-text",
-            "scroll-y": "",
-            style: vue.normalizeStyle({ height: $data.scrollHeight + "px" }),
-            onScrolltolower: _cache[1] || (_cache[1] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
-          },
-          [
-            (vue.openBlock(true), vue.createElementBlock(
-              vue.Fragment,
-              null,
-              vue.renderList($data.scrollText, (item, index) => {
-                return vue.openBlock(), vue.createElementBlock(
-                  "view",
-                  {
-                    class: "scroll-item",
-                    key: index
-                  },
-                  vue.toDisplayString(item),
-                  1
-                  /* TEXT */
-                );
-              }),
-              128
-              /* KEYED_FRAGMENT */
-            ))
-          ],
-          36
-          /* STYLE, HYDRATE_EVENTS */
-        )
-      ]),
+      vue.createElementVNode(
+        "view",
+        {
+          class: "indexNewTask",
+          ref: "scrollView"
+        },
+        [
+          vue.createElementVNode("image", {
+            src: "/static/images/index_5.png",
+            mode: "widthFix",
+            class: "indexNewTaskImg"
+          }),
+          vue.createElementVNode("view", { class: "baishanLine" }),
+          vue.createElementVNode(
+            "scroll-view",
+            {
+              class: "scroll-text",
+              "scroll-y": "",
+              style: vue.normalizeStyle({ height: $data.scrollHeight + "px" }),
+              onScrolltolower: _cache[1] || (_cache[1] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
+            },
+            [
+              (vue.openBlock(true), vue.createElementBlock(
+                vue.Fragment,
+                null,
+                vue.renderList($data.scrollText, (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock(
+                    "view",
+                    {
+                      class: "scroll-item",
+                      key: index
+                    },
+                    vue.toDisplayString(item),
+                    1
+                    /* TEXT */
+                  );
+                }),
+                128
+                /* KEYED_FRAGMENT */
+              ))
+            ],
+            36
+            /* STYLE, HYDRATE_EVENTS */
+          )
+        ],
+        512
+        /* NEED_PATCH */
+      ),
       vue.createCommentVNode(" 板块图片 "),
       vue.createElementVNode("view", { class: "indexFourClass" }, [
         vue.createElementVNode("navigator", { url: "" }, [
@@ -5755,7 +5921,7 @@ ${i3}
       vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__file", "E:/yikegongcheng/yike/pages/index/index.vue"]]);
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__file", "E:/yikegongcheng/yike/pages/index/index.vue"]]);
   const ERR_MSG_OK = "chooseAndUploadFile:ok";
   const ERR_MSG_FAIL = "chooseAndUploadFile:fail";
   function chooseImage(opts) {
@@ -6037,7 +6203,7 @@ ${i3}
     }
     return filedata;
   };
-  const _sfc_main$9 = {
+  const _sfc_main$8 = {
     name: "uploadImage",
     emits: ["uploadFiles", "choose", "delFile"],
     props: {
@@ -6184,7 +6350,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__container" }, [
       (vue.openBlock(true), vue.createElementBlock(
         vue.Fragment,
@@ -6277,8 +6443,8 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-6f3c6077"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
-  const _sfc_main$8 = {
+  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-6f3c6077"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
+  const _sfc_main$7 = {
     name: "uploadFile",
     emits: ["uploadFiles", "choose", "delFile"],
     props: {
@@ -6414,7 +6580,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__files" }, [
       !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
         key: 0,
@@ -6496,8 +6662,8 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-86fc2bba"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
-  const _sfc_main$7 = {
+  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-86fc2bba"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
+  const _sfc_main$6 = {
     name: "uniFilePicker",
     components: {
       uploadImage,
@@ -6992,7 +7158,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_upload_image = vue.resolveComponent("upload-image");
     const _component_upload_file = vue.resolveComponent("upload-file");
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker" }, [
@@ -7062,8 +7228,8 @@ ${i3}
       }, 8, ["readonly", "list-styles", "files-list", "showType", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__scopeId", "data-v-418f48eb"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
-  const _sfc_main$6 = {
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-418f48eb"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
+  const _sfc_main$5 = {
     data() {
       return {
         imageStyles: {
@@ -7102,7 +7268,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
@@ -7167,9 +7333,9 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesMerchantSignin = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__file", "E:/yikegongcheng/yike/pages/Merchant/signin.vue"]]);
-  const _sfc_main$5 = {};
-  function _sfc_render$4(_ctx, _cache) {
+  const PagesMerchantSignin = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__file", "E:/yikegongcheng/yike/pages/Merchant/signin.vue"]]);
+  const _sfc_main$4 = {};
+  function _sfc_render$3(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
@@ -7211,12 +7377,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__file", "E:/yikegongcheng/yike/pages/login/login.vue"]]);
-  const _sfc_main$4 = {};
-  function _sfc_render$3(_ctx, _cache) {
-    return null;
-  }
-  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "E:/yikegongcheng/yike/pages/login/login.vue"]]);
   const _sfc_main$3 = {};
   function _sfc_render$2(_ctx, _cache) {
     return null;
@@ -7236,14 +7397,14 @@ ${i3}
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view");
   }
-  const PagesUserUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user/user.vue"]]);
+  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
+  __definePage("pages/forum/forum-index", PagesForumForumIndex);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/Merchant/signin", PagesMerchantSignin);
   __definePage("pages/login/login", PagesLoginLogin);
-  __definePage("pages/forum/forum-index", PagesForumForumIndex);
   __definePage("pages/task/task-index", PagesTaskTaskIndex);
   __definePage("pages/goods/goods-index", PagesGoodsGoodsIndex);
-  __definePage("pages/user/user/user", PagesUserUserUser);
+  __definePage("pages/user/user", PagesUserUser);
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:4", "App Launch");

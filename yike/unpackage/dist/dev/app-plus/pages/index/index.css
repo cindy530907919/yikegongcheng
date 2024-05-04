@@ -1224,6 +1224,9 @@
 body{
 		background: #f3feee;
 }
+.pageBottom100{
+		padding-bottom: 3.125rem;
+}
 .indexTopPosition{
 		width: 100%;
 		float: left;
@@ -1484,7 +1487,7 @@ body{
 		width: 90%;
 		float: left;
 		margin-left: 5%;
-		padding-bottom: 1.5625rem;
+		padding-bottom: 8.125rem;
 }
 .indexServiceLi{
 		width: 100%;

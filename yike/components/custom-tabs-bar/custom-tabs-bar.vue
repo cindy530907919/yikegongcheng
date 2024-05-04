@@ -55,7 +55,16 @@ export default {
     };
   },
   methods: {
-   
+   onChange(index) {
+   	  //console.log('index==',this.tabs[index].pagePath);
+   	  if(index == 1){
+   		  this.scanQRCode();
+   	  }else{
+       uni.switchTab({
+         url: this.tabs[index].pagePath
+       });
+   	  }
+     },
   }
 };
 </script>

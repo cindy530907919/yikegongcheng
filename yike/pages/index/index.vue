@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="">
     <view class="indexTopPosition">
 		<image src="../../static/images/indexBack.png" class="indexTopPositionBack" mode="widthFix"></image>
     	<view class="indexTopPositionCon">
@@ -7,7 +7,7 @@
 				<!-- 选择城市 -->
 				<view class="indexTopPositionConSearchCity">
 					<image src="../../static/images/index_1.png" class="indexTopPositionConSearchCityIcon" mode="widthFix"></image>
-					<uni-data-picker :clear-icon="false" class="indexTopPositionConSearchCityPick" :localdata="items" popup-title="城市" @change="onchange"></uni-data-picker>
+					<uni-data-picker :clear-icon="false" class="indexTopPositionConSearchCityPick" :localdata="items" popup-title="城市"></uni-data-picker>
 				</view>
 				<!-- 搜索 -->
     			<view class="indexTopPositionConSearchInput">
@@ -48,7 +48,7 @@
 		</navigator>
 	</view>
 	<!-- 适时任务 -->
-	<view class="indexNewTask">
+	<view class="indexNewTask" ref="scrollView">
 		<image src="../../static/images/index_5.png" mode="widthFix" class="indexNewTaskImg"></image>
 		<view class="baishanLine"></view>
 	    <scroll-view class="scroll-text" scroll-y :style="{ height: scrollHeight + 'px' }" @scrolltolower="onScrollToLower">
@@ -185,10 +185,7 @@ export default {
       clearInterval(this.scrollTimer); // 组件销毁前清除定时器
 	},
     methods: {
-	   onchange(e) {
-	      const value = e.detail.value;
-	     
-	   },
+	  
 	   change(e) {
 	   	this.current = e.detail.current;
 	   },
@@ -208,6 +205,9 @@ export default {
 <style>
 	page{
 		background: #f3feee;
+	}
+	.pageBottom100{
+		padding-bottom: 100rpx;
 	}
 	.indexTopPosition{
 		width: 100%;
@@ -473,7 +473,7 @@ export default {
 		width: 90%;
 		float: left;
 		margin-left: 5%;
-		padding-bottom: 50rpx;
+		padding-bottom: 260rpx;
 	}
 	.indexServiceLi{
 		width: 100%;

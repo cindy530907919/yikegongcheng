@@ -29,7 +29,7 @@ if (typeof uni !== "undefined" && uni && uni.requireGlobal) {
 if (uni.restoreGlobal) {
   uni.restoreGlobal(Vue, weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
-(function(vue, shared) {
+(function(vue) {
   "use strict";
   const isObject = (val) => val !== null && typeof val === "object";
   const defaultDelimiters = ["{", "}"];
@@ -161,7 +161,7 @@ if (uni.restoreGlobal) {
     }
   }
   class I18n {
-    constructor({ locale, fallbackLocale, messages: messages2, watcher, formater }) {
+    constructor({ locale, fallbackLocale, messages: messages2, watcher, formater: formater2 }) {
       this.locale = LOCALE_EN;
       this.fallbackLocale = LOCALE_EN;
       this.message = {};
@@ -170,7 +170,7 @@ if (uni.restoreGlobal) {
       if (fallbackLocale) {
         this.fallbackLocale = fallbackLocale;
       }
-      this.formater = formater || defaultFormatter;
+      this.formater = formater2 || defaultFormatter;
       this.messages = messages2 || {};
       this.setLocale(locale || LOCALE_EN);
       if (watcher) {
@@ -515,7 +515,7 @@ if (uni.restoreGlobal) {
     }
   }
   function resolveEasycom(component, easycom2) {
-    return shared.isString(component) ? easycom2 : component;
+    return typeof component === "string" ? easycom2 : component;
   }
   const fontData = [
     {
@@ -1252,7 +1252,8 @@ if (uni.restoreGlobal) {
         navigationBarTitleText: "亦可工程",
         navigationBarBackgroundColor: "#adfdc0",
         navigationBarTextStyle: "black"
-      }
+      },
+      custom: true
     },
     {
       path: "pages/Merchant/signin",
@@ -1302,39 +1303,7 @@ if (uni.restoreGlobal) {
     color: "#666",
     selectedColor: "#f08800",
     backgroundColor: "#fff",
-    custom: true,
-    list: [
-      {
-        pagePath: "pages/index/index",
-        iconPath: "static/images/meun_1.png",
-        selectedIconPath: "static/images/meun_1_on.png",
-        text: "首页"
-      },
-      {
-        pagePath: "pages/forum/forum-index",
-        iconPath: "static/images/meun_2.png",
-        selectedIconPath: "static/images/meun_2_on.png",
-        text: "友圈"
-      },
-      {
-        pagePath: "pages/task/task-index",
-        iconPath: "static/images/meun_3.png",
-        selectedIconPath: "static/images/meun_3_on.png",
-        text: "适时任务"
-      },
-      {
-        pagePath: "pages/goods/goods-index",
-        iconPath: "static/images/meun_4.png",
-        selectedIconPath: "static/images/meun_4_on.png",
-        text: "商城"
-      },
-      {
-        pagePath: "pages/user/user",
-        iconPath: "static/images/meun_5.png",
-        selectedIconPath: "static/images/meun_5_on",
-        text: "我的"
-      }
-    ]
+    custom: true
   };
   const e = {
     pages,
@@ -1343,6 +1312,7 @@ if (uni.restoreGlobal) {
     uniIdRouter,
     tabBar
   };
+  var define_process_env_UNI_SECURE_NETWORK_CONFIG_default = [];
   function t(e2) {
     return e2 && e2.__esModule && Object.prototype.hasOwnProperty.call(e2, "default") ? e2.default : e2;
   }
@@ -1356,7 +1326,7 @@ if (uni.restoreGlobal) {
   var s = n(function(e2, t2) {
     var n2;
     e2.exports = (n2 = n2 || function(e3, t3) {
-      var n3 = Object.create || function() {
+      var n3 = Object.create || /* @__PURE__ */ function() {
         function e4() {
         }
         return function(t4) {
@@ -1492,8 +1462,8 @@ if (uni.restoreGlobal) {
           var s3 = t4 + n3, r3 = e4[s3];
           e4[s3] = 16711935 & (r3 << 8 | r3 >>> 24) | 4278255360 & (r3 << 24 | r3 >>> 8);
         }
-        var i3 = this._hash.words, o3 = e4[t4 + 0], c3 = e4[t4 + 1], p2 = e4[t4 + 2], f2 = e4[t4 + 3], g2 = e4[t4 + 4], m2 = e4[t4 + 5], y2 = e4[t4 + 6], _2 = e4[t4 + 7], w2 = e4[t4 + 8], v2 = e4[t4 + 9], I2 = e4[t4 + 10], S2 = e4[t4 + 11], b2 = e4[t4 + 12], k = e4[t4 + 13], A2 = e4[t4 + 14], P2 = e4[t4 + 15], T2 = i3[0], C2 = i3[1], x = i3[2], O2 = i3[3];
-        T2 = u2(T2, C2, x, O2, o3, 7, a2[0]), O2 = u2(O2, T2, C2, x, c3, 12, a2[1]), x = u2(x, O2, T2, C2, p2, 17, a2[2]), C2 = u2(C2, x, O2, T2, f2, 22, a2[3]), T2 = u2(T2, C2, x, O2, g2, 7, a2[4]), O2 = u2(O2, T2, C2, x, m2, 12, a2[5]), x = u2(x, O2, T2, C2, y2, 17, a2[6]), C2 = u2(C2, x, O2, T2, _2, 22, a2[7]), T2 = u2(T2, C2, x, O2, w2, 7, a2[8]), O2 = u2(O2, T2, C2, x, v2, 12, a2[9]), x = u2(x, O2, T2, C2, I2, 17, a2[10]), C2 = u2(C2, x, O2, T2, S2, 22, a2[11]), T2 = u2(T2, C2, x, O2, b2, 7, a2[12]), O2 = u2(O2, T2, C2, x, k, 12, a2[13]), x = u2(x, O2, T2, C2, A2, 17, a2[14]), T2 = h2(T2, C2 = u2(C2, x, O2, T2, P2, 22, a2[15]), x, O2, c3, 5, a2[16]), O2 = h2(O2, T2, C2, x, y2, 9, a2[17]), x = h2(x, O2, T2, C2, S2, 14, a2[18]), C2 = h2(C2, x, O2, T2, o3, 20, a2[19]), T2 = h2(T2, C2, x, O2, m2, 5, a2[20]), O2 = h2(O2, T2, C2, x, I2, 9, a2[21]), x = h2(x, O2, T2, C2, P2, 14, a2[22]), C2 = h2(C2, x, O2, T2, g2, 20, a2[23]), T2 = h2(T2, C2, x, O2, v2, 5, a2[24]), O2 = h2(O2, T2, C2, x, A2, 9, a2[25]), x = h2(x, O2, T2, C2, f2, 14, a2[26]), C2 = h2(C2, x, O2, T2, w2, 20, a2[27]), T2 = h2(T2, C2, x, O2, k, 5, a2[28]), O2 = h2(O2, T2, C2, x, p2, 9, a2[29]), x = h2(x, O2, T2, C2, _2, 14, a2[30]), T2 = l2(T2, C2 = h2(C2, x, O2, T2, b2, 20, a2[31]), x, O2, m2, 4, a2[32]), O2 = l2(O2, T2, C2, x, w2, 11, a2[33]), x = l2(x, O2, T2, C2, S2, 16, a2[34]), C2 = l2(C2, x, O2, T2, A2, 23, a2[35]), T2 = l2(T2, C2, x, O2, c3, 4, a2[36]), O2 = l2(O2, T2, C2, x, g2, 11, a2[37]), x = l2(x, O2, T2, C2, _2, 16, a2[38]), C2 = l2(C2, x, O2, T2, I2, 23, a2[39]), T2 = l2(T2, C2, x, O2, k, 4, a2[40]), O2 = l2(O2, T2, C2, x, o3, 11, a2[41]), x = l2(x, O2, T2, C2, f2, 16, a2[42]), C2 = l2(C2, x, O2, T2, y2, 23, a2[43]), T2 = l2(T2, C2, x, O2, v2, 4, a2[44]), O2 = l2(O2, T2, C2, x, b2, 11, a2[45]), x = l2(x, O2, T2, C2, P2, 16, a2[46]), T2 = d2(T2, C2 = l2(C2, x, O2, T2, p2, 23, a2[47]), x, O2, o3, 6, a2[48]), O2 = d2(O2, T2, C2, x, _2, 10, a2[49]), x = d2(x, O2, T2, C2, A2, 15, a2[50]), C2 = d2(C2, x, O2, T2, m2, 21, a2[51]), T2 = d2(T2, C2, x, O2, b2, 6, a2[52]), O2 = d2(O2, T2, C2, x, f2, 10, a2[53]), x = d2(x, O2, T2, C2, I2, 15, a2[54]), C2 = d2(C2, x, O2, T2, c3, 21, a2[55]), T2 = d2(T2, C2, x, O2, w2, 6, a2[56]), O2 = d2(O2, T2, C2, x, P2, 10, a2[57]), x = d2(x, O2, T2, C2, y2, 15, a2[58]), C2 = d2(C2, x, O2, T2, k, 21, a2[59]), T2 = d2(T2, C2, x, O2, g2, 6, a2[60]), O2 = d2(O2, T2, C2, x, S2, 10, a2[61]), x = d2(x, O2, T2, C2, p2, 15, a2[62]), C2 = d2(C2, x, O2, T2, v2, 21, a2[63]), i3[0] = i3[0] + T2 | 0, i3[1] = i3[1] + C2 | 0, i3[2] = i3[2] + x | 0, i3[3] = i3[3] + O2 | 0;
+        var i3 = this._hash.words, o3 = e4[t4 + 0], c3 = e4[t4 + 1], p2 = e4[t4 + 2], f2 = e4[t4 + 3], g2 = e4[t4 + 4], m2 = e4[t4 + 5], y2 = e4[t4 + 6], _2 = e4[t4 + 7], w2 = e4[t4 + 8], v2 = e4[t4 + 9], I2 = e4[t4 + 10], S2 = e4[t4 + 11], b2 = e4[t4 + 12], k2 = e4[t4 + 13], A2 = e4[t4 + 14], P2 = e4[t4 + 15], T2 = i3[0], C2 = i3[1], x2 = i3[2], O2 = i3[3];
+        T2 = u2(T2, C2, x2, O2, o3, 7, a2[0]), O2 = u2(O2, T2, C2, x2, c3, 12, a2[1]), x2 = u2(x2, O2, T2, C2, p2, 17, a2[2]), C2 = u2(C2, x2, O2, T2, f2, 22, a2[3]), T2 = u2(T2, C2, x2, O2, g2, 7, a2[4]), O2 = u2(O2, T2, C2, x2, m2, 12, a2[5]), x2 = u2(x2, O2, T2, C2, y2, 17, a2[6]), C2 = u2(C2, x2, O2, T2, _2, 22, a2[7]), T2 = u2(T2, C2, x2, O2, w2, 7, a2[8]), O2 = u2(O2, T2, C2, x2, v2, 12, a2[9]), x2 = u2(x2, O2, T2, C2, I2, 17, a2[10]), C2 = u2(C2, x2, O2, T2, S2, 22, a2[11]), T2 = u2(T2, C2, x2, O2, b2, 7, a2[12]), O2 = u2(O2, T2, C2, x2, k2, 12, a2[13]), x2 = u2(x2, O2, T2, C2, A2, 17, a2[14]), T2 = h2(T2, C2 = u2(C2, x2, O2, T2, P2, 22, a2[15]), x2, O2, c3, 5, a2[16]), O2 = h2(O2, T2, C2, x2, y2, 9, a2[17]), x2 = h2(x2, O2, T2, C2, S2, 14, a2[18]), C2 = h2(C2, x2, O2, T2, o3, 20, a2[19]), T2 = h2(T2, C2, x2, O2, m2, 5, a2[20]), O2 = h2(O2, T2, C2, x2, I2, 9, a2[21]), x2 = h2(x2, O2, T2, C2, P2, 14, a2[22]), C2 = h2(C2, x2, O2, T2, g2, 20, a2[23]), T2 = h2(T2, C2, x2, O2, v2, 5, a2[24]), O2 = h2(O2, T2, C2, x2, A2, 9, a2[25]), x2 = h2(x2, O2, T2, C2, f2, 14, a2[26]), C2 = h2(C2, x2, O2, T2, w2, 20, a2[27]), T2 = h2(T2, C2, x2, O2, k2, 5, a2[28]), O2 = h2(O2, T2, C2, x2, p2, 9, a2[29]), x2 = h2(x2, O2, T2, C2, _2, 14, a2[30]), T2 = l2(T2, C2 = h2(C2, x2, O2, T2, b2, 20, a2[31]), x2, O2, m2, 4, a2[32]), O2 = l2(O2, T2, C2, x2, w2, 11, a2[33]), x2 = l2(x2, O2, T2, C2, S2, 16, a2[34]), C2 = l2(C2, x2, O2, T2, A2, 23, a2[35]), T2 = l2(T2, C2, x2, O2, c3, 4, a2[36]), O2 = l2(O2, T2, C2, x2, g2, 11, a2[37]), x2 = l2(x2, O2, T2, C2, _2, 16, a2[38]), C2 = l2(C2, x2, O2, T2, I2, 23, a2[39]), T2 = l2(T2, C2, x2, O2, k2, 4, a2[40]), O2 = l2(O2, T2, C2, x2, o3, 11, a2[41]), x2 = l2(x2, O2, T2, C2, f2, 16, a2[42]), C2 = l2(C2, x2, O2, T2, y2, 23, a2[43]), T2 = l2(T2, C2, x2, O2, v2, 4, a2[44]), O2 = l2(O2, T2, C2, x2, b2, 11, a2[45]), x2 = l2(x2, O2, T2, C2, P2, 16, a2[46]), T2 = d2(T2, C2 = l2(C2, x2, O2, T2, p2, 23, a2[47]), x2, O2, o3, 6, a2[48]), O2 = d2(O2, T2, C2, x2, _2, 10, a2[49]), x2 = d2(x2, O2, T2, C2, A2, 15, a2[50]), C2 = d2(C2, x2, O2, T2, m2, 21, a2[51]), T2 = d2(T2, C2, x2, O2, b2, 6, a2[52]), O2 = d2(O2, T2, C2, x2, f2, 10, a2[53]), x2 = d2(x2, O2, T2, C2, I2, 15, a2[54]), C2 = d2(C2, x2, O2, T2, c3, 21, a2[55]), T2 = d2(T2, C2, x2, O2, w2, 6, a2[56]), O2 = d2(O2, T2, C2, x2, P2, 10, a2[57]), x2 = d2(x2, O2, T2, C2, y2, 15, a2[58]), C2 = d2(C2, x2, O2, T2, k2, 21, a2[59]), T2 = d2(T2, C2, x2, O2, g2, 6, a2[60]), O2 = d2(O2, T2, C2, x2, S2, 10, a2[61]), x2 = d2(x2, O2, T2, C2, p2, 15, a2[62]), C2 = d2(C2, x2, O2, T2, v2, 21, a2[63]), i3[0] = i3[0] + T2 | 0, i3[1] = i3[1] + C2 | 0, i3[2] = i3[2] + x2 | 0, i3[3] = i3[3] + O2 | 0;
       }, _doFinalize: function() {
         var t4 = this._data, n3 = t4.words, s3 = 8 * this._nDataBytes, r3 = 8 * t4.sigBytes;
         n3[r3 >>> 5] |= 128 << 24 - r3 % 32;
@@ -1631,10 +1601,10 @@ if (uni.restoreGlobal) {
   function I(e2) {
     return e2 && "string" == typeof e2 ? JSON.parse(e2) : e2;
   }
-  const S = true, b = "app", A = I([]), P = b, T = I(""), C = I("[]") || [];
+  const S = true, b = "app", A = I(define_process_env_UNI_SECURE_NETWORK_CONFIG_default), P = b, T = I(""), C = I("[]") || [];
   let O = "";
   try {
-    O = "";
+    O = "__UNI__5908E18";
   } catch (e2) {
   }
   let E = {};
@@ -1768,8 +1738,10 @@ if (uni.restoreGlobal) {
       t2(Object.assign(e2, { complete(e3) {
         e3 || (e3 = {});
         const t3 = e3.data && e3.data.header && e3.data.header["x-serverless-request-id"] || e3.header && e3.header["request-id"];
-        if (!e3.statusCode || e3.statusCode >= 400)
-          return s2(new te({ code: "SYS_ERR", message: e3.errMsg || "request:fail", requestId: t3 }));
+        if (!e3.statusCode || e3.statusCode >= 400) {
+          const n3 = e3.data && e3.data.error && e3.data.error.code || "SYS_ERR", r3 = e3.data && e3.data.error && e3.data.error.message || e3.errMsg || "request:fail";
+          return s2(new te({ code: n3, message: r3, requestId: t3 }));
+        }
         const r2 = e3.data;
         if (r2.error)
           return s2(new te({ code: r2.error.code, message: r2.error.message, requestId: t3 }));
@@ -3030,7 +3002,7 @@ ${i3}
       const n3 = A;
       if (!n3)
         return {};
-      e3 = function(e4) {
+      e3 = /* @__PURE__ */ function(e4) {
         return "tencent" === e4 ? "tcb" : e4;
       }(e3);
       const s3 = n3.find((n4) => n4.provider === e3 && n4.spaceId === t3);
@@ -3092,7 +3064,7 @@ ${i3}
         a2 = new En({ secretType: t3.secretType, uniCloudIns: e2 }).wrapVerifyClientCallFunction(n2.bind(e2))(t3);
       } else
         a2 = o2(t3);
-      return Object.defineProperty(a2, "result", { get: () => (console.warn("当前返回结果为Promise类型，不可直接访问其result属性，详情请参考：https://uniapp.dcloud.net.cn/uniCloud/faq?id=promise"), {}) }), a2;
+      return Object.defineProperty(a2, "result", { get: () => (console.warn("当前返回结果为Promise类型，不可直接访问其result属性，详情请参考：https://uniapp.dcloud.net.cn/uniCloud/faq?id=promise"), {}) }), a2.then((e3) => ("undefined" != typeof UTSJSONObject && (e3.result = new UTSJSONObject(e3.result)), e3));
     };
   }
   En = class {
@@ -3426,7 +3398,7 @@ ${i3}
     const s2 = { navigateTo: uni.navigateTo, redirectTo: uni.redirectTo, switchTab: uni.switchTab, reLaunch: uni.reLaunch };
     setTimeout(() => {
       s2[e2]({ url: n2 });
-    });
+    }, 0);
   }
   function vs({ url: e2 } = {}) {
     const t2 = { abortLoginPageJump: false, autoToLoginPage: false }, n2 = function() {
@@ -3575,7 +3547,7 @@ ${i3}
             if (s5 >= o2)
               return void (!i3.find((e5) => !e5.url && !e5.errMsg) && n3(t5));
             const u2 = i3[s5];
-            e4.uploadFile({ filePath: u2.path, cloudPath: u2.cloudPath, fileType: u2.fileType, cloudPathAsRealPath: u2.cloudPathAsRealPath, onUploadProgress(e5) {
+            e4.uploadFile({ provider: u2.provider, filePath: u2.path, cloudPath: u2.cloudPath, fileType: u2.fileType, cloudPathAsRealPath: u2.cloudPathAsRealPath, onUploadProgress(e5) {
               e5.index = s5, e5.tempFile = u2, e5.tempFilePath = u2.path, r4 && r4(e5);
             } }).then((e5) => {
               u2.url = e5.fileID, s5 < o2 && c2();
@@ -3625,7 +3597,7 @@ ${i3}
   }), xs = t(Cs);
   const Os = "manual";
   function Es(e2) {
-    return { props: { localdata: { type: Array, default: () => [] }, options: { type: [Object, Array], default: () => ({}) }, spaceInfo: { type: Object, default: () => ({}) }, collection: { type: [String, Array], default: "" }, action: { type: String, default: "" }, field: { type: String, default: "" }, orderby: { type: String, default: "" }, where: { type: [String, Object], default: "" }, pageData: { type: String, default: "add" }, pageCurrent: { type: Number, default: 1 }, pageSize: { type: Number, default: 20 }, getcount: { type: [Boolean, String], default: false }, gettree: { type: [Boolean, String], default: false }, gettreepath: { type: [Boolean, String], default: false }, startwith: { type: String, default: "" }, limitlevel: { type: Number, default: 10 }, groupby: { type: String, default: "" }, groupField: { type: String, default: "" }, distinct: { type: [Boolean, String], default: false }, foreignKey: { type: String, default: "" }, loadtime: { type: String, default: "auto" }, manual: { type: Boolean, default: false } }, data: () => ({ mixinDatacomLoading: false, mixinDatacomHasMore: false, mixinDatacomResData: [], mixinDatacomErrorMessage: "", mixinDatacomPage: {} }), created() {
+    return { props: { localdata: { type: Array, default: () => [] }, options: { type: [Object, Array], default: () => ({}) }, spaceInfo: { type: Object, default: () => ({}) }, collection: { type: [String, Array], default: "" }, action: { type: String, default: "" }, field: { type: String, default: "" }, orderby: { type: String, default: "" }, where: { type: [String, Object], default: "" }, pageData: { type: String, default: "add" }, pageCurrent: { type: Number, default: 1 }, pageSize: { type: Number, default: 20 }, getcount: { type: [Boolean, String], default: false }, gettree: { type: [Boolean, String], default: false }, gettreepath: { type: [Boolean, String], default: false }, startwith: { type: String, default: "" }, limitlevel: { type: Number, default: 10 }, groupby: { type: String, default: "" }, groupField: { type: String, default: "" }, distinct: { type: [Boolean, String], default: false }, foreignKey: { type: String, default: "" }, loadtime: { type: String, default: "auto" }, manual: { type: Boolean, default: false } }, data: () => ({ mixinDatacomLoading: false, mixinDatacomHasMore: false, mixinDatacomResData: [], mixinDatacomErrorMessage: "", mixinDatacomPage: {}, mixinDatacomError: null }), created() {
       this.mixinDatacomPage = { current: this.pageCurrent, size: this.pageSize, count: 0 }, this.$watch(() => {
         var e3 = [];
         return ["pageCurrent", "pageSize", "localdata", "collection", "action", "field", "orderby", "where", "getont", "getcount", "gettree", "groupby", "groupField", "distinct"].forEach((t2) => {
@@ -3642,17 +3614,18 @@ ${i3}
       });
     }, methods: { onMixinDatacomPropsChange(e3, t2) {
     }, mixinDatacomEasyGet({ getone: e3 = false, success: t2, fail: n2 } = {}) {
-      this.mixinDatacomLoading || (this.mixinDatacomLoading = true, this.mixinDatacomErrorMessage = "", this.mixinDatacomGet().then((n3) => {
+      this.mixinDatacomLoading || (this.mixinDatacomLoading = true, this.mixinDatacomErrorMessage = "", this.mixinDatacomError = null, this.mixinDatacomGet().then((n3) => {
         this.mixinDatacomLoading = false;
         const { data: s2, count: r2 } = n3.result;
         this.getcount && (this.mixinDatacomPage.count = r2), this.mixinDatacomHasMore = s2.length < this.pageSize;
         const i2 = e3 ? s2.length ? s2[0] : void 0 : s2;
         this.mixinDatacomResData = i2, t2 && t2(i2);
       }).catch((e4) => {
-        this.mixinDatacomLoading = false, this.mixinDatacomErrorMessage = e4, n2 && n2(e4);
+        this.mixinDatacomLoading = false, this.mixinDatacomErrorMessage = e4, this.mixinDatacomError = e4, n2 && n2(e4);
       }));
     }, mixinDatacomGet(t2 = {}) {
-      let n2 = e2.database(this.spaceInfo);
+      let n2;
+      t2 = t2 || {}, n2 = "undefined" != typeof __uniX && __uniX ? e2.databaseForJQL(this.spaceInfo) : e2.database(this.spaceInfo);
       const s2 = t2.action || this.action;
       s2 && (n2 = n2.action(s2));
       const r2 = t2.collection || this.collection;
@@ -3758,7 +3731,9 @@ ${i3}
   }
   async function Ns(e2) {
     const t2 = Rs(this);
-    return t2.initPromise || (t2.initPromise = Us.call(this, e2)), t2.initPromise;
+    return t2.initPromise || (t2.initPromise = Us.call(this, e2).then((e3) => e3).catch((e3) => {
+      throw delete t2.initPromise, e3;
+    })), t2.initPromise;
   }
   function Ds(e2) {
     return function({ openid: t2, callLoginByWeixin: n2 = false } = {}) {
@@ -3898,7 +3873,7 @@ ${i3}
           return 0;
         const t4 = e4.match(/^(\d+)./);
         return t4 && t4[1] ? parseInt(t4[1]) : 0;
-      }(t3) >= 14 && console.warn("iOS 14及以上版本连接uniCloud本地调试服务需要允许客户端查找并连接到本地网络上的设备（仅开发模式生效，发行模式会连接uniCloud云端服务）");
+      }(t3) >= 14 && console.warn("iOS 14及以上版本连接uniCloud本地调试服务需要允许客户端查找并连接到本地网络上的设备（仅开发期间需要，发行后不需要）");
     }
     const t2 = e2.__dev__;
     if (!t2.debugInfo)
@@ -3985,7 +3960,7 @@ ${i3}
         const n3 = t2[e3];
         t2[e3] = function() {
           return n3.apply(t2, Array.from(arguments));
-        }, t2[e3] = function(e4, t3) {
+        }, t2[e3] = (/* @__PURE__ */ function(e4, t3) {
           return function(n4) {
             let s2 = false;
             if ("callFunction" === t3) {
@@ -4003,7 +3978,7 @@ ${i3}
               a2 && a2(e5), u2 && u2(e5), r2 && Y(j, { type: H, content: e5 });
             });
           };
-        }(t2[e3], e3).bind(t2);
+        }(t2[e3], e3)).bind(t2);
       }), t2.init = this.init, t2;
     }
   }();
@@ -5149,16 +5124,16 @@ ${i3}
         // 当前选中的tab索引
         tabs: [
           {
-            "pagePath": "/pages/index/index",
-            "iconPath": "/static/images/meun_1.png",
-            "selectedIconPath": "/static/images/meun_1_on.png",
-            "text": "首页"
+            pagePath: "/pages/index/index",
+            iconPath: "/static/images/meun_1.png",
+            selectedIconPath: "/static/images/meun_1_on.png",
+            text: "首页"
           },
           {
-            "pagePath": "/pages/forum/forum-index",
-            "iconPath": "/static/images/meun_2.png",
-            "selectedIconPath": "/static/images/meun_2_on.png",
-            "text": "友圈"
+            pagePath: "/pages/forum/forum-index",
+            iconPath: "/static/images/meun_2.png",
+            selectedIconPath: "/static/images/meun_2_on.png",
+            text: "友圈"
           },
           {
             pagePath: "/pages/task/task-index",
@@ -5167,29 +5142,25 @@ ${i3}
             text: "适时任务"
           },
           {
-            "pagePath": "/pages/goods/goods-index",
-            "iconPath": "/static/images/meun_4.png",
-            "selectedIconPath": "/static/images/meun_4_on.png",
-            "text": "商城"
+            pagePath: "/pages/goods/goods-index",
+            iconPath: "/static/images/meun_4.png",
+            selectedIconPath: "/static/images/meun_4_on.png",
+            text: "商城"
           },
           {
-            "pagePath": "/pages/user/user",
-            "iconPath": "/static/images/meun_5.png",
-            "selectedIconPath": "/static/images/meun_5_on",
-            "text": "我的"
+            pagePath: "/pages/user/user",
+            iconPath: "/static/images/meun_5.png",
+            selectedIconPath: "/static/images/meun_5_on",
+            text: "我的"
           }
         ]
       };
     },
     methods: {
       onChange(index) {
-        if (index == 1) {
-          this.scanQRCode();
-        } else {
-          uni.switchTab({
-            url: this.tabs[index].pagePath
-          });
-        }
+        uni.navigateTo({
+          url: this.tabs[index].pagePath
+        });
       }
     }
   };
@@ -5735,7 +5706,7 @@ ${i3}
                     ))
                   ],
                   32
-                  /* HYDRATE_EVENTS */
+                  /* NEED_HYDRATION */
                 )
               ]),
               _: 1
@@ -5802,7 +5773,7 @@ ${i3}
               ))
             ],
             36
-            /* STYLE, HYDRATE_EVENTS */
+            /* STYLE, NEED_HYDRATION */
           )
         ],
         512
@@ -7431,4 +7402,4 @@ ${i3}
   __app__._component.render = () => {
   };
   __app__.mount("#app");
-})(Vue, uni.VueShared);
+})(Vue);

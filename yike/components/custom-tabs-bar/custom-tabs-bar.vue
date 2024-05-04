@@ -1,9 +1,9 @@
 <template>
   <view class="custom-tab-bar">
     <view class="tab-item" v-for="(item, index) in tabs" :key="index" @click="onChange(index)">
-	<image class="nav-icon-scan" v-if="index == 2" :src="item.iconPath"></image>
-	<image class="nav-icon" v-else :src="activePage == index ? item.selectedIconPath : item.iconPath"></image>
-    <view :class="activePage == index ? 'active':'nav-text'">{{ item.text }}</view>
+		<image class="nav-icon-scan" v-if="index == 2" :src="item.iconPath"></image>
+		<image class="nav-icon" v-else :src="activePage == index ? item.selectedIconPath : item.iconPath"></image>
+		<view :class="activePage == index ? 'active':'nav-text'">{{ item.text }}</view>
     </view>
   </view>
 </template>
@@ -21,16 +21,16 @@ export default {
 	  currentIndex: 0, // 当前选中的tab索引
       tabs: [
        {
-         "pagePath": "/pages/index/index",
-         "iconPath": "/static/images/meun_1.png",
-         "selectedIconPath": "/static/images/meun_1_on.png",
-         "text": "首页"
+         pagePath: "/pages/index/index",
+         iconPath: "/static/images/meun_1.png",
+         selectedIconPath: "/static/images/meun_1_on.png",
+         text: "首页"
        },
        {
-         "pagePath": "/pages/forum/forum-index",
-         "iconPath": "/static/images/meun_2.png",
-         "selectedIconPath": "/static/images/meun_2_on.png",
-         "text": "友圈"
+         pagePath: "/pages/forum/forum-index",
+         iconPath: "/static/images/meun_2.png",
+         selectedIconPath: "/static/images/meun_2_on.png",
+         text: "友圈"
        },
        {
          pagePath: "/pages/task/task-index",
@@ -39,17 +39,17 @@ export default {
          text: "适时任务"
        },
        {
-           "pagePath": "/pages/goods/goods-index",
-           "iconPath": "/static/images/meun_4.png",
-           "selectedIconPath": "/static/images/meun_4_on.png",
-           "text": "商城"
+           pagePath: "/pages/goods/goods-index",
+           iconPath: "/static/images/meun_4.png",
+           selectedIconPath: "/static/images/meun_4_on.png",
+           text: "商城"
        },
          
        {
-         "pagePath": "/pages/user/user",
-         "iconPath": "/static/images/meun_5.png",
-         "selectedIconPath": "/static/images/meun_5_on",
-         "text": "我的"
+         pagePath: "/pages/user/user",
+         iconPath: "/static/images/meun_5.png",
+         selectedIconPath: "/static/images/meun_5_on",
+         text: "我的"
        }
       ]
     };
@@ -57,13 +57,11 @@ export default {
   methods: {
    onChange(index) {
    	  //console.log('index==',this.tabs[index].pagePath);
-   	  if(index == 1){
-   		  this.scanQRCode();
-   	  }else{
-       uni.switchTab({
+   	  
+       uni.navigateTo({
          url: this.tabs[index].pagePath
        });
-   	  }
+   	  
      },
   }
 };

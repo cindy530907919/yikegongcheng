@@ -13,7 +13,8 @@
 				"navigationBarTitleText": "亦可工程",
 				"navigationBarBackgroundColor":"#adfdc0",
 				"navigationBarTextStyle":"black"
-			}
+			},
+			"custom": true
 		},{
 			"path": "pages/Merchant/signin",
 			"style": {
@@ -63,40 +64,41 @@
 	  "color": "#666",
 	  "selectedColor": "#f08800",
 	  "backgroundColor": "#fff",
-		"custom": true,
-	  "list": [
-	    {
-	      "pagePath": "pages/index/index",
-	      "iconPath": "static/images/meun_1.png",
-	      "selectedIconPath": "static/images/meun_1_on.png",
-	      "text": "首页"
-	    },
-	    {
-	      "pagePath": "pages/forum/forum-index",
-	      "iconPath": "static/images/meun_2.png",
-	      "selectedIconPath": "static/images/meun_2_on.png",
-	      "text": "友圈"
-	    },
-	    {
-	      "pagePath": "pages/task/task-index",
-	      "iconPath": "static/images/meun_3.png",
-	      "selectedIconPath": "static/images/meun_3_on.png",
-	      "text": "适时任务"
-	    },
-		{
-		    "pagePath": "pages/goods/goods-index",
-		    "iconPath": "static/images/meun_4.png",
-		    "selectedIconPath": "static/images/meun_4_on.png",
-		    "text": "商城"
-		},
+		"custom": true
+		// ,
+	 //  "list": [
+	 //    {
+	 //      "pagePath": "pages/index/index",
+	 //      "iconPath": "static/images/meun_1.png",
+	 //      "selectedIconPath": "static/images/meun_1_on.png",
+	 //      "text": "首页"
+	 //    },
+	 //    {
+	 //      "pagePath": "pages/forum/forum-index",
+	 //      "iconPath": "static/images/meun_2.png",
+	 //      "selectedIconPath": "static/images/meun_2_on.png",
+	 //      "text": "友圈"
+	 //    },
+	 //    {
+	 //      "pagePath": "pages/task/task-index",
+	 //      "iconPath": "static/images/meun_3.png",
+	 //      "selectedIconPath": "static/images/meun_3_on.png",
+	 //      "text": "适时任务"
+	 //    },
+		// {
+		//     "pagePath": "pages/goods/goods-index",
+		//     "iconPath": "static/images/meun_4.png",
+		//     "selectedIconPath": "static/images/meun_4_on.png",
+		//     "text": "商城"
+		// },
 		  
-	    {
-	      "pagePath": "pages/user/user",
-	      "iconPath": "static/images/meun_5.png",
-	      "selectedIconPath": "static/images/meun_5_on",
-	      "text": "我的"
-	    }
-	  ]
+	 //    {
+	 //      "pagePath": "pages/user/user",
+	 //      "iconPath": "static/images/meun_5.png",
+	 //      "selectedIconPath": "static/images/meun_5_on",
+	 //      "text": "我的"
+	 //    }
+	 //  ]
 	}
 	
 }

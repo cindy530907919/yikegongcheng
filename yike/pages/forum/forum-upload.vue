@@ -9,4 +9,5 @@
 </script>
 
 <style>
+	@import url("forum-style.css");
 </style>

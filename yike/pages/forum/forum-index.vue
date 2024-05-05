@@ -36,12 +36,106 @@
 				<view class="fourmRecommendBotLiTxt">
 					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
 					<view class="fourmRecommendBotLiTxt_t2">
-						200万发帖
+						<text class="fourmRecommendBotLiTxt_t4">200万发帖</text>
+						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
+					</view>
+				</view>
+			</view>
+			<view class="fourmRecommendBotLi">
+				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
+				<view class="fourmRecommendBotLiTxt">
+					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
+					<view class="fourmRecommendBotLiTxt_t2">
+						<text class="fourmRecommendBotLiTxt_t4">200万发帖</text>
+						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
+					</view>
+				</view>
+			</view>
+			
+			<view class="fourmRecommendBotLi">
+				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
+				<view class="fourmRecommendBotLiTxt">
+					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
+					<view class="fourmRecommendBotLiTxt_t2">
+						<text class="fourmRecommendBotLiTxt_t4">200万发帖</text>
+						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
+					</view>
+				</view>
+			</view>
+			<view class="fourmRecommendBotLi">
+				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
+				<view class="fourmRecommendBotLiTxt">
+					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
+					<view class="fourmRecommendBotLiTxt_t2">
+						<text class="fourmRecommendBotLiTxt_t4">200万发帖</text>
+						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
+					</view>
+				</view>
+			</view>
+			<view class="fourmRecommendBotLi">
+				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
+				<view class="fourmRecommendBotLiTxt">
+					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
+					<view class="fourmRecommendBotLiTxt_t2">
+						<text class="fourmRecommendBotLiTxt_t4">200万发帖</text>
+						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
+					</view>
+				</view>
+			</view>
+			<view class="fourmRecommendBotLi">
+				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
+				<view class="fourmRecommendBotLiTxt">
+					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
+					<view class="fourmRecommendBotLiTxt_t2">
+						<text class="fourmRecommendBotLiTxt_t4">200万发帖</text>
 						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
 					</view>
 				</view>
 			</view>
 		</view>
+		<!-- 友圈公告 -->
+		<view class="indexNewTask" ref="scrollView">
+			<image src="../../static/images/forum_3.png" mode="widthFix" class="indexNewTaskImg"></image>
+		    <view class="scroll-text"  @scrolltolower="onScrollToLower">
+				<view class="scroll-item" v-for="(item, index) in scrollText" :key="index" >
+					友圈公告：{{ item }}
+				</view>
+		    </view>
+		</view>
+		<view class="forumClass">
+			<scroll-view class="scroll-view" scroll-x="true">
+				<view class="forumClassLi">
+					<text>全部分类</text>
+					<view class="forumClassLiLine"></view>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+				<view class="forumClassLi">
+					<text>全部分类</text>
+				</view>
+			</scroll-view>
+			
+		</view>
+		
 	  </view>
 	  
 	<custom-tabs-bar :activePage="activePage"></custom-tabs-bar> <!-- current属性指示哪个tab是活跃的 -->
@@ -81,17 +175,28 @@ export default {
 		   	 value: "3-0"
 		}],
 		activePage: 1,   
-		
+		scrollText: ['哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈', '嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈', '红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'],
+		scrollHeight: 40, // 滚动区域的高度，根据实际情况调整
+		scrollTimer: null, // 定时器
 	}
   },
     mounted() {
-		
+		this.startScroll();
     },
     beforeDestroy() {
-      
-	},
+      clearInterval(this.scrollTimer); // 组件销毁前清除定时器
+    },
     methods: {
-		
+		startScroll() {
+		  this.scrollTimer = setInterval(() => {
+			this.scrollText.push(this.scrollText.shift()); // 循环滚动文字
+			this.$forceUpdate(); // 强制更新视图
+		  }, 8000); // 8秒切换一次
+		},
+		onScrollToLower() {
+		  // 当滚动到底部时，强制滚动到顶部
+		  this.$refs.scrollView.scrollTo(0, 0);
+		},
     }
 };
 </script>
@@ -110,7 +215,7 @@ export default {
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 1;
+		z-index: 0;
 	}
 	.indexTopPositionCon{
 		width: 100%;
@@ -220,6 +325,7 @@ export default {
 		position: absolute;
 		left: 5%;
 		top: 150rpx;
+		z-index: 1;
 	}
 	.fourmRecommendTop{
 		width: 100%;
@@ -231,35 +337,137 @@ export default {
 		height: 80rpx;
 	}
 	.fourmRecommendTopLine{
-		width: calc(100% - 32rpx);
+		width: calc(100% - 24rpx);
 		float: left;
-		padding: 0 20rpx;
+		padding: 0 10rpx;
 		box-sizing: border-box;
-		border: 4rpx solid #000;
-		height: 72;
-		border-left: none;
-		background: #ffdb00;
+		height: 80rpx;
+		background: #ffb955;
 	}
 	.fourmRecommendTopImg2{
-		width: 50rpx;
+		width: 55rpx;
 		float: left;
-		margin-top: 10rpx;
+		margin-top: 15rpx;
 	}
 	.fourmRecommendTopT1{
 		font-size: 34rpx;
 		float: left;
 		margin-left: 30rpx;
 		color: #222;
-		line-height: 72rpx;
-		
+		margin-top: 10px;
 	}
 	.fourmRecommendBot{
-		width: calc(100% - 8rpx);
+		width:calc(100% - 22rpx);
 		float: left;
-		padding: 30rpx;
-		box-sizing: border-box;
+		padding: 10rpx 10rpx 28rpx;
 		background: #fff;
-		border: 4rpx solid #000;
-		border-top: none;
+		border: 1px solid #ffb955;
 	}
+	.fourmRecommendBotLi{
+		width: 47%;
+		float: left;
+		margin-left: 2%;
+		margin-top: 20rpx;
+	}
+	.fourmRecommendBotLiImg{
+		width: 70rpx;
+		height: 70rpx;
+		float: left;
+		border-radius: 10rpx;
+	}
+	.fourmRecommendBotLiTxt{
+		width: calc(100% - 80rpx);
+		float: right;
+	}
+	.fourmRecommendBotLiTxt_t1{
+		font-size: 32rpx;
+		float: left;
+		color: #222;
+		width: 100%;
+	}
+	.fourmRecommendBotLiTxt_t2{
+		float: left;
+		width: 100%;
+	}
+	.fourmRecommendBotLiTxt_t4{
+		color: #999;
+		font-size: 28rpx;
+		float: left;
+	}
+	.fourmRecommendBotLiTxt_t3{
+		padding: 0rpx 2rpx;
+		background: #ffdb00;
+		color: #f00;
+		font-size: 22rpx;
+		border-radius: 4px;
+		float: left;
+		margin-left: 8rpx;
+		border: 1px solid #f00;
+		margin-top: 8rpx;
+	}
+	/* 公告 */
+	.indexNewTask{
+		width: 100%;
+		float: left;
+		border: 1px solid #c6bb7a;
+		border-radius: 80px;
+		padding: 10rpx 30rpx;
+		box-sizing: border-box;
+		margin-top: 30rpx;
+	}
+	.indexNewTaskImg{
+		width: 40rpx;
+		float: left;
+		margin-top: 11rpx;
+		margin-right: 20rpx;
+	}
+	
+	.scroll-text {
+	  width: calc(100% - 60rpx);
+	  padding: 0;
+	  float: left;
+	  margin-top: 4rpx;
+	  height: 30px;
+	  overflow: hidden;
+	  line-height: 30px;
+	}
+	.scroll-item {
+	  display: inline-block;
+	  padding: 0;
+	  margin: 0;
+	  line-height: 30px;
+	  width: 100%;
+	  font-size: 16px;
+	  color: #222;
+	  overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+	.forumClass{
+		width: 100%;
+		float: left;
+	}
+	 .scroll-view {
+		margin: 30rpx 0 20rpx;
+	    white-space: nowrap; /* 使所有子元素在一行显示 */
+	    overflow-x: auto; /* 允许在X轴方向上滚动 */
+	    width: 100%; /* 视图宽度设置为100% */
+	  }
+	  .forumClassLi {
+	    display: inline-block; /* 设置为内联块，保持在一行 */
+	    margin-right: 20px; /* 在分类之间添加一些间隔 */
+	  }
+	  .forumClassLi text{
+		  font-size: 30rpx;
+		  color: #222
+	  }
+	  .forumClassLiLine {
+	    height: 6rpx; /* 线条高度 */
+	    background-color: #ffdb00; /* 线条颜色 */
+	    width: 60rpx; /* 线条宽度 */
+		margin-left: calc(50% - 30rpx);
+		margin-top: 10rpx;
+		border-radius: 10px;
+	  }
+	  
 </style>

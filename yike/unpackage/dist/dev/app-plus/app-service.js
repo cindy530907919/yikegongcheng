@@ -31,6 +31,282 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$j = {
+    data() {
+      return {
+        isLiked: false,
+        // 是否已点赞的状态
+        likeImage: "../../static/images/forum_8.png",
+        // 初始未点赞时的图片
+        likeText: "点赞",
+        number: 1
+      };
+    },
+    methods: {
+      // 点击查看放大图片
+      previewImage() {
+        uni.previewImage({
+          urls: [
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          ],
+          // 可以放置多个图片URL，用于滑动查看
+          current: "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          // 当前显示的图片URL
+        });
+      },
+      // 帖子点赞
+      toggleLike() {
+        this.isLiked = !this.isLiked;
+        this.number += this.isLiked ? 1 : -1;
+        this.likeImage = this.isLiked ? "../../static/images/forum_9.png" : "../../static/images/forum_8.png";
+        this.likeText = this.isLiked ? "已点赞" : "点赞";
+      }
+    },
+    computed: {
+      formattedNumber() {
+        if (this.number >= 1e5) {
+          return (this.number / 1e4).toFixed(0) + "w";
+        } else if (this.number >= 1e4) {
+          return (this.number / 1e4).toFixed(1) + "w";
+        } else {
+          return this.number;
+        }
+      }
+    }
+  };
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
+      vue.createElementVNode("view", { class: "forumPostsTop" }, [
+        vue.createElementVNode("image", {
+          src: "/static/images/forum_2.png",
+          class: "forumSelectUlLiTopImg"
+        }),
+        vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+          vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+            vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+            vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+            vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+        ]),
+        vue.createElementVNode("view", { class: "forumPoststxt" }, [
+          vue.createElementVNode("view", { class: "forumPoststxt_t1" }, "帖子标题帖子标题帖子标题帖子标题 "),
+          vue.createElementVNode("view", { class: "forumPoststxt_t2" }, " 发布内容发布内容发布内容发布内容发布内容发内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容欢迎大家批斗留言！！ "),
+          vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+            vue.createElementVNode("view", {
+              onClick: _cache[0] || (_cache[0] = (...args) => $options.previewImage && $options.previewImage(...args)),
+              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+              class: "forumSelectUlLiConImgBack"
+            }),
+            vue.createElementVNode("view", {
+              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+              class: "forumSelectUlLiConImgBack"
+            }),
+            vue.createElementVNode("view", {
+              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+              class: "forumSelectUlLiConImgBack"
+            })
+          ]),
+          vue.createElementVNode("view", {
+            class: "forumSelectUlLiConBotGood",
+            onClick: _cache[1] || (_cache[1] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+          }, [
+            vue.createElementVNode("image", {
+              src: $data.likeImage,
+              mode: "widthFix"
+            }, null, 8, ["src"]),
+            vue.createElementVNode(
+              "text",
+              {
+                class: vue.normalizeClass({ "liked-text": $data.isLiked })
+              },
+              vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
+              3
+              /* TEXT, CLASS */
+            )
+          ])
+        ])
+      ]),
+      vue.createElementVNode("view", { class: "forumPostsBot" }, [
+        vue.createElementVNode("view", { class: "forumPostsBotTit" }, [
+          vue.createElementVNode("view", { class: "forumPostsBotT_1" }, "全部回复"),
+          vue.createElementVNode("view", { class: "forumPostsBotT_2" }, [
+            vue.createElementVNode("text", { class: "forumPostsBotT_2On" }, "热门"),
+            vue.createElementVNode("text", null, "正序")
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "forumPostsBotUl" }, [
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "自由的宝飞飞飞"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTabLand" }, " 楼主 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiComment" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, [
+                  vue.createTextVNode(" 你喜欢的唐唐 "),
+                  vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTabLand" }, "楼主"),
+                  vue.createTextVNode("： ")
+                ]),
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t2" }, " 什么啊 ")
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, " 无语了：回复 你喜欢的唐唐 "),
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiC ommentLi_t2" }, " 什么啊什么啊？ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, " 你喜欢的唐唐： "),
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t2" }, " 什么啊 ")
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLiMore" }, "查看全部回复 >>")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ])
+          ])
+        ])
+      ]),
+      vue.createCommentVNode(" 底部回复 "),
+      vue.createElementVNode("view", { class: "forumPostsReply" }, [
+        vue.createElementVNode("input", {
+          class: "forumPostsReplyInt",
+          type: "text",
+          placeholder: "发布评论，说点好听的"
+        }),
+        vue.createElementVNode("view", { class: "forumPostsReplySub" }, "发布")
+      ])
+    ]);
+  }
+  const PagesForumForumCon = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-con.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -43,9 +319,19 @@ if (uni.restoreGlobal) {
   }
   const pages = [
     {
+      path: "pages/forum/forum-con",
+      style: {
+        navigationBarTitleText: "详情",
+        navigationBarBackgroundColor: "#fff",
+        navigationBarTextStyle: "black"
+      }
+    },
+    {
       path: "pages/forum/forum-upload",
       style: {
-        navigationBarTitleText: "发布帖子"
+        navigationBarTitleText: "发布帖子",
+        navigationBarBackgroundColor: "#fff",
+        navigationBarTextStyle: "black"
       }
     },
     {
@@ -93,6 +379,12 @@ if (uni.restoreGlobal) {
       path: "pages/user/user",
       style: {
         navigationBarTitleText: "我的"
+      }
+    },
+    {
+      path: "pages/forum/forum-con/forum-con",
+      style: {
+        navigationBarTitleText: ""
       }
     }
   ];
@@ -3091,13 +3383,6 @@ ${i3}
       delete filedata.image;
     }
     return filedata;
-  };
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
   };
   const _sfc_main$i = {
     name: "uploadImage",
@@ -8568,6 +8853,7 @@ ${i3}
     return vue.openBlock(), vue.createElementBlock("view");
   }
   const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
+  __definePage("pages/forum/forum-con", PagesForumForumCon);
   __definePage("pages/forum/forum-upload", PagesForumForumUpload);
   __definePage("pages/forum/forum-index", PagesForumForumIndex);
   __definePage("pages/index/index", PagesIndexIndex);

@@ -1,10 +1,19 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [ 
 		
 		{
+		  "path": "pages/forum/forum-con",
+		  "style": {
+		    "navigationBarTitleText": "详情",
+			"navigationBarBackgroundColor":"#fff",
+			"navigationBarTextStyle":"black"
+		  }
+		},{
 		  "path": "pages/forum/forum-upload",
 		  "style": {
-		    "navigationBarTitleText": "发布帖子"
+		    "navigationBarTitleText": "发布帖子",
+			"navigationBarBackgroundColor":"#fff",
+			"navigationBarTextStyle":"black"
 		  }
 		},{
 		  "path": "pages/forum/forum-index",
@@ -50,6 +59,13 @@
 		  "style": {
 		    "navigationBarTitleText": "我的"
 		  }
+		},
+		{
+			"path" : "pages/forum/forum-con/forum-con",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"easycom": {

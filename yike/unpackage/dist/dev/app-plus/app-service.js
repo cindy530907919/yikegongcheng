@@ -5231,14 +5231,31 @@ ${i3}
             value: "3-0"
           }
         ],
-        activePage: 1
+        activePage: 1,
+        scrollText: ["哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈", "嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+        scrollHeight: 40,
+        // 滚动区域的高度，根据实际情况调整
+        scrollTimer: null
+        // 定时器
       };
     },
     mounted() {
+      this.startScroll();
     },
     beforeDestroy() {
+      clearInterval(this.scrollTimer);
     },
-    methods: {}
+    methods: {
+      startScroll() {
+        this.scrollTimer = setInterval(() => {
+          this.scrollText.push(this.scrollText.shift());
+          this.$forceUpdate();
+        }, 8e3);
+      },
+      onScrollToLower() {
+        this.$refs.scrollView.scrollTo(0, 0);
+      }
+    }
   };
   function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$1);
@@ -5313,9 +5330,155 @@ ${i3}
             vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
               vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
               vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createTextVNode(" 200万发帖 "),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
                 vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
               ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_2.png",
+              class: "fourmRecommendBotLiImg"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_2.png",
+              class: "fourmRecommendBotLiImg"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_2.png",
+              class: "fourmRecommendBotLiImg"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_2.png",
+              class: "fourmRecommendBotLiImg"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_2.png",
+              class: "fourmRecommendBotLiImg"
+            }),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+              ])
+            ])
+          ])
+        ]),
+        vue.createCommentVNode(" 友圈公告 "),
+        vue.createElementVNode(
+          "view",
+          {
+            class: "indexNewTask",
+            ref: "scrollView"
+          },
+          [
+            vue.createElementVNode("image", {
+              src: "/static/images/forum_3.png",
+              mode: "widthFix",
+              class: "indexNewTaskImg"
+            }),
+            vue.createElementVNode(
+              "view",
+              {
+                class: "scroll-text",
+                onScrolltolower: _cache[0] || (_cache[0] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
+              },
+              [
+                (vue.openBlock(true), vue.createElementBlock(
+                  vue.Fragment,
+                  null,
+                  vue.renderList($data.scrollText, (item, index) => {
+                    return vue.openBlock(), vue.createElementBlock(
+                      "view",
+                      {
+                        class: "scroll-item",
+                        key: index
+                      },
+                      " 友圈公告：" + vue.toDisplayString(item),
+                      1
+                      /* TEXT */
+                    );
+                  }),
+                  128
+                  /* KEYED_FRAGMENT */
+                ))
+              ],
+              32
+              /* NEED_HYDRATION */
+            )
+          ],
+          512
+          /* NEED_PATCH */
+        ),
+        vue.createElementVNode("view", { class: "forumClass" }, [
+          vue.createElementVNode("scroll-view", {
+            class: "scroll-view",
+            "scroll-x": "true"
+          }, [
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类"),
+              vue.createElementVNode("view", { class: "forumClassLiLine" })
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
+            ]),
+            vue.createElementVNode("view", { class: "forumClassLi" }, [
+              vue.createElementVNode("text", null, "全部分类")
             ])
           ])
         ])
@@ -5745,11 +5908,9 @@ ${i3}
           }),
           vue.createElementVNode("view", { class: "baishanLine" }),
           vue.createElementVNode(
-            "scroll-view",
+            "view",
             {
               class: "scroll-text",
-              "scroll-y": "",
-              style: vue.normalizeStyle({ height: $data.scrollHeight + "px" }),
               onScrolltolower: _cache[1] || (_cache[1] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
             },
             [
@@ -5772,8 +5933,8 @@ ${i3}
                 /* KEYED_FRAGMENT */
               ))
             ],
-            36
-            /* STYLE, NEED_HYDRATION */
+            32
+            /* NEED_HYDRATION */
           )
         ],
         512

@@ -848,6 +848,7 @@
     flex: 1;
     position: relative;
     font-size: 14px;
+	z-index: 999;
 }
 .error-text[data-v-e10759db] {
     color: #DD524D;
@@ -1145,7 +1146,7 @@ body{
 		position: absolute;
 		top: 0;
 		left: 0;
-		z-index: 1;
+		z-index: 0;
 }
 .indexTopPositionCon{
 		width: 100%;
@@ -1252,6 +1253,7 @@ body{
 		position: absolute;
 		left: 5%;
 		top: 4.6875rem;
+		z-index: 1;
 }
 .fourmRecommendTop{
 		width: 100%;
@@ -1263,33 +1265,135 @@ body{
 		height: 2.5rem;
 }
 .fourmRecommendTopLine{
-		width: calc(100% - 1rem);
+		width: calc(100% - 0.75rem);
 		float: left;
-		padding: 0 0.625rem;
+		padding: 0 0.3125rem;
 		box-sizing: border-box;
-		border: 0.125rem solid #000;
-		height: 72;
-		border-left: none;
-		background: #ffdb00;
+		height: 2.5rem;
+		background: #ffb955;
 }
 .fourmRecommendTopImg2{
-		width: 1.5625rem;
+		width: 1.71875rem;
 		float: left;
-		margin-top: 0.3125rem;
+		margin-top: 0.46875rem;
 }
 .fourmRecommendTopT1{
 		font-size: 1.0625rem;
 		float: left;
 		margin-left: 0.9375rem;
 		color: #222;
-		line-height: 2.25rem;
+		margin-top: 10px;
 }
 .fourmRecommendBot{
-		width: calc(100% - 0.25rem);
+		width:calc(100% - 0.6875rem);
 		float: left;
-		padding: 0.9375rem;
-		box-sizing: border-box;
+		padding: 0.3125rem 0.3125rem 0.875rem;
 		background: #fff;
-		border: 0.125rem solid #000;
-		border-top: none;
+		border: 1px solid #ffb955;
 }
+.fourmRecommendBotLi{
+		width: 47%;
+		float: left;
+		margin-left: 2%;
+		margin-top: 0.625rem;
+}
+.fourmRecommendBotLiImg{
+		width: 2.1875rem;
+		height: 2.1875rem;
+		float: left;
+		border-radius: 0.3125rem;
+}
+.fourmRecommendBotLiTxt{
+		width: calc(100% - 2.5rem);
+		float: right;
+}
+.fourmRecommendBotLiTxt_t1{
+		font-size: 1rem;
+		float: left;
+		color: #222;
+		width: 100%;
+}
+.fourmRecommendBotLiTxt_t2{
+		float: left;
+		width: 100%;
+}
+.fourmRecommendBotLiTxt_t4{
+		color: #999;
+		font-size: 0.875rem;
+		float: left;
+}
+.fourmRecommendBotLiTxt_t3{
+		padding: 0 0.0625rem;
+		background: #ffdb00;
+		color: #f00;
+		font-size: 0.6875rem;
+		border-radius: 4px;
+		float: left;
+		margin-left: 0.25rem;
+		border: 1px solid #f00;
+		margin-top: 0.25rem;
+}
+	/* 公告 */
+.indexNewTask{
+		width: 100%;
+		float: left;
+		border: 1px solid #c6bb7a;
+		border-radius: 80px;
+		padding: 0.3125rem 0.9375rem;
+		box-sizing: border-box;
+		margin-top: 0.9375rem;
+}
+.indexNewTaskImg{
+		width: 1.25rem;
+		float: left;
+		margin-top: 0.34375rem;
+		margin-right: 0.625rem;
+}
+.scroll-text {
+	  width: calc(100% - 1.875rem);
+	  padding: 0;
+	  float: left;
+	  margin-top: 0.125rem;
+	  height: 30px;
+	  overflow: hidden;
+	  line-height: 30px;
+}
+.scroll-item {
+	  display: inline-block;
+	  padding: 0;
+	  margin: 0;
+	  line-height: 30px;
+	  width: 100%;
+	  font-size: 16px;
+	  color: #222;
+	  overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+}
+.forumClass{
+		width: 100%;
+		float: left;
+}
+.scroll-view {
+		margin: 0.9375rem 0 0.625rem;
+	    white-space: nowrap; /* 使所有子元素在一行显示 */
+	    overflow-x: auto; /* 允许在X轴方向上滚动 */
+	    width: 100%; /* 视图宽度设置为100% */
+}
+.forumClassLi {
+	    display: inline-block; /* 设置为内联块，保持在一行 */
+	    margin-right: 20px; /* 在分类之间添加一些间隔 */
+}
+.forumClassLi uni-text{
+		  font-size: 0.9375rem;
+		  color: #222
+}
+.forumClassLiLine {
+	    height: 0.1875rem; /* 线条高度 */
+	    background-color: #ffdb00; /* 线条颜色 */
+	    width: 1.875rem; /* 线条宽度 */
+		margin-left: calc(50% - 0.9375rem);
+		margin-top: 0.3125rem;
+		border-radius: 10px;
+}
+	  

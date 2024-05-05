@@ -51,11 +51,11 @@
 	<view class="indexNewTask" ref="scrollView">
 		<image src="../../static/images/index_5.png" mode="widthFix" class="indexNewTaskImg"></image>
 		<view class="baishanLine"></view>
-	    <scroll-view class="scroll-text" scroll-y :style="{ height: scrollHeight + 'px' }" @scrolltolower="onScrollToLower">
+	    <view class="scroll-text"  @scrolltolower="onScrollToLower">
 			<view class="scroll-item" v-for="(item, index) in scrollText" :key="index" >
 				{{ item }}
 			</view>
-	    </scroll-view>
+	    </view>
 	</view>
 	<!-- 板块图片 -->
 	<view class="indexFourClass">
@@ -374,6 +374,8 @@ export default {
 	  padding: 0;
 	  float: left;
 	  margin-top: 4rpx;
+	  height: 40px;
+	  overflow: hidden;
 	}
 	.scroll-item {
 	  display: inline-block;
@@ -387,6 +389,7 @@ export default {
 	  -webkit-box-orient: vertical;
 	  -webkit-line-clamp: 2;
 	  overflow: hidden;
+	  height: 40px;
 	}
 	.indexFourClass{
 		width: 100%;

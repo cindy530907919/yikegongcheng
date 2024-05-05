@@ -5651,7 +5651,8 @@ ${i3}
         // 是否已点赞的状态
         likeImage: "../../static/images/forum_8.png",
         // 初始未点赞时的图片
-        likeText: "点赞"
+        likeText: "点赞",
+        isExpanded: false
       };
     },
     mounted() {
@@ -5671,7 +5672,7 @@ ${i3}
         this.$refs.scrollView.scrollTo(0, 0);
       },
       changeSe(e2) {
-        formatAppLog("log", "at pages/forum/forum-index.vue:382", "e:", e2);
+        formatAppLog("log", "at pages/forum/forum-index.vue:396", "e:", e2);
       },
       // 点击查看放大图片
       previewImage() {
@@ -5688,6 +5689,10 @@ ${i3}
         this.number += this.isLiked ? 1 : -1;
         this.likeImage = this.isLiked ? "../../static/images/forum_9.png" : "../../static/images/forum_8.png";
         this.likeText = this.isLiked ? "已点赞" : "点赞";
+      },
+      // 显示隐藏右侧菜单
+      toggleButton() {
+        this.isExpanded = !this.isExpanded;
       }
     },
     computed: {
@@ -5722,646 +5727,703 @@ ${i3}
       } else {
         this.isSticky = false;
       }
+    },
+    onPageScroll() {
+      if (this.isExpanded) {
+        this.isExpanded = false;
+      }
     }
   };
   function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$1);
     const _component_uni_data_select = resolveEasycom(vue.resolveDynamicComponent("uni-data-select"), __easycom_1$1);
     const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
-    return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
-      vue.createElementVNode("view", { class: "indexTopPosition" }, [
-        vue.createElementVNode("image", {
-          src: "/static/images/forumBack.png",
-          class: "indexTopPositionBack",
-          mode: "widthFix"
-        }),
-        vue.createElementVNode("view", { class: "indexTopPositionCon" }, [
-          vue.createElementVNode("view", { class: "indexTopPositionConSearch" }, [
-            vue.createCommentVNode(" 选择城市 "),
-            vue.createElementVNode("view", { class: "indexTopPositionConSearchCity" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/index_1.png",
-                class: "indexTopPositionConSearchCityIcon",
-                mode: "widthFix"
-              }),
-              vue.createVNode(_component_uni_data_picker, {
-                "clear-icon": false,
-                class: "indexTopPositionConSearchCityPick",
-                localdata: $data.items,
-                "popup-title": "城市"
-              }, null, 8, ["localdata"])
-            ]),
-            vue.createCommentVNode(" 搜索 "),
-            vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/index_6.png",
-                mode: "widthFix"
-              }),
-              vue.createElementVNode("input", {
-                type: "text",
-                placeholder: "请输入商品名称"
-              })
-            ]),
-            vue.createCommentVNode(" 消息 "),
-            vue.createElementVNode("view", { class: "indexTopPositionConSearchMesR" }, [
-              vue.createElementVNode("view", { class: "indexTopPositionConSearchMesNew" }),
-              vue.createElementVNode("image", {
-                src: "/static/images/index_2.png",
-                class: "indexTopPositionConSearchMes",
-                mode: "widthFix"
-              })
-            ])
-          ])
-        ])
-      ]),
-      vue.createElementVNode("view", { class: "fourmRecommend" }, [
-        vue.createElementVNode("view", { class: "fourmRecommendTop" }, [
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        class: "handleScroll",
+        onScroll: _cache[9] || (_cache[9] = (...args) => _ctx.handleScroll && _ctx.handleScroll(...args))
+      },
+      [
+        vue.createElementVNode("view", { class: "indexTopPosition" }, [
           vue.createElementVNode("image", {
-            src: "/static/images/forum_16.png",
-            class: "fourmRecommendTopImg1"
+            src: "/static/images/forumBack.png",
+            class: "indexTopPositionBack",
+            mode: "widthFix"
           }),
-          vue.createElementVNode("view", { class: "fourmRecommendTopLine" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_1.png",
-              mode: "widthFix",
-              class: "fourmRecommendTopImg2"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendTopT1" }, "吉林长春 · 推荐圈子")
-          ])
-        ]),
-        vue.createElementVNode("view", { class: "fourmRecommendBot" }, [
-          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_2.png",
-              class: "fourmRecommendBotLiImg"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
-              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
-              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_2.png",
-              class: "fourmRecommendBotLiImg"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
-              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
-              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_2.png",
-              class: "fourmRecommendBotLiImg"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
-              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
-              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_2.png",
-              class: "fourmRecommendBotLiImg"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
-              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
-              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_2.png",
-              class: "fourmRecommendBotLiImg"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
-              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
-              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/forum_2.png",
-              class: "fourmRecommendBotLiImg"
-            }),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
-              vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
-              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
-                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+          vue.createElementVNode("view", { class: "indexTopPositionCon" }, [
+            vue.createElementVNode("view", { class: "indexTopPositionConSearch" }, [
+              vue.createCommentVNode(" 选择城市 "),
+              vue.createElementVNode("view", { class: "indexTopPositionConSearchCity" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/index_1.png",
+                  class: "indexTopPositionConSearchCityIcon",
+                  mode: "widthFix"
+                }),
+                vue.createVNode(_component_uni_data_picker, {
+                  "clear-icon": false,
+                  class: "indexTopPositionConSearchCityPick",
+                  localdata: $data.items,
+                  "popup-title": "城市"
+                }, null, 8, ["localdata"])
+              ]),
+              vue.createCommentVNode(" 搜索 "),
+              vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/index_6.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("input", {
+                  type: "text",
+                  placeholder: "请输入商品名称"
+                })
+              ]),
+              vue.createCommentVNode(" 消息 "),
+              vue.createElementVNode("view", { class: "indexTopPositionConSearchMesR" }, [
+                vue.createElementVNode("view", { class: "indexTopPositionConSearchMesNew" }),
+                vue.createElementVNode("image", {
+                  src: "/static/images/index_2.png",
+                  class: "indexTopPositionConSearchMes",
+                  mode: "widthFix"
+                })
               ])
             ])
           ])
         ]),
-        vue.createCommentVNode(" 友圈公告 "),
-        vue.createElementVNode(
-          "view",
-          {
-            class: "indexNewTask",
-            ref: "scrollView"
-          },
-          [
+        vue.createElementVNode("view", { class: "fourmRecommend" }, [
+          vue.createElementVNode("view", { class: "fourmRecommendTop" }, [
             vue.createElementVNode("image", {
-              src: "/static/images/forum_3.png",
-              mode: "widthFix",
-              class: "indexNewTaskImg"
+              src: "/static/images/forum_16.png",
+              class: "fourmRecommendTopImg1"
             }),
-            vue.createElementVNode(
-              "view",
-              {
-                class: "scroll-text",
-                onScrolltolower: _cache[0] || (_cache[0] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
-              },
-              [
+            vue.createElementVNode("view", { class: "fourmRecommendTopLine" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_1.png",
+                mode: "widthFix",
+                class: "fourmRecommendTopImg2"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendTopT1" }, "吉林长春 · 推荐圈子")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "fourmRecommendBot" }, [
+            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "fourmRecommendBotLiImg"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+                vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "fourmRecommendBotLiImg"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+                vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "fourmRecommendBotLiImg"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+                vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "fourmRecommendBotLiImg"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+                vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "fourmRecommendBotLiImg"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+                vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "fourmRecommendBotLiImg"
+              }),
+              vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt" }, [
+                vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t1" }, "失信老赖"),
+                vue.createElementVNode("view", { class: "fourmRecommendBotLiTxt_t2" }, [
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t4" }, "200万发帖"),
+                  vue.createElementVNode("text", { class: "fourmRecommendBotLiTxt_t3" }, "HOT")
+                ])
+              ])
+            ])
+          ]),
+          vue.createCommentVNode(" 友圈公告 "),
+          vue.createElementVNode(
+            "view",
+            {
+              class: "indexNewTask",
+              ref: "scrollView"
+            },
+            [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_3.png",
+                mode: "widthFix",
+                class: "indexNewTaskImg"
+              }),
+              vue.createElementVNode(
+                "view",
+                {
+                  class: "scroll-text",
+                  onScrolltolower: _cache[0] || (_cache[0] = (...args) => $options.onScrollToLower && $options.onScrollToLower(...args))
+                },
+                [
+                  (vue.openBlock(true), vue.createElementBlock(
+                    vue.Fragment,
+                    null,
+                    vue.renderList($data.scrollText, (item, index) => {
+                      return vue.openBlock(), vue.createElementBlock(
+                        "view",
+                        {
+                          class: "scroll-item",
+                          key: index
+                        },
+                        " 友圈公告：" + vue.toDisplayString(item),
+                        1
+                        /* TEXT */
+                      );
+                    }),
+                    128
+                    /* KEYED_FRAGMENT */
+                  ))
+                ],
+                32
+                /* NEED_HYDRATION */
+              )
+            ],
+            512
+            /* NEED_PATCH */
+          ),
+          vue.createElementVNode(
+            "view",
+            {
+              class: vue.normalizeClass({ "forumClass": true, "sticky": $data.isSticky })
+            },
+            [
+              vue.createElementVNode("scroll-view", {
+                class: "scroll-view",
+                "scroll-x": "true"
+              }, [
+                vue.createCommentVNode(" 这里是滚动的分类条目 "),
                 (vue.openBlock(true), vue.createElementBlock(
                   vue.Fragment,
                   null,
-                  vue.renderList($data.scrollText, (item, index) => {
-                    return vue.openBlock(), vue.createElementBlock(
-                      "view",
-                      {
-                        class: "scroll-item",
-                        key: index
-                      },
-                      " 友圈公告：" + vue.toDisplayString(item),
-                      1
-                      /* TEXT */
-                    );
+                  vue.renderList($data.classitems, (item, index) => {
+                    return vue.openBlock(), vue.createElementBlock("view", {
+                      class: "forumClassLi",
+                      key: index
+                    }, [
+                      vue.createElementVNode(
+                        "text",
+                        null,
+                        vue.toDisplayString(item),
+                        1
+                        /* TEXT */
+                      ),
+                      index === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
+                        key: 0,
+                        class: "forumClassLiLine"
+                      })) : vue.createCommentVNode("v-if", true)
+                    ]);
                   }),
                   128
                   /* KEYED_FRAGMENT */
                 ))
-              ],
-              32
-              /* NEED_HYDRATION */
-            )
-          ],
-          512
-          /* NEED_PATCH */
-        ),
-        vue.createElementVNode(
-          "view",
-          {
-            class: vue.normalizeClass({ "forumClass": true, "sticky": $data.isSticky })
-          },
-          [
-            vue.createElementVNode("scroll-view", {
-              class: "scroll-view",
-              "scroll-x": "true"
-            }, [
-              vue.createCommentVNode(" 这里是滚动的分类条目 "),
-              (vue.openBlock(true), vue.createElementBlock(
-                vue.Fragment,
-                null,
-                vue.renderList($data.classitems, (item, index) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    class: "forumClassLi",
-                    key: index
+              ])
+            ],
+            2
+            /* CLASS */
+          ),
+          vue.createCommentVNode(" 帖子 "),
+          vue.createElementVNode("view", { class: "forumSelect" }, [
+            vue.createElementVNode("view", { class: "forumSelectTit" }, "默认筛选"),
+            vue.createVNode(_component_uni_data_select, {
+              class: "forumSelectC",
+              modelValue: $data.valueSe,
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.valueSe = $event),
+              localdata: $data.range,
+              onChange: $options.changeSe
+            }, null, 8, ["modelValue", "localdata", "onChange"])
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUl" }, [
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ]),
+                vue.createElementVNode("image", {
+                  class: "forumSelectUlLiTopLeftUp",
+                  src: "/static/images/forum_4.png",
+                  mode: "widthFix"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[2] || (_cache[2] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
                   }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
                     vue.createElementVNode(
                       "text",
                       null,
-                      vue.toDisplayString(item),
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", {
+                    class: "forumSelectUlLiConBotGood",
+                    onClick: _cache[3] || (_cache[3] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+                  }, [
+                    vue.createElementVNode(
+                      "text",
+                      {
+                        class: vue.normalizeClass({ "liked-text": $data.isLiked })
+                      },
+                      vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      3
+                      /* TEXT, CLASS */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: $data.likeImage,
+                      mode: "widthFix"
+                    }, null, 8, ["src"])
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ]),
+                vue.createElementVNode("image", {
+                  class: "forumSelectUlLiTopLeftUp",
+                  src: "/static/images/forum_6.png",
+                  mode: "widthFix"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[4] || (_cache[4] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
                       1
                       /* TEXT */
                     ),
-                    index === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 0,
-                      class: "forumClassLiLine"
-                    })) : vue.createCommentVNode("v-if", true)
-                  ]);
-                }),
-                128
-                /* KEYED_FRAGMENT */
-              ))
-            ])
-          ],
-          2
-          /* CLASS */
-        ),
-        vue.createCommentVNode(" 帖子 "),
-        vue.createElementVNode("view", { class: "forumSelect" }, [
-          vue.createElementVNode("view", { class: "forumSelectTit" }, "默认筛选"),
-          vue.createVNode(_component_uni_data_select, {
-            class: "forumSelectC",
-            modelValue: $data.valueSe,
-            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.valueSe = $event),
-            localdata: $data.range,
-            onChange: $options.changeSe
-          }, null, 8, ["modelValue", "localdata", "onChange"])
-        ]),
-        vue.createElementVNode("view", { class: "forumSelectUl" }, [
-          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
-            vue.createElementVNode("navigator", {
-              "hover-class": "none",
-              class: "forumSelectUlLiTop"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumSelectUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
-                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
-              ]),
-              vue.createElementVNode("image", {
-                class: "forumSelectUlLiTopLeftUp",
-                src: "/static/images/forum_4.png",
-                mode: "widthFix"
-              })
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
             ]),
-            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
               vue.createElementVNode("navigator", {
                 "hover-class": "none",
-                class: "forumSelectUlLiConTxt"
+                class: "forumSelectUlLiTop"
               }, [
-                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
-                vue.createElementVNode("br"),
-                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
-                vue.createElementVNode("view", {
-                  onClick: _cache[2] || (_cache[2] = (...args) => $options.previewImage && $options.previewImage(...args)),
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
                 }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                })
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ])
               ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
                 vue.createElementVNode("navigator", {
                   "hover-class": "none",
-                  class: "forumSelectUlLiConBotComment"
+                  class: "forumSelectUlLiConTxt"
                 }, [
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_7.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
-                    1
-                    /* TEXT */
-                  )
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
                 ]),
-                vue.createElementVNode("view", {
-                  class: "forumSelectUlLiConBotGood",
-                  onClick: _cache[3] || (_cache[3] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[5] || (_cache[5] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
                 }, [
-                  vue.createElementVNode(
-                    "text",
-                    {
-                      class: vue.normalizeClass({ "liked-text": $data.isLiked })
-                    },
-                    vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
-                    3
-                    /* TEXT, CLASS */
-                  ),
-                  vue.createElementVNode("image", {
-                    src: $data.likeImage,
-                    mode: "widthFix"
-                  }, null, 8, ["src"])
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[6] || (_cache[6] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[7] || (_cache[7] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
                 ])
               ])
             ])
           ]),
-          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
-            vue.createElementVNode("navigator", {
-              "hover-class": "none",
-              class: "forumSelectUlLiTop"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumSelectUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
-                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
-              ]),
-              vue.createElementVNode("image", {
-                class: "forumSelectUlLiTopLeftUp",
-                src: "/static/images/forum_6.png",
-                mode: "widthFix"
-              })
-            ]),
-            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
-              vue.createElementVNode("navigator", {
-                "hover-class": "none",
-                class: "forumSelectUlLiConTxt"
-              }, [
-                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
-                vue.createElementVNode("br"),
-                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
-                vue.createElementVNode("view", {
-                  onClick: _cache[4] || (_cache[4] = (...args) => $options.previewImage && $options.previewImage(...args)),
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                })
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+          vue.createElementVNode("view", { class: "page" }, [
+            vue.createElementVNode(
+              "view",
+              {
+                class: vue.normalizeClass(["forumSelectbtn", { expanded: $data.isExpanded }]),
+                onClick: _cache[8] || (_cache[8] = (...args) => $options.toggleButton && $options.toggleButton(...args))
+              },
+              [
                 vue.createElementVNode("navigator", {
-                  "hover-class": "none",
-                  class: "forumSelectUlLiConBotComment"
+                  url: "../index/index",
+                  "hover-class": "none"
                 }, [
                   vue.createElementVNode("image", {
-                    src: "/static/images/forum_7.png",
+                    class: "forumSelectbtn_1",
+                    src: "/static/images/forum_10.png",
                     mode: "widthFix"
-                  }),
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
-                    1
-                    /* TEXT */
-                  )
+                  })
                 ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
-                    1
-                    /* TEXT */
-                  ),
+                vue.createElementVNode("navigator", {
+                  url: "",
+                  "hover-class": "none"
+                }, [
                   vue.createElementVNode("image", {
-                    src: "/static/images/forum_8.png",
+                    class: "forumSelectbtn_1",
+                    src: "/static/images/forum_11.png",
+                    mode: "widthFix"
+                  })
+                ]),
+                vue.createElementVNode("navigator", {
+                  url: "",
+                  "hover-class": "none"
+                }, [
+                  vue.createElementVNode("image", {
+                    class: "forumSelectbtn_1",
+                    src: "/static/images/forum_12.png",
                     mode: "widthFix"
                   })
                 ])
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
-            vue.createElementVNode("navigator", {
-              "hover-class": "none",
-              class: "forumSelectUlLiTop"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumSelectUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
-                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
-              vue.createElementVNode("navigator", {
-                "hover-class": "none",
-                class: "forumSelectUlLiConTxt"
-              }, [
-                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
-                vue.createElementVNode("br"),
-                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
-                vue.createElementVNode("view", {
-                  onClick: _cache[5] || (_cache[5] = (...args) => $options.previewImage && $options.previewImage(...args)),
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                })
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
-                vue.createElementVNode("navigator", {
-                  "hover-class": "none",
-                  class: "forumSelectUlLiConBotComment"
-                }, [
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_7.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
-                    1
-                    /* TEXT */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
-                    1
-                    /* TEXT */
-                  ),
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_8.png",
-                    mode: "widthFix"
-                  })
-                ])
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
-            vue.createElementVNode("navigator", {
-              "hover-class": "none",
-              class: "forumSelectUlLiTop"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumSelectUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
-                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
-              vue.createElementVNode("navigator", {
-                "hover-class": "none",
-                class: "forumSelectUlLiConTxt"
-              }, [
-                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
-                vue.createElementVNode("br"),
-                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
-                vue.createElementVNode("view", {
-                  onClick: _cache[6] || (_cache[6] = (...args) => $options.previewImage && $options.previewImage(...args)),
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                })
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
-                vue.createElementVNode("navigator", {
-                  "hover-class": "none",
-                  class: "forumSelectUlLiConBotComment"
-                }, [
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_7.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
-                    1
-                    /* TEXT */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
-                    1
-                    /* TEXT */
-                  ),
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_8.png",
-                    mode: "widthFix"
-                  })
-                ])
-              ])
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
-            vue.createElementVNode("navigator", {
-              "hover-class": "none",
-              class: "forumSelectUlLiTop"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumSelectUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
-                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
-                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
-              vue.createElementVNode("navigator", {
-                "hover-class": "none",
-                class: "forumSelectUlLiConTxt"
-              }, [
-                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
-                vue.createElementVNode("br"),
-                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
-                vue.createElementVNode("view", {
-                  onClick: _cache[7] || (_cache[7] = (...args) => $options.previewImage && $options.previewImage(...args)),
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                }),
-                vue.createElementVNode("view", {
-                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-                  class: "forumSelectUlLiConImgBack"
-                })
-              ]),
-              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
-                vue.createElementVNode("navigator", {
-                  "hover-class": "none",
-                  class: "forumSelectUlLiConBotComment"
-                }, [
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_7.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
-                    1
-                    /* TEXT */
-                  )
-                ]),
-                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
-                  vue.createElementVNode(
-                    "text",
-                    null,
-                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
-                    1
-                    /* TEXT */
-                  ),
-                  vue.createElementVNode("image", {
-                    src: "/static/images/forum_8.png",
-                    mode: "widthFix"
-                  })
-                ])
-              ])
-            ])
+              ],
+              2
+              /* CLASS */
+            )
           ])
-        ])
-      ]),
-      vue.createVNode(_component_custom_tabs_bar, { activePage: $data.activePage }, null, 8, ["activePage"]),
-      vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
-    ]);
+        ]),
+        vue.createVNode(_component_custom_tabs_bar, { activePage: $data.activePage }, null, 8, ["activePage"]),
+        vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
+      ],
+      32
+      /* NEED_HYDRATION */
+    );
   }
   const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
   const _sfc_main$b = {};

@@ -1,5 +1,5 @@
 <template>
-  <view class="">
+  <view class="handleScroll" @scroll="handleScroll">
 	  <view class="indexTopPosition">
 		<image src="../../static/images/forumBack.png" class="indexTopPositionBack" mode="widthFix"></image>
 		<view class="indexTopPositionCon">
@@ -304,6 +304,19 @@
 				</view>
 			</view>
 		</view>
+		<view class="page">
+			<view class="forumSelectbtn" :class="{ expanded: isExpanded }" @click="toggleButton">
+				<navigator url="../index/index" hover-class="none">
+					<image class="forumSelectbtn_1" src="../../static/images/forum_10.png" mode="widthFix"></image>
+				</navigator>
+				<navigator url="" hover-class="none">
+					<image class="forumSelectbtn_1" src="../../static/images/forum_11.png" mode="widthFix"></image>
+				</navigator>
+				<navigator url="" hover-class="none">
+					<image class="forumSelectbtn_1" src="../../static/images/forum_12.png" mode="widthFix"></image>
+				</navigator>
+			</view>
+		</view>
 	  </view>
 	  
 	<custom-tabs-bar :activePage="activePage"></custom-tabs-bar> <!-- current属性指示哪个tab是活跃的 -->
@@ -358,7 +371,8 @@ export default {
 		topThreshold: 0  ,// 根据实际布局调整
 		isLiked: false, // 是否已点赞的状态
 		likeImage: '../../static/images/forum_8.png', // 初始未点赞时的图片
-		likeText: '点赞'
+		likeText: '点赞',
+		isExpanded: false,
 	}
   },
     mounted() {
@@ -394,8 +408,20 @@ export default {
 		  this.number += this.isLiked ? 1 : -1; // 更新点赞数量
 		  this.likeImage = this.isLiked ? '../../static/images/forum_9.png' : '../../static/images/forum_8.png'; // 根据点赞状态切换图片
 		  this.likeText = this.isLiked ? '已点赞' : '点赞';
-		}
+		},
+		// 显示隐藏右侧菜单
+		toggleButton() {
+		  this.isExpanded = !this.isExpanded;
+		},
+		
     },
+	
+	// 滑动时隐藏右侧菜单
+	onPageScroll() {
+	    if (this.isExpanded) {
+	      this.isExpanded = false; // 如果展开，则在滚动时自动折叠
+	    }
+	  }
 	computed: {
 	    formattedNumber() {
 	      if (this.number >= 100000) {
@@ -430,7 +456,8 @@ export default {
 	    } else {
 	      this.isSticky = false;  // 未超过阈值，取消吸顶
 	    }
-	}
+	},
+	
 };
 </script>
 <style>
@@ -683,7 +710,7 @@ export default {
 		width: 90%;
 		float: left;
 		position: relative;
-		z-index: 10;
+		z-index: 3;
 		background: #fffbe4;
 		padding: 0 5%;
 	}
@@ -692,7 +719,7 @@ export default {
 	  top: 0;
 	  width: 100%;
 	  background-color: #fffbe4;
-	  z-index: 10000;  /* 保证吸顶元素在最前面 */
+	  z-index: 3;  /* 保证吸顶元素在最前面 */
 	  box-shadow: 0 4px 10rpx rgba(205,195,140,0.2);
 	}
 	 .scroll-view {
@@ -743,7 +770,7 @@ export default {
 		  width: 90%;
 		  float: left;
 		  margin-left: 5%;
-		  margin-bottom: 280rpx;
+		  margin-bottom: 340rpx;
 	  }
 	  .forumSelectUlLi{
 		  width: 100%;
@@ -860,5 +887,28 @@ export default {
 		  font-size: 30rpx;
 		  color: #222;
 		  margin-right: 10rpx;
+	  }
+	  .handleScroll{
+		  overflow: auto;
+		  height: 100vh;
+	  }
+	  /* 控制 forumSelectbtn 的基本样式和位置 */
+	  .forumSelectbtn {
+	    position: fixed;
+	    right: 20rpx;
+	    bottom: 240rpx; /* 中间位置，可调整 */
+	    transform: translateY(-50%);
+	    width: 70rpx; /* 默认只显示部分 */
+	    overflow: hidden;
+	    transition: width 0.3s ease-in-out;
+		z-index: 4;
+	  }
+	  
+	  /* 当展开时的样式 */
+	  .forumSelectbtn.expanded {
+	    width: 200rpx; /* 全部展开的宽度，根据需要调整 */
+	  }
+	  .forumSelectbtn_1{
+		  width: 200rpx;
 	  }
 </style>

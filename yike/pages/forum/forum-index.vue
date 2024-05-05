@@ -421,7 +421,7 @@ export default {
 	    if (this.isExpanded) {
 	      this.isExpanded = false; // 如果展开，则在滚动时自动折叠
 	    }
-	  }
+	  },
 	computed: {
 	    formattedNumber() {
 	      if (this.number >= 100000) {

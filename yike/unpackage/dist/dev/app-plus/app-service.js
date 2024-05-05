@@ -31,6 +31,27 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const _sfc_main$h = {};
+  function _sfc_render$g(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 朋友圈-发布 "),
+        vue.createElementVNode("view", { class: "" })
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
   const isObject = (val) => val !== null && typeof val === "object";
   const defaultDelimiters = ["{", "}"];
   class BaseFormatter {
@@ -334,13 +355,6 @@ if (uni.restoreGlobal) {
     en,
     "zh-Hans": zhHans,
     "zh-Hant": zhHant
-  };
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
   };
   let platform;
   setTimeout(() => {
@@ -1238,6 +1252,12 @@ if (uni.restoreGlobal) {
   }
   const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const pages = [
+    {
+      path: "pages/forum/forum-upload",
+      style: {
+        navigationBarTitleText: "发布帖子"
+      }
+    },
     {
       path: "pages/forum/forum-index",
       style: {
@@ -7530,6 +7550,7 @@ ${i3}
     return vue.openBlock(), vue.createElementBlock("view");
   }
   const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
+  __definePage("pages/forum/forum-upload", PagesForumForumUpload);
   __definePage("pages/forum/forum-index", PagesForumForumIndex);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/Merchant/signin", PagesMerchantSignin);

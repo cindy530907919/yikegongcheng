@@ -31,27 +31,16 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
+  function formatAppLog(type, filename, ...args) {
+    if (uni.__log__) {
+      uni.__log__(type, filename, ...args);
+    } else {
+      console[type].apply(console, [...args, filename]);
     }
-    return target;
-  };
-  const _sfc_main$h = {};
-  function _sfc_render$g(_ctx, _cache) {
-    return vue.openBlock(), vue.createElementBlock(
-      vue.Fragment,
-      null,
-      [
-        vue.createCommentVNode(" 朋友圈-发布 "),
-        vue.createElementVNode("view", { class: "" })
-      ],
-      2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-    );
   }
-  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
+  function resolveEasycom(component, easycom2) {
+    return typeof component === "string" ? easycom2 : component;
+  }
   const isObject = (val) => val !== null && typeof val === "object";
   const defaultDelimiters = ["{", "}"];
   class BaseFormatter {
@@ -356,6 +345,13 @@ if (uni.restoreGlobal) {
     "zh-Hans": zhHans,
     "zh-Hant": zhHant
   };
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   let platform;
   setTimeout(() => {
     platform = uni.getSystemInfoSync().platform;
@@ -363,7 +359,7 @@ if (uni.restoreGlobal) {
   const {
     t: t$1
   } = initVueI18n(messages);
-  const _sfc_main$g = {
+  const _sfc_main$i = {
     name: "UniLoadMore",
     emits: ["clickLoadMore"],
     props: {
@@ -445,7 +441,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "uni-load-more",
       onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
@@ -520,17 +516,7 @@ if (uni.restoreGlobal) {
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
-  function formatAppLog(type, filename, ...args) {
-    if (uni.__log__) {
-      uni.__log__(type, filename, ...args);
-    } else {
-      console[type].apply(console, [...args, filename]);
-    }
-  }
-  function resolveEasycom(component, easycom2) {
-    return typeof component === "string" ? easycom2 : component;
-  }
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
   const fontData = [
     {
       "font_class": "arrow-down",
@@ -1181,7 +1167,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$f = {
+  const _sfc_main$h = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1235,7 +1221,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -1250,20 +1236,20 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const pages = [
-    {
-      path: "pages/forum/forum-upload",
-      style: {
-        navigationBarTitleText: "发布帖子"
-      }
-    },
     {
       path: "pages/forum/forum-index",
       style: {
         navigationBarTitleText: "友圈",
         navigationBarBackgroundColor: "#ffdb00",
         navigationBarTextStyle: "black"
+      }
+    },
+    {
+      path: "pages/forum/forum-upload",
+      style: {
+        navigationBarTitleText: "发布帖子"
       }
     },
     {
@@ -4565,7 +4551,7 @@ ${i3}
       }
     }
   };
-  const _sfc_main$e = {
+  const _sfc_main$g = {
     name: "UniDataPickerView",
     emits: ["nodeclick", "change", "datachange", "update:modelValue"],
     mixins: [dataPicker],
@@ -4669,8 +4655,8 @@ ${i3}
       }
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$3);
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-pickerview" }, [
       !_ctx.isCloudDataList ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
         key: 0,
@@ -4759,8 +4745,8 @@ ${i3}
       ])
     ]);
   }
-  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
-  const _sfc_main$d = {
+  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
+  const _sfc_main$f = {
     name: "UniDataPicker",
     emits: ["popupopened", "popupclosed", "nodeclick", "input", "change", "update:modelValue", "inputclick"],
     mixins: [dataPicker],
@@ -4964,9 +4950,9 @@ ${i3}
       }
     }
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_1$1);
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$3);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
     const _component_data_picker_view = vue.resolveComponent("data-picker-view");
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-tree" }, [
       vue.createElementVNode("view", {
@@ -5130,8 +5116,401 @@ ${i3}
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
-  const _sfc_main$c = {
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
+  const _sfc_main$e = {
+    name: "uni-data-select",
+    mixins: [Ws.mixinDatacom || {}],
+    props: {
+      localdata: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+      value: {
+        type: [String, Number],
+        default: ""
+      },
+      modelValue: {
+        type: [String, Number],
+        default: ""
+      },
+      label: {
+        type: String,
+        default: ""
+      },
+      placeholder: {
+        type: String,
+        default: "请选择"
+      },
+      emptyTips: {
+        type: String,
+        default: "无选项"
+      },
+      clear: {
+        type: Boolean,
+        default: true
+      },
+      defItem: {
+        type: Number,
+        default: 0
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      // 格式化输出 用法 field="_id as value, version as text, uni_platform as label" format="{label} - {text}"
+      format: {
+        type: String,
+        default: ""
+      },
+      placement: {
+        type: String,
+        default: "bottom"
+      }
+    },
+    data() {
+      return {
+        showSelector: false,
+        current: "",
+        mixinDatacomResData: [],
+        apps: [],
+        channels: [],
+        cacheKey: "uni-data-select-lastSelectedValue"
+      };
+    },
+    created() {
+      this.debounceGet = this.debounce(() => {
+        this.query();
+      }, 300);
+      if (this.collection && !this.localdata.length) {
+        this.debounceGet();
+      }
+    },
+    computed: {
+      typePlaceholder() {
+        const text = {
+          "opendb-stat-app-versions": "版本",
+          "opendb-app-channels": "渠道",
+          "opendb-app-list": "应用"
+        };
+        const common = this.placeholder;
+        const placeholder = text[this.collection];
+        return placeholder ? common + placeholder : common;
+      },
+      valueCom() {
+        return this.modelValue;
+      },
+      textShow() {
+        let text = this.current;
+        if (text.length > 10) {
+          return text.slice(0, 25) + "...";
+        }
+        return text;
+      },
+      getOffsetByPlacement() {
+        switch (this.placement) {
+          case "top":
+            return "bottom:calc(100% + 12px);";
+          case "bottom":
+            return "top:calc(100% + 12px);";
+        }
+      }
+    },
+    watch: {
+      localdata: {
+        immediate: true,
+        handler(val, old) {
+          if (Array.isArray(val) && old !== val) {
+            this.mixinDatacomResData = val;
+          }
+        }
+      },
+      valueCom(val, old) {
+        this.initDefVal();
+      },
+      mixinDatacomResData: {
+        immediate: true,
+        handler(val) {
+          if (val.length) {
+            this.initDefVal();
+          }
+        }
+      }
+    },
+    methods: {
+      debounce(fn, time = 100) {
+        let timer = null;
+        return function(...args) {
+          if (timer)
+            clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn.apply(this, args);
+          }, time);
+        };
+      },
+      // 执行数据库查询
+      query() {
+        this.mixinDatacomEasyGet();
+      },
+      // 监听查询条件变更事件
+      onMixinDatacomPropsChange() {
+        if (this.collection) {
+          this.debounceGet();
+        }
+      },
+      initDefVal() {
+        let defValue = "";
+        if ((this.valueCom || this.valueCom === 0) && !this.isDisabled(this.valueCom)) {
+          defValue = this.valueCom;
+        } else {
+          let strogeValue;
+          if (this.collection) {
+            strogeValue = this.getCache();
+          }
+          if (strogeValue || strogeValue === 0) {
+            defValue = strogeValue;
+          } else {
+            let defItem = "";
+            if (this.defItem > 0 && this.defItem <= this.mixinDatacomResData.length) {
+              defItem = this.mixinDatacomResData[this.defItem - 1].value;
+            }
+            defValue = defItem;
+          }
+          if (defValue || defValue === 0) {
+            this.emit(defValue);
+          }
+        }
+        const def = this.mixinDatacomResData.find((item) => item.value === defValue);
+        this.current = def ? this.formatItemName(def) : "";
+      },
+      /**
+       * @param {[String, Number]} value
+       * 判断用户给的 value 是否同时为禁用状态
+       */
+      isDisabled(value) {
+        let isDisabled = false;
+        this.mixinDatacomResData.forEach((item) => {
+          if (item.value === value) {
+            isDisabled = item.disable;
+          }
+        });
+        return isDisabled;
+      },
+      clearVal() {
+        this.emit("");
+        if (this.collection) {
+          this.removeCache();
+        }
+      },
+      change(item) {
+        if (!item.disable) {
+          this.showSelector = false;
+          this.current = this.formatItemName(item);
+          this.emit(item.value);
+        }
+      },
+      emit(val) {
+        this.$emit("input", val);
+        this.$emit("update:modelValue", val);
+        this.$emit("change", val);
+        if (this.collection) {
+          this.setCache(val);
+        }
+      },
+      toggleSelector() {
+        if (this.disabled) {
+          return;
+        }
+        this.showSelector = !this.showSelector;
+      },
+      formatItemName(item) {
+        let {
+          text,
+          value,
+          channel_code
+        } = item;
+        channel_code = channel_code ? `(${channel_code})` : "";
+        if (this.format) {
+          let str = "";
+          str = this.format;
+          for (let key in item) {
+            str = str.replace(new RegExp(`{${key}}`, "g"), item[key]);
+          }
+          return str;
+        } else {
+          return this.collection.indexOf("app-list") > 0 ? `${text}(${value})` : text ? text : `未命名${channel_code}`;
+        }
+      },
+      // 获取当前加载的数据
+      getLoadData() {
+        return this.mixinDatacomResData;
+      },
+      // 获取当前缓存key
+      getCurrentCacheKey() {
+        return this.collection;
+      },
+      // 获取缓存
+      getCache(name = this.getCurrentCacheKey()) {
+        let cacheData = uni.getStorageSync(this.cacheKey) || {};
+        return cacheData[name];
+      },
+      // 设置缓存
+      setCache(value, name = this.getCurrentCacheKey()) {
+        let cacheData = uni.getStorageSync(this.cacheKey) || {};
+        cacheData[name] = value;
+        uni.setStorageSync(this.cacheKey, cacheData);
+      },
+      // 删除缓存
+      removeCache(name = this.getCurrentCacheKey()) {
+        let cacheData = uni.getStorageSync(this.cacheKey) || {};
+        delete cacheData[name];
+        uni.setStorageSync(this.cacheKey, cacheData);
+      }
+    }
+  };
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$2);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-stat__select" }, [
+      $props.label ? (vue.openBlock(), vue.createElementBlock(
+        "span",
+        {
+          key: 0,
+          class: "uni-label-text hide-on-phone"
+        },
+        vue.toDisplayString($props.label + "："),
+        1
+        /* TEXT */
+      )) : vue.createCommentVNode("v-if", true),
+      vue.createElementVNode(
+        "view",
+        {
+          class: vue.normalizeClass(["uni-stat-box", { "uni-stat__actived": $data.current }])
+        },
+        [
+          vue.createElementVNode(
+            "view",
+            {
+              class: vue.normalizeClass(["uni-select", { "uni-select--disabled": $props.disabled }])
+            },
+            [
+              vue.createElementVNode("view", {
+                class: "uni-select__input-box",
+                onClick: _cache[1] || (_cache[1] = (...args) => $options.toggleSelector && $options.toggleSelector(...args))
+              }, [
+                $data.current ? (vue.openBlock(), vue.createElementBlock(
+                  "view",
+                  {
+                    key: 0,
+                    class: "uni-select__input-text"
+                  },
+                  vue.toDisplayString($options.textShow),
+                  1
+                  /* TEXT */
+                )) : (vue.openBlock(), vue.createElementBlock(
+                  "view",
+                  {
+                    key: 1,
+                    class: "uni-select__input-text uni-select__input-placeholder"
+                  },
+                  vue.toDisplayString($options.typePlaceholder),
+                  1
+                  /* TEXT */
+                )),
+                $data.current && $props.clear && !$props.disabled ? (vue.openBlock(), vue.createElementBlock("view", {
+                  key: 2,
+                  onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => $options.clearVal && $options.clearVal(...args), ["stop"]))
+                }, [
+                  vue.createVNode(_component_uni_icons, {
+                    type: "clear",
+                    color: "#c0c4cc",
+                    size: "24"
+                  })
+                ])) : (vue.openBlock(), vue.createElementBlock("view", { key: 3 }, [
+                  vue.createVNode(_component_uni_icons, {
+                    type: $data.showSelector ? "top" : "bottom",
+                    size: "14",
+                    color: "#999"
+                  }, null, 8, ["type"])
+                ]))
+              ]),
+              $data.showSelector ? (vue.openBlock(), vue.createElementBlock("view", {
+                key: 0,
+                class: "uni-select--mask",
+                onClick: _cache[2] || (_cache[2] = (...args) => $options.toggleSelector && $options.toggleSelector(...args))
+              })) : vue.createCommentVNode("v-if", true),
+              $data.showSelector ? (vue.openBlock(), vue.createElementBlock(
+                "view",
+                {
+                  key: 1,
+                  class: "uni-select__selector",
+                  style: vue.normalizeStyle($options.getOffsetByPlacement)
+                },
+                [
+                  vue.createElementVNode(
+                    "view",
+                    {
+                      class: vue.normalizeClass($props.placement == "bottom" ? "uni-popper__arrow_bottom" : "uni-popper__arrow_top")
+                    },
+                    null,
+                    2
+                    /* CLASS */
+                  ),
+                  vue.createElementVNode("scroll-view", {
+                    "scroll-y": "true",
+                    class: "uni-select__selector-scroll"
+                  }, [
+                    $data.mixinDatacomResData.length === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
+                      key: 0,
+                      class: "uni-select__selector-empty"
+                    }, [
+                      vue.createElementVNode(
+                        "text",
+                        null,
+                        vue.toDisplayString($props.emptyTips),
+                        1
+                        /* TEXT */
+                      )
+                    ])) : (vue.openBlock(true), vue.createElementBlock(
+                      vue.Fragment,
+                      { key: 1 },
+                      vue.renderList($data.mixinDatacomResData, (item, index) => {
+                        return vue.openBlock(), vue.createElementBlock("view", {
+                          class: "uni-select__selector-item",
+                          key: index,
+                          onClick: ($event) => $options.change(item)
+                        }, [
+                          vue.createElementVNode(
+                            "text",
+                            {
+                              class: vue.normalizeClass({ "uni-select__selector__disabled": item.disable })
+                            },
+                            vue.toDisplayString($options.formatItemName(item)),
+                            3
+                            /* TEXT, CLASS */
+                          )
+                        ], 8, ["onClick"]);
+                      }),
+                      128
+                      /* KEYED_FRAGMENT */
+                    ))
+                  ])
+                ],
+                4
+                /* STYLE */
+              )) : vue.createCommentVNode("v-if", true)
+            ],
+            2
+            /* CLASS */
+          )
+        ],
+        2
+        /* CLASS */
+      )
+    ]);
+  }
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-123e8af9"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
+  const _sfc_main$d = {
     props: {
       activePage: {
         type: Number,
@@ -5184,7 +5563,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
       (vue.openBlock(true), vue.createElementBlock(
         vue.Fragment,
@@ -5220,8 +5599,8 @@ ${i3}
       ))
     ]);
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
-  const _sfc_main$b = {
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
+  const _sfc_main$c = {
     components: {
       CustomTabsBar: __easycom_2
     },
@@ -5255,8 +5634,24 @@ ${i3}
         scrollText: ["哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈", "嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
         scrollHeight: 40,
         // 滚动区域的高度，根据实际情况调整
-        scrollTimer: null
+        scrollTimer: null,
         // 定时器
+        valueSe: 1,
+        range: [
+          { value: 0, text: "按热度" },
+          { value: 1, text: "按发布时间" }
+        ],
+        number: 1,
+        cnumber: 12e3,
+        classitems: ["全部分类", "分类1", "分类2", "分类3", "分类4", "分类5", "分类6", "分类7", "分类8", "分类9"],
+        isSticky: false,
+        topThreshold: 0,
+        // 根据实际布局调整
+        isLiked: false,
+        // 是否已点赞的状态
+        likeImage: "../../static/images/forum_8.png",
+        // 初始未点赞时的图片
+        likeText: "点赞"
       };
     },
     mounted() {
@@ -5274,11 +5669,64 @@ ${i3}
       },
       onScrollToLower() {
         this.$refs.scrollView.scrollTo(0, 0);
+      },
+      changeSe(e2) {
+        formatAppLog("log", "at pages/forum/forum-index.vue:382", "e:", e2);
+      },
+      // 点击查看放大图片
+      previewImage() {
+        uni.previewImage({
+          urls: ["http://www.moehosp.com/Public/home/images/about/about_team.png", "http://www.moehosp.com/Public/home/images/about/about_team.png", "http://www.moehosp.com/Public/home/images/about/about_team.png"],
+          // 可以放置多个图片URL，用于滑动查看
+          current: "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          // 当前显示的图片URL
+        });
+      },
+      // 帖子点赞
+      toggleLike() {
+        this.isLiked = !this.isLiked;
+        this.number += this.isLiked ? 1 : -1;
+        this.likeImage = this.isLiked ? "../../static/images/forum_9.png" : "../../static/images/forum_8.png";
+        this.likeText = this.isLiked ? "已点赞" : "点赞";
+      }
+    },
+    computed: {
+      formattedNumber() {
+        if (this.number >= 1e5) {
+          return (this.number / 1e4).toFixed(0) + "w";
+        } else if (this.number >= 1e4) {
+          return (this.number / 1e4).toFixed(1) + "w";
+        } else {
+          return this.number;
+        }
+      },
+      commentNumber() {
+        if (this.cnumber >= 1e5) {
+          return (this.cnumber / 1e4).toFixed(0) + "w";
+        } else if (this.cnumber >= 1e4) {
+          return (this.cnumber / 1e4).toFixed(1) + "w";
+        } else {
+          return this.cnumber;
+        }
+      }
+    },
+    onReady() {
+      const query = uni.createSelectorQuery();
+      query.select(".forumClass").boundingClientRect((rect) => {
+        this.topThreshold = rect.top;
+      }).exec();
+    },
+    onPageScroll(e2) {
+      if (e2.scrollTop >= this.topThreshold) {
+        this.isSticky = true;
+      } else {
+        this.isSticky = false;
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$1);
+    const _component_uni_data_select = resolveEasycom(vue.resolveDynamicComponent("uni-data-select"), __easycom_1$1);
     const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
     return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
       vue.createElementVNode("view", { class: "indexTopPosition" }, [
@@ -5467,38 +5915,446 @@ ${i3}
           512
           /* NEED_PATCH */
         ),
-        vue.createElementVNode("view", { class: "forumClass" }, [
-          vue.createElementVNode("scroll-view", {
-            class: "scroll-view",
-            "scroll-x": "true"
-          }, [
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类"),
-              vue.createElementVNode("view", { class: "forumClassLiLine" })
+        vue.createElementVNode(
+          "view",
+          {
+            class: vue.normalizeClass({ "forumClass": true, "sticky": $data.isSticky })
+          },
+          [
+            vue.createElementVNode("scroll-view", {
+              class: "scroll-view",
+              "scroll-x": "true"
+            }, [
+              vue.createCommentVNode(" 这里是滚动的分类条目 "),
+              (vue.openBlock(true), vue.createElementBlock(
+                vue.Fragment,
+                null,
+                vue.renderList($data.classitems, (item, index) => {
+                  return vue.openBlock(), vue.createElementBlock("view", {
+                    class: "forumClassLi",
+                    key: index
+                  }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      vue.toDisplayString(item),
+                      1
+                      /* TEXT */
+                    ),
+                    index === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
+                      key: 0,
+                      class: "forumClassLiLine"
+                    })) : vue.createCommentVNode("v-if", true)
+                  ]);
+                }),
+                128
+                /* KEYED_FRAGMENT */
+              ))
+            ])
+          ],
+          2
+          /* CLASS */
+        ),
+        vue.createCommentVNode(" 帖子 "),
+        vue.createElementVNode("view", { class: "forumSelect" }, [
+          vue.createElementVNode("view", { class: "forumSelectTit" }, "默认筛选"),
+          vue.createVNode(_component_uni_data_select, {
+            class: "forumSelectC",
+            modelValue: $data.valueSe,
+            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.valueSe = $event),
+            localdata: $data.range,
+            onChange: $options.changeSe
+          }, null, 8, ["modelValue", "localdata", "onChange"])
+        ]),
+        vue.createElementVNode("view", { class: "forumSelectUl" }, [
+          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              class: "forumSelectUlLiTop"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumSelectUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+              ]),
+              vue.createElementVNode("image", {
+                class: "forumSelectUlLiTopLeftUp",
+                src: "/static/images/forum_4.png",
+                mode: "widthFix"
+              })
             ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
+            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiConTxt"
+              }, [
+                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                vue.createElementVNode("br"),
+                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                vue.createElementVNode("view", {
+                  onClick: _cache[2] || (_cache[2] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConBotComment"
+                }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_7.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                    1
+                    /* TEXT */
+                  )
+                ]),
+                vue.createElementVNode("view", {
+                  class: "forumSelectUlLiConBotGood",
+                  onClick: _cache[3] || (_cache[3] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+                }, [
+                  vue.createElementVNode(
+                    "text",
+                    {
+                      class: vue.normalizeClass({ "liked-text": $data.isLiked })
+                    },
+                    vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
+                    3
+                    /* TEXT, CLASS */
+                  ),
+                  vue.createElementVNode("image", {
+                    src: $data.likeImage,
+                    mode: "widthFix"
+                  }, null, 8, ["src"])
+                ])
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              class: "forumSelectUlLiTop"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumSelectUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+              ]),
+              vue.createElementVNode("image", {
+                class: "forumSelectUlLiTopLeftUp",
+                src: "/static/images/forum_6.png",
+                mode: "widthFix"
+              })
             ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
+            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiConTxt"
+              }, [
+                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                vue.createElementVNode("br"),
+                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                vue.createElementVNode("view", {
+                  onClick: _cache[4] || (_cache[4] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConBotComment"
+                }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_7.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                    1
+                    /* TEXT */
+                  )
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_8.png",
+                    mode: "widthFix"
+                  })
+                ])
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              class: "forumSelectUlLiTop"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumSelectUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+              ])
             ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
+            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiConTxt"
+              }, [
+                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                vue.createElementVNode("br"),
+                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                vue.createElementVNode("view", {
+                  onClick: _cache[5] || (_cache[5] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConBotComment"
+                }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_7.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                    1
+                    /* TEXT */
+                  )
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_8.png",
+                    mode: "widthFix"
+                  })
+                ])
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              class: "forumSelectUlLiTop"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumSelectUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+              ])
             ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
+            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiConTxt"
+              }, [
+                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                vue.createElementVNode("br"),
+                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                vue.createElementVNode("view", {
+                  onClick: _cache[6] || (_cache[6] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConBotComment"
+                }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_7.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                    1
+                    /* TEXT */
+                  )
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_8.png",
+                    mode: "widthFix"
+                  })
+                ])
+              ])
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              class: "forumSelectUlLiTop"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumSelectUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                  vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+              ])
             ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
-            ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
-            ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
-            ]),
-            vue.createElementVNode("view", { class: "forumClassLi" }, [
-              vue.createElementVNode("text", null, "全部分类")
+            vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiConTxt"
+              }, [
+                vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                vue.createElementVNode("br"),
+                vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                vue.createElementVNode("view", {
+                  onClick: _cache[7] || (_cache[7] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                }),
+                vue.createElementVNode("view", {
+                  style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                  class: "forumSelectUlLiConImgBack"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConBotComment"
+                }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_7.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                    1
+                    /* TEXT */
+                  )
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                  vue.createElementVNode(
+                    "text",
+                    null,
+                    "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                    1
+                    /* TEXT */
+                  ),
+                  vue.createElementVNode("image", {
+                    src: "/static/images/forum_8.png",
+                    mode: "widthFix"
+                  })
+                ])
+              ])
             ])
           ])
         ])
@@ -5507,7 +6363,21 @@ ${i3}
       vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
     ]);
   }
-  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const _sfc_main$b = {};
+  function _sfc_render$a(_ctx, _cache) {
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 朋友圈-发布 "),
+        vue.createElementVNode("view", { class: "" })
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
   const _sfc_main$a = {
     name: "UniSwiperDot",
     emits: ["clickItem"],
@@ -7550,8 +8420,8 @@ ${i3}
     return vue.openBlock(), vue.createElementBlock("view");
   }
   const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
-  __definePage("pages/forum/forum-upload", PagesForumForumUpload);
   __definePage("pages/forum/forum-index", PagesForumForumIndex);
+  __definePage("pages/forum/forum-upload", PagesForumForumUpload);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/Merchant/signin", PagesMerchantSignin);
   __definePage("pages/login/login", PagesLoginLogin);

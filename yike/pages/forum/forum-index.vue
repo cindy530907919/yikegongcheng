@@ -12,7 +12,7 @@
 				<!-- 搜索 -->
 				<view class="indexTopPositionConSearchInput">
 					<image src="../../static/images/index_6.png" mode="widthFix"></image>
-					<input type="text" placeholder="请输入商品名称" />
+					<input type="text" placeholder="请输入搜索关键字" />
 				</view>
 				<!-- 消息 -->
 				<view class="indexTopPositionConSearchMesR">
@@ -31,7 +31,7 @@
 			</view>
 	  	</view>
 		<view class="fourmRecommendBot">
-			<view class="fourmRecommendBotLi">
+			<navigator hover-class="none" url="/pages/forum/forum-list" class="fourmRecommendBotLi">
 				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
 				<view class="fourmRecommendBotLiTxt">
 					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
@@ -40,8 +40,8 @@
 						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
 					</view>
 				</view>
-			</view>
-			<view class="fourmRecommendBotLi">
+			</navigator>
+			<navigator hover-class="none" url="/pages/forum/forum-list" class="fourmRecommendBotLi">
 				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
 				<view class="fourmRecommendBotLiTxt">
 					<text class="fourmRecommendBotLiTxt_t1">失信老赖</text>
@@ -50,7 +50,7 @@
 						<text class="fourmRecommendBotLiTxt_t3">HOT</text>
 					</view>
 				</view>
-			</view>
+			</navigator>
 			
 			<view class="fourmRecommendBotLi">
 				<image src="../../static/images/forum_2.png" class="fourmRecommendBotLiImg"></image>
@@ -139,7 +139,7 @@
 					<image class="forumSelectUlLiTopLeftUp" src="../../static/images/forum_4.png" mode="widthFix"></image>
 				</navigator>
 				<view class="forumSelectUlLiCon">
-					<navigator hover-class="none" class="forumSelectUlLiConTxt">
+					<navigator url="/pages/forum/forum-con" hover-class="none" class="forumSelectUlLiConTxt">
 						内容文字内容文字内容文字内容文字~~~ <br/>						哈哈哈哈~~~~~
 					</navigator>
 					<view class="forumSelectUlLiConImg">
@@ -148,7 +148,7 @@
 						<view style="background: url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center;" class="forumSelectUlLiConImgBack"></view>
 					</view>
 					<view class="forumSelectUlLiConBot">
-						<navigator hover-class="none" class="forumSelectUlLiConBotComment">
+						<navigator url="/pages/forum/forum-con" hover-class="none" class="forumSelectUlLiConBotComment">
 							<image src="../../static/images/forum_7.png" mode="widthFix"></image>
 							<text>评论({{ commentNumber }})</text>
 						</navigator>
@@ -175,7 +175,7 @@
 					<image class="forumSelectUlLiTopLeftUp" src="../../static/images/forum_6.png" mode="widthFix"></image>
 				</navigator>
 				<view class="forumSelectUlLiCon">
-					<navigator hover-class="none" class="forumSelectUlLiConTxt">
+					<navigator url="/pages/forum/forum-con" hover-class="none" class="forumSelectUlLiConTxt">
 						内容文字内容文字内容文字内容文字~~~ <br/>
 						哈哈哈哈~~~~~
 					</navigator>
@@ -185,7 +185,7 @@
 						<view style="background: url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center;" class="forumSelectUlLiConImgBack"></view>
 					</view>
 					<view class="forumSelectUlLiConBot">
-						<navigator hover-class="none" class="forumSelectUlLiConBotComment">
+						<navigator url="/pages/forum/forum-con" hover-class="none" class="forumSelectUlLiConBotComment">
 							<image src="../../static/images/forum_7.png" mode="widthFix"></image>
 							<text>评论({{ commentNumber }})</text>
 						</navigator>

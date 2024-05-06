@@ -38,275 +38,54 @@ if (uni.restoreGlobal) {
     }
     return target;
   };
-  const _sfc_main$j = {
+  const _sfc_main$n = {
     data() {
       return {
-        isLiked: false,
-        // 是否已点赞的状态
-        likeImage: "../../static/images/forum_8.png",
-        // 初始未点赞时的图片
-        likeText: "点赞",
-        number: 1
+        images: [
+          { url: "/static/images/goods_1.png" },
+          // 替换为你的图片路径
+          { url: "/static/images/goods_1.png" },
+          { url: "/static/images/goods_1.png" }
+        ]
       };
-    },
-    methods: {
-      // 点击查看放大图片
-      previewImage() {
-        uni.previewImage({
-          urls: [
-            "http://www.moehosp.com/Public/home/images/about/about_team.png",
-            "http://www.moehosp.com/Public/home/images/about/about_team.png",
-            "http://www.moehosp.com/Public/home/images/about/about_team.png"
-          ],
-          // 可以放置多个图片URL，用于滑动查看
-          current: "http://www.moehosp.com/Public/home/images/about/about_team.png"
-          // 当前显示的图片URL
-        });
-      },
-      // 帖子点赞
-      toggleLike() {
-        this.isLiked = !this.isLiked;
-        this.number += this.isLiked ? 1 : -1;
-        this.likeImage = this.isLiked ? "../../static/images/forum_9.png" : "../../static/images/forum_8.png";
-        this.likeText = this.isLiked ? "已点赞" : "点赞";
-      }
-    },
-    computed: {
-      formattedNumber() {
-        if (this.number >= 1e5) {
-          return (this.number / 1e4).toFixed(0) + "w";
-        } else if (this.number >= 1e4) {
-          return (this.number / 1e4).toFixed(1) + "w";
-        } else {
-          return this.number;
-        }
-      }
     }
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
-      vue.createElementVNode("view", { class: "forumPostsTop" }, [
-        vue.createElementVNode("image", {
-          src: "/static/images/forum_2.png",
-          class: "forumSelectUlLiTopImg"
-        }),
-        vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
-          vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
-            vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞"),
-            vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
-            vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
-          ]),
-          vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
-        ]),
-        vue.createElementVNode("view", { class: "forumPoststxt" }, [
-          vue.createElementVNode("view", { class: "forumPoststxt_t1" }, "帖子标题帖子标题帖子标题帖子标题 "),
-          vue.createElementVNode("view", { class: "forumPoststxt_t2" }, " 发布内容发布内容发布内容发布内容发布内容发内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容欢迎大家批斗留言！！ "),
-          vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
-            vue.createElementVNode("view", {
-              onClick: _cache[0] || (_cache[0] = (...args) => $options.previewImage && $options.previewImage(...args)),
-              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-              class: "forumSelectUlLiConImgBack"
-            }),
-            vue.createElementVNode("view", {
-              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-              class: "forumSelectUlLiConImgBack"
-            }),
-            vue.createElementVNode("view", {
-              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
-              class: "forumSelectUlLiConImgBack"
-            })
-          ]),
-          vue.createElementVNode("view", {
-            class: "forumSelectUlLiConBotGood",
-            onClick: _cache[1] || (_cache[1] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 商品详情 "),
+        vue.createElementVNode("view", { class: "swiper-container" }, [
+          vue.createElementVNode("swiper", {
+            class: "swiper-box",
+            "indicator-dots": "true",
+            autoplay: "true",
+            interval: "3000",
+            circular: "true"
           }, [
-            vue.createElementVNode("image", {
-              src: $data.likeImage,
-              mode: "widthFix"
-            }, null, 8, ["src"]),
-            vue.createElementVNode(
-              "text",
-              {
-                class: vue.normalizeClass({ "liked-text": $data.isLiked })
-              },
-              vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
-              3
-              /* TEXT, CLASS */
-            )
+            (vue.openBlock(true), vue.createElementBlock(
+              vue.Fragment,
+              null,
+              vue.renderList($data.images, (image, index) => {
+                return vue.openBlock(), vue.createElementBlock("swiper-item", { key: index }, [
+                  vue.createElementVNode("image", {
+                    class: "swiper-image",
+                    src: image.url
+                  }, null, 8, ["src"])
+                ]);
+              }),
+              128
+              /* KEYED_FRAGMENT */
+            ))
           ])
         ])
-      ]),
-      vue.createElementVNode("view", { class: "forumPostsBot" }, [
-        vue.createElementVNode("view", { class: "forumPostsBotTit" }, [
-          vue.createElementVNode("view", { class: "forumPostsBotT_1" }, "全部回复"),
-          vue.createElementVNode("view", { class: "forumPostsBotT_2" }, [
-            vue.createElementVNode("text", { class: "forumPostsBotT_2On" }, "热门"),
-            vue.createElementVNode("text", null, "正序")
-          ])
-        ]),
-        vue.createElementVNode("view", { class: "forumPostsBotUl" }, [
-          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumPostsBotUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "自由的宝飞飞飞"),
-                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
-                  vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTabLand" }, " 楼主 "),
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 "),
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 ")
-                ])
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
-                vue.createElementVNode("image", {
-                  src: "/static/images/forum_8.png",
-                  mode: "widthFix"
-                }),
-                vue.createElementVNode("text", null, "2232")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
-            ]),
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiComment" }, [
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, [
-                  vue.createTextVNode(" 你喜欢的唐唐 "),
-                  vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTabLand" }, "楼主"),
-                  vue.createTextVNode("： ")
-                ]),
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t2" }, " 什么啊 ")
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, " 无语了：回复 你喜欢的唐唐 "),
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiC ommentLi_t2" }, " 什么啊什么啊？ ")
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, " 你喜欢的唐唐： "),
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t2" }, " 什么啊 ")
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLiMore" }, "查看全部回复 >>")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumPostsBotUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
-                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 "),
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 ")
-                ])
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
-                vue.createElementVNode("image", {
-                  src: "/static/images/forum_8.png",
-                  mode: "widthFix"
-                }),
-                vue.createElementVNode("text", null, "2232")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumPostsBotUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
-                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 "),
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 ")
-                ])
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
-                vue.createElementVNode("image", {
-                  src: "/static/images/forum_8.png",
-                  mode: "widthFix"
-                }),
-                vue.createElementVNode("text", null, "2232")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/forum_2.png",
-                class: "forumPostsBotUlLiTopImg"
-              }),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
-                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
-                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 "),
-                  vue.createElementVNode("view", {
-                    style: { "background": "#ffdb00" },
-                    class: "forumPostsBotUlLiTopLeftTabLi"
-                  }, " 水电 ")
-                ])
-              ]),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
-                vue.createElementVNode("image", {
-                  src: "/static/images/forum_8.png",
-                  mode: "widthFix"
-                }),
-                vue.createElementVNode("text", null, "2232")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
-              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
-            ])
-          ])
-        ])
-      ]),
-      vue.createCommentVNode(" 底部回复 "),
-      vue.createElementVNode("view", { class: "forumPostsReply" }, [
-        vue.createElementVNode("input", {
-          class: "forumPostsReplyInt",
-          type: "text",
-          placeholder: "发布评论，说点好听的"
-        }),
-        vue.createElementVNode("view", { class: "forumPostsReplySub" }, "发布")
-      ])
-    ]);
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
   }
-  const PagesForumForumCon = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-con.vue"]]);
+  const PagesGoodsGoodsContent = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__file", "E:/yikegongcheng/yike/pages/goods/goods-content.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -317,9 +96,1222 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom2) {
     return typeof component === "string" ? easycom2 : component;
   }
+  const isObject = (val) => val !== null && typeof val === "object";
+  const defaultDelimiters = ["{", "}"];
+  class BaseFormatter {
+    constructor() {
+      this._caches = /* @__PURE__ */ Object.create(null);
+    }
+    interpolate(message, values, delimiters = defaultDelimiters) {
+      if (!values) {
+        return [message];
+      }
+      let tokens = this._caches[message];
+      if (!tokens) {
+        tokens = parse(message, delimiters);
+        this._caches[message] = tokens;
+      }
+      return compile(tokens, values);
+    }
+  }
+  const RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
+  const RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
+  function parse(format, [startDelimiter, endDelimiter]) {
+    const tokens = [];
+    let position = 0;
+    let text = "";
+    while (position < format.length) {
+      let char = format[position++];
+      if (char === startDelimiter) {
+        if (text) {
+          tokens.push({ type: "text", value: text });
+        }
+        text = "";
+        let sub = "";
+        char = format[position++];
+        while (char !== void 0 && char !== endDelimiter) {
+          sub += char;
+          char = format[position++];
+        }
+        const isClosed = char === endDelimiter;
+        const type = RE_TOKEN_LIST_VALUE.test(sub) ? "list" : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? "named" : "unknown";
+        tokens.push({ value: sub, type });
+      } else {
+        text += char;
+      }
+    }
+    text && tokens.push({ type: "text", value: text });
+    return tokens;
+  }
+  function compile(tokens, values) {
+    const compiled = [];
+    let index = 0;
+    const mode = Array.isArray(values) ? "list" : isObject(values) ? "named" : "unknown";
+    if (mode === "unknown") {
+      return compiled;
+    }
+    while (index < tokens.length) {
+      const token = tokens[index];
+      switch (token.type) {
+        case "text":
+          compiled.push(token.value);
+          break;
+        case "list":
+          compiled.push(values[parseInt(token.value, 10)]);
+          break;
+        case "named":
+          if (mode === "named") {
+            compiled.push(values[token.value]);
+          } else {
+            {
+              console.warn(`Type of token '${token.type}' and format of value '${mode}' don't match!`);
+            }
+          }
+          break;
+        case "unknown":
+          {
+            console.warn(`Detect 'unknown' type of token!`);
+          }
+          break;
+      }
+      index++;
+    }
+    return compiled;
+  }
+  const LOCALE_ZH_HANS = "zh-Hans";
+  const LOCALE_ZH_HANT = "zh-Hant";
+  const LOCALE_EN = "en";
+  const LOCALE_FR = "fr";
+  const LOCALE_ES = "es";
+  const hasOwnProperty = Object.prototype.hasOwnProperty;
+  const hasOwn = (val, key) => hasOwnProperty.call(val, key);
+  const defaultFormatter = new BaseFormatter();
+  function include(str, parts) {
+    return !!parts.find((part) => str.indexOf(part) !== -1);
+  }
+  function startsWith(str, parts) {
+    return parts.find((part) => str.indexOf(part) === 0);
+  }
+  function normalizeLocale(locale, messages2) {
+    if (!locale) {
+      return;
+    }
+    locale = locale.trim().replace(/_/g, "-");
+    if (messages2 && messages2[locale]) {
+      return locale;
+    }
+    locale = locale.toLowerCase();
+    if (locale === "chinese") {
+      return LOCALE_ZH_HANS;
+    }
+    if (locale.indexOf("zh") === 0) {
+      if (locale.indexOf("-hans") > -1) {
+        return LOCALE_ZH_HANS;
+      }
+      if (locale.indexOf("-hant") > -1) {
+        return LOCALE_ZH_HANT;
+      }
+      if (include(locale, ["-tw", "-hk", "-mo", "-cht"])) {
+        return LOCALE_ZH_HANT;
+      }
+      return LOCALE_ZH_HANS;
+    }
+    let locales = [LOCALE_EN, LOCALE_FR, LOCALE_ES];
+    if (messages2 && Object.keys(messages2).length > 0) {
+      locales = Object.keys(messages2);
+    }
+    const lang = startsWith(locale, locales);
+    if (lang) {
+      return lang;
+    }
+  }
+  class I18n {
+    constructor({ locale, fallbackLocale, messages: messages2, watcher, formater: formater2 }) {
+      this.locale = LOCALE_EN;
+      this.fallbackLocale = LOCALE_EN;
+      this.message = {};
+      this.messages = {};
+      this.watchers = [];
+      if (fallbackLocale) {
+        this.fallbackLocale = fallbackLocale;
+      }
+      this.formater = formater2 || defaultFormatter;
+      this.messages = messages2 || {};
+      this.setLocale(locale || LOCALE_EN);
+      if (watcher) {
+        this.watchLocale(watcher);
+      }
+    }
+    setLocale(locale) {
+      const oldLocale = this.locale;
+      this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
+      if (!this.messages[this.locale]) {
+        this.messages[this.locale] = {};
+      }
+      this.message = this.messages[this.locale];
+      if (oldLocale !== this.locale) {
+        this.watchers.forEach((watcher) => {
+          watcher(this.locale, oldLocale);
+        });
+      }
+    }
+    getLocale() {
+      return this.locale;
+    }
+    watchLocale(fn) {
+      const index = this.watchers.push(fn) - 1;
+      return () => {
+        this.watchers.splice(index, 1);
+      };
+    }
+    add(locale, message, override = true) {
+      const curMessages = this.messages[locale];
+      if (curMessages) {
+        if (override) {
+          Object.assign(curMessages, message);
+        } else {
+          Object.keys(message).forEach((key) => {
+            if (!hasOwn(curMessages, key)) {
+              curMessages[key] = message[key];
+            }
+          });
+        }
+      } else {
+        this.messages[locale] = message;
+      }
+    }
+    f(message, values, delimiters) {
+      return this.formater.interpolate(message, values, delimiters).join("");
+    }
+    t(key, locale, values) {
+      let message = this.message;
+      if (typeof locale === "string") {
+        locale = normalizeLocale(locale, this.messages);
+        locale && (message = this.messages[locale]);
+      } else {
+        values = locale;
+      }
+      if (!hasOwn(message, key)) {
+        console.warn(`Cannot translate the value of keypath ${key}. Use the value of keypath as default.`);
+        return key;
+      }
+      return this.formater.interpolate(message[key], values).join("");
+    }
+  }
+  function watchAppLocale(appVm, i18n) {
+    if (appVm.$watchLocale) {
+      appVm.$watchLocale((newLocale) => {
+        i18n.setLocale(newLocale);
+      });
+    } else {
+      appVm.$watch(() => appVm.$locale, (newLocale) => {
+        i18n.setLocale(newLocale);
+      });
+    }
+  }
+  function getDefaultLocale() {
+    if (typeof uni !== "undefined" && uni.getLocale) {
+      return uni.getLocale();
+    }
+    if (typeof global !== "undefined" && global.getLocale) {
+      return global.getLocale();
+    }
+    return LOCALE_EN;
+  }
+  function initVueI18n(locale, messages2 = {}, fallbackLocale, watcher) {
+    if (typeof locale !== "string") {
+      [locale, messages2] = [
+        messages2,
+        locale
+      ];
+    }
+    if (typeof locale !== "string") {
+      locale = getDefaultLocale();
+    }
+    if (typeof fallbackLocale !== "string") {
+      fallbackLocale = typeof __uniConfig !== "undefined" && __uniConfig.fallbackLocale || LOCALE_EN;
+    }
+    const i18n = new I18n({
+      locale,
+      fallbackLocale,
+      messages: messages2,
+      watcher
+    });
+    let t2 = (key, values) => {
+      if (typeof getApp !== "function") {
+        t2 = function(key2, values2) {
+          return i18n.t(key2, values2);
+        };
+      } else {
+        let isWatchedAppLocale = false;
+        t2 = function(key2, values2) {
+          const appVm = getApp().$vm;
+          if (appVm) {
+            appVm.$locale;
+            if (!isWatchedAppLocale) {
+              isWatchedAppLocale = true;
+              watchAppLocale(appVm, i18n);
+            }
+          }
+          return i18n.t(key2, values2);
+        };
+      }
+      return t2(key, values);
+    };
+    return {
+      i18n,
+      f(message, values, delimiters) {
+        return i18n.f(message, values, delimiters);
+      },
+      t(key, values) {
+        return t2(key, values);
+      },
+      add(locale2, message, override = true) {
+        return i18n.add(locale2, message, override);
+      },
+      watch(fn) {
+        return i18n.watchLocale(fn);
+      },
+      getLocale() {
+        return i18n.getLocale();
+      },
+      setLocale(newLocale) {
+        return i18n.setLocale(newLocale);
+      }
+    };
+  }
+  const en = {
+    "uni-load-more.contentdown": "Pull up to show more",
+    "uni-load-more.contentrefresh": "loading...",
+    "uni-load-more.contentnomore": "No more data"
+  };
+  const zhHans = {
+    "uni-load-more.contentdown": "上拉显示更多",
+    "uni-load-more.contentrefresh": "正在加载...",
+    "uni-load-more.contentnomore": "没有更多数据了"
+  };
+  const zhHant = {
+    "uni-load-more.contentdown": "上拉顯示更多",
+    "uni-load-more.contentrefresh": "正在加載...",
+    "uni-load-more.contentnomore": "沒有更多數據了"
+  };
+  const messages = {
+    en,
+    "zh-Hans": zhHans,
+    "zh-Hant": zhHant
+  };
+  let platform;
+  setTimeout(() => {
+    platform = uni.getSystemInfoSync().platform;
+  }, 16);
+  const {
+    t: t$1
+  } = initVueI18n(messages);
+  const _sfc_main$m = {
+    name: "UniLoadMore",
+    emits: ["clickLoadMore"],
+    props: {
+      status: {
+        // 上拉的状态：more-loading前；loading-loading中；noMore-没有更多了
+        type: String,
+        default: "more"
+      },
+      showIcon: {
+        type: Boolean,
+        default: true
+      },
+      iconType: {
+        type: String,
+        default: "auto"
+      },
+      iconSize: {
+        type: Number,
+        default: 24
+      },
+      color: {
+        type: String,
+        default: "#777777"
+      },
+      contentText: {
+        type: Object,
+        default() {
+          return {
+            contentdown: "",
+            contentrefresh: "",
+            contentnomore: ""
+          };
+        }
+      },
+      showText: {
+        type: Boolean,
+        default: true
+      }
+    },
+    data() {
+      return {
+        webviewHide: false,
+        platform,
+        imgBase64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzlBMzU3OTlEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzlBMzU3OUFEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOUEzNTc5N0Q5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOUEzNTc5OEQ5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pt+ALSwAAA6CSURBVHja1FsLkFZVHb98LM+F5bHL8khA1iSeiyQBCRM+YGqKUnnJTDLGI0BGZlKDIU2MMglUiDApEZvSsZnQtBRJtKwQNKQMFYeRDR10WOLd8ljYXdh+v8v5fR3Od+797t1dnOnO/Ofce77z+J//+b/P+ZqtXbs2sJ9MJhNUV1cHJ06cCJo3bx7EPc2aNcvpy7pWrVoF+/fvDyoqKoI2bdoE9fX1F7TjN8a+EXBn/fkfvw942Tf+wYMHg9mzZwfjxo0LDhw4EPa1x2MbFw/fOGfPng1qa2tzcCkILsLDydq2bRsunpOTMM7TD/W/tZDZhPdeKD+yGxHhdu3aBV27dg3OnDlzMVANMheLAO3btw8KCwuDmpoaX5OxbgUIMEq7K8IcPnw4KCsrC/r37x8cP378/4cAXAB3vqSkJMuiDhTkw+XcuXNhOWbMmKBly5YhUT8xArhyFvP0BfwRsAuwxJZJsm/nzp2DTp06he/OU+cZ64K6o0ePBkOHDg2GDx8e6gEbJ5Q/NHNuAJQ1hgBeHUDlR7nVTkY8rQAvAi4z34vR/mPs1FoRsaCgIJThI0eOBC1atEiFGGV+5MiRoS45efJkqFjJFXV1dQuA012m2WcwTw98fy6CqBdsaiIO4CScrGPHjvk4odhavPquRtFWXEC25VgkREKOCh/qDSq+vn37htzD/mZTOmOc5U7zKzBPEedygWshcDyWvs30igAbU+6oyMgJBCFhwQE0fccxN60Ay9iebbjoDh06hMowjQxT4fXq1SskArmHZpkArvixp/kWzHdMeArExSJEaiXIjjRjRJ4DaAGWpibLzXN3Fm1vA5teBgh3j1Rv3bp1YgKwPdmf2p9zcyNYYgPKMfY0T5f5nNYdw158nJ8QawW4CLKwiOBSEgO/hok2eBydR+3dYH+PLxA5J8Vv0KBBwenTp0P2JWAx6+yFEBfs8lMY+y0SWMBNI9E4ThKi58VKTg3FQZS1RQF1cz27eC0QHMu+3E0SkUowjhVt5VdaWhp07949ZHv2Qd1EjDXM2cla1M0nl3GxAs3J9yREzyTdFVKVFOaE9qRA8GM0WebRuo9JGZKA7Mv2SeS/Z8+eoQ9BArMfFrLGo6jvxbhHbJZnKX2Rzz1O7QhJJ9Cs2ZMaWIyq/zhdeqPNfIoHd58clIQD+JSXl4dKlyIAuBdVXZwFVWKspSSoxE++h8x4k3uCnEhE4I5KwRiFWGOU0QWKiCYLbdoRMRKAu2kQ9vkfLU6dOhX06NEjlH+yMRZSinnuyWnYosVcji8CEA/6Cg2JF+IIUBqnGKUTCNwtwBN4f89RiK1R96DEgO2o0NDmtEdvVFdVVYV+P3UAPUEs6GFwV3PHmXkD4vh74iDFJysVI/MlaQhwKeBNTLYX5VuA8T4/gZxA4MRGFxDB6R7OmYPfyykGRJbyie+XnGYnQIC/coH9+vULiYrxrkL9ZA9+0ykaHIfEpM7ge8TiJ2CsHYwyMfafAF1yCGBHYIbCVDjDjKt7BeB51D+LgQa6OkG7IDYEEtvQ7lnXLKLtLdLuJBpE4gPUXcW2+PkZwOex+4cGDhwYDBkyRL7/HFcEwUGPo/8uWRUpYnfxGHco8HkewLHLyYmAawAPuIFZxhOpDfJQ8gbUv41yORAptMWBNr6oqMhWird5+u+iHmBb2nhjDV7HWBNQTgK8y11l5NetWzc5ULscAtSj7nbNI0skhWeUZCc0W4nyH/jO4Vz0u1IeYhbk4AiwM6tjxIWByHsoZ9qcIBPJd/y+DwPfBESOmCa/QF3WiZHucLlEDpNxcNhmheEOPgdQNx6/VZFQzFZ5TN08AHXQt2Ii3EdyFuUsPtTcGPhW5iMiCNELvz+Gdn9huG4HUJaW/w3g0wxV0XaG7arG2WeKiUWYM4Y7GO5ezshTARbbWGw/DvXkpp/ivVvE0JVoMxN4rpGzJMhE5Pl+xlATsDIqikP9F9D2z3h9nOksEUFhK+qO4rcPkoalMQ/HqJLIyb3F3JdjrCcw1yZ8joyJLR5gCo54etlag7qIoeNh1N1BRYj3DTFJ0elotxPlVzkGuYAmL0VSJVGAJA41c4Z6A3BzTLfn0HYwYKEI6CUAMzZEWvLsIcQOo1AmmyyM72nHJCfYsogflGV6jEk9vyQZXSuq6w4c16NsGcGZbwOPr+H1RkOk2LEzjNepxQkihHSCQ4ynAYNRx2zMKV92CQMWqj8J0BRE8EShxRFN6YrfCRhC0x3r/Zm4IbQCcmJoV0kMamllccR6FjHqUC5F2R/wS2dcymOlfAKOS4KmzQb5cpNC2MC7JhVn5wjXoJ44rYhLh8n0eXOCorJxa7POjbSlCGVczr34/RsAmrcvo9s+wGp3tzVhntxiXiJ4nvEYb4FJkf0O8HocAePmLvCxnL0AORraVekJk6TYjDabRVXfRE2lCN1h6ZQRN1+InUbsCpKwoBZHh0dODN9JBCUffItXxEavTQkUtnfTVAplCWL3JISz29h4NjotnuSsQKJCk8dF+kJR6RARjrqFVmfPnj3ZbK8cIJ0msd6jgHPGtfVTQ8VLmlvh4mct9sobRmPic0DyDQQnx/NlfYUgyz59+oScsH379pAwXABD32nTpoUHIToESeI5mnbE/UqDdyLcafEBf2MCqgC7NwxIbMREJQ0g4D4sfJwnD+AmRrII05cfMWJE+L1169bQr+fip06dGp4oJ83lmYd5wj/EmMa4TaHivo4EeCguYZBnkB5g2aWA69OIEnUHOaGysjIYMGBAMGnSpODYsWPZwCpFmm4lNq+4gSLQA7jcX8DwtjEyRC8wjabnXEx9kfWnTJkSJkAo90xpJVV+FmcVNeYAF5zWngS4C4O91MBxmAv8blLEpbjI5sz9MTdAhcgkCT1RO8mZkAjfiYpTEvStAS53Uw1vAiUGgZ3GpuQEYvoiBqlIan7kSDHnTwJQFNiPu0+5VxCVYhcZIjNrdXUDdp+Eq5AZ3Gkg8QAyVZRZIk4Tl4QAbF9cXJxNYZMAtAokgs4BrNxEpCtteXg7DDTMDKYNSuQdKsnJBek7HxewvxaosWxLYXtw+cJp18217wql4aKCfBNoEu0O5VU+PhctJ0YeXD4C6JQpyrlpSLTojpGGGN5YwNziChdIZLk4lvLcFJ9jMX3QdiImY9bmGQU+TRUL5CHITTRlgF8D9ouD1MfmLoEPl5xokIumZ2cfgMpHt47IW9N64Hsh7wQYYjyIugWuF5fCqYncXRd5vPMWyizzvhi/32+nvG0dZc9vR6fZOu0md5e+uC408FvKSIOZwXlGvxPv95izA2Vtvg1xKFWARI+vMX66HUhpQQb643uW1bSjuTWyw2SBvDrBvjFic1eGGlz5esq3ko9uSIlBRqPuFcCv8F4WIcN12nVaBd0SaYwI6PDDImR11JkqgHcPmQssjxIn6bUshygDFJUTxPMpHk+jfjPgupgdnYV2R/g7xSjtpah8RJBewhwf0gGK6XI92u4wXFEU40afJ4DN4h5LcAd+40HI3JgJecuT0c062W0i2hQJUTcxan3/CMW1PF2K6bbA+Daz4xRs1D3Br1Cm0OihKCqizW78/nXAF/G5TXrEcVzaNMH6CyMswqsAHqDyDLEyou8lwOXnKF8DjI6KjV3KzMBiXkDH8ij/H214J5A596ekrZ3F0zXlWeL7+P5eUrNo3/QwC15uxthuzidy7DzKRwEDaAViiDgKbTbz7CJnzo0bN7pIfIiid8SuPwn25o3QCmpnyjlZkyxPP8EomCJzrGb7GJMx7tNsq4MT2xMUYaiErZOluTzKsnz3gwCeCZyVRZJfYplNEokEjwrPtxlxjeYAk+F1F74VAzPxQRNYYdtpOUvWs8J1sGhBJMNsb7igN8plJs1eSmLIhLKE4rvaCX27gOhLpLOsIzJ7qn/i+wZzcvSOZ23/du8TZjwV8zHIXoP4R3ifBxiFz1dcVpa3aPntPE+c6TmIWE9EtcMmAcPdWAhYhAXxcLOQi9L1WhD1Sc8p1d2oL7XGiRKp8F4A2i8K/nfI+y/gsTDJ/YC/8+AD5Uh04KHiGl+cIFPnBDDrPMjwRGkLXyxO4VGbfQWnDH2v0bVWE3C9QOXlepbgjEfIJQI6XDG3z5ahD9cw2pS78ipB85wyScNTvsVzlzzhL8/jRrnmVjfFJK/m3m4nj9vbgQTguT8XZTjsm672R5uJKEaQmBI/c58gyus8ZDagLpEVSJBIyHp4jn++xqPV71OgQgJYEWOtZ/haxRtKmWOBu8xdBLftWltsY84zE6WIEy/eIOWL+BaayMx+KHtL7EAkqdNDLiEXmEMUHniedtJqg9HmZtfvt26vNi0BdG3Ft3g8ZOf7PAu59TxtzivLNIekyi+wD1i8CuUiD9FXAa8C+/xS3JPmZnomyc7H+fb4/Se0bk41Fel621r4cgVxbq91V4jVqwB7HTe2M7jgB+QWHavZkDRPmZcASoZEmBx6i75bGjPcMdL4/VKGFAGWZkGzPG0XAbdL9A81G5LOmUnC9hHKJeO7dcUMjblSl12867ElFTtaGl20xvvLGPdVz/8TVuU7y0x1PG7vtNg24oz9Uo/Z412++VFWI7Fcog9tu9Lm6gvRmIPv9x1xmQAu6RDkXtbOtlGEmpgD5Nvnyc0dcv0EE6cfdi1HmhMf9wDF3k3gtRvEedhxjpgfqPb9PU9iEJHnyOUA7bQUXh6kq/D7l2iTjWv7XOD530BDr8jIrus+srXjt4MzumJMHuTsBa63YKE1+RR5lBjEikCCnWKWiHdzOgKO+nRIBAF88za/IFmJ3eMZov4CYxGBabcpGL8EYx+SeMXJeRwHNsV/h+vdxeuhEpN3ZyNY78Gm2fknJxVGhyjixPiQvVkNzT1elD9Py/aTAL64Hb9vcYmC9zfdXdT/C1LeGbg4rnBaAihDFJH12W5ulfNCNe/xTsP3bp8ikzJs5BF+5PNfAQYAPaseTdsEcaYAAAAASUVORK5CYII="
+      };
+    },
+    computed: {
+      iconSnowWidth() {
+        return (Math.floor(this.iconSize / 24) || 1) * 2;
+      },
+      contentdownText() {
+        return this.contentText.contentdown || t$1("uni-load-more.contentdown");
+      },
+      contentrefreshText() {
+        return this.contentText.contentrefresh || t$1("uni-load-more.contentrefresh");
+      },
+      contentnomoreText() {
+        return this.contentText.contentnomore || t$1("uni-load-more.contentnomore");
+      }
+    },
+    mounted() {
+      var pages2 = getCurrentPages();
+      var page = pages2[pages2.length - 1];
+      var currentWebview = page.$getAppWebview();
+      currentWebview.addEventListener("hide", () => {
+        this.webviewHide = true;
+      });
+      currentWebview.addEventListener("show", () => {
+        this.webviewHide = false;
+      });
+    },
+    methods: {
+      onClick() {
+        this.$emit("clickLoadMore", {
+          detail: {
+            status: this.status
+          }
+        });
+      }
+    }
+  };
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", {
+      class: "uni-load-more",
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
+    }, [
+      !$data.webviewHide && ($props.iconType === "circle" || $props.iconType === "auto" && $data.platform === "android") && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: 0,
+          style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
+          class: "uni-load-more__img uni-load-more__img--android-MP"
+        },
+        [
+          vue.createElementVNode(
+            "view",
+            {
+              class: "uni-load-more__img-icon",
+              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
+            },
+            null,
+            4
+            /* STYLE */
+          ),
+          vue.createElementVNode(
+            "view",
+            {
+              class: "uni-load-more__img-icon",
+              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
+            },
+            null,
+            4
+            /* STYLE */
+          ),
+          vue.createElementVNode(
+            "view",
+            {
+              class: "uni-load-more__img-icon",
+              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
+            },
+            null,
+            4
+            /* STYLE */
+          )
+        ],
+        4
+        /* STYLE */
+      )) : !$data.webviewHide && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: 1,
+          style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
+          class: "uni-load-more__img uni-load-more__img--ios-H5"
+        },
+        [
+          vue.createElementVNode("image", {
+            src: $data.imgBase64,
+            mode: "widthFix"
+          }, null, 8, ["src"])
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true),
+      $props.showText ? (vue.openBlock(), vue.createElementBlock(
+        "text",
+        {
+          key: 2,
+          class: "uni-load-more__text",
+          style: vue.normalizeStyle({ color: $props.color })
+        },
+        vue.toDisplayString($props.status === "more" ? $options.contentdownText : $props.status === "loading" ? $options.contentrefreshText : $options.contentnomoreText),
+        5
+        /* TEXT, STYLE */
+      )) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
+  const fontData = [
+    {
+      "font_class": "arrow-down",
+      "unicode": ""
+    },
+    {
+      "font_class": "arrow-left",
+      "unicode": ""
+    },
+    {
+      "font_class": "arrow-right",
+      "unicode": ""
+    },
+    {
+      "font_class": "arrow-up",
+      "unicode": ""
+    },
+    {
+      "font_class": "auth",
+      "unicode": ""
+    },
+    {
+      "font_class": "auth-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "back",
+      "unicode": ""
+    },
+    {
+      "font_class": "bars",
+      "unicode": ""
+    },
+    {
+      "font_class": "calendar",
+      "unicode": ""
+    },
+    {
+      "font_class": "calendar-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "camera",
+      "unicode": ""
+    },
+    {
+      "font_class": "camera-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "cart",
+      "unicode": ""
+    },
+    {
+      "font_class": "cart-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "chat",
+      "unicode": ""
+    },
+    {
+      "font_class": "chat-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatboxes",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatboxes-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatbubble",
+      "unicode": ""
+    },
+    {
+      "font_class": "chatbubble-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "checkbox",
+      "unicode": ""
+    },
+    {
+      "font_class": "checkbox-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "checkmarkempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "circle",
+      "unicode": ""
+    },
+    {
+      "font_class": "circle-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "clear",
+      "unicode": ""
+    },
+    {
+      "font_class": "close",
+      "unicode": ""
+    },
+    {
+      "font_class": "closeempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-download",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-download-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-upload",
+      "unicode": ""
+    },
+    {
+      "font_class": "cloud-upload-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "color",
+      "unicode": ""
+    },
+    {
+      "font_class": "color-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "compose",
+      "unicode": ""
+    },
+    {
+      "font_class": "contact",
+      "unicode": ""
+    },
+    {
+      "font_class": "contact-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "down",
+      "unicode": ""
+    },
+    {
+      "font_class": "bottom",
+      "unicode": ""
+    },
+    {
+      "font_class": "download",
+      "unicode": ""
+    },
+    {
+      "font_class": "download-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "email",
+      "unicode": ""
+    },
+    {
+      "font_class": "email-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye-slash",
+      "unicode": ""
+    },
+    {
+      "font_class": "eye-slash-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "fire",
+      "unicode": ""
+    },
+    {
+      "font_class": "fire-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "flag",
+      "unicode": ""
+    },
+    {
+      "font_class": "flag-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "folder-add",
+      "unicode": ""
+    },
+    {
+      "font_class": "folder-add-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "font",
+      "unicode": ""
+    },
+    {
+      "font_class": "forward",
+      "unicode": ""
+    },
+    {
+      "font_class": "gear",
+      "unicode": ""
+    },
+    {
+      "font_class": "gear-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "gift",
+      "unicode": ""
+    },
+    {
+      "font_class": "gift-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-down",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-down-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-up",
+      "unicode": ""
+    },
+    {
+      "font_class": "hand-up-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "headphones",
+      "unicode": ""
+    },
+    {
+      "font_class": "heart",
+      "unicode": ""
+    },
+    {
+      "font_class": "heart-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "help",
+      "unicode": ""
+    },
+    {
+      "font_class": "help-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "home",
+      "unicode": ""
+    },
+    {
+      "font_class": "home-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "image",
+      "unicode": ""
+    },
+    {
+      "font_class": "image-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "images",
+      "unicode": ""
+    },
+    {
+      "font_class": "images-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "info",
+      "unicode": ""
+    },
+    {
+      "font_class": "info-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "left",
+      "unicode": ""
+    },
+    {
+      "font_class": "link",
+      "unicode": ""
+    },
+    {
+      "font_class": "list",
+      "unicode": ""
+    },
+    {
+      "font_class": "location",
+      "unicode": ""
+    },
+    {
+      "font_class": "location-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "locked",
+      "unicode": ""
+    },
+    {
+      "font_class": "locked-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "loop",
+      "unicode": ""
+    },
+    {
+      "font_class": "mail-open",
+      "unicode": ""
+    },
+    {
+      "font_class": "mail-open-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "map",
+      "unicode": ""
+    },
+    {
+      "font_class": "map-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "map-pin",
+      "unicode": ""
+    },
+    {
+      "font_class": "map-pin-ellipse",
+      "unicode": ""
+    },
+    {
+      "font_class": "medal",
+      "unicode": ""
+    },
+    {
+      "font_class": "medal-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "mic",
+      "unicode": ""
+    },
+    {
+      "font_class": "mic-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "micoff",
+      "unicode": ""
+    },
+    {
+      "font_class": "micoff-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "minus",
+      "unicode": ""
+    },
+    {
+      "font_class": "minus-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "more",
+      "unicode": ""
+    },
+    {
+      "font_class": "more-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "navigate",
+      "unicode": ""
+    },
+    {
+      "font_class": "navigate-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "notification",
+      "unicode": ""
+    },
+    {
+      "font_class": "notification-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "paperclip",
+      "unicode": ""
+    },
+    {
+      "font_class": "paperplane",
+      "unicode": ""
+    },
+    {
+      "font_class": "paperplane-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "person",
+      "unicode": ""
+    },
+    {
+      "font_class": "person-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "personadd",
+      "unicode": ""
+    },
+    {
+      "font_class": "personadd-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "personadd-filled-copy",
+      "unicode": ""
+    },
+    {
+      "font_class": "phone",
+      "unicode": ""
+    },
+    {
+      "font_class": "phone-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "plus",
+      "unicode": ""
+    },
+    {
+      "font_class": "plus-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "plusempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "pulldown",
+      "unicode": ""
+    },
+    {
+      "font_class": "pyq",
+      "unicode": ""
+    },
+    {
+      "font_class": "qq",
+      "unicode": ""
+    },
+    {
+      "font_class": "redo",
+      "unicode": ""
+    },
+    {
+      "font_class": "redo-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "refresh",
+      "unicode": ""
+    },
+    {
+      "font_class": "refresh-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "refreshempty",
+      "unicode": ""
+    },
+    {
+      "font_class": "reload",
+      "unicode": ""
+    },
+    {
+      "font_class": "right",
+      "unicode": ""
+    },
+    {
+      "font_class": "scan",
+      "unicode": ""
+    },
+    {
+      "font_class": "search",
+      "unicode": ""
+    },
+    {
+      "font_class": "settings",
+      "unicode": ""
+    },
+    {
+      "font_class": "settings-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "shop",
+      "unicode": ""
+    },
+    {
+      "font_class": "shop-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "smallcircle",
+      "unicode": ""
+    },
+    {
+      "font_class": "smallcircle-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "sound",
+      "unicode": ""
+    },
+    {
+      "font_class": "sound-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "spinner-cycle",
+      "unicode": ""
+    },
+    {
+      "font_class": "staff",
+      "unicode": ""
+    },
+    {
+      "font_class": "staff-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "star",
+      "unicode": ""
+    },
+    {
+      "font_class": "star-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "starhalf",
+      "unicode": ""
+    },
+    {
+      "font_class": "trash",
+      "unicode": ""
+    },
+    {
+      "font_class": "trash-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "tune",
+      "unicode": ""
+    },
+    {
+      "font_class": "tune-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "undo",
+      "unicode": ""
+    },
+    {
+      "font_class": "undo-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "up",
+      "unicode": ""
+    },
+    {
+      "font_class": "top",
+      "unicode": ""
+    },
+    {
+      "font_class": "upload",
+      "unicode": ""
+    },
+    {
+      "font_class": "upload-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "videocam",
+      "unicode": ""
+    },
+    {
+      "font_class": "videocam-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "vip",
+      "unicode": ""
+    },
+    {
+      "font_class": "vip-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "wallet",
+      "unicode": ""
+    },
+    {
+      "font_class": "wallet-filled",
+      "unicode": ""
+    },
+    {
+      "font_class": "weibo",
+      "unicode": ""
+    },
+    {
+      "font_class": "weixin",
+      "unicode": ""
+    }
+  ];
+  const getVal = (val) => {
+    const reg = /^[0-9]*$/g;
+    return typeof val === "number" || reg.test(val) ? val + "px" : val;
+  };
+  const _sfc_main$l = {
+    name: "UniIcons",
+    emits: ["click"],
+    props: {
+      type: {
+        type: String,
+        default: ""
+      },
+      color: {
+        type: String,
+        default: "#333333"
+      },
+      size: {
+        type: [Number, String],
+        default: 16
+      },
+      customPrefix: {
+        type: String,
+        default: ""
+      },
+      fontFamily: {
+        type: String,
+        default: ""
+      }
+    },
+    data() {
+      return {
+        icons: fontData
+      };
+    },
+    computed: {
+      unicode() {
+        let code = this.icons.find((v2) => v2.font_class === this.type);
+        if (code) {
+          return code.unicode;
+        }
+        return "";
+      },
+      iconSize() {
+        return getVal(this.size);
+      },
+      styleObj() {
+        if (this.fontFamily !== "") {
+          return `color: ${this.color}; font-size: ${this.iconSize}; font-family: ${this.fontFamily};`;
+        }
+        return `color: ${this.color}; font-size: ${this.iconSize};`;
+      }
+    },
+    methods: {
+      _onClick() {
+        this.$emit("click");
+      }
+    }
+  };
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      "text",
+      {
+        style: vue.normalizeStyle($options.styleObj),
+        class: vue.normalizeClass(["uni-icons", ["uniui-" + $props.type, $props.customPrefix, $props.customPrefix ? $props.type : ""]]),
+        onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
+      },
+      [
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+      ],
+      6
+      /* CLASS, STYLE */
+    );
+  }
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const pages = [
     {
-      path: "pages/forum/forum-con",
+      path: "pages/goods/goods-content",
+      style: {
+        navigationBarTitleText: "详情",
+        navigationBarBackgroundColor: "#ffdb00",
+        navigationBarTextStyle: "black"
+      }
+    },
+    {
+      path: "pages/forum/forum-index",
+      style: {
+        navigationBarTitleText: "友圈",
+        navigationBarBackgroundColor: "#ffdb00",
+        navigationBarTextStyle: "black"
+      }
+    },
+    {
+      path: "pages/forum/forum-list",
+      style: {
+        navigationBarTitleText: "圈子",
+        navigationBarBackgroundColor: "#fff",
+        navigationBarTextStyle: "black"
+      }
+    },
+    {
+      path: "pages/forum/forum-content",
       style: {
         navigationBarTitleText: "详情",
         navigationBarBackgroundColor: "#fff",
@@ -331,14 +1323,6 @@ if (uni.restoreGlobal) {
       style: {
         navigationBarTitleText: "发布帖子",
         navigationBarBackgroundColor: "#fff",
-        navigationBarTextStyle: "black"
-      }
-    },
-    {
-      path: "pages/forum/forum-index",
-      style: {
-        navigationBarTitleText: "友圈",
-        navigationBarBackgroundColor: "#ffdb00",
         navigationBarTextStyle: "black"
       }
     },
@@ -386,6 +1370,12 @@ if (uni.restoreGlobal) {
       style: {
         navigationBarTitleText: ""
       }
+    },
+    {
+      path: "pages/goods/goods-con/goods-con",
+      style: {
+        navigationBarTitleText: ""
+      }
     }
   ];
   const easycom = {
@@ -415,7 +1405,7 @@ if (uni.restoreGlobal) {
     tabBar
   };
   var define_process_env_UNI_SECURE_NETWORK_CONFIG_default = [];
-  function t$1(e2) {
+  function t(e2) {
     return e2 && e2.__esModule && Object.prototype.hasOwnProperty.call(e2, "default") ? e2.default : e2;
   }
   function n(e2, t2, n2) {
@@ -2696,7 +3686,7 @@ ${i3}
         }(t3), t3);
       };
     };
-  }), xs = t$1(Cs);
+  }), xs = t(Cs);
   const Os = "manual";
   function Es(e2) {
     return { props: { localdata: { type: Array, default: () => [] }, options: { type: [Object, Array], default: () => ({}) }, spaceInfo: { type: Object, default: () => ({}) }, collection: { type: [String, Array], default: "" }, action: { type: String, default: "" }, field: { type: String, default: "" }, orderby: { type: String, default: "" }, where: { type: [String, Object], default: "" }, pageData: { type: String, default: "add" }, pageCurrent: { type: Number, default: 1 }, pageSize: { type: Number, default: 20 }, getcount: { type: [Boolean, String], default: false }, gettree: { type: [Boolean, String], default: false }, gettreepath: { type: [Boolean, String], default: false }, startwith: { type: String, default: "" }, limitlevel: { type: Number, default: 10 }, groupby: { type: String, default: "" }, groupField: { type: String, default: "" }, distinct: { type: [Boolean, String], default: false }, foreignKey: { type: String, default: "" }, loadtime: { type: String, default: "auto" }, manual: { type: Boolean, default: false } }, data: () => ({ mixinDatacomLoading: false, mixinDatacomHasMore: false, mixinDatacomResData: [], mixinDatacomErrorMessage: "", mixinDatacomPage: {}, mixinDatacomError: null }), created() {
@@ -3103,2601 +4093,6 @@ ${i3}
     } }), bs(Bs), Bs.addInterceptor = N, Bs.removeInterceptor = D, Bs.interceptObject = F;
   })();
   var Ws = Bs;
-  const ERR_MSG_OK = "chooseAndUploadFile:ok";
-  const ERR_MSG_FAIL = "chooseAndUploadFile:fail";
-  function chooseImage(opts) {
-    const {
-      count,
-      sizeType = ["original", "compressed"],
-      sourceType,
-      extension
-    } = opts;
-    return new Promise((resolve, reject) => {
-      uni.chooseImage({
-        count,
-        sizeType,
-        sourceType,
-        extension,
-        success(res) {
-          resolve(normalizeChooseAndUploadFileRes(res, "image"));
-        },
-        fail(res) {
-          reject({
-            errMsg: res.errMsg.replace("chooseImage:fail", ERR_MSG_FAIL)
-          });
-        }
-      });
-    });
-  }
-  function chooseVideo(opts) {
-    const {
-      count,
-      camera,
-      compressed,
-      maxDuration,
-      sourceType,
-      extension
-    } = opts;
-    return new Promise((resolve, reject) => {
-      uni.chooseVideo({
-        camera,
-        compressed,
-        maxDuration,
-        sourceType,
-        extension,
-        success(res) {
-          const {
-            tempFilePath,
-            duration,
-            size,
-            height,
-            width
-          } = res;
-          resolve(normalizeChooseAndUploadFileRes({
-            errMsg: "chooseVideo:ok",
-            tempFilePaths: [tempFilePath],
-            tempFiles: [{
-              name: res.tempFile && res.tempFile.name || "",
-              path: tempFilePath,
-              size,
-              type: res.tempFile && res.tempFile.type || "",
-              width,
-              height,
-              duration,
-              fileType: "video",
-              cloudPath: ""
-            }]
-          }, "video"));
-        },
-        fail(res) {
-          reject({
-            errMsg: res.errMsg.replace("chooseVideo:fail", ERR_MSG_FAIL)
-          });
-        }
-      });
-    });
-  }
-  function chooseAll(opts) {
-    const {
-      count,
-      extension
-    } = opts;
-    return new Promise((resolve, reject) => {
-      let chooseFile = uni.chooseFile;
-      if (typeof wx !== "undefined" && typeof wx.chooseMessageFile === "function") {
-        chooseFile = wx.chooseMessageFile;
-      }
-      if (typeof chooseFile !== "function") {
-        return reject({
-          errMsg: ERR_MSG_FAIL + " 请指定 type 类型，该平台仅支持选择 image 或 video。"
-        });
-      }
-      chooseFile({
-        type: "all",
-        count,
-        extension,
-        success(res) {
-          resolve(normalizeChooseAndUploadFileRes(res));
-        },
-        fail(res) {
-          reject({
-            errMsg: res.errMsg.replace("chooseFile:fail", ERR_MSG_FAIL)
-          });
-        }
-      });
-    });
-  }
-  function normalizeChooseAndUploadFileRes(res, fileType) {
-    res.tempFiles.forEach((item, index) => {
-      if (!item.name) {
-        item.name = item.path.substring(item.path.lastIndexOf("/") + 1);
-      }
-      if (fileType) {
-        item.fileType = fileType;
-      }
-      item.cloudPath = Date.now() + "_" + index + item.name.substring(item.name.lastIndexOf("."));
-    });
-    if (!res.tempFilePaths) {
-      res.tempFilePaths = res.tempFiles.map((file) => file.path);
-    }
-    return res;
-  }
-  function uploadCloudFiles(files, max = 5, onUploadProgress) {
-    files = JSON.parse(JSON.stringify(files));
-    const len = files.length;
-    let count = 0;
-    let self = this;
-    return new Promise((resolve) => {
-      while (count < max) {
-        next();
-      }
-      function next() {
-        let cur = count++;
-        if (cur >= len) {
-          !files.find((item) => !item.url && !item.errMsg) && resolve(files);
-          return;
-        }
-        const fileItem = files[cur];
-        const index = self.files.findIndex((v2) => v2.uuid === fileItem.uuid);
-        fileItem.url = "";
-        delete fileItem.errMsg;
-        Ws.uploadFile({
-          filePath: fileItem.path,
-          cloudPath: fileItem.cloudPath,
-          fileType: fileItem.fileType,
-          onUploadProgress: (res) => {
-            res.index = index;
-            onUploadProgress && onUploadProgress(res);
-          }
-        }).then((res) => {
-          fileItem.url = res.fileID;
-          fileItem.index = index;
-          if (cur < len) {
-            next();
-          }
-        }).catch((res) => {
-          fileItem.errMsg = res.errMsg || res.message;
-          fileItem.index = index;
-          if (cur < len) {
-            next();
-          }
-        });
-      }
-    });
-  }
-  function uploadFiles(choosePromise, {
-    onChooseFile,
-    onUploadProgress
-  }) {
-    return choosePromise.then((res) => {
-      if (onChooseFile) {
-        const customChooseRes = onChooseFile(res);
-        if (typeof customChooseRes !== "undefined") {
-          return Promise.resolve(customChooseRes).then((chooseRes) => typeof chooseRes === "undefined" ? res : chooseRes);
-        }
-      }
-      return res;
-    }).then((res) => {
-      if (res === false) {
-        return {
-          errMsg: ERR_MSG_OK,
-          tempFilePaths: [],
-          tempFiles: []
-        };
-      }
-      return res;
-    });
-  }
-  function chooseAndUploadFile(opts = {
-    type: "all"
-  }) {
-    if (opts.type === "image") {
-      return uploadFiles(chooseImage(opts), opts);
-    } else if (opts.type === "video") {
-      return uploadFiles(chooseVideo(opts), opts);
-    }
-    return uploadFiles(chooseAll(opts), opts);
-  }
-  const get_file_ext = (name) => {
-    const last_len = name.lastIndexOf(".");
-    const len = name.length;
-    return {
-      name: name.substring(0, last_len),
-      ext: name.substring(last_len + 1, len)
-    };
-  };
-  const get_extname = (fileExtname) => {
-    if (!Array.isArray(fileExtname)) {
-      let extname = fileExtname.replace(/(\[|\])/g, "");
-      return extname.split(",");
-    } else {
-      return fileExtname;
-    }
-  };
-  const get_files_and_is_max = (res, _extname) => {
-    let filePaths = [];
-    let files = [];
-    if (!_extname || _extname.length === 0) {
-      return {
-        filePaths,
-        files
-      };
-    }
-    res.tempFiles.forEach((v2) => {
-      let fileFullName = get_file_ext(v2.name);
-      const extname = fileFullName.ext.toLowerCase();
-      if (_extname.indexOf(extname) !== -1) {
-        files.push(v2);
-        filePaths.push(v2.path);
-      }
-    });
-    if (files.length !== res.tempFiles.length) {
-      uni.showToast({
-        title: `当前选择了${res.tempFiles.length}个文件 ，${res.tempFiles.length - files.length} 个文件格式不正确`,
-        icon: "none",
-        duration: 5e3
-      });
-    }
-    return {
-      filePaths,
-      files
-    };
-  };
-  const get_file_info = (filepath) => {
-    return new Promise((resolve, reject) => {
-      uni.getImageInfo({
-        src: filepath,
-        success(res) {
-          resolve(res);
-        },
-        fail(err) {
-          reject(err);
-        }
-      });
-    });
-  };
-  const get_file_data = async (files, type = "image") => {
-    let fileFullName = get_file_ext(files.name);
-    const extname = fileFullName.ext.toLowerCase();
-    let filedata = {
-      name: files.name,
-      uuid: files.uuid,
-      extname: extname || "",
-      cloudPath: files.cloudPath,
-      fileType: files.fileType,
-      thumbTempFilePath: files.thumbTempFilePath,
-      url: files.path || files.path,
-      size: files.size,
-      //单位是字节
-      image: {},
-      path: files.path,
-      video: {}
-    };
-    if (type === "image") {
-      const imageinfo = await get_file_info(files.path);
-      delete filedata.video;
-      filedata.image.width = imageinfo.width;
-      filedata.image.height = imageinfo.height;
-      filedata.image.location = imageinfo.path;
-    } else {
-      delete filedata.image;
-    }
-    return filedata;
-  };
-  const _sfc_main$i = {
-    name: "uploadImage",
-    emits: ["uploadFiles", "choose", "delFile"],
-    props: {
-      filesList: {
-        type: Array,
-        default() {
-          return [];
-        }
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      disablePreview: {
-        type: Boolean,
-        default: false
-      },
-      limit: {
-        type: [Number, String],
-        default: 9
-      },
-      imageStyles: {
-        type: Object,
-        default() {
-          return {
-            width: "auto",
-            height: "auto",
-            border: {}
-          };
-        }
-      },
-      delIcon: {
-        type: Boolean,
-        default: true
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      }
-    },
-    computed: {
-      styles() {
-        let styles = {
-          width: "auto",
-          height: "auto",
-          border: {}
-        };
-        return Object.assign(styles, this.imageStyles);
-      },
-      boxStyle() {
-        const {
-          width = "auto",
-          height = "auto"
-        } = this.styles;
-        let obj = {};
-        if (height === "auto") {
-          if (width !== "auto") {
-            obj.height = this.value2px(width);
-            obj["padding-top"] = 0;
-          } else {
-            obj.height = 0;
-          }
-        } else {
-          obj.height = this.value2px(height);
-          obj["padding-top"] = 0;
-        }
-        if (width === "auto") {
-          if (height !== "auto") {
-            obj.width = this.value2px(height);
-          } else {
-            obj.width = "33.3%";
-          }
-        } else {
-          obj.width = this.value2px(width);
-        }
-        let classles = "";
-        for (let i2 in obj) {
-          classles += `${i2}:${obj[i2]};`;
-        }
-        return classles;
-      },
-      borderStyle() {
-        let {
-          border
-        } = this.styles;
-        let obj = {};
-        const widthDefaultValue = 1;
-        const radiusDefaultValue = 3;
-        if (typeof border === "boolean") {
-          obj.border = border ? "1px #eee solid" : "none";
-        } else {
-          let width = border && border.width || widthDefaultValue;
-          width = this.value2px(width);
-          let radius = border && border.radius || radiusDefaultValue;
-          radius = this.value2px(radius);
-          obj = {
-            "border-width": width,
-            "border-style": border && border.style || "solid",
-            "border-color": border && border.color || "#eee",
-            "border-radius": radius
-          };
-        }
-        let classles = "";
-        for (let i2 in obj) {
-          classles += `${i2}:${obj[i2]};`;
-        }
-        return classles;
-      }
-    },
-    methods: {
-      uploadFiles(item, index) {
-        this.$emit("uploadFiles", item);
-      },
-      choose() {
-        this.$emit("choose");
-      },
-      delFile(index) {
-        this.$emit("delFile", index);
-      },
-      prviewImage(img, index) {
-        let urls = [];
-        if (Number(this.limit) === 1 && this.disablePreview && !this.disabled) {
-          this.$emit("choose");
-        }
-        if (this.disablePreview)
-          return;
-        this.filesList.forEach((i2) => {
-          urls.push(i2.url);
-        });
-        uni.previewImage({
-          urls,
-          current: index
-        });
-      },
-      value2px(value) {
-        if (typeof value === "number") {
-          value += "px";
-        } else {
-          if (value.indexOf("%") === -1) {
-            value = value.indexOf("px") !== -1 ? value : value + "px";
-          }
-        }
-        return value;
-      }
-    }
-  };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__container" }, [
-      (vue.openBlock(true), vue.createElementBlock(
-        vue.Fragment,
-        null,
-        vue.renderList($props.filesList, (item, index) => {
-          return vue.openBlock(), vue.createElementBlock(
-            "view",
-            {
-              class: "file-picker__box",
-              key: index,
-              style: vue.normalizeStyle($options.boxStyle)
-            },
-            [
-              vue.createElementVNode(
-                "view",
-                {
-                  class: "file-picker__box-content",
-                  style: vue.normalizeStyle($options.borderStyle)
-                },
-                [
-                  vue.createElementVNode("image", {
-                    class: "file-image",
-                    src: item.url,
-                    mode: "aspectFill",
-                    onClick: vue.withModifiers(($event) => $options.prviewImage(item, index), ["stop"])
-                  }, null, 8, ["src", "onClick"]),
-                  $props.delIcon && !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 0,
-                    class: "icon-del-box",
-                    onClick: vue.withModifiers(($event) => $options.delFile(index), ["stop"])
-                  }, [
-                    vue.createElementVNode("view", { class: "icon-del" }),
-                    vue.createElementVNode("view", { class: "icon-del rotate" })
-                  ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true),
-                  item.progress && item.progress !== 100 || item.progress === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 1,
-                    class: "file-picker__progress"
-                  }, [
-                    vue.createElementVNode("progress", {
-                      class: "file-picker__progress-item",
-                      percent: item.progress === -1 ? 0 : item.progress,
-                      "stroke-width": "4",
-                      backgroundColor: item.errMsg ? "#ff5a5f" : "#EBEBEB"
-                    }, null, 8, ["percent", "backgroundColor"])
-                  ])) : vue.createCommentVNode("v-if", true),
-                  item.errMsg ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 2,
-                    class: "file-picker__mask",
-                    onClick: vue.withModifiers(($event) => $options.uploadFiles(item, index), ["stop"])
-                  }, " 点击重试 ", 8, ["onClick"])) : vue.createCommentVNode("v-if", true)
-                ],
-                4
-                /* STYLE */
-              )
-            ],
-            4
-            /* STYLE */
-          );
-        }),
-        128
-        /* KEYED_FRAGMENT */
-      )),
-      $props.filesList.length < $props.limit && !$props.readonly ? (vue.openBlock(), vue.createElementBlock(
-        "view",
-        {
-          key: 0,
-          class: "file-picker__box",
-          style: vue.normalizeStyle($options.boxStyle)
-        },
-        [
-          vue.createElementVNode(
-            "view",
-            {
-              class: "file-picker__box-content is-add",
-              style: vue.normalizeStyle($options.borderStyle),
-              onClick: _cache[0] || (_cache[0] = (...args) => $options.choose && $options.choose(...args))
-            },
-            [
-              vue.renderSlot(_ctx.$slots, "default", {}, () => [
-                vue.createElementVNode("view", { class: "icon-add" }),
-                vue.createElementVNode("view", { class: "icon-add rotate" })
-              ], true)
-            ],
-            4
-            /* STYLE */
-          )
-        ],
-        4
-        /* STYLE */
-      )) : vue.createCommentVNode("v-if", true)
-    ]);
-  }
-  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__scopeId", "data-v-6f3c6077"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
-  const _sfc_main$h = {
-    name: "uploadFile",
-    emits: ["uploadFiles", "choose", "delFile"],
-    props: {
-      filesList: {
-        type: Array,
-        default() {
-          return [];
-        }
-      },
-      delIcon: {
-        type: Boolean,
-        default: true
-      },
-      limit: {
-        type: [Number, String],
-        default: 9
-      },
-      showType: {
-        type: String,
-        default: ""
-      },
-      listStyles: {
-        type: Object,
-        default() {
-          return {
-            // 是否显示边框
-            border: true,
-            // 是否显示分隔线
-            dividline: true,
-            // 线条样式
-            borderStyle: {}
-          };
-        }
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      }
-    },
-    computed: {
-      list() {
-        let files = [];
-        this.filesList.forEach((v2) => {
-          files.push(v2);
-        });
-        return files;
-      },
-      styles() {
-        let styles = {
-          border: true,
-          dividline: true,
-          "border-style": {}
-        };
-        return Object.assign(styles, this.listStyles);
-      },
-      borderStyle() {
-        let {
-          borderStyle,
-          border
-        } = this.styles;
-        let obj = {};
-        if (!border) {
-          obj.border = "none";
-        } else {
-          let width = borderStyle && borderStyle.width || 1;
-          width = this.value2px(width);
-          let radius = borderStyle && borderStyle.radius || 5;
-          radius = this.value2px(radius);
-          obj = {
-            "border-width": width,
-            "border-style": borderStyle && borderStyle.style || "solid",
-            "border-color": borderStyle && borderStyle.color || "#eee",
-            "border-radius": radius
-          };
-        }
-        let classles = "";
-        for (let i2 in obj) {
-          classles += `${i2}:${obj[i2]};`;
-        }
-        return classles;
-      },
-      borderLineStyle() {
-        let obj = {};
-        let {
-          borderStyle
-        } = this.styles;
-        if (borderStyle && borderStyle.color) {
-          obj["border-color"] = borderStyle.color;
-        }
-        if (borderStyle && borderStyle.width) {
-          let width = borderStyle && borderStyle.width || 1;
-          let style = borderStyle && borderStyle.style || 0;
-          if (typeof width === "number") {
-            width += "px";
-          } else {
-            width = width.indexOf("px") ? width : width + "px";
-          }
-          obj["border-width"] = width;
-          if (typeof style === "number") {
-            style += "px";
-          } else {
-            style = style.indexOf("px") ? style : style + "px";
-          }
-          obj["border-top-style"] = style;
-        }
-        let classles = "";
-        for (let i2 in obj) {
-          classles += `${i2}:${obj[i2]};`;
-        }
-        return classles;
-      }
-    },
-    methods: {
-      uploadFiles(item, index) {
-        this.$emit("uploadFiles", {
-          item,
-          index
-        });
-      },
-      choose() {
-        this.$emit("choose");
-      },
-      delFile(index) {
-        this.$emit("delFile", index);
-      },
-      value2px(value) {
-        if (typeof value === "number") {
-          value += "px";
-        } else {
-          value = value.indexOf("px") !== -1 ? value : value + "px";
-        }
-        return value;
-      }
-    }
-  };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__files" }, [
-      !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        class: "files-button",
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.choose && $options.choose(...args))
-      }, [
-        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-      ])) : vue.createCommentVNode("v-if", true),
-      vue.createCommentVNode(` :class="{'is-text-box':showType === 'list'}" `),
-      $options.list.length > 0 ? (vue.openBlock(), vue.createElementBlock(
-        "view",
-        {
-          key: 1,
-          class: "uni-file-picker__lists is-text-box",
-          style: vue.normalizeStyle($options.borderStyle)
-        },
-        [
-          vue.createCommentVNode(" ,'is-list-card':showType === 'list-card' "),
-          (vue.openBlock(true), vue.createElementBlock(
-            vue.Fragment,
-            null,
-            vue.renderList($options.list, (item, index) => {
-              return vue.openBlock(), vue.createElementBlock(
-                "view",
-                {
-                  class: vue.normalizeClass(["uni-file-picker__lists-box", {
-                    "files-border": index !== 0 && $options.styles.dividline
-                  }]),
-                  key: index,
-                  style: vue.normalizeStyle(index !== 0 && $options.styles.dividline && $options.borderLineStyle)
-                },
-                [
-                  vue.createElementVNode("view", { class: "uni-file-picker__item" }, [
-                    vue.createCommentVNode(` :class="{'is-text-image':showType === 'list'}" `),
-                    vue.createCommentVNode(' 	<view class="files__image is-text-image">\r\n						<image class="header-image" :src="item.logo" mode="aspectFit"></image>\r\n					</view> '),
-                    vue.createElementVNode(
-                      "view",
-                      { class: "files__name" },
-                      vue.toDisplayString(item.name),
-                      1
-                      /* TEXT */
-                    ),
-                    $props.delIcon && !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 0,
-                      class: "icon-del-box icon-files",
-                      onClick: ($event) => $options.delFile(index)
-                    }, [
-                      vue.createElementVNode("view", { class: "icon-del icon-files" }),
-                      vue.createElementVNode("view", { class: "icon-del rotate" })
-                    ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true)
-                  ]),
-                  item.progress && item.progress !== 100 || item.progress === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 0,
-                    class: "file-picker__progress"
-                  }, [
-                    vue.createElementVNode("progress", {
-                      class: "file-picker__progress-item",
-                      percent: item.progress === -1 ? 0 : item.progress,
-                      "stroke-width": "4",
-                      backgroundColor: item.errMsg ? "#ff5a5f" : "#EBEBEB"
-                    }, null, 8, ["percent", "backgroundColor"])
-                  ])) : vue.createCommentVNode("v-if", true),
-                  item.status === "error" ? (vue.openBlock(), vue.createElementBlock("view", {
-                    key: 1,
-                    class: "file-picker__mask",
-                    onClick: vue.withModifiers(($event) => $options.uploadFiles(item, index), ["stop"])
-                  }, " 点击重试 ", 8, ["onClick"])) : vue.createCommentVNode("v-if", true)
-                ],
-                6
-                /* CLASS, STYLE */
-              );
-            }),
-            128
-            /* KEYED_FRAGMENT */
-          ))
-        ],
-        4
-        /* STYLE */
-      )) : vue.createCommentVNode("v-if", true)
-    ]);
-  }
-  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-86fc2bba"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
-  const _sfc_main$g = {
-    name: "uniFilePicker",
-    components: {
-      uploadImage,
-      uploadFile
-    },
-    options: {
-      virtualHost: true
-    },
-    emits: ["select", "success", "fail", "progress", "delete", "update:modelValue", "input"],
-    props: {
-      modelValue: {
-        type: [Array, Object],
-        default() {
-          return [];
-        }
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      disablePreview: {
-        type: Boolean,
-        default: false
-      },
-      delIcon: {
-        type: Boolean,
-        default: true
-      },
-      // 自动上传
-      autoUpload: {
-        type: Boolean,
-        default: true
-      },
-      // 最大选择个数 ，h5只能限制单选或是多选
-      limit: {
-        type: [Number, String],
-        default: 9
-      },
-      // 列表样式 grid | list | list-card
-      mode: {
-        type: String,
-        default: "grid"
-      },
-      // 选择文件类型  image/video/all
-      fileMediatype: {
-        type: String,
-        default: "image"
-      },
-      // 文件类型筛选
-      fileExtname: {
-        type: [Array, String],
-        default() {
-          return [];
-        }
-      },
-      title: {
-        type: String,
-        default: ""
-      },
-      listStyles: {
-        type: Object,
-        default() {
-          return {
-            // 是否显示边框
-            border: true,
-            // 是否显示分隔线
-            dividline: true,
-            // 线条样式
-            borderStyle: {}
-          };
-        }
-      },
-      imageStyles: {
-        type: Object,
-        default() {
-          return {
-            width: "auto",
-            height: "auto"
-          };
-        }
-      },
-      readonly: {
-        type: Boolean,
-        default: false
-      },
-      returnType: {
-        type: String,
-        default: "array"
-      },
-      sizeType: {
-        type: Array,
-        default() {
-          return ["original", "compressed"];
-        }
-      },
-      sourceType: {
-        type: Array,
-        default() {
-          return ["album", "camera"];
-        }
-      },
-      provider: {
-        type: String,
-        default: ""
-        // 默认上传到 unicloud 内置存储 extStorage 扩展存储
-      }
-    },
-    data() {
-      return {
-        files: [],
-        localValue: []
-      };
-    },
-    watch: {
-      modelValue: {
-        handler(newVal, oldVal) {
-          this.setValue(newVal, oldVal);
-        },
-        immediate: true
-      }
-    },
-    computed: {
-      filesList() {
-        let files = [];
-        this.files.forEach((v2) => {
-          files.push(v2);
-        });
-        return files;
-      },
-      showType() {
-        if (this.fileMediatype === "image") {
-          return this.mode;
-        }
-        return "list";
-      },
-      limitLength() {
-        if (this.returnType === "object") {
-          return 1;
-        }
-        if (!this.limit) {
-          return 1;
-        }
-        if (this.limit >= 9) {
-          return 9;
-        }
-        return this.limit;
-      }
-    },
-    created() {
-      if (!(Ws.config && Ws.config.provider)) {
-        this.noSpace = true;
-        Ws.chooseAndUploadFile = chooseAndUploadFile;
-      }
-      this.form = this.getForm("uniForms");
-      this.formItem = this.getForm("uniFormsItem");
-      if (this.form && this.formItem) {
-        if (this.formItem.name) {
-          this.rename = this.formItem.name;
-          this.form.inputChildrens.push(this);
-        }
-      }
-    },
-    methods: {
-      /**
-       * 公开用户使用，清空文件
-       * @param {Object} index
-       */
-      clearFiles(index) {
-        if (index !== 0 && !index) {
-          this.files = [];
-          this.$nextTick(() => {
-            this.setEmit();
-          });
-        } else {
-          this.files.splice(index, 1);
-        }
-        this.$nextTick(() => {
-          this.setEmit();
-        });
-      },
-      /**
-       * 公开用户使用，继续上传
-       */
-      upload() {
-        let files = [];
-        this.files.forEach((v2, index) => {
-          if (v2.status === "ready" || v2.status === "error") {
-            files.push(Object.assign({}, v2));
-          }
-        });
-        return this.uploadFiles(files);
-      },
-      async setValue(newVal, oldVal) {
-        const newData = async (v2) => {
-          const reg = /cloud:\/\/([\w.]+\/?)\S*/;
-          let url = "";
-          if (v2.fileID) {
-            url = v2.fileID;
-          } else {
-            url = v2.url;
-          }
-          if (reg.test(url)) {
-            v2.fileID = url;
-            v2.url = await this.getTempFileURL(url);
-          }
-          if (v2.url)
-            v2.path = v2.url;
-          return v2;
-        };
-        if (this.returnType === "object") {
-          if (newVal) {
-            await newData(newVal);
-          } else {
-            newVal = {};
-          }
-        } else {
-          if (!newVal)
-            newVal = [];
-          for (let i2 = 0; i2 < newVal.length; i2++) {
-            let v2 = newVal[i2];
-            await newData(v2);
-          }
-        }
-        this.localValue = newVal;
-        if (this.form && this.formItem && !this.is_reset) {
-          this.is_reset = false;
-          this.formItem.setValue(this.localValue);
-        }
-        let filesData = Object.keys(newVal).length > 0 ? newVal : [];
-        this.files = [].concat(filesData);
-      },
-      /**
-       * 选择文件
-       */
-      choose() {
-        if (this.disabled)
-          return;
-        if (this.files.length >= Number(this.limitLength) && this.showType !== "grid" && this.returnType === "array") {
-          uni.showToast({
-            title: `您最多选择 ${this.limitLength} 个文件`,
-            icon: "none"
-          });
-          return;
-        }
-        this.chooseFiles();
-      },
-      /**
-       * 选择文件并上传
-       */
-      chooseFiles() {
-        const _extname = get_extname(this.fileExtname);
-        Ws.chooseAndUploadFile({
-          type: this.fileMediatype,
-          compressed: false,
-          sizeType: this.sizeType,
-          sourceType: this.sourceType,
-          // TODO 如果为空，video 有问题
-          extension: _extname.length > 0 ? _extname : void 0,
-          count: this.limitLength - this.files.length,
-          //默认9
-          onChooseFile: this.chooseFileCallback,
-          onUploadProgress: (progressEvent) => {
-            this.setProgress(progressEvent, progressEvent.index);
-          }
-        }).then((result) => {
-          this.setSuccessAndError(result.tempFiles);
-        }).catch((err) => {
-          formatAppLog("log", "at node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue:374", "选择失败", err);
-        });
-      },
-      /**
-       * 选择文件回调
-       * @param {Object} res
-       */
-      async chooseFileCallback(res) {
-        const _extname = get_extname(this.fileExtname);
-        const is_one = Number(this.limitLength) === 1 && this.disablePreview && !this.disabled || this.returnType === "object";
-        if (is_one) {
-          this.files = [];
-        }
-        let {
-          filePaths,
-          files
-        } = get_files_and_is_max(res, _extname);
-        if (!(_extname && _extname.length > 0)) {
-          filePaths = res.tempFilePaths;
-          files = res.tempFiles;
-        }
-        let currentData = [];
-        for (let i2 = 0; i2 < files.length; i2++) {
-          if (this.limitLength - this.files.length <= 0)
-            break;
-          files[i2].uuid = Date.now();
-          let filedata = await get_file_data(files[i2], this.fileMediatype);
-          filedata.progress = 0;
-          filedata.status = "ready";
-          this.files.push(filedata);
-          currentData.push({
-            ...filedata,
-            file: files[i2]
-          });
-        }
-        this.$emit("select", {
-          tempFiles: currentData,
-          tempFilePaths: filePaths
-        });
-        res.tempFiles = files;
-        if (!this.autoUpload || this.noSpace) {
-          res.tempFiles = [];
-        }
-        res.tempFiles.forEach((fileItem, index) => {
-          this.provider && (fileItem.provider = this.provider);
-          const fileNameSplit = fileItem.name.split(".");
-          const ext = fileNameSplit.pop();
-          const fileName = fileNameSplit.join(".").replace(/[\s\/\?<>\\:\*\|":]/g, "_");
-          fileItem.cloudPath = fileName + "_" + Date.now() + "_" + index + "." + ext;
-        });
-      },
-      /**
-       * 批传
-       * @param {Object} e
-       */
-      uploadFiles(files) {
-        files = [].concat(files);
-        return uploadCloudFiles.call(this, files, 5, (res) => {
-          this.setProgress(res, res.index, true);
-        }).then((result) => {
-          this.setSuccessAndError(result);
-          return result;
-        }).catch((err) => {
-          formatAppLog("log", "at node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue:447", err);
-        });
-      },
-      /**
-       * 成功或失败
-       */
-      async setSuccessAndError(res, fn) {
-        let successData = [];
-        let errorData = [];
-        let tempFilePath = [];
-        let errorTempFilePath = [];
-        for (let i2 = 0; i2 < res.length; i2++) {
-          const item = res[i2];
-          const index = item.uuid ? this.files.findIndex((p2) => p2.uuid === item.uuid) : item.index;
-          if (index === -1 || !this.files)
-            break;
-          if (item.errMsg === "request:fail") {
-            this.files[index].url = item.path;
-            this.files[index].status = "error";
-            this.files[index].errMsg = item.errMsg;
-            errorData.push(this.files[index]);
-            errorTempFilePath.push(this.files[index].url);
-          } else {
-            this.files[index].errMsg = "";
-            this.files[index].fileID = item.url;
-            const reg = /cloud:\/\/([\w.]+\/?)\S*/;
-            if (reg.test(item.url)) {
-              this.files[index].url = await this.getTempFileURL(item.url);
-            } else {
-              this.files[index].url = item.url;
-            }
-            this.files[index].status = "success";
-            this.files[index].progress += 1;
-            successData.push(this.files[index]);
-            tempFilePath.push(this.files[index].fileID);
-          }
-        }
-        if (successData.length > 0) {
-          this.setEmit();
-          this.$emit("success", {
-            tempFiles: this.backObject(successData),
-            tempFilePaths: tempFilePath
-          });
-        }
-        if (errorData.length > 0) {
-          this.$emit("fail", {
-            tempFiles: this.backObject(errorData),
-            tempFilePaths: errorTempFilePath
-          });
-        }
-      },
-      /**
-       * 获取进度
-       * @param {Object} progressEvent
-       * @param {Object} index
-       * @param {Object} type
-       */
-      setProgress(progressEvent, index, type) {
-        this.files.length;
-        const percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
-        let idx = index;
-        if (!type) {
-          idx = this.files.findIndex((p2) => p2.uuid === progressEvent.tempFile.uuid);
-        }
-        if (idx === -1 || !this.files[idx])
-          return;
-        this.files[idx].progress = percentCompleted - 1;
-        this.$emit("progress", {
-          index: idx,
-          progress: parseInt(percentCompleted),
-          tempFile: this.files[idx]
-        });
-      },
-      /**
-       * 删除文件
-       * @param {Object} index
-       */
-      delFile(index) {
-        this.$emit("delete", {
-          index,
-          tempFile: this.files[index],
-          tempFilePath: this.files[index].url
-        });
-        this.files.splice(index, 1);
-        this.$nextTick(() => {
-          this.setEmit();
-        });
-      },
-      /**
-       * 获取文件名和后缀
-       * @param {Object} name
-       */
-      getFileExt(name) {
-        const last_len = name.lastIndexOf(".");
-        const len = name.length;
-        return {
-          name: name.substring(0, last_len),
-          ext: name.substring(last_len + 1, len)
-        };
-      },
-      /**
-       * 处理返回事件
-       */
-      setEmit() {
-        let data = [];
-        if (this.returnType === "object") {
-          data = this.backObject(this.files)[0];
-          this.localValue = data ? data : null;
-        } else {
-          data = this.backObject(this.files);
-          if (!this.localValue) {
-            this.localValue = [];
-          }
-          this.localValue = [...data];
-        }
-        this.$emit("update:modelValue", this.localValue);
-      },
-      /**
-       * 处理返回参数
-       * @param {Object} files
-       */
-      backObject(files) {
-        let newFilesData = [];
-        files.forEach((v2) => {
-          newFilesData.push({
-            extname: v2.extname,
-            fileType: v2.fileType,
-            image: v2.image,
-            name: v2.name,
-            path: v2.path,
-            size: v2.size,
-            fileID: v2.fileID,
-            url: v2.url,
-            // 修改删除一个文件后不能再上传的bug, #694
-            uuid: v2.uuid,
-            status: v2.status,
-            cloudPath: v2.cloudPath
-          });
-        });
-        return newFilesData;
-      },
-      async getTempFileURL(fileList) {
-        fileList = {
-          fileList: [].concat(fileList)
-        };
-        const urls = await Ws.getTempFileURL(fileList);
-        return urls.fileList[0].tempFileURL || "";
-      },
-      /**
-       * 获取父元素实例
-       */
-      getForm(name = "uniForms") {
-        let parent = this.$parent;
-        let parentName = parent.$options.name;
-        while (parentName !== name) {
-          parent = parent.$parent;
-          if (!parent)
-            return false;
-          parentName = parent.$options.name;
-        }
-        return parent;
-      }
-    }
-  };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_upload_image = vue.resolveComponent("upload-image");
-    const _component_upload_file = vue.resolveComponent("upload-file");
-    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker" }, [
-      $props.title ? (vue.openBlock(), vue.createElementBlock("view", {
-        key: 0,
-        class: "uni-file-picker__header"
-      }, [
-        vue.createElementVNode(
-          "text",
-          { class: "file-title" },
-          vue.toDisplayString($props.title),
-          1
-          /* TEXT */
-        ),
-        vue.createElementVNode(
-          "text",
-          { class: "file-count" },
-          vue.toDisplayString($options.filesList.length) + "/" + vue.toDisplayString($options.limitLength),
-          1
-          /* TEXT */
-        )
-      ])) : vue.createCommentVNode("v-if", true),
-      $props.fileMediatype === "image" && $options.showType === "grid" ? (vue.openBlock(), vue.createBlock(_component_upload_image, {
-        key: 1,
-        readonly: $props.readonly,
-        "image-styles": $props.imageStyles,
-        "files-list": $options.filesList,
-        limit: $options.limitLength,
-        disablePreview: $props.disablePreview,
-        delIcon: $props.delIcon,
-        onUploadFiles: $options.uploadFiles,
-        onChoose: $options.choose,
-        onDelFile: $options.delFile
-      }, {
-        default: vue.withCtx(() => [
-          vue.renderSlot(_ctx.$slots, "default", {}, () => [
-            vue.createElementVNode("view", { class: "is-add" }, [
-              vue.createElementVNode("view", { class: "icon-add" }),
-              vue.createElementVNode("view", { class: "icon-add rotate" })
-            ])
-          ], true)
-        ]),
-        _: 3
-        /* FORWARDED */
-      }, 8, ["readonly", "image-styles", "files-list", "limit", "disablePreview", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true),
-      $props.fileMediatype !== "image" || $options.showType !== "grid" ? (vue.openBlock(), vue.createBlock(_component_upload_file, {
-        key: 2,
-        readonly: $props.readonly,
-        "list-styles": $props.listStyles,
-        "files-list": $options.filesList,
-        showType: $options.showType,
-        delIcon: $props.delIcon,
-        onUploadFiles: $options.uploadFiles,
-        onChoose: $options.choose,
-        onDelFile: $options.delFile
-      }, {
-        default: vue.withCtx(() => [
-          vue.renderSlot(_ctx.$slots, "default", {}, () => [
-            vue.createElementVNode("button", {
-              type: "primary",
-              size: "mini"
-            }, "选择文件")
-          ], true)
-        ]),
-        _: 3
-        /* FORWARDED */
-      }, 8, ["readonly", "list-styles", "files-list", "showType", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true)
-    ]);
-  }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-418f48eb"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
-  const _sfc_main$f = {
-    data() {
-      return {
-        inputContent: "",
-        // 用户输入的内容
-        remainingCount: 200
-        // 剩余字数
-      };
-    },
-    watch: {
-      inputContent(newValue) {
-        this.remainingCount = 200 - newValue.length;
-      }
-    }
-  };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0$3);
-    return vue.openBlock(), vue.createElementBlock(
-      vue.Fragment,
-      null,
-      [
-        vue.createCommentVNode(" 发布 "),
-        vue.createElementVNode("view", { class: "uploadBody" }, [
-          vue.createElementVNode("view", { class: "uploadBodyTit" }, [
-            vue.createElementVNode("view", { class: "uploadBodyTitLine" }),
-            vue.createElementVNode("view", { class: "uploadBodyTit_t" }, [
-              vue.createTextVNode("今日免费发布次数剩余 "),
-              vue.createElementVNode("text", null, "3"),
-              vue.createTextVNode("次")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodyForm" }, [
-            vue.createElementVNode("input", {
-              "placeholder-style": "font-size:30rpx",
-              class: "uploadBodyFormInp",
-              type: "text",
-              placeholder: "请输入完整帖子标题（5-30个字）",
-              maxlength: "30"
-            }),
-            vue.withDirectives(vue.createElementVNode(
-              "textarea",
-              {
-                "placeholder-style": "font-size:30rpx",
-                class: "uploadBodyFormTexarea",
-                maxlength: 200,
-                placeholder: "请输入内容",
-                onInput: _cache[0] || (_cache[0] = (...args) => _ctx.handleInput && _ctx.handleInput(...args)),
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.inputContent = $event)
-              },
-              null,
-              544
-              /* NEED_HYDRATION, NEED_PATCH */
-            ), [
-              [vue.vModelText, $data.inputContent]
-            ]),
-            vue.createElementVNode(
-              "view",
-              { class: "uploadBodyFormCount" },
-              "剩余字数：" + vue.toDisplayString($data.remainingCount),
-              1
-              /* TEXT */
-            )
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodyCityClass" }, [
-            vue.createElementVNode("view", { class: "uploadBodyCityClassBtn" }, "选择城市"),
-            vue.createElementVNode("view", { class: "uploadBodyCityClassBtn" }, "选择圈子")
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodyUpCon" }, [
-            vue.createVNode(_component_uni_file_picker, {
-              limit: "9",
-              title: "最多选择9张图片",
-              class: "uploadBodyUpImg"
-            }),
-            vue.createVNode(_component_uni_file_picker, {
-              limit: "1",
-              "file-mediatype": "video"
-            }, {
-              default: vue.withCtx(() => [
-                vue.createElementVNode("view", { class: "uploadBodyUpImg" }, [
-                  vue.createElementVNode("image", {
-                    src: "/static/images/upload_2.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode("text", null, "上传视频 | 最多选择1个视频")
-                ])
-              ]),
-              _: 1
-              /* STABLE */
-            }),
-            vue.createElementVNode("view", { class: "uploadBodyUpConTip" }, "* 图片 和 视频 只能选择一种上传")
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodySub" }, " 提交 ")
-        ])
-      ],
-      2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-    );
-  }
-  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
-  const isObject = (val) => val !== null && typeof val === "object";
-  const defaultDelimiters = ["{", "}"];
-  class BaseFormatter {
-    constructor() {
-      this._caches = /* @__PURE__ */ Object.create(null);
-    }
-    interpolate(message, values, delimiters = defaultDelimiters) {
-      if (!values) {
-        return [message];
-      }
-      let tokens = this._caches[message];
-      if (!tokens) {
-        tokens = parse(message, delimiters);
-        this._caches[message] = tokens;
-      }
-      return compile(tokens, values);
-    }
-  }
-  const RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
-  const RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
-  function parse(format, [startDelimiter, endDelimiter]) {
-    const tokens = [];
-    let position = 0;
-    let text = "";
-    while (position < format.length) {
-      let char = format[position++];
-      if (char === startDelimiter) {
-        if (text) {
-          tokens.push({ type: "text", value: text });
-        }
-        text = "";
-        let sub = "";
-        char = format[position++];
-        while (char !== void 0 && char !== endDelimiter) {
-          sub += char;
-          char = format[position++];
-        }
-        const isClosed = char === endDelimiter;
-        const type = RE_TOKEN_LIST_VALUE.test(sub) ? "list" : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? "named" : "unknown";
-        tokens.push({ value: sub, type });
-      } else {
-        text += char;
-      }
-    }
-    text && tokens.push({ type: "text", value: text });
-    return tokens;
-  }
-  function compile(tokens, values) {
-    const compiled = [];
-    let index = 0;
-    const mode = Array.isArray(values) ? "list" : isObject(values) ? "named" : "unknown";
-    if (mode === "unknown") {
-      return compiled;
-    }
-    while (index < tokens.length) {
-      const token = tokens[index];
-      switch (token.type) {
-        case "text":
-          compiled.push(token.value);
-          break;
-        case "list":
-          compiled.push(values[parseInt(token.value, 10)]);
-          break;
-        case "named":
-          if (mode === "named") {
-            compiled.push(values[token.value]);
-          } else {
-            {
-              console.warn(`Type of token '${token.type}' and format of value '${mode}' don't match!`);
-            }
-          }
-          break;
-        case "unknown":
-          {
-            console.warn(`Detect 'unknown' type of token!`);
-          }
-          break;
-      }
-      index++;
-    }
-    return compiled;
-  }
-  const LOCALE_ZH_HANS = "zh-Hans";
-  const LOCALE_ZH_HANT = "zh-Hant";
-  const LOCALE_EN = "en";
-  const LOCALE_FR = "fr";
-  const LOCALE_ES = "es";
-  const hasOwnProperty = Object.prototype.hasOwnProperty;
-  const hasOwn = (val, key) => hasOwnProperty.call(val, key);
-  const defaultFormatter = new BaseFormatter();
-  function include(str, parts) {
-    return !!parts.find((part) => str.indexOf(part) !== -1);
-  }
-  function startsWith(str, parts) {
-    return parts.find((part) => str.indexOf(part) === 0);
-  }
-  function normalizeLocale(locale, messages2) {
-    if (!locale) {
-      return;
-    }
-    locale = locale.trim().replace(/_/g, "-");
-    if (messages2 && messages2[locale]) {
-      return locale;
-    }
-    locale = locale.toLowerCase();
-    if (locale === "chinese") {
-      return LOCALE_ZH_HANS;
-    }
-    if (locale.indexOf("zh") === 0) {
-      if (locale.indexOf("-hans") > -1) {
-        return LOCALE_ZH_HANS;
-      }
-      if (locale.indexOf("-hant") > -1) {
-        return LOCALE_ZH_HANT;
-      }
-      if (include(locale, ["-tw", "-hk", "-mo", "-cht"])) {
-        return LOCALE_ZH_HANT;
-      }
-      return LOCALE_ZH_HANS;
-    }
-    let locales = [LOCALE_EN, LOCALE_FR, LOCALE_ES];
-    if (messages2 && Object.keys(messages2).length > 0) {
-      locales = Object.keys(messages2);
-    }
-    const lang = startsWith(locale, locales);
-    if (lang) {
-      return lang;
-    }
-  }
-  class I18n {
-    constructor({ locale, fallbackLocale, messages: messages2, watcher, formater: formater2 }) {
-      this.locale = LOCALE_EN;
-      this.fallbackLocale = LOCALE_EN;
-      this.message = {};
-      this.messages = {};
-      this.watchers = [];
-      if (fallbackLocale) {
-        this.fallbackLocale = fallbackLocale;
-      }
-      this.formater = formater2 || defaultFormatter;
-      this.messages = messages2 || {};
-      this.setLocale(locale || LOCALE_EN);
-      if (watcher) {
-        this.watchLocale(watcher);
-      }
-    }
-    setLocale(locale) {
-      const oldLocale = this.locale;
-      this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
-      if (!this.messages[this.locale]) {
-        this.messages[this.locale] = {};
-      }
-      this.message = this.messages[this.locale];
-      if (oldLocale !== this.locale) {
-        this.watchers.forEach((watcher) => {
-          watcher(this.locale, oldLocale);
-        });
-      }
-    }
-    getLocale() {
-      return this.locale;
-    }
-    watchLocale(fn) {
-      const index = this.watchers.push(fn) - 1;
-      return () => {
-        this.watchers.splice(index, 1);
-      };
-    }
-    add(locale, message, override = true) {
-      const curMessages = this.messages[locale];
-      if (curMessages) {
-        if (override) {
-          Object.assign(curMessages, message);
-        } else {
-          Object.keys(message).forEach((key) => {
-            if (!hasOwn(curMessages, key)) {
-              curMessages[key] = message[key];
-            }
-          });
-        }
-      } else {
-        this.messages[locale] = message;
-      }
-    }
-    f(message, values, delimiters) {
-      return this.formater.interpolate(message, values, delimiters).join("");
-    }
-    t(key, locale, values) {
-      let message = this.message;
-      if (typeof locale === "string") {
-        locale = normalizeLocale(locale, this.messages);
-        locale && (message = this.messages[locale]);
-      } else {
-        values = locale;
-      }
-      if (!hasOwn(message, key)) {
-        console.warn(`Cannot translate the value of keypath ${key}. Use the value of keypath as default.`);
-        return key;
-      }
-      return this.formater.interpolate(message[key], values).join("");
-    }
-  }
-  function watchAppLocale(appVm, i18n) {
-    if (appVm.$watchLocale) {
-      appVm.$watchLocale((newLocale) => {
-        i18n.setLocale(newLocale);
-      });
-    } else {
-      appVm.$watch(() => appVm.$locale, (newLocale) => {
-        i18n.setLocale(newLocale);
-      });
-    }
-  }
-  function getDefaultLocale() {
-    if (typeof uni !== "undefined" && uni.getLocale) {
-      return uni.getLocale();
-    }
-    if (typeof global !== "undefined" && global.getLocale) {
-      return global.getLocale();
-    }
-    return LOCALE_EN;
-  }
-  function initVueI18n(locale, messages2 = {}, fallbackLocale, watcher) {
-    if (typeof locale !== "string") {
-      [locale, messages2] = [
-        messages2,
-        locale
-      ];
-    }
-    if (typeof locale !== "string") {
-      locale = getDefaultLocale();
-    }
-    if (typeof fallbackLocale !== "string") {
-      fallbackLocale = typeof __uniConfig !== "undefined" && __uniConfig.fallbackLocale || LOCALE_EN;
-    }
-    const i18n = new I18n({
-      locale,
-      fallbackLocale,
-      messages: messages2,
-      watcher
-    });
-    let t2 = (key, values) => {
-      if (typeof getApp !== "function") {
-        t2 = function(key2, values2) {
-          return i18n.t(key2, values2);
-        };
-      } else {
-        let isWatchedAppLocale = false;
-        t2 = function(key2, values2) {
-          const appVm = getApp().$vm;
-          if (appVm) {
-            appVm.$locale;
-            if (!isWatchedAppLocale) {
-              isWatchedAppLocale = true;
-              watchAppLocale(appVm, i18n);
-            }
-          }
-          return i18n.t(key2, values2);
-        };
-      }
-      return t2(key, values);
-    };
-    return {
-      i18n,
-      f(message, values, delimiters) {
-        return i18n.f(message, values, delimiters);
-      },
-      t(key, values) {
-        return t2(key, values);
-      },
-      add(locale2, message, override = true) {
-        return i18n.add(locale2, message, override);
-      },
-      watch(fn) {
-        return i18n.watchLocale(fn);
-      },
-      getLocale() {
-        return i18n.getLocale();
-      },
-      setLocale(newLocale) {
-        return i18n.setLocale(newLocale);
-      }
-    };
-  }
-  const en = {
-    "uni-load-more.contentdown": "Pull up to show more",
-    "uni-load-more.contentrefresh": "loading...",
-    "uni-load-more.contentnomore": "No more data"
-  };
-  const zhHans = {
-    "uni-load-more.contentdown": "上拉显示更多",
-    "uni-load-more.contentrefresh": "正在加载...",
-    "uni-load-more.contentnomore": "没有更多数据了"
-  };
-  const zhHant = {
-    "uni-load-more.contentdown": "上拉顯示更多",
-    "uni-load-more.contentrefresh": "正在加載...",
-    "uni-load-more.contentnomore": "沒有更多數據了"
-  };
-  const messages = {
-    en,
-    "zh-Hans": zhHans,
-    "zh-Hant": zhHant
-  };
-  let platform;
-  setTimeout(() => {
-    platform = uni.getSystemInfoSync().platform;
-  }, 16);
-  const {
-    t
-  } = initVueI18n(messages);
-  const _sfc_main$e = {
-    name: "UniLoadMore",
-    emits: ["clickLoadMore"],
-    props: {
-      status: {
-        // 上拉的状态：more-loading前；loading-loading中；noMore-没有更多了
-        type: String,
-        default: "more"
-      },
-      showIcon: {
-        type: Boolean,
-        default: true
-      },
-      iconType: {
-        type: String,
-        default: "auto"
-      },
-      iconSize: {
-        type: Number,
-        default: 24
-      },
-      color: {
-        type: String,
-        default: "#777777"
-      },
-      contentText: {
-        type: Object,
-        default() {
-          return {
-            contentdown: "",
-            contentrefresh: "",
-            contentnomore: ""
-          };
-        }
-      },
-      showText: {
-        type: Boolean,
-        default: true
-      }
-    },
-    data() {
-      return {
-        webviewHide: false,
-        platform,
-        imgBase64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzlBMzU3OTlEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzlBMzU3OUFEOUM0MTFFOUI0NTZDNERBQURBQzI4RkUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDOUEzNTc5N0Q5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDOUEzNTc5OEQ5QzQxMUU5QjQ1NkM0REFBREFDMjhGRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pt+ALSwAAA6CSURBVHja1FsLkFZVHb98LM+F5bHL8khA1iSeiyQBCRM+YGqKUnnJTDLGI0BGZlKDIU2MMglUiDApEZvSsZnQtBRJtKwQNKQMFYeRDR10WOLd8ljYXdh+v8v5fR3Od+797t1dnOnO/Ofce77z+J//+b/P+ZqtXbs2sJ9MJhNUV1cHJ06cCJo3bx7EPc2aNcvpy7pWrVoF+/fvDyoqKoI2bdoE9fX1F7TjN8a+EXBn/fkfvw942Tf+wYMHg9mzZwfjxo0LDhw4EPa1x2MbFw/fOGfPng1qa2tzcCkILsLDydq2bRsunpOTMM7TD/W/tZDZhPdeKD+yGxHhdu3aBV27dg3OnDlzMVANMheLAO3btw8KCwuDmpoaX5OxbgUIMEq7K8IcPnw4KCsrC/r37x8cP378/4cAXAB3vqSkJMuiDhTkw+XcuXNhOWbMmKBly5YhUT8xArhyFvP0BfwRsAuwxJZJsm/nzp2DTp06he/OU+cZ64K6o0ePBkOHDg2GDx8e6gEbJ5Q/NHNuAJQ1hgBeHUDlR7nVTkY8rQAvAi4z34vR/mPs1FoRsaCgIJThI0eOBC1atEiFGGV+5MiRoS45efJkqFjJFXV1dQuA012m2WcwTw98fy6CqBdsaiIO4CScrGPHjvk4odhavPquRtFWXEC25VgkREKOCh/qDSq+vn37htzD/mZTOmOc5U7zKzBPEedygWshcDyWvs30igAbU+6oyMgJBCFhwQE0fccxN60Ay9iebbjoDh06hMowjQxT4fXq1SskArmHZpkArvixp/kWzHdMeArExSJEaiXIjjRjRJ4DaAGWpibLzXN3Fm1vA5teBgh3j1Rv3bp1YgKwPdmf2p9zcyNYYgPKMfY0T5f5nNYdw158nJ8QawW4CLKwiOBSEgO/hok2eBydR+3dYH+PLxA5J8Vv0KBBwenTp0P2JWAx6+yFEBfs8lMY+y0SWMBNI9E4ThKi58VKTg3FQZS1RQF1cz27eC0QHMu+3E0SkUowjhVt5VdaWhp07949ZHv2Qd1EjDXM2cla1M0nl3GxAs3J9yREzyTdFVKVFOaE9qRA8GM0WebRuo9JGZKA7Mv2SeS/Z8+eoQ9BArMfFrLGo6jvxbhHbJZnKX2Rzz1O7QhJJ9Cs2ZMaWIyq/zhdeqPNfIoHd58clIQD+JSXl4dKlyIAuBdVXZwFVWKspSSoxE++h8x4k3uCnEhE4I5KwRiFWGOU0QWKiCYLbdoRMRKAu2kQ9vkfLU6dOhX06NEjlH+yMRZSinnuyWnYosVcji8CEA/6Cg2JF+IIUBqnGKUTCNwtwBN4f89RiK1R96DEgO2o0NDmtEdvVFdVVYV+P3UAPUEs6GFwV3PHmXkD4vh74iDFJysVI/MlaQhwKeBNTLYX5VuA8T4/gZxA4MRGFxDB6R7OmYPfyykGRJbyie+XnGYnQIC/coH9+vULiYrxrkL9ZA9+0ykaHIfEpM7ge8TiJ2CsHYwyMfafAF1yCGBHYIbCVDjDjKt7BeB51D+LgQa6OkG7IDYEEtvQ7lnXLKLtLdLuJBpE4gPUXcW2+PkZwOex+4cGDhwYDBkyRL7/HFcEwUGPo/8uWRUpYnfxGHco8HkewLHLyYmAawAPuIFZxhOpDfJQ8gbUv41yORAptMWBNr6oqMhWird5+u+iHmBb2nhjDV7HWBNQTgK8y11l5NetWzc5ULscAtSj7nbNI0skhWeUZCc0W4nyH/jO4Vz0u1IeYhbk4AiwM6tjxIWByHsoZ9qcIBPJd/y+DwPfBESOmCa/QF3WiZHucLlEDpNxcNhmheEOPgdQNx6/VZFQzFZ5TN08AHXQt2Ii3EdyFuUsPtTcGPhW5iMiCNELvz+Gdn9huG4HUJaW/w3g0wxV0XaG7arG2WeKiUWYM4Y7GO5ezshTARbbWGw/DvXkpp/ivVvE0JVoMxN4rpGzJMhE5Pl+xlATsDIqikP9F9D2z3h9nOksEUFhK+qO4rcPkoalMQ/HqJLIyb3F3JdjrCcw1yZ8joyJLR5gCo54etlag7qIoeNh1N1BRYj3DTFJ0elotxPlVzkGuYAmL0VSJVGAJA41c4Z6A3BzTLfn0HYwYKEI6CUAMzZEWvLsIcQOo1AmmyyM72nHJCfYsogflGV6jEk9vyQZXSuq6w4c16NsGcGZbwOPr+H1RkOk2LEzjNepxQkihHSCQ4ynAYNRx2zMKV92CQMWqj8J0BRE8EShxRFN6YrfCRhC0x3r/Zm4IbQCcmJoV0kMamllccR6FjHqUC5F2R/wS2dcymOlfAKOS4KmzQb5cpNC2MC7JhVn5wjXoJ44rYhLh8n0eXOCorJxa7POjbSlCGVczr34/RsAmrcvo9s+wGp3tzVhntxiXiJ4nvEYb4FJkf0O8HocAePmLvCxnL0AORraVekJk6TYjDabRVXfRE2lCN1h6ZQRN1+InUbsCpKwoBZHh0dODN9JBCUffItXxEavTQkUtnfTVAplCWL3JISz29h4NjotnuSsQKJCk8dF+kJR6RARjrqFVmfPnj3ZbK8cIJ0msd6jgHPGtfVTQ8VLmlvh4mct9sobRmPic0DyDQQnx/NlfYUgyz59+oScsH379pAwXABD32nTpoUHIToESeI5mnbE/UqDdyLcafEBf2MCqgC7NwxIbMREJQ0g4D4sfJwnD+AmRrII05cfMWJE+L1169bQr+fip06dGp4oJ83lmYd5wj/EmMa4TaHivo4EeCguYZBnkB5g2aWA69OIEnUHOaGysjIYMGBAMGnSpODYsWPZwCpFmm4lNq+4gSLQA7jcX8DwtjEyRC8wjabnXEx9kfWnTJkSJkAo90xpJVV+FmcVNeYAF5zWngS4C4O91MBxmAv8blLEpbjI5sz9MTdAhcgkCT1RO8mZkAjfiYpTEvStAS53Uw1vAiUGgZ3GpuQEYvoiBqlIan7kSDHnTwJQFNiPu0+5VxCVYhcZIjNrdXUDdp+Eq5AZ3Gkg8QAyVZRZIk4Tl4QAbF9cXJxNYZMAtAokgs4BrNxEpCtteXg7DDTMDKYNSuQdKsnJBek7HxewvxaosWxLYXtw+cJp18217wql4aKCfBNoEu0O5VU+PhctJ0YeXD4C6JQpyrlpSLTojpGGGN5YwNziChdIZLk4lvLcFJ9jMX3QdiImY9bmGQU+TRUL5CHITTRlgF8D9ouD1MfmLoEPl5xokIumZ2cfgMpHt47IW9N64Hsh7wQYYjyIugWuF5fCqYncXRd5vPMWyizzvhi/32+nvG0dZc9vR6fZOu0md5e+uC408FvKSIOZwXlGvxPv95izA2Vtvg1xKFWARI+vMX66HUhpQQb643uW1bSjuTWyw2SBvDrBvjFic1eGGlz5esq3ko9uSIlBRqPuFcCv8F4WIcN12nVaBd0SaYwI6PDDImR11JkqgHcPmQssjxIn6bUshygDFJUTxPMpHk+jfjPgupgdnYV2R/g7xSjtpah8RJBewhwf0gGK6XI92u4wXFEU40afJ4DN4h5LcAd+40HI3JgJecuT0c062W0i2hQJUTcxan3/CMW1PF2K6bbA+Daz4xRs1D3Br1Cm0OihKCqizW78/nXAF/G5TXrEcVzaNMH6CyMswqsAHqDyDLEyou8lwOXnKF8DjI6KjV3KzMBiXkDH8ij/H214J5A596ekrZ3F0zXlWeL7+P5eUrNo3/QwC15uxthuzidy7DzKRwEDaAViiDgKbTbz7CJnzo0bN7pIfIiid8SuPwn25o3QCmpnyjlZkyxPP8EomCJzrGb7GJMx7tNsq4MT2xMUYaiErZOluTzKsnz3gwCeCZyVRZJfYplNEokEjwrPtxlxjeYAk+F1F74VAzPxQRNYYdtpOUvWs8J1sGhBJMNsb7igN8plJs1eSmLIhLKE4rvaCX27gOhLpLOsIzJ7qn/i+wZzcvSOZ23/du8TZjwV8zHIXoP4R3ifBxiFz1dcVpa3aPntPE+c6TmIWE9EtcMmAcPdWAhYhAXxcLOQi9L1WhD1Sc8p1d2oL7XGiRKp8F4A2i8K/nfI+y/gsTDJ/YC/8+AD5Uh04KHiGl+cIFPnBDDrPMjwRGkLXyxO4VGbfQWnDH2v0bVWE3C9QOXlepbgjEfIJQI6XDG3z5ahD9cw2pS78ipB85wyScNTvsVzlzzhL8/jRrnmVjfFJK/m3m4nj9vbgQTguT8XZTjsm672R5uJKEaQmBI/c58gyus8ZDagLpEVSJBIyHp4jn++xqPV71OgQgJYEWOtZ/haxRtKmWOBu8xdBLftWltsY84zE6WIEy/eIOWL+BaayMx+KHtL7EAkqdNDLiEXmEMUHniedtJqg9HmZtfvt26vNi0BdG3Ft3g8ZOf7PAu59TxtzivLNIekyi+wD1i8CuUiD9FXAa8C+/xS3JPmZnomyc7H+fb4/Se0bk41Fel621r4cgVxbq91V4jVqwB7HTe2M7jgB+QWHavZkDRPmZcASoZEmBx6i75bGjPcMdL4/VKGFAGWZkGzPG0XAbdL9A81G5LOmUnC9hHKJeO7dcUMjblSl12867ElFTtaGl20xvvLGPdVz/8TVuU7y0x1PG7vtNg24oz9Uo/Z412++VFWI7Fcog9tu9Lm6gvRmIPv9x1xmQAu6RDkXtbOtlGEmpgD5Nvnyc0dcv0EE6cfdi1HmhMf9wDF3k3gtRvEedhxjpgfqPb9PU9iEJHnyOUA7bQUXh6kq/D7l2iTjWv7XOD530BDr8jIrus+srXjt4MzumJMHuTsBa63YKE1+RR5lBjEikCCnWKWiHdzOgKO+nRIBAF88za/IFmJ3eMZov4CYxGBabcpGL8EYx+SeMXJeRwHNsV/h+vdxeuhEpN3ZyNY78Gm2fknJxVGhyjixPiQvVkNzT1elD9Py/aTAL64Hb9vcYmC9zfdXdT/C1LeGbg4rnBaAihDFJH12W5ulfNCNe/xTsP3bp8ikzJs5BF+5PNfAQYAPaseTdsEcaYAAAAASUVORK5CYII="
-      };
-    },
-    computed: {
-      iconSnowWidth() {
-        return (Math.floor(this.iconSize / 24) || 1) * 2;
-      },
-      contentdownText() {
-        return this.contentText.contentdown || t("uni-load-more.contentdown");
-      },
-      contentrefreshText() {
-        return this.contentText.contentrefresh || t("uni-load-more.contentrefresh");
-      },
-      contentnomoreText() {
-        return this.contentText.contentnomore || t("uni-load-more.contentnomore");
-      }
-    },
-    mounted() {
-      var pages2 = getCurrentPages();
-      var page = pages2[pages2.length - 1];
-      var currentWebview = page.$getAppWebview();
-      currentWebview.addEventListener("hide", () => {
-        this.webviewHide = true;
-      });
-      currentWebview.addEventListener("show", () => {
-        this.webviewHide = false;
-      });
-    },
-    methods: {
-      onClick() {
-        this.$emit("clickLoadMore", {
-          detail: {
-            status: this.status
-          }
-        });
-      }
-    }
-  };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", {
-      class: "uni-load-more",
-      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
-    }, [
-      !$data.webviewHide && ($props.iconType === "circle" || $props.iconType === "auto" && $data.platform === "android") && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock(
-        "view",
-        {
-          key: 0,
-          style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
-          class: "uni-load-more__img uni-load-more__img--android-MP"
-        },
-        [
-          vue.createElementVNode(
-            "view",
-            {
-              class: "uni-load-more__img-icon",
-              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
-            },
-            null,
-            4
-            /* STYLE */
-          ),
-          vue.createElementVNode(
-            "view",
-            {
-              class: "uni-load-more__img-icon",
-              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
-            },
-            null,
-            4
-            /* STYLE */
-          ),
-          vue.createElementVNode(
-            "view",
-            {
-              class: "uni-load-more__img-icon",
-              style: vue.normalizeStyle({ borderTopColor: $props.color, borderTopWidth: $props.iconSize / 12 })
-            },
-            null,
-            4
-            /* STYLE */
-          )
-        ],
-        4
-        /* STYLE */
-      )) : !$data.webviewHide && $props.status === "loading" && $props.showIcon ? (vue.openBlock(), vue.createElementBlock(
-        "view",
-        {
-          key: 1,
-          style: vue.normalizeStyle({ width: $props.iconSize + "px", height: $props.iconSize + "px" }),
-          class: "uni-load-more__img uni-load-more__img--ios-H5"
-        },
-        [
-          vue.createElementVNode("image", {
-            src: $data.imgBase64,
-            mode: "widthFix"
-          }, null, 8, ["src"])
-        ],
-        4
-        /* STYLE */
-      )) : vue.createCommentVNode("v-if", true),
-      $props.showText ? (vue.openBlock(), vue.createElementBlock(
-        "text",
-        {
-          key: 2,
-          class: "uni-load-more__text",
-          style: vue.normalizeStyle({ color: $props.color })
-        },
-        vue.toDisplayString($props.status === "more" ? $options.contentdownText : $props.status === "loading" ? $options.contentrefreshText : $options.contentnomoreText),
-        5
-        /* TEXT, STYLE */
-      )) : vue.createCommentVNode("v-if", true)
-    ]);
-  }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
-  const fontData = [
-    {
-      "font_class": "arrow-down",
-      "unicode": ""
-    },
-    {
-      "font_class": "arrow-left",
-      "unicode": ""
-    },
-    {
-      "font_class": "arrow-right",
-      "unicode": ""
-    },
-    {
-      "font_class": "arrow-up",
-      "unicode": ""
-    },
-    {
-      "font_class": "auth",
-      "unicode": ""
-    },
-    {
-      "font_class": "auth-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "back",
-      "unicode": ""
-    },
-    {
-      "font_class": "bars",
-      "unicode": ""
-    },
-    {
-      "font_class": "calendar",
-      "unicode": ""
-    },
-    {
-      "font_class": "calendar-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "camera",
-      "unicode": ""
-    },
-    {
-      "font_class": "camera-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "cart",
-      "unicode": ""
-    },
-    {
-      "font_class": "cart-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "chat",
-      "unicode": ""
-    },
-    {
-      "font_class": "chat-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "chatboxes",
-      "unicode": ""
-    },
-    {
-      "font_class": "chatboxes-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "chatbubble",
-      "unicode": ""
-    },
-    {
-      "font_class": "chatbubble-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "checkbox",
-      "unicode": ""
-    },
-    {
-      "font_class": "checkbox-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "checkmarkempty",
-      "unicode": ""
-    },
-    {
-      "font_class": "circle",
-      "unicode": ""
-    },
-    {
-      "font_class": "circle-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "clear",
-      "unicode": ""
-    },
-    {
-      "font_class": "close",
-      "unicode": ""
-    },
-    {
-      "font_class": "closeempty",
-      "unicode": ""
-    },
-    {
-      "font_class": "cloud-download",
-      "unicode": ""
-    },
-    {
-      "font_class": "cloud-download-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "cloud-upload",
-      "unicode": ""
-    },
-    {
-      "font_class": "cloud-upload-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "color",
-      "unicode": ""
-    },
-    {
-      "font_class": "color-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "compose",
-      "unicode": ""
-    },
-    {
-      "font_class": "contact",
-      "unicode": ""
-    },
-    {
-      "font_class": "contact-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "down",
-      "unicode": ""
-    },
-    {
-      "font_class": "bottom",
-      "unicode": ""
-    },
-    {
-      "font_class": "download",
-      "unicode": ""
-    },
-    {
-      "font_class": "download-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "email",
-      "unicode": ""
-    },
-    {
-      "font_class": "email-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "eye",
-      "unicode": ""
-    },
-    {
-      "font_class": "eye-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "eye-slash",
-      "unicode": ""
-    },
-    {
-      "font_class": "eye-slash-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "fire",
-      "unicode": ""
-    },
-    {
-      "font_class": "fire-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "flag",
-      "unicode": ""
-    },
-    {
-      "font_class": "flag-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "folder-add",
-      "unicode": ""
-    },
-    {
-      "font_class": "folder-add-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "font",
-      "unicode": ""
-    },
-    {
-      "font_class": "forward",
-      "unicode": ""
-    },
-    {
-      "font_class": "gear",
-      "unicode": ""
-    },
-    {
-      "font_class": "gear-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "gift",
-      "unicode": ""
-    },
-    {
-      "font_class": "gift-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "hand-down",
-      "unicode": ""
-    },
-    {
-      "font_class": "hand-down-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "hand-up",
-      "unicode": ""
-    },
-    {
-      "font_class": "hand-up-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "headphones",
-      "unicode": ""
-    },
-    {
-      "font_class": "heart",
-      "unicode": ""
-    },
-    {
-      "font_class": "heart-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "help",
-      "unicode": ""
-    },
-    {
-      "font_class": "help-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "home",
-      "unicode": ""
-    },
-    {
-      "font_class": "home-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "image",
-      "unicode": ""
-    },
-    {
-      "font_class": "image-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "images",
-      "unicode": ""
-    },
-    {
-      "font_class": "images-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "info",
-      "unicode": ""
-    },
-    {
-      "font_class": "info-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "left",
-      "unicode": ""
-    },
-    {
-      "font_class": "link",
-      "unicode": ""
-    },
-    {
-      "font_class": "list",
-      "unicode": ""
-    },
-    {
-      "font_class": "location",
-      "unicode": ""
-    },
-    {
-      "font_class": "location-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "locked",
-      "unicode": ""
-    },
-    {
-      "font_class": "locked-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "loop",
-      "unicode": ""
-    },
-    {
-      "font_class": "mail-open",
-      "unicode": ""
-    },
-    {
-      "font_class": "mail-open-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "map",
-      "unicode": ""
-    },
-    {
-      "font_class": "map-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "map-pin",
-      "unicode": ""
-    },
-    {
-      "font_class": "map-pin-ellipse",
-      "unicode": ""
-    },
-    {
-      "font_class": "medal",
-      "unicode": ""
-    },
-    {
-      "font_class": "medal-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "mic",
-      "unicode": ""
-    },
-    {
-      "font_class": "mic-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "micoff",
-      "unicode": ""
-    },
-    {
-      "font_class": "micoff-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "minus",
-      "unicode": ""
-    },
-    {
-      "font_class": "minus-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "more",
-      "unicode": ""
-    },
-    {
-      "font_class": "more-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "navigate",
-      "unicode": ""
-    },
-    {
-      "font_class": "navigate-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "notification",
-      "unicode": ""
-    },
-    {
-      "font_class": "notification-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "paperclip",
-      "unicode": ""
-    },
-    {
-      "font_class": "paperplane",
-      "unicode": ""
-    },
-    {
-      "font_class": "paperplane-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "person",
-      "unicode": ""
-    },
-    {
-      "font_class": "person-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "personadd",
-      "unicode": ""
-    },
-    {
-      "font_class": "personadd-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "personadd-filled-copy",
-      "unicode": ""
-    },
-    {
-      "font_class": "phone",
-      "unicode": ""
-    },
-    {
-      "font_class": "phone-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "plus",
-      "unicode": ""
-    },
-    {
-      "font_class": "plus-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "plusempty",
-      "unicode": ""
-    },
-    {
-      "font_class": "pulldown",
-      "unicode": ""
-    },
-    {
-      "font_class": "pyq",
-      "unicode": ""
-    },
-    {
-      "font_class": "qq",
-      "unicode": ""
-    },
-    {
-      "font_class": "redo",
-      "unicode": ""
-    },
-    {
-      "font_class": "redo-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "refresh",
-      "unicode": ""
-    },
-    {
-      "font_class": "refresh-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "refreshempty",
-      "unicode": ""
-    },
-    {
-      "font_class": "reload",
-      "unicode": ""
-    },
-    {
-      "font_class": "right",
-      "unicode": ""
-    },
-    {
-      "font_class": "scan",
-      "unicode": ""
-    },
-    {
-      "font_class": "search",
-      "unicode": ""
-    },
-    {
-      "font_class": "settings",
-      "unicode": ""
-    },
-    {
-      "font_class": "settings-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "shop",
-      "unicode": ""
-    },
-    {
-      "font_class": "shop-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "smallcircle",
-      "unicode": ""
-    },
-    {
-      "font_class": "smallcircle-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "sound",
-      "unicode": ""
-    },
-    {
-      "font_class": "sound-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "spinner-cycle",
-      "unicode": ""
-    },
-    {
-      "font_class": "staff",
-      "unicode": ""
-    },
-    {
-      "font_class": "staff-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "star",
-      "unicode": ""
-    },
-    {
-      "font_class": "star-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "starhalf",
-      "unicode": ""
-    },
-    {
-      "font_class": "trash",
-      "unicode": ""
-    },
-    {
-      "font_class": "trash-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "tune",
-      "unicode": ""
-    },
-    {
-      "font_class": "tune-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "undo",
-      "unicode": ""
-    },
-    {
-      "font_class": "undo-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "up",
-      "unicode": ""
-    },
-    {
-      "font_class": "top",
-      "unicode": ""
-    },
-    {
-      "font_class": "upload",
-      "unicode": ""
-    },
-    {
-      "font_class": "upload-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "videocam",
-      "unicode": ""
-    },
-    {
-      "font_class": "videocam-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "vip",
-      "unicode": ""
-    },
-    {
-      "font_class": "vip-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "wallet",
-      "unicode": ""
-    },
-    {
-      "font_class": "wallet-filled",
-      "unicode": ""
-    },
-    {
-      "font_class": "weibo",
-      "unicode": ""
-    },
-    {
-      "font_class": "weixin",
-      "unicode": ""
-    }
-  ];
-  const getVal = (val) => {
-    const reg = /^[0-9]*$/g;
-    return typeof val === "number" || reg.test(val) ? val + "px" : val;
-  };
-  const _sfc_main$d = {
-    name: "UniIcons",
-    emits: ["click"],
-    props: {
-      type: {
-        type: String,
-        default: ""
-      },
-      color: {
-        type: String,
-        default: "#333333"
-      },
-      size: {
-        type: [Number, String],
-        default: 16
-      },
-      customPrefix: {
-        type: String,
-        default: ""
-      },
-      fontFamily: {
-        type: String,
-        default: ""
-      }
-    },
-    data() {
-      return {
-        icons: fontData
-      };
-    },
-    computed: {
-      unicode() {
-        let code = this.icons.find((v2) => v2.font_class === this.type);
-        if (code) {
-          return code.unicode;
-        }
-        return "";
-      },
-      iconSize() {
-        return getVal(this.size);
-      },
-      styleObj() {
-        if (this.fontFamily !== "") {
-          return `color: ${this.color}; font-size: ${this.iconSize}; font-family: ${this.fontFamily};`;
-        }
-        return `color: ${this.color}; font-size: ${this.iconSize};`;
-      }
-    },
-    methods: {
-      _onClick() {
-        this.$emit("click");
-      }
-    }
-  };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(
-      "text",
-      {
-        style: vue.normalizeStyle($options.styleObj),
-        class: vue.normalizeClass(["uni-icons", ["uniui-" + $props.type, $props.customPrefix, $props.customPrefix ? $props.type : ""]]),
-        onClick: _cache[0] || (_cache[0] = (...args) => $options._onClick && $options._onClick(...args))
-      },
-      [
-        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-      ],
-      6
-      /* CLASS, STYLE */
-    );
-  }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const dataPicker = {
     props: {
       localdata: {
@@ -6242,7 +4637,7 @@ ${i3}
       }
     }
   };
-  const _sfc_main$c = {
+  const _sfc_main$k = {
     name: "UniDataPickerView",
     emits: ["nodeclick", "change", "datachange", "update:modelValue"],
     mixins: [dataPicker],
@@ -6346,8 +4741,8 @@ ${i3}
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-pickerview" }, [
       !_ctx.isCloudDataList ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
         key: 0,
@@ -6436,8 +4831,8 @@ ${i3}
       ])
     ]);
   }
-  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
-  const _sfc_main$b = {
+  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
+  const _sfc_main$j = {
     name: "UniDataPicker",
     emits: ["popupopened", "popupclosed", "nodeclick", "input", "change", "update:modelValue", "inputclick"],
     mixins: [dataPicker],
@@ -6641,9 +5036,9 @@ ${i3}
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$2);
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$5);
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$4);
     const _component_data_picker_view = vue.resolveComponent("data-picker-view");
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-tree" }, [
       vue.createElementVNode("view", {
@@ -6807,8 +5202,8 @@ ${i3}
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
-  const _sfc_main$a = {
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
+  const _sfc_main$i = {
     name: "uni-data-select",
     mixins: [Ws.mixinDatacom || {}],
     props: {
@@ -7060,8 +5455,8 @@ ${i3}
       }
     }
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$1);
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$4);
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-stat__select" }, [
       $props.label ? (vue.openBlock(), vue.createElementBlock(
         "span",
@@ -7200,8 +5595,8 @@ ${i3}
       )
     ]);
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-123e8af9"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
-  const _sfc_main$9 = {
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__scopeId", "data-v-123e8af9"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
+  const _sfc_main$h = {
     props: {
       activePage: {
         type: Number,
@@ -7254,7 +5649,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
       (vue.openBlock(true), vue.createElementBlock(
         vue.Fragment,
@@ -7290,8 +5685,8 @@ ${i3}
       ))
     ]);
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
-  const _sfc_main$8 = {
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
+  const _sfc_main$g = {
     components: {
       CustomTabsBar: __easycom_2
     },
@@ -7426,9 +5821,9 @@ ${i3}
       }
     }
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0);
-    const _component_uni_data_select = resolveEasycom(vue.resolveDynamicComponent("uni-data-select"), __easycom_1$1);
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$3);
+    const _component_uni_data_select = resolveEasycom(vue.resolveDynamicComponent("uni-data-select"), __easycom_0$2);
     const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
     return vue.openBlock(), vue.createElementBlock(
       "view",
@@ -7467,7 +5862,7 @@ ${i3}
                 }),
                 vue.createElementVNode("input", {
                   type: "text",
-                  placeholder: "请输入商品名称"
+                  placeholder: "请输入搜索关键字"
                 })
               ]),
               vue.createCommentVNode(" 消息 "),
@@ -7498,7 +5893,11 @@ ${i3}
             ])
           ]),
           vue.createElementVNode("view", { class: "fourmRecommendBot" }, [
-            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              url: "/pages/forum/forum-list",
+              class: "fourmRecommendBotLi"
+            }, [
               vue.createElementVNode("image", {
                 src: "/static/images/forum_2.png",
                 class: "fourmRecommendBotLiImg"
@@ -7511,7 +5910,11 @@ ${i3}
                 ])
               ])
             ]),
-            vue.createElementVNode("view", { class: "fourmRecommendBotLi" }, [
+            vue.createElementVNode("navigator", {
+              "hover-class": "none",
+              url: "/pages/forum/forum-list",
+              class: "fourmRecommendBotLi"
+            }, [
               vue.createElementVNode("image", {
                 src: "/static/images/forum_2.png",
                 class: "fourmRecommendBotLiImg"
@@ -7700,6 +6103,7 @@ ${i3}
               ]),
               vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
                 vue.createElementVNode("navigator", {
+                  url: "/pages/forum/forum-con",
                   "hover-class": "none",
                   class: "forumSelectUlLiConTxt"
                 }, [
@@ -7724,6 +6128,7 @@ ${i3}
                 ]),
                 vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
                   vue.createElementVNode("navigator", {
+                    url: "/pages/forum/forum-con",
                     "hover-class": "none",
                     class: "forumSelectUlLiConBotComment"
                   }, [
@@ -7785,6 +6190,7 @@ ${i3}
               ]),
               vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
                 vue.createElementVNode("navigator", {
+                  url: "/pages/forum/forum-con",
                   "hover-class": "none",
                   class: "forumSelectUlLiConTxt"
                 }, [
@@ -7809,6 +6215,7 @@ ${i3}
                 ]),
                 vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
                   vue.createElementVNode("navigator", {
+                    url: "/pages/forum/forum-con",
                     "hover-class": "none",
                     class: "forumSelectUlLiConBotComment"
                   }, [
@@ -8117,7 +6524,3185 @@ ${i3}
       /* NEED_HYDRATION */
     );
   }
-  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const _sfc_main$f = {
+    data() {
+      return {
+        valueSe: 1,
+        range: [
+          {
+            value: 0,
+            text: "按热度"
+          },
+          {
+            value: 1,
+            text: "按发布时间"
+          }
+        ],
+        number: 1,
+        cnumber: 12e3,
+        isSticky: false,
+        topThreshold: 0,
+        // 根据实际布局调整
+        isLiked: false,
+        // 是否已点赞的状态
+        likeImage: "../../static/images/forum_8.png",
+        // 初始未点赞时的图片
+        likeText: "点赞",
+        isExpanded: false
+      };
+    },
+    mounted() {
+    },
+    beforeDestroy() {
+    },
+    methods: {
+      changeSe(e2) {
+        formatAppLog("log", "at pages/forum/forum-list.vue:268", "e:", e2);
+      },
+      // 点击查看放大图片
+      previewImage() {
+        uni.previewImage({
+          urls: [
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          ],
+          // 可以放置多个图片URL，用于滑动查看
+          current: "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          // 当前显示的图片URL
+        });
+      },
+      // 帖子点赞
+      toggleLike() {
+        this.isLiked = !this.isLiked;
+        this.number += this.isLiked ? 1 : -1;
+        this.likeImage = this.isLiked ? "../../static/images/forum_9.png" : "../../static/images/forum_8.png";
+        this.likeText = this.isLiked ? "已点赞" : "点赞";
+      }
+    },
+    computed: {
+      formattedNumber() {
+        if (this.number >= 1e5) {
+          return (this.number / 1e4).toFixed(0) + "w";
+        } else if (this.number >= 1e4) {
+          return (this.number / 1e4).toFixed(1) + "w";
+        } else {
+          return this.number;
+        }
+      },
+      commentNumber() {
+        if (this.cnumber >= 1e5) {
+          return (this.cnumber / 1e4).toFixed(0) + "w";
+        } else if (this.cnumber >= 1e4) {
+          return (this.cnumber / 1e4).toFixed(1) + "w";
+        } else {
+          return this.cnumber;
+        }
+      }
+    }
+  };
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_data_select = resolveEasycom(vue.resolveDynamicComponent("uni-data-select"), __easycom_0$2);
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 从热门进入的列表页面 "),
+        vue.createElementVNode("view", { class: "handleScroll" }, [
+          vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/index_6.png",
+              mode: "widthFix"
+            }),
+            vue.createElementVNode("input", {
+              type: "text",
+              placeholder: "请输入搜索关键字"
+            })
+          ]),
+          vue.createCommentVNode(" 帖子 "),
+          vue.createElementVNode("view", { class: "forumSelect" }, [
+            vue.createElementVNode("view", { class: "forumSelectTit" }, "默认筛选"),
+            vue.createVNode(_component_uni_data_select, {
+              class: "forumSelectC",
+              modelValue: $data.valueSe,
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.valueSe = $event),
+              localdata: $data.range,
+              onChange: $options.changeSe
+            }, null, 8, ["modelValue", "localdata", "onChange"])
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUl" }, [
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ]),
+                vue.createElementVNode("image", {
+                  class: "forumSelectUlLiTopLeftUp",
+                  src: "/static/images/forum_4.png",
+                  mode: "widthFix"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  url: "/pages/forum/forum-con",
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[1] || (_cache[1] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    url: "/pages/forum/forum-con",
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", {
+                    class: "forumSelectUlLiConBotGood",
+                    onClick: _cache[2] || (_cache[2] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+                  }, [
+                    vue.createElementVNode(
+                      "text",
+                      {
+                        class: vue.normalizeClass({ "liked-text": $data.isLiked })
+                      },
+                      vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      3
+                      /* TEXT, CLASS */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: $data.likeImage,
+                      mode: "widthFix"
+                    }, null, 8, ["src"])
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ]),
+                vue.createElementVNode("image", {
+                  class: "forumSelectUlLiTopLeftUp",
+                  src: "/static/images/forum_6.png",
+                  mode: "widthFix"
+                })
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[3] || (_cache[3] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[4] || (_cache[4] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[5] || (_cache[5] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumSelectUlLi" }, [
+              vue.createElementVNode("navigator", {
+                "hover-class": "none",
+                class: "forumSelectUlLiTop"
+              }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_2.png",
+                  class: "forumSelectUlLiTopImg"
+                }),
+                vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+                    vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+                    vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumSelectUlLiCon" }, [
+                vue.createElementVNode("navigator", {
+                  "hover-class": "none",
+                  class: "forumSelectUlLiConTxt"
+                }, [
+                  vue.createTextVNode(" 内容文字内容文字内容文字内容文字~~~ "),
+                  vue.createElementVNode("br"),
+                  vue.createTextVNode(" 哈哈哈哈~~~~~ ")
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+                  vue.createElementVNode("view", {
+                    onClick: _cache[6] || (_cache[6] = (...args) => $options.previewImage && $options.previewImage(...args)),
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  }),
+                  vue.createElementVNode("view", {
+                    style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+                    class: "forumSelectUlLiConImgBack"
+                  })
+                ]),
+                vue.createElementVNode("view", { class: "forumSelectUlLiConBot" }, [
+                  vue.createElementVNode("navigator", {
+                    "hover-class": "none",
+                    class: "forumSelectUlLiConBotComment"
+                  }, [
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_7.png",
+                      mode: "widthFix"
+                    }),
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "评论(" + vue.toDisplayString($options.commentNumber) + ")",
+                      1
+                      /* TEXT */
+                    )
+                  ]),
+                  vue.createElementVNode("view", { class: "forumSelectUlLiConBotGood" }, [
+                    vue.createElementVNode(
+                      "text",
+                      null,
+                      "点赞(" + vue.toDisplayString($options.formattedNumber) + ")",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createElementVNode("image", {
+                      src: "/static/images/forum_8.png",
+                      mode: "widthFix"
+                    })
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesForumForumList = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-list.vue"]]);
+  class MPAnimation {
+    constructor(options, _this) {
+      this.options = options;
+      this.animation = uni.createAnimation({
+        ...options
+      });
+      this.currentStepAnimates = {};
+      this.next = 0;
+      this.$ = _this;
+    }
+    _nvuePushAnimates(type, args) {
+      let aniObj = this.currentStepAnimates[this.next];
+      let styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {}
+        };
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = "";
+        }
+        let unit = "";
+        if (type === "rotate") {
+          unit = "deg";
+        }
+        styles.styles.transform += `${type}(${args + unit}) `;
+      } else {
+        styles.styles[type] = `${args}`;
+      }
+      this.currentStepAnimates[this.next] = styles;
+    }
+    _animateRun(styles = {}, config = {}) {
+      let ref = this.$.$refs["ani"].ref;
+      if (!ref)
+        return;
+      return new Promise((resolve, reject) => {
+        nvueAnimation.transition(ref, {
+          styles,
+          ...config
+        }, (res) => {
+          resolve();
+        });
+      });
+    }
+    _nvueNextAnimate(animates, step = 0, fn) {
+      let obj = animates[step];
+      if (obj) {
+        let {
+          styles,
+          config
+        } = obj;
+        this._animateRun(styles, config).then(() => {
+          step += 1;
+          this._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === "function" && fn();
+        this.isEnd = true;
+      }
+    }
+    step(config = {}) {
+      this.animation.step(config);
+      return this;
+    }
+    run(fn) {
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(() => {
+        typeof fn === "function" && fn();
+      }, this.$.durationTime);
+    }
+  }
+  const animateTypes1 = [
+    "matrix",
+    "matrix3d",
+    "rotate",
+    "rotate3d",
+    "rotateX",
+    "rotateY",
+    "rotateZ",
+    "scale",
+    "scale3d",
+    "scaleX",
+    "scaleY",
+    "scaleZ",
+    "skew",
+    "skewX",
+    "skewY",
+    "translate",
+    "translate3d",
+    "translateX",
+    "translateY",
+    "translateZ"
+  ];
+  const animateTypes2 = ["opacity", "backgroundColor"];
+  const animateTypes3 = ["width", "height", "left", "right", "top", "bottom"];
+  animateTypes1.concat(animateTypes2, animateTypes3).forEach((type) => {
+    MPAnimation.prototype[type] = function(...args) {
+      this.animation[type](...args);
+      return this;
+    };
+  });
+  function createAnimation(option, _this) {
+    if (!_this)
+      return;
+    clearTimeout(_this.timer);
+    return new MPAnimation(option, _this);
+  }
+  const _sfc_main$e = {
+    name: "uniTransition",
+    emits: ["click", "change"],
+    props: {
+      show: {
+        type: Boolean,
+        default: false
+      },
+      modeClass: {
+        type: [Array, String],
+        default() {
+          return "fade";
+        }
+      },
+      duration: {
+        type: Number,
+        default: 300
+      },
+      styles: {
+        type: Object,
+        default() {
+          return {};
+        }
+      },
+      customClass: {
+        type: String,
+        default: ""
+      },
+      onceRender: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data() {
+      return {
+        isShow: false,
+        transform: "",
+        opacity: 1,
+        animationData: {},
+        durationTime: 300,
+        config: {}
+      };
+    },
+    watch: {
+      show: {
+        handler(newVal) {
+          if (newVal) {
+            this.open();
+          } else {
+            if (this.isShow) {
+              this.close();
+            }
+          }
+        },
+        immediate: true
+      }
+    },
+    computed: {
+      // 生成样式数据
+      stylesObject() {
+        let styles = {
+          ...this.styles,
+          "transition-duration": this.duration / 1e3 + "s"
+        };
+        let transform = "";
+        for (let i2 in styles) {
+          let line = this.toLine(i2);
+          transform += line + ":" + styles[i2] + ";";
+        }
+        return transform;
+      },
+      // 初始化动画条件
+      transformStyles() {
+        return "transform:" + this.transform + ";opacity:" + this.opacity + ";" + this.stylesObject;
+      }
+    },
+    created() {
+      this.config = {
+        duration: this.duration,
+        timingFunction: "ease",
+        transformOrigin: "50% 50%",
+        delay: 0
+      };
+      this.durationTime = this.duration;
+    },
+    methods: {
+      /**
+       *  ref 触发 初始化动画
+       */
+      init(obj = {}) {
+        if (obj.duration) {
+          this.durationTime = obj.duration;
+        }
+        this.animation = createAnimation(Object.assign(this.config, obj), this);
+      },
+      /**
+       * 点击组件触发回调
+       */
+      onClick() {
+        this.$emit("click", {
+          detail: this.isShow
+        });
+      },
+      /**
+       * ref 触发 动画分组
+       * @param {Object} obj
+       */
+      step(obj, config = {}) {
+        if (!this.animation)
+          return;
+        for (let i2 in obj) {
+          try {
+            if (typeof obj[i2] === "object") {
+              this.animation[i2](...obj[i2]);
+            } else {
+              this.animation[i2](obj[i2]);
+            }
+          } catch (e2) {
+            formatAppLog("error", "at node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue:148", `方法 ${i2} 不存在`);
+          }
+        }
+        this.animation.step(config);
+        return this;
+      },
+      /**
+       *  ref 触发 执行动画
+       */
+      run(fn) {
+        if (!this.animation)
+          return;
+        this.animation.run(fn);
+      },
+      // 开始过度动画
+      open() {
+        clearTimeout(this.timer);
+        this.transform = "";
+        this.isShow = true;
+        let { opacity, transform } = this.styleInit(false);
+        if (typeof opacity !== "undefined") {
+          this.opacity = opacity;
+        }
+        this.transform = transform;
+        this.$nextTick(() => {
+          this.timer = setTimeout(() => {
+            this.animation = createAnimation(this.config, this);
+            this.tranfromInit(false).step();
+            this.animation.run();
+            this.$emit("change", {
+              detail: this.isShow
+            });
+          }, 20);
+        });
+      },
+      // 关闭过度动画
+      close(type) {
+        if (!this.animation)
+          return;
+        this.tranfromInit(true).step().run(() => {
+          this.isShow = false;
+          this.animationData = null;
+          this.animation = null;
+          let { opacity, transform } = this.styleInit(false);
+          this.opacity = opacity || 1;
+          this.transform = transform;
+          this.$emit("change", {
+            detail: this.isShow
+          });
+        });
+      },
+      // 处理动画开始前的默认样式
+      styleInit(type) {
+        let styles = {
+          transform: ""
+        };
+        let buildStyle = (type2, mode) => {
+          if (mode === "fade") {
+            styles.opacity = this.animationType(type2)[mode];
+          } else {
+            styles.transform += this.animationType(type2)[mode] + " ";
+          }
+        };
+        if (typeof this.modeClass === "string") {
+          buildStyle(type, this.modeClass);
+        } else {
+          this.modeClass.forEach((mode) => {
+            buildStyle(type, mode);
+          });
+        }
+        return styles;
+      },
+      // 处理内置组合动画
+      tranfromInit(type) {
+        let buildTranfrom = (type2, mode) => {
+          let aniNum = null;
+          if (mode === "fade") {
+            aniNum = type2 ? 0 : 1;
+          } else {
+            aniNum = type2 ? "-100%" : "0";
+            if (mode === "zoom-in") {
+              aniNum = type2 ? 0.8 : 1;
+            }
+            if (mode === "zoom-out") {
+              aniNum = type2 ? 1.2 : 1;
+            }
+            if (mode === "slide-right") {
+              aniNum = type2 ? "100%" : "0";
+            }
+            if (mode === "slide-bottom") {
+              aniNum = type2 ? "100%" : "0";
+            }
+          }
+          this.animation[this.animationMode()[mode]](aniNum);
+        };
+        if (typeof this.modeClass === "string") {
+          buildTranfrom(type, this.modeClass);
+        } else {
+          this.modeClass.forEach((mode) => {
+            buildTranfrom(type, mode);
+          });
+        }
+        return this.animation;
+      },
+      animationType(type) {
+        return {
+          fade: type ? 1 : 0,
+          "slide-top": `translateY(${type ? "0" : "-100%"})`,
+          "slide-right": `translateX(${type ? "0" : "100%"})`,
+          "slide-bottom": `translateY(${type ? "0" : "100%"})`,
+          "slide-left": `translateX(${type ? "0" : "-100%"})`,
+          "zoom-in": `scaleX(${type ? 1 : 0.8}) scaleY(${type ? 1 : 0.8})`,
+          "zoom-out": `scaleX(${type ? 1 : 1.2}) scaleY(${type ? 1 : 1.2})`
+        };
+      },
+      // 内置动画类型与实际动画对应字典
+      animationMode() {
+        return {
+          fade: "opacity",
+          "slide-top": "translateY",
+          "slide-right": "translateX",
+          "slide-bottom": "translateY",
+          "slide-left": "translateX",
+          "zoom-in": "scale",
+          "zoom-out": "scale"
+        };
+      },
+      // 驼峰转中横线
+      toLine(name) {
+        return name.replace(/([A-Z])/g, "-$1").toLowerCase();
+      }
+    }
+  };
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.withDirectives((vue.openBlock(), vue.createElementBlock("view", {
+      ref: "ani",
+      animation: $data.animationData,
+      class: vue.normalizeClass($props.customClass),
+      style: vue.normalizeStyle($options.transformStyles),
+      onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
+    }, [
+      vue.renderSlot(_ctx.$slots, "default")
+    ], 14, ["animation"])), [
+      [vue.vShow, $data.isShow]
+    ]);
+  }
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
+  const _sfc_main$d = {
+    name: "uniPopup",
+    components: {},
+    emits: ["change", "maskClick"],
+    props: {
+      // 开启动画
+      animation: {
+        type: Boolean,
+        default: true
+      },
+      // 弹出层类型，可选值，top: 顶部弹出层；bottom：底部弹出层；center：全屏弹出层
+      // message: 消息提示 ; dialog : 对话框
+      type: {
+        type: String,
+        default: "center"
+      },
+      // maskClick
+      isMaskClick: {
+        type: Boolean,
+        default: null
+      },
+      // TODO 2 个版本后废弃属性 ，使用 isMaskClick
+      maskClick: {
+        type: Boolean,
+        default: null
+      },
+      backgroundColor: {
+        type: String,
+        default: "none"
+      },
+      safeArea: {
+        type: Boolean,
+        default: true
+      },
+      maskBackgroundColor: {
+        type: String,
+        default: "rgba(0, 0, 0, 0.4)"
+      },
+      borderRadius: {
+        type: String
+      }
+    },
+    watch: {
+      /**
+       * 监听type类型
+       */
+      type: {
+        handler: function(type) {
+          if (!this.config[type])
+            return;
+          this[this.config[type]](true);
+        },
+        immediate: true
+      },
+      isDesktop: {
+        handler: function(newVal) {
+          if (!this.config[newVal])
+            return;
+          this[this.config[this.type]](true);
+        },
+        immediate: true
+      },
+      /**
+       * 监听遮罩是否可点击
+       * @param {Object} val
+       */
+      maskClick: {
+        handler: function(val) {
+          this.mkclick = val;
+        },
+        immediate: true
+      },
+      isMaskClick: {
+        handler: function(val) {
+          this.mkclick = val;
+        },
+        immediate: true
+      },
+      // H5 下禁止底部滚动
+      showPopup(show) {
+      }
+    },
+    data() {
+      return {
+        duration: 300,
+        ani: [],
+        showPopup: false,
+        showTrans: false,
+        popupWidth: 0,
+        popupHeight: 0,
+        config: {
+          top: "top",
+          bottom: "bottom",
+          center: "center",
+          left: "left",
+          right: "right",
+          message: "top",
+          dialog: "center",
+          share: "bottom"
+        },
+        maskClass: {
+          position: "fixed",
+          bottom: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.4)"
+        },
+        transClass: {
+          backgroundColor: "transparent",
+          borderRadius: this.borderRadius || "0",
+          position: "fixed",
+          left: 0,
+          right: 0
+        },
+        maskShow: true,
+        mkclick: true,
+        popupstyle: "top"
+      };
+    },
+    computed: {
+      getStyles() {
+        let res = { backgroundColor: this.bg };
+        if (this.borderRadius || "0") {
+          res = Object.assign(res, { borderRadius: this.borderRadius });
+        }
+        return res;
+      },
+      isDesktop() {
+        return this.popupWidth >= 500 && this.popupHeight >= 500;
+      },
+      bg() {
+        if (this.backgroundColor === "" || this.backgroundColor === "none") {
+          return "transparent";
+        }
+        return this.backgroundColor;
+      }
+    },
+    mounted() {
+      const fixSize = () => {
+        const {
+          windowWidth,
+          windowHeight,
+          windowTop,
+          safeArea,
+          screenHeight,
+          safeAreaInsets
+        } = uni.getSystemInfoSync();
+        this.popupWidth = windowWidth;
+        this.popupHeight = windowHeight + (windowTop || 0);
+        if (safeArea && this.safeArea) {
+          this.safeAreaInsets = safeAreaInsets.bottom;
+        } else {
+          this.safeAreaInsets = 0;
+        }
+      };
+      fixSize();
+    },
+    // TODO vue3
+    unmounted() {
+      this.setH5Visible();
+    },
+    activated() {
+      this.setH5Visible(!this.showPopup);
+    },
+    deactivated() {
+      this.setH5Visible(true);
+    },
+    created() {
+      if (this.isMaskClick === null && this.maskClick === null) {
+        this.mkclick = true;
+      } else {
+        this.mkclick = this.isMaskClick !== null ? this.isMaskClick : this.maskClick;
+      }
+      if (this.animation) {
+        this.duration = 300;
+      } else {
+        this.duration = 0;
+      }
+      this.messageChild = null;
+      this.clearPropagation = false;
+      this.maskClass.backgroundColor = this.maskBackgroundColor;
+    },
+    methods: {
+      setH5Visible(visible = true) {
+      },
+      /**
+       * 公用方法，不显示遮罩层
+       */
+      closeMask() {
+        this.maskShow = false;
+      },
+      /**
+       * 公用方法，遮罩层禁止点击
+       */
+      disableMask() {
+        this.mkclick = false;
+      },
+      // TODO nvue 取消冒泡
+      clear(e2) {
+        e2.stopPropagation();
+        this.clearPropagation = true;
+      },
+      open(direction) {
+        if (this.showPopup) {
+          return;
+        }
+        let innerType = ["top", "center", "bottom", "left", "right", "message", "dialog", "share"];
+        if (!(direction && innerType.indexOf(direction) !== -1)) {
+          direction = this.type;
+        }
+        if (!this.config[direction]) {
+          formatAppLog("error", "at node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue:298", "缺少类型：", direction);
+          return;
+        }
+        this[this.config[direction]]();
+        this.$emit("change", {
+          show: true,
+          type: direction
+        });
+      },
+      close(type) {
+        this.showTrans = false;
+        this.$emit("change", {
+          show: false,
+          type: this.type
+        });
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
+          this.showPopup = false;
+        }, 300);
+      },
+      // TODO 处理冒泡事件，头条的冒泡事件有问题 ，先这样兼容
+      touchstart() {
+        this.clearPropagation = false;
+      },
+      onTap() {
+        if (this.clearPropagation) {
+          this.clearPropagation = false;
+          return;
+        }
+        this.$emit("maskClick");
+        if (!this.mkclick)
+          return;
+        this.close();
+      },
+      /**
+       * 顶部弹出样式处理
+       */
+      top(type) {
+        this.popupstyle = this.isDesktop ? "fixforpc-top" : "top";
+        this.ani = ["slide-top"];
+        this.transClass = {
+          position: "fixed",
+          left: 0,
+          right: 0,
+          backgroundColor: this.bg,
+          borderRadius: this.borderRadius || "0"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+        this.$nextTick(() => {
+          if (this.messageChild && this.type === "message") {
+            this.messageChild.timerClose();
+          }
+        });
+      },
+      /**
+       * 底部弹出样式处理
+       */
+      bottom(type) {
+        this.popupstyle = "bottom";
+        this.ani = ["slide-bottom"];
+        this.transClass = {
+          position: "fixed",
+          left: 0,
+          right: 0,
+          bottom: 0,
+          paddingBottom: this.safeAreaInsets + "px",
+          backgroundColor: this.bg,
+          borderRadius: this.borderRadius || "0"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      },
+      /**
+       * 中间弹出样式处理
+       */
+      center(type) {
+        this.popupstyle = "center";
+        this.ani = ["zoom-out", "fade"];
+        this.transClass = {
+          position: "fixed",
+          display: "flex",
+          flexDirection: "column",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: this.borderRadius || "0"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      },
+      left(type) {
+        this.popupstyle = "left";
+        this.ani = ["slide-left"];
+        this.transClass = {
+          position: "fixed",
+          left: 0,
+          bottom: 0,
+          top: 0,
+          backgroundColor: this.bg,
+          borderRadius: this.borderRadius || "0",
+          display: "flex",
+          flexDirection: "column"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      },
+      right(type) {
+        this.popupstyle = "right";
+        this.ani = ["slide-right"];
+        this.transClass = {
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          top: 0,
+          backgroundColor: this.bg,
+          borderRadius: this.borderRadius || "0",
+          display: "flex",
+          flexDirection: "column"
+        };
+        if (type)
+          return;
+        this.showPopup = true;
+        this.showTrans = true;
+      }
+    }
+  };
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_transition = resolveEasycom(vue.resolveDynamicComponent("uni-transition"), __easycom_0$1);
+    return $data.showPopup ? (vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        key: 0,
+        class: vue.normalizeClass(["uni-popup", [$data.popupstyle, $options.isDesktop ? "fixforpc-z-index" : ""]])
+      },
+      [
+        vue.createElementVNode(
+          "view",
+          {
+            onTouchstart: _cache[1] || (_cache[1] = (...args) => $options.touchstart && $options.touchstart(...args))
+          },
+          [
+            $data.maskShow ? (vue.openBlock(), vue.createBlock(_component_uni_transition, {
+              key: "1",
+              name: "mask",
+              "mode-class": "fade",
+              styles: $data.maskClass,
+              duration: $data.duration,
+              show: $data.showTrans,
+              onClick: $options.onTap
+            }, null, 8, ["styles", "duration", "show", "onClick"])) : vue.createCommentVNode("v-if", true),
+            vue.createVNode(_component_uni_transition, {
+              key: "2",
+              "mode-class": $data.ani,
+              name: "content",
+              styles: $data.transClass,
+              duration: $data.duration,
+              show: $data.showTrans,
+              onClick: $options.onTap
+            }, {
+              default: vue.withCtx(() => [
+                vue.createElementVNode(
+                  "view",
+                  {
+                    class: vue.normalizeClass(["uni-popup__wrapper", [$data.popupstyle]]),
+                    style: vue.normalizeStyle($options.getStyles),
+                    onClick: _cache[0] || (_cache[0] = (...args) => $options.clear && $options.clear(...args))
+                  },
+                  [
+                    vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+                  ],
+                  6
+                  /* CLASS, STYLE */
+                )
+              ]),
+              _: 3
+              /* FORWARDED */
+            }, 8, ["mode-class", "styles", "duration", "show", "onClick"])
+          ],
+          32
+          /* NEED_HYDRATION */
+        )
+      ],
+      2
+      /* CLASS */
+    )) : vue.createCommentVNode("v-if", true);
+  }
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__scopeId", "data-v-7db519c7"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
+  const _sfc_main$c = {
+    data() {
+      return {
+        isLiked: false,
+        // 是否已点赞的状态
+        likeImage: "../../static/images/forum_8.png",
+        // 初始未点赞时的图片
+        likeText: "点赞",
+        number: 1,
+        show: false
+      };
+    },
+    methods: {
+      // 点击查看放大图片
+      previewImage() {
+        uni.previewImage({
+          urls: [
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          ],
+          // 可以放置多个图片URL，用于滑动查看
+          current: "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          // 当前显示的图片URL
+        });
+      },
+      // 帖子点赞
+      toggleLike() {
+        this.isLiked = !this.isLiked;
+        this.number += this.isLiked ? 1 : -1;
+        this.likeImage = this.isLiked ? "../../static/images/forum_9.png" : "../../static/images/forum_8.png";
+        this.likeText = this.isLiked ? "已点赞" : "点赞";
+      },
+      // 查看全部回复弹窗
+      open() {
+        this.$refs.popup.open("bottom");
+      },
+      close() {
+        this.$refs.popup.close();
+      },
+      change(e2) {
+        this.show = e2.show;
+      }
+    },
+    computed: {
+      formattedNumber() {
+        if (this.number >= 1e5) {
+          return (this.number / 1e4).toFixed(0) + "w";
+        } else if (this.number >= 1e4) {
+          return (this.number / 1e4).toFixed(1) + "w";
+        } else {
+          return this.number;
+        }
+      }
+    }
+  };
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$4);
+    const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_1$1);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
+      vue.createElementVNode("view", { class: "forumPostsTop" }, [
+        vue.createElementVNode("image", {
+          src: "/static/images/forum_2.png",
+          class: "forumSelectUlLiTopImg"
+        }),
+        vue.createElementVNode("view", { class: "forumSelectUlLiTopLeft" }, [
+          vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftName" }, [
+            vue.createElementVNode("text", { class: "forumSelectUlLiTopLeftNameTxt" }, "自由的宝飞飞飞飞飞飞飞飞飞飞飞飞飞"),
+            vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "工长"),
+            vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftNameTab" }, "水电")
+          ]),
+          vue.createElementVNode("view", { class: "forumSelectUlLiTopLeftTime" }, "2024-04-15 16:09:32")
+        ]),
+        vue.createElementVNode("view", { class: "forumPoststxt" }, [
+          vue.createElementVNode("view", { class: "forumPoststxt_t1" }, "帖子标题帖子标题帖子标题帖子标题 "),
+          vue.createElementVNode("view", { class: "forumPoststxt_t2" }, " 发布内容发布内容发布内容发布内容发布内容发内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容发布内容欢迎大家批斗留言！！ "),
+          vue.createElementVNode("view", { class: "forumSelectUlLiConImg" }, [
+            vue.createElementVNode("view", {
+              onClick: _cache[0] || (_cache[0] = (...args) => $options.previewImage && $options.previewImage(...args)),
+              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+              class: "forumSelectUlLiConImgBack"
+            }),
+            vue.createElementVNode("view", {
+              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+              class: "forumSelectUlLiConImgBack"
+            }),
+            vue.createElementVNode("view", {
+              style: { "background": "url(http://www.moehosp.com/Public/home/images/about/about_team.png) no-repeat center center" },
+              class: "forumSelectUlLiConImgBack"
+            })
+          ]),
+          vue.createElementVNode("view", {
+            class: "forumSelectUlLiConBotGood",
+            onClick: _cache[1] || (_cache[1] = (...args) => $options.toggleLike && $options.toggleLike(...args))
+          }, [
+            vue.createElementVNode("image", {
+              src: $data.likeImage,
+              mode: "widthFix"
+            }, null, 8, ["src"]),
+            vue.createElementVNode(
+              "text",
+              {
+                class: vue.normalizeClass({ "liked-text": $data.isLiked })
+              },
+              vue.toDisplayString($data.likeText) + "(" + vue.toDisplayString($options.formattedNumber) + ")",
+              3
+              /* TEXT, CLASS */
+            )
+          ])
+        ])
+      ]),
+      vue.createElementVNode("view", { class: "forumPostsBot" }, [
+        vue.createElementVNode("view", { class: "forumPostsBotTit" }, [
+          vue.createElementVNode("view", { class: "forumPostsBotT_1" }, "全部回复"),
+          vue.createElementVNode("view", { class: "forumPostsBotT_2" }, [
+            vue.createElementVNode("text", { class: "forumPostsBotT_2On" }, "热门"),
+            vue.createElementVNode("text", null, "正序")
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "forumPostsBotUl" }, [
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "自由的宝飞飞飞"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTabLand" }, " 楼主 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiComment" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, [
+                  vue.createTextVNode(" 你喜欢的唐唐 "),
+                  vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTabLand" }, "楼主"),
+                  vue.createTextVNode("： ")
+                ]),
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t2" }, " 什么啊 ")
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, " 无语了：回复 你喜欢的唐唐 "),
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiC ommentLi_t2" }, " 什么啊什么啊？ ")
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiCommentLi" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t1" }, " 你喜欢的唐唐： "),
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiCommentLi_t2" }, " 什么啊 ")
+              ]),
+              vue.createElementVNode("view", {
+                class: "forumPostsBotUlLiCommentLiMore",
+                onClick: _cache[2] || (_cache[2] = (...args) => $options.open && $options.open(...args))
+              }, "查看全部回复 >>")
+            ])
+          ]),
+          vue.createCommentVNode(" 查看全部回复 弹窗 "),
+          vue.createVNode(
+            _component_uni_popup,
+            {
+              ref: "popup",
+              type: "bottom",
+              borderRadius: "10px  10px 0 0"
+            },
+            {
+              default: vue.withCtx(() => [
+                vue.createElementVNode("view", { class: "forumPostsPopup" }, [
+                  vue.createElementVNode("view", { class: "forumPostsPopupTit" }, [
+                    vue.createVNode(_component_uni_icons, {
+                      class: "forumPostsPopupTitClose",
+                      type: "close",
+                      size: "30",
+                      color: "#222",
+                      onClick: $options.close
+                    }, null, 8, ["onClick"]),
+                    vue.createElementVNode("text", { class: "forumPostsPopupTit_t1" }, "评论的全部回复")
+                  ]),
+                  vue.createElementVNode("view", { class: "forumPostsBotUlLiComment" }, [
+                    vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+                      vue.createElementVNode("image", {
+                        src: "/static/images/forum_2.png",
+                        class: "forumPostsBotUlLiTopImg"
+                      }),
+                      vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                        vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                          vue.createElementVNode("view", {
+                            style: { "background": "#ffdb00" },
+                            class: "forumPostsBotUlLiTopLeftTabLi"
+                          }, " 水电 "),
+                          vue.createElementVNode("view", {
+                            style: { "background": "#ffdb00" },
+                            class: "forumPostsBotUlLiTopLeftTabLi"
+                          }, " 水电 ")
+                        ])
+                      ]),
+                      vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                        vue.createElementVNode("image", {
+                          src: "/static/images/forum_8.png",
+                          mode: "widthFix"
+                        }),
+                        vue.createElementVNode("text", null, "2232")
+                      ])
+                    ]),
+                    vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+                      vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+                      vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+                    ])
+                  ]),
+                  vue.createElementVNode("view", { class: "forumPostsPopupBot" }, [
+                    vue.createElementVNode("view", { class: "forumPostsPopupBotNum" }, "6条回复"),
+                    vue.createElementVNode("view", { class: "forumPostsPopupBotUl" }, [
+                      vue.createElementVNode("view", { class: "forumPostsPopupBotUlLi" }, [
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+                          vue.createElementVNode("image", {
+                            src: "/static/images/forum_2.png",
+                            class: "forumPostsBotUlLiTopImg"
+                          }),
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                            vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "我没说话"),
+                            vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                              vue.createElementVNode("view", {
+                                style: { "background": "#ffdb00" },
+                                class: "forumPostsBotUlLiTopLeftTabLi"
+                              }, " 水电 "),
+                              vue.createElementVNode("view", {
+                                style: { "background": "#ffdb00" },
+                                class: "forumPostsBotUlLiTopLeftTabLi"
+                              }, " 水电 ")
+                            ])
+                          ])
+                        ]),
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 真麻烦 "),
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 "),
+                          vue.createElementVNode("view", { class: "forumPostsPopupBotUlLi" }, [
+                            vue.createElementVNode("image", {
+                              class: "forumPostsPopupBotUlLi_img1",
+                              src: "/static/images/forum_8.png",
+                              mode: "widthFix"
+                            }),
+                            vue.createElementVNode("text", null, "赞"),
+                            vue.createElementVNode("image", {
+                              class: "forumPostsPopupBotUlLi_img2",
+                              src: "/static/images/forum_13.png",
+                              mode: "widthFix"
+                            })
+                          ])
+                        ])
+                      ]),
+                      vue.createElementVNode("view", { class: "forumPostsPopupBotUlLi" }, [
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+                          vue.createElementVNode("image", {
+                            src: "/static/images/forum_2.png",
+                            class: "forumPostsBotUlLiTopImg"
+                          }),
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                            vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "我没说话"),
+                            vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                              vue.createElementVNode("view", {
+                                style: { "background": "#ffdb00" },
+                                class: "forumPostsBotUlLiTopLeftTabLi"
+                              }, " 水电 "),
+                              vue.createElementVNode("view", {
+                                style: { "background": "#ffdb00" },
+                                class: "forumPostsBotUlLiTopLeftTabLi"
+                              }, " 水电 ")
+                            ])
+                          ])
+                        ]),
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 真麻烦 "),
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 "),
+                          vue.createElementVNode("view", { class: "forumPostsPopupBotUlLi" }, [
+                            vue.createElementVNode("image", {
+                              class: "forumPostsPopupBotUlLi_img1",
+                              src: "/static/images/forum_8.png",
+                              mode: "widthFix"
+                            }),
+                            vue.createElementVNode("text", null, "赞"),
+                            vue.createElementVNode("image", {
+                              class: "forumPostsPopupBotUlLi_img2",
+                              src: "/static/images/forum_13.png",
+                              mode: "widthFix"
+                            })
+                          ])
+                        ])
+                      ]),
+                      vue.createElementVNode("view", { class: "forumPostsPopupBotUlLi" }, [
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+                          vue.createElementVNode("image", {
+                            src: "/static/images/forum_2.png",
+                            class: "forumPostsBotUlLiTopImg"
+                          }),
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                            vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "我没说话"),
+                            vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                              vue.createElementVNode("view", {
+                                style: { "background": "#ffdb00" },
+                                class: "forumPostsBotUlLiTopLeftTabLi"
+                              }, " 水电 "),
+                              vue.createElementVNode("view", {
+                                style: { "background": "#ffdb00" },
+                                class: "forumPostsBotUlLiTopLeftTabLi"
+                              }, " 水电 ")
+                            ])
+                          ])
+                        ]),
+                        vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 真麻烦 "),
+                          vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 "),
+                          vue.createElementVNode("view", { class: "forumPostsPopupBotUlLi" }, [
+                            vue.createElementVNode("image", {
+                              class: "forumPostsPopupBotUlLi_img1",
+                              src: "/static/images/forum_8.png",
+                              mode: "widthFix"
+                            }),
+                            vue.createElementVNode("text", null, "赞"),
+                            vue.createElementVNode("image", {
+                              class: "forumPostsPopupBotUlLi_img2",
+                              src: "/static/images/forum_13.png",
+                              mode: "widthFix"
+                            })
+                          ])
+                        ])
+                      ])
+                    ]),
+                    vue.createElementVNode("view", { class: "forumPostsPopupReply" }, [
+                      vue.createElementVNode("view", { class: "forumPostsPopupReplyTit" }, "回复 我没说话"),
+                      vue.createElementVNode("view", { class: "forumPostsPopupReplyForm" }, [
+                        vue.createElementVNode("textarea", {
+                          class: "forumPostsPopupReplyFormInt",
+                          value: "",
+                          maxlength: "50",
+                          placeholder: "发布评论，说点好听的"
+                        }),
+                        vue.createElementVNode("view", { class: "forumPostsPopupReplyFormBtn" }, "发表")
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _: 1
+              /* STABLE */
+            },
+            512
+            /* NEED_PATCH */
+          ),
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "forumPostsBotUlLi" }, [
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTop" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/forum_2.png",
+                class: "forumPostsBotUlLiTopImg"
+              }),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeft" }, [
+                vue.createElementVNode("text", { class: "forumPostsBotUlLiTopLeftName" }, "娃哈哈哈哈哈"),
+                vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftTab" }, [
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 "),
+                  vue.createElementVNode("view", {
+                    style: { "background": "#ffdb00" },
+                    class: "forumPostsBotUlLiTopLeftTabLi"
+                  }, " 水电 ")
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTopLeftGood" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/images/forum_8.png",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("text", null, "2232")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt" }, [
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t1" }, " 内容文字内容文字内容文字内容文字~~~ 哈哈哈哈~~~~~ "),
+              vue.createElementVNode("view", { class: "forumPostsBotUlLiTxt_t2" }, " 2024-04-15 16:09:32 ")
+            ])
+          ])
+        ])
+      ]),
+      vue.createCommentVNode(" 底部回复 "),
+      vue.createElementVNode("view", { class: "forumPostsReply" }, [
+        vue.createElementVNode("input", {
+          class: "forumPostsReplyInt",
+          type: "text",
+          placeholder: "发布评论，说点好听的"
+        }),
+        vue.createElementVNode("view", { class: "forumPostsReplySub" }, "发布")
+      ])
+    ]);
+  }
+  const PagesForumForumContent = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-content.vue"]]);
+  const ERR_MSG_OK = "chooseAndUploadFile:ok";
+  const ERR_MSG_FAIL = "chooseAndUploadFile:fail";
+  function chooseImage(opts) {
+    const {
+      count,
+      sizeType = ["original", "compressed"],
+      sourceType,
+      extension
+    } = opts;
+    return new Promise((resolve, reject) => {
+      uni.chooseImage({
+        count,
+        sizeType,
+        sourceType,
+        extension,
+        success(res) {
+          resolve(normalizeChooseAndUploadFileRes(res, "image"));
+        },
+        fail(res) {
+          reject({
+            errMsg: res.errMsg.replace("chooseImage:fail", ERR_MSG_FAIL)
+          });
+        }
+      });
+    });
+  }
+  function chooseVideo(opts) {
+    const {
+      count,
+      camera,
+      compressed,
+      maxDuration,
+      sourceType,
+      extension
+    } = opts;
+    return new Promise((resolve, reject) => {
+      uni.chooseVideo({
+        camera,
+        compressed,
+        maxDuration,
+        sourceType,
+        extension,
+        success(res) {
+          const {
+            tempFilePath,
+            duration,
+            size,
+            height,
+            width
+          } = res;
+          resolve(normalizeChooseAndUploadFileRes({
+            errMsg: "chooseVideo:ok",
+            tempFilePaths: [tempFilePath],
+            tempFiles: [{
+              name: res.tempFile && res.tempFile.name || "",
+              path: tempFilePath,
+              size,
+              type: res.tempFile && res.tempFile.type || "",
+              width,
+              height,
+              duration,
+              fileType: "video",
+              cloudPath: ""
+            }]
+          }, "video"));
+        },
+        fail(res) {
+          reject({
+            errMsg: res.errMsg.replace("chooseVideo:fail", ERR_MSG_FAIL)
+          });
+        }
+      });
+    });
+  }
+  function chooseAll(opts) {
+    const {
+      count,
+      extension
+    } = opts;
+    return new Promise((resolve, reject) => {
+      let chooseFile = uni.chooseFile;
+      if (typeof wx !== "undefined" && typeof wx.chooseMessageFile === "function") {
+        chooseFile = wx.chooseMessageFile;
+      }
+      if (typeof chooseFile !== "function") {
+        return reject({
+          errMsg: ERR_MSG_FAIL + " 请指定 type 类型，该平台仅支持选择 image 或 video。"
+        });
+      }
+      chooseFile({
+        type: "all",
+        count,
+        extension,
+        success(res) {
+          resolve(normalizeChooseAndUploadFileRes(res));
+        },
+        fail(res) {
+          reject({
+            errMsg: res.errMsg.replace("chooseFile:fail", ERR_MSG_FAIL)
+          });
+        }
+      });
+    });
+  }
+  function normalizeChooseAndUploadFileRes(res, fileType) {
+    res.tempFiles.forEach((item, index) => {
+      if (!item.name) {
+        item.name = item.path.substring(item.path.lastIndexOf("/") + 1);
+      }
+      if (fileType) {
+        item.fileType = fileType;
+      }
+      item.cloudPath = Date.now() + "_" + index + item.name.substring(item.name.lastIndexOf("."));
+    });
+    if (!res.tempFilePaths) {
+      res.tempFilePaths = res.tempFiles.map((file) => file.path);
+    }
+    return res;
+  }
+  function uploadCloudFiles(files, max = 5, onUploadProgress) {
+    files = JSON.parse(JSON.stringify(files));
+    const len = files.length;
+    let count = 0;
+    let self = this;
+    return new Promise((resolve) => {
+      while (count < max) {
+        next();
+      }
+      function next() {
+        let cur = count++;
+        if (cur >= len) {
+          !files.find((item) => !item.url && !item.errMsg) && resolve(files);
+          return;
+        }
+        const fileItem = files[cur];
+        const index = self.files.findIndex((v2) => v2.uuid === fileItem.uuid);
+        fileItem.url = "";
+        delete fileItem.errMsg;
+        Ws.uploadFile({
+          filePath: fileItem.path,
+          cloudPath: fileItem.cloudPath,
+          fileType: fileItem.fileType,
+          onUploadProgress: (res) => {
+            res.index = index;
+            onUploadProgress && onUploadProgress(res);
+          }
+        }).then((res) => {
+          fileItem.url = res.fileID;
+          fileItem.index = index;
+          if (cur < len) {
+            next();
+          }
+        }).catch((res) => {
+          fileItem.errMsg = res.errMsg || res.message;
+          fileItem.index = index;
+          if (cur < len) {
+            next();
+          }
+        });
+      }
+    });
+  }
+  function uploadFiles(choosePromise, {
+    onChooseFile,
+    onUploadProgress
+  }) {
+    return choosePromise.then((res) => {
+      if (onChooseFile) {
+        const customChooseRes = onChooseFile(res);
+        if (typeof customChooseRes !== "undefined") {
+          return Promise.resolve(customChooseRes).then((chooseRes) => typeof chooseRes === "undefined" ? res : chooseRes);
+        }
+      }
+      return res;
+    }).then((res) => {
+      if (res === false) {
+        return {
+          errMsg: ERR_MSG_OK,
+          tempFilePaths: [],
+          tempFiles: []
+        };
+      }
+      return res;
+    });
+  }
+  function chooseAndUploadFile(opts = {
+    type: "all"
+  }) {
+    if (opts.type === "image") {
+      return uploadFiles(chooseImage(opts), opts);
+    } else if (opts.type === "video") {
+      return uploadFiles(chooseVideo(opts), opts);
+    }
+    return uploadFiles(chooseAll(opts), opts);
+  }
+  const get_file_ext = (name) => {
+    const last_len = name.lastIndexOf(".");
+    const len = name.length;
+    return {
+      name: name.substring(0, last_len),
+      ext: name.substring(last_len + 1, len)
+    };
+  };
+  const get_extname = (fileExtname) => {
+    if (!Array.isArray(fileExtname)) {
+      let extname = fileExtname.replace(/(\[|\])/g, "");
+      return extname.split(",");
+    } else {
+      return fileExtname;
+    }
+  };
+  const get_files_and_is_max = (res, _extname) => {
+    let filePaths = [];
+    let files = [];
+    if (!_extname || _extname.length === 0) {
+      return {
+        filePaths,
+        files
+      };
+    }
+    res.tempFiles.forEach((v2) => {
+      let fileFullName = get_file_ext(v2.name);
+      const extname = fileFullName.ext.toLowerCase();
+      if (_extname.indexOf(extname) !== -1) {
+        files.push(v2);
+        filePaths.push(v2.path);
+      }
+    });
+    if (files.length !== res.tempFiles.length) {
+      uni.showToast({
+        title: `当前选择了${res.tempFiles.length}个文件 ，${res.tempFiles.length - files.length} 个文件格式不正确`,
+        icon: "none",
+        duration: 5e3
+      });
+    }
+    return {
+      filePaths,
+      files
+    };
+  };
+  const get_file_info = (filepath) => {
+    return new Promise((resolve, reject) => {
+      uni.getImageInfo({
+        src: filepath,
+        success(res) {
+          resolve(res);
+        },
+        fail(err) {
+          reject(err);
+        }
+      });
+    });
+  };
+  const get_file_data = async (files, type = "image") => {
+    let fileFullName = get_file_ext(files.name);
+    const extname = fileFullName.ext.toLowerCase();
+    let filedata = {
+      name: files.name,
+      uuid: files.uuid,
+      extname: extname || "",
+      cloudPath: files.cloudPath,
+      fileType: files.fileType,
+      thumbTempFilePath: files.thumbTempFilePath,
+      url: files.path || files.path,
+      size: files.size,
+      //单位是字节
+      image: {},
+      path: files.path,
+      video: {}
+    };
+    if (type === "image") {
+      const imageinfo = await get_file_info(files.path);
+      delete filedata.video;
+      filedata.image.width = imageinfo.width;
+      filedata.image.height = imageinfo.height;
+      filedata.image.location = imageinfo.path;
+    } else {
+      delete filedata.image;
+    }
+    return filedata;
+  };
+  const _sfc_main$b = {
+    name: "uploadImage",
+    emits: ["uploadFiles", "choose", "delFile"],
+    props: {
+      filesList: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      disablePreview: {
+        type: Boolean,
+        default: false
+      },
+      limit: {
+        type: [Number, String],
+        default: 9
+      },
+      imageStyles: {
+        type: Object,
+        default() {
+          return {
+            width: "auto",
+            height: "auto",
+            border: {}
+          };
+        }
+      },
+      delIcon: {
+        type: Boolean,
+        default: true
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      }
+    },
+    computed: {
+      styles() {
+        let styles = {
+          width: "auto",
+          height: "auto",
+          border: {}
+        };
+        return Object.assign(styles, this.imageStyles);
+      },
+      boxStyle() {
+        const {
+          width = "auto",
+          height = "auto"
+        } = this.styles;
+        let obj = {};
+        if (height === "auto") {
+          if (width !== "auto") {
+            obj.height = this.value2px(width);
+            obj["padding-top"] = 0;
+          } else {
+            obj.height = 0;
+          }
+        } else {
+          obj.height = this.value2px(height);
+          obj["padding-top"] = 0;
+        }
+        if (width === "auto") {
+          if (height !== "auto") {
+            obj.width = this.value2px(height);
+          } else {
+            obj.width = "33.3%";
+          }
+        } else {
+          obj.width = this.value2px(width);
+        }
+        let classles = "";
+        for (let i2 in obj) {
+          classles += `${i2}:${obj[i2]};`;
+        }
+        return classles;
+      },
+      borderStyle() {
+        let {
+          border
+        } = this.styles;
+        let obj = {};
+        const widthDefaultValue = 1;
+        const radiusDefaultValue = 3;
+        if (typeof border === "boolean") {
+          obj.border = border ? "1px #eee solid" : "none";
+        } else {
+          let width = border && border.width || widthDefaultValue;
+          width = this.value2px(width);
+          let radius = border && border.radius || radiusDefaultValue;
+          radius = this.value2px(radius);
+          obj = {
+            "border-width": width,
+            "border-style": border && border.style || "solid",
+            "border-color": border && border.color || "#eee",
+            "border-radius": radius
+          };
+        }
+        let classles = "";
+        for (let i2 in obj) {
+          classles += `${i2}:${obj[i2]};`;
+        }
+        return classles;
+      }
+    },
+    methods: {
+      uploadFiles(item, index) {
+        this.$emit("uploadFiles", item);
+      },
+      choose() {
+        this.$emit("choose");
+      },
+      delFile(index) {
+        this.$emit("delFile", index);
+      },
+      prviewImage(img, index) {
+        let urls = [];
+        if (Number(this.limit) === 1 && this.disablePreview && !this.disabled) {
+          this.$emit("choose");
+        }
+        if (this.disablePreview)
+          return;
+        this.filesList.forEach((i2) => {
+          urls.push(i2.url);
+        });
+        uni.previewImage({
+          urls,
+          current: index
+        });
+      },
+      value2px(value) {
+        if (typeof value === "number") {
+          value += "px";
+        } else {
+          if (value.indexOf("%") === -1) {
+            value = value.indexOf("px") !== -1 ? value : value + "px";
+          }
+        }
+        return value;
+      }
+    }
+  };
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__container" }, [
+      (vue.openBlock(true), vue.createElementBlock(
+        vue.Fragment,
+        null,
+        vue.renderList($props.filesList, (item, index) => {
+          return vue.openBlock(), vue.createElementBlock(
+            "view",
+            {
+              class: "file-picker__box",
+              key: index,
+              style: vue.normalizeStyle($options.boxStyle)
+            },
+            [
+              vue.createElementVNode(
+                "view",
+                {
+                  class: "file-picker__box-content",
+                  style: vue.normalizeStyle($options.borderStyle)
+                },
+                [
+                  vue.createElementVNode("image", {
+                    class: "file-image",
+                    src: item.url,
+                    mode: "aspectFill",
+                    onClick: vue.withModifiers(($event) => $options.prviewImage(item, index), ["stop"])
+                  }, null, 8, ["src", "onClick"]),
+                  $props.delIcon && !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 0,
+                    class: "icon-del-box",
+                    onClick: vue.withModifiers(($event) => $options.delFile(index), ["stop"])
+                  }, [
+                    vue.createElementVNode("view", { class: "icon-del" }),
+                    vue.createElementVNode("view", { class: "icon-del rotate" })
+                  ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true),
+                  item.progress && item.progress !== 100 || item.progress === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 1,
+                    class: "file-picker__progress"
+                  }, [
+                    vue.createElementVNode("progress", {
+                      class: "file-picker__progress-item",
+                      percent: item.progress === -1 ? 0 : item.progress,
+                      "stroke-width": "4",
+                      backgroundColor: item.errMsg ? "#ff5a5f" : "#EBEBEB"
+                    }, null, 8, ["percent", "backgroundColor"])
+                  ])) : vue.createCommentVNode("v-if", true),
+                  item.errMsg ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 2,
+                    class: "file-picker__mask",
+                    onClick: vue.withModifiers(($event) => $options.uploadFiles(item, index), ["stop"])
+                  }, " 点击重试 ", 8, ["onClick"])) : vue.createCommentVNode("v-if", true)
+                ],
+                4
+                /* STYLE */
+              )
+            ],
+            4
+            /* STYLE */
+          );
+        }),
+        128
+        /* KEYED_FRAGMENT */
+      )),
+      $props.filesList.length < $props.limit && !$props.readonly ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: 0,
+          class: "file-picker__box",
+          style: vue.normalizeStyle($options.boxStyle)
+        },
+        [
+          vue.createElementVNode(
+            "view",
+            {
+              class: "file-picker__box-content is-add",
+              style: vue.normalizeStyle($options.borderStyle),
+              onClick: _cache[0] || (_cache[0] = (...args) => $options.choose && $options.choose(...args))
+            },
+            [
+              vue.renderSlot(_ctx.$slots, "default", {}, () => [
+                vue.createElementVNode("view", { class: "icon-add" }),
+                vue.createElementVNode("view", { class: "icon-add rotate" })
+              ], true)
+            ],
+            4
+            /* STYLE */
+          )
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__scopeId", "data-v-6f3c6077"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
+  const _sfc_main$a = {
+    name: "uploadFile",
+    emits: ["uploadFiles", "choose", "delFile"],
+    props: {
+      filesList: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+      delIcon: {
+        type: Boolean,
+        default: true
+      },
+      limit: {
+        type: [Number, String],
+        default: 9
+      },
+      showType: {
+        type: String,
+        default: ""
+      },
+      listStyles: {
+        type: Object,
+        default() {
+          return {
+            // 是否显示边框
+            border: true,
+            // 是否显示分隔线
+            dividline: true,
+            // 线条样式
+            borderStyle: {}
+          };
+        }
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      }
+    },
+    computed: {
+      list() {
+        let files = [];
+        this.filesList.forEach((v2) => {
+          files.push(v2);
+        });
+        return files;
+      },
+      styles() {
+        let styles = {
+          border: true,
+          dividline: true,
+          "border-style": {}
+        };
+        return Object.assign(styles, this.listStyles);
+      },
+      borderStyle() {
+        let {
+          borderStyle,
+          border
+        } = this.styles;
+        let obj = {};
+        if (!border) {
+          obj.border = "none";
+        } else {
+          let width = borderStyle && borderStyle.width || 1;
+          width = this.value2px(width);
+          let radius = borderStyle && borderStyle.radius || 5;
+          radius = this.value2px(radius);
+          obj = {
+            "border-width": width,
+            "border-style": borderStyle && borderStyle.style || "solid",
+            "border-color": borderStyle && borderStyle.color || "#eee",
+            "border-radius": radius
+          };
+        }
+        let classles = "";
+        for (let i2 in obj) {
+          classles += `${i2}:${obj[i2]};`;
+        }
+        return classles;
+      },
+      borderLineStyle() {
+        let obj = {};
+        let {
+          borderStyle
+        } = this.styles;
+        if (borderStyle && borderStyle.color) {
+          obj["border-color"] = borderStyle.color;
+        }
+        if (borderStyle && borderStyle.width) {
+          let width = borderStyle && borderStyle.width || 1;
+          let style = borderStyle && borderStyle.style || 0;
+          if (typeof width === "number") {
+            width += "px";
+          } else {
+            width = width.indexOf("px") ? width : width + "px";
+          }
+          obj["border-width"] = width;
+          if (typeof style === "number") {
+            style += "px";
+          } else {
+            style = style.indexOf("px") ? style : style + "px";
+          }
+          obj["border-top-style"] = style;
+        }
+        let classles = "";
+        for (let i2 in obj) {
+          classles += `${i2}:${obj[i2]};`;
+        }
+        return classles;
+      }
+    },
+    methods: {
+      uploadFiles(item, index) {
+        this.$emit("uploadFiles", {
+          item,
+          index
+        });
+      },
+      choose() {
+        this.$emit("choose");
+      },
+      delFile(index) {
+        this.$emit("delFile", index);
+      },
+      value2px(value) {
+        if (typeof value === "number") {
+          value += "px";
+        } else {
+          value = value.indexOf("px") !== -1 ? value : value + "px";
+        }
+        return value;
+      }
+    }
+  };
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker__files" }, [
+      !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "files-button",
+        onClick: _cache[0] || (_cache[0] = (...args) => $options.choose && $options.choose(...args))
+      }, [
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+      ])) : vue.createCommentVNode("v-if", true),
+      vue.createCommentVNode(` :class="{'is-text-box':showType === 'list'}" `),
+      $options.list.length > 0 ? (vue.openBlock(), vue.createElementBlock(
+        "view",
+        {
+          key: 1,
+          class: "uni-file-picker__lists is-text-box",
+          style: vue.normalizeStyle($options.borderStyle)
+        },
+        [
+          vue.createCommentVNode(" ,'is-list-card':showType === 'list-card' "),
+          (vue.openBlock(true), vue.createElementBlock(
+            vue.Fragment,
+            null,
+            vue.renderList($options.list, (item, index) => {
+              return vue.openBlock(), vue.createElementBlock(
+                "view",
+                {
+                  class: vue.normalizeClass(["uni-file-picker__lists-box", {
+                    "files-border": index !== 0 && $options.styles.dividline
+                  }]),
+                  key: index,
+                  style: vue.normalizeStyle(index !== 0 && $options.styles.dividline && $options.borderLineStyle)
+                },
+                [
+                  vue.createElementVNode("view", { class: "uni-file-picker__item" }, [
+                    vue.createCommentVNode(` :class="{'is-text-image':showType === 'list'}" `),
+                    vue.createCommentVNode(' 	<view class="files__image is-text-image">\r\n						<image class="header-image" :src="item.logo" mode="aspectFit"></image>\r\n					</view> '),
+                    vue.createElementVNode(
+                      "view",
+                      { class: "files__name" },
+                      vue.toDisplayString(item.name),
+                      1
+                      /* TEXT */
+                    ),
+                    $props.delIcon && !$props.readonly ? (vue.openBlock(), vue.createElementBlock("view", {
+                      key: 0,
+                      class: "icon-del-box icon-files",
+                      onClick: ($event) => $options.delFile(index)
+                    }, [
+                      vue.createElementVNode("view", { class: "icon-del icon-files" }),
+                      vue.createElementVNode("view", { class: "icon-del rotate" })
+                    ], 8, ["onClick"])) : vue.createCommentVNode("v-if", true)
+                  ]),
+                  item.progress && item.progress !== 100 || item.progress === 0 ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 0,
+                    class: "file-picker__progress"
+                  }, [
+                    vue.createElementVNode("progress", {
+                      class: "file-picker__progress-item",
+                      percent: item.progress === -1 ? 0 : item.progress,
+                      "stroke-width": "4",
+                      backgroundColor: item.errMsg ? "#ff5a5f" : "#EBEBEB"
+                    }, null, 8, ["percent", "backgroundColor"])
+                  ])) : vue.createCommentVNode("v-if", true),
+                  item.status === "error" ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 1,
+                    class: "file-picker__mask",
+                    onClick: vue.withModifiers(($event) => $options.uploadFiles(item, index), ["stop"])
+                  }, " 点击重试 ", 8, ["onClick"])) : vue.createCommentVNode("v-if", true)
+                ],
+                6
+                /* CLASS, STYLE */
+              );
+            }),
+            128
+            /* KEYED_FRAGMENT */
+          ))
+        ],
+        4
+        /* STYLE */
+      )) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-86fc2bba"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
+  const _sfc_main$9 = {
+    name: "uniFilePicker",
+    components: {
+      uploadImage,
+      uploadFile
+    },
+    options: {
+      virtualHost: true
+    },
+    emits: ["select", "success", "fail", "progress", "delete", "update:modelValue", "input"],
+    props: {
+      modelValue: {
+        type: [Array, Object],
+        default() {
+          return [];
+        }
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      disablePreview: {
+        type: Boolean,
+        default: false
+      },
+      delIcon: {
+        type: Boolean,
+        default: true
+      },
+      // 自动上传
+      autoUpload: {
+        type: Boolean,
+        default: true
+      },
+      // 最大选择个数 ，h5只能限制单选或是多选
+      limit: {
+        type: [Number, String],
+        default: 9
+      },
+      // 列表样式 grid | list | list-card
+      mode: {
+        type: String,
+        default: "grid"
+      },
+      // 选择文件类型  image/video/all
+      fileMediatype: {
+        type: String,
+        default: "image"
+      },
+      // 文件类型筛选
+      fileExtname: {
+        type: [Array, String],
+        default() {
+          return [];
+        }
+      },
+      title: {
+        type: String,
+        default: ""
+      },
+      listStyles: {
+        type: Object,
+        default() {
+          return {
+            // 是否显示边框
+            border: true,
+            // 是否显示分隔线
+            dividline: true,
+            // 线条样式
+            borderStyle: {}
+          };
+        }
+      },
+      imageStyles: {
+        type: Object,
+        default() {
+          return {
+            width: "auto",
+            height: "auto"
+          };
+        }
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+      returnType: {
+        type: String,
+        default: "array"
+      },
+      sizeType: {
+        type: Array,
+        default() {
+          return ["original", "compressed"];
+        }
+      },
+      sourceType: {
+        type: Array,
+        default() {
+          return ["album", "camera"];
+        }
+      },
+      provider: {
+        type: String,
+        default: ""
+        // 默认上传到 unicloud 内置存储 extStorage 扩展存储
+      }
+    },
+    data() {
+      return {
+        files: [],
+        localValue: []
+      };
+    },
+    watch: {
+      modelValue: {
+        handler(newVal, oldVal) {
+          this.setValue(newVal, oldVal);
+        },
+        immediate: true
+      }
+    },
+    computed: {
+      filesList() {
+        let files = [];
+        this.files.forEach((v2) => {
+          files.push(v2);
+        });
+        return files;
+      },
+      showType() {
+        if (this.fileMediatype === "image") {
+          return this.mode;
+        }
+        return "list";
+      },
+      limitLength() {
+        if (this.returnType === "object") {
+          return 1;
+        }
+        if (!this.limit) {
+          return 1;
+        }
+        if (this.limit >= 9) {
+          return 9;
+        }
+        return this.limit;
+      }
+    },
+    created() {
+      if (!(Ws.config && Ws.config.provider)) {
+        this.noSpace = true;
+        Ws.chooseAndUploadFile = chooseAndUploadFile;
+      }
+      this.form = this.getForm("uniForms");
+      this.formItem = this.getForm("uniFormsItem");
+      if (this.form && this.formItem) {
+        if (this.formItem.name) {
+          this.rename = this.formItem.name;
+          this.form.inputChildrens.push(this);
+        }
+      }
+    },
+    methods: {
+      /**
+       * 公开用户使用，清空文件
+       * @param {Object} index
+       */
+      clearFiles(index) {
+        if (index !== 0 && !index) {
+          this.files = [];
+          this.$nextTick(() => {
+            this.setEmit();
+          });
+        } else {
+          this.files.splice(index, 1);
+        }
+        this.$nextTick(() => {
+          this.setEmit();
+        });
+      },
+      /**
+       * 公开用户使用，继续上传
+       */
+      upload() {
+        let files = [];
+        this.files.forEach((v2, index) => {
+          if (v2.status === "ready" || v2.status === "error") {
+            files.push(Object.assign({}, v2));
+          }
+        });
+        return this.uploadFiles(files);
+      },
+      async setValue(newVal, oldVal) {
+        const newData = async (v2) => {
+          const reg = /cloud:\/\/([\w.]+\/?)\S*/;
+          let url = "";
+          if (v2.fileID) {
+            url = v2.fileID;
+          } else {
+            url = v2.url;
+          }
+          if (reg.test(url)) {
+            v2.fileID = url;
+            v2.url = await this.getTempFileURL(url);
+          }
+          if (v2.url)
+            v2.path = v2.url;
+          return v2;
+        };
+        if (this.returnType === "object") {
+          if (newVal) {
+            await newData(newVal);
+          } else {
+            newVal = {};
+          }
+        } else {
+          if (!newVal)
+            newVal = [];
+          for (let i2 = 0; i2 < newVal.length; i2++) {
+            let v2 = newVal[i2];
+            await newData(v2);
+          }
+        }
+        this.localValue = newVal;
+        if (this.form && this.formItem && !this.is_reset) {
+          this.is_reset = false;
+          this.formItem.setValue(this.localValue);
+        }
+        let filesData = Object.keys(newVal).length > 0 ? newVal : [];
+        this.files = [].concat(filesData);
+      },
+      /**
+       * 选择文件
+       */
+      choose() {
+        if (this.disabled)
+          return;
+        if (this.files.length >= Number(this.limitLength) && this.showType !== "grid" && this.returnType === "array") {
+          uni.showToast({
+            title: `您最多选择 ${this.limitLength} 个文件`,
+            icon: "none"
+          });
+          return;
+        }
+        this.chooseFiles();
+      },
+      /**
+       * 选择文件并上传
+       */
+      chooseFiles() {
+        const _extname = get_extname(this.fileExtname);
+        Ws.chooseAndUploadFile({
+          type: this.fileMediatype,
+          compressed: false,
+          sizeType: this.sizeType,
+          sourceType: this.sourceType,
+          // TODO 如果为空，video 有问题
+          extension: _extname.length > 0 ? _extname : void 0,
+          count: this.limitLength - this.files.length,
+          //默认9
+          onChooseFile: this.chooseFileCallback,
+          onUploadProgress: (progressEvent) => {
+            this.setProgress(progressEvent, progressEvent.index);
+          }
+        }).then((result) => {
+          this.setSuccessAndError(result.tempFiles);
+        }).catch((err) => {
+          formatAppLog("log", "at node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue:374", "选择失败", err);
+        });
+      },
+      /**
+       * 选择文件回调
+       * @param {Object} res
+       */
+      async chooseFileCallback(res) {
+        const _extname = get_extname(this.fileExtname);
+        const is_one = Number(this.limitLength) === 1 && this.disablePreview && !this.disabled || this.returnType === "object";
+        if (is_one) {
+          this.files = [];
+        }
+        let {
+          filePaths,
+          files
+        } = get_files_and_is_max(res, _extname);
+        if (!(_extname && _extname.length > 0)) {
+          filePaths = res.tempFilePaths;
+          files = res.tempFiles;
+        }
+        let currentData = [];
+        for (let i2 = 0; i2 < files.length; i2++) {
+          if (this.limitLength - this.files.length <= 0)
+            break;
+          files[i2].uuid = Date.now();
+          let filedata = await get_file_data(files[i2], this.fileMediatype);
+          filedata.progress = 0;
+          filedata.status = "ready";
+          this.files.push(filedata);
+          currentData.push({
+            ...filedata,
+            file: files[i2]
+          });
+        }
+        this.$emit("select", {
+          tempFiles: currentData,
+          tempFilePaths: filePaths
+        });
+        res.tempFiles = files;
+        if (!this.autoUpload || this.noSpace) {
+          res.tempFiles = [];
+        }
+        res.tempFiles.forEach((fileItem, index) => {
+          this.provider && (fileItem.provider = this.provider);
+          const fileNameSplit = fileItem.name.split(".");
+          const ext = fileNameSplit.pop();
+          const fileName = fileNameSplit.join(".").replace(/[\s\/\?<>\\:\*\|":]/g, "_");
+          fileItem.cloudPath = fileName + "_" + Date.now() + "_" + index + "." + ext;
+        });
+      },
+      /**
+       * 批传
+       * @param {Object} e
+       */
+      uploadFiles(files) {
+        files = [].concat(files);
+        return uploadCloudFiles.call(this, files, 5, (res) => {
+          this.setProgress(res, res.index, true);
+        }).then((result) => {
+          this.setSuccessAndError(result);
+          return result;
+        }).catch((err) => {
+          formatAppLog("log", "at node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue:447", err);
+        });
+      },
+      /**
+       * 成功或失败
+       */
+      async setSuccessAndError(res, fn) {
+        let successData = [];
+        let errorData = [];
+        let tempFilePath = [];
+        let errorTempFilePath = [];
+        for (let i2 = 0; i2 < res.length; i2++) {
+          const item = res[i2];
+          const index = item.uuid ? this.files.findIndex((p2) => p2.uuid === item.uuid) : item.index;
+          if (index === -1 || !this.files)
+            break;
+          if (item.errMsg === "request:fail") {
+            this.files[index].url = item.path;
+            this.files[index].status = "error";
+            this.files[index].errMsg = item.errMsg;
+            errorData.push(this.files[index]);
+            errorTempFilePath.push(this.files[index].url);
+          } else {
+            this.files[index].errMsg = "";
+            this.files[index].fileID = item.url;
+            const reg = /cloud:\/\/([\w.]+\/?)\S*/;
+            if (reg.test(item.url)) {
+              this.files[index].url = await this.getTempFileURL(item.url);
+            } else {
+              this.files[index].url = item.url;
+            }
+            this.files[index].status = "success";
+            this.files[index].progress += 1;
+            successData.push(this.files[index]);
+            tempFilePath.push(this.files[index].fileID);
+          }
+        }
+        if (successData.length > 0) {
+          this.setEmit();
+          this.$emit("success", {
+            tempFiles: this.backObject(successData),
+            tempFilePaths: tempFilePath
+          });
+        }
+        if (errorData.length > 0) {
+          this.$emit("fail", {
+            tempFiles: this.backObject(errorData),
+            tempFilePaths: errorTempFilePath
+          });
+        }
+      },
+      /**
+       * 获取进度
+       * @param {Object} progressEvent
+       * @param {Object} index
+       * @param {Object} type
+       */
+      setProgress(progressEvent, index, type) {
+        this.files.length;
+        const percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
+        let idx = index;
+        if (!type) {
+          idx = this.files.findIndex((p2) => p2.uuid === progressEvent.tempFile.uuid);
+        }
+        if (idx === -1 || !this.files[idx])
+          return;
+        this.files[idx].progress = percentCompleted - 1;
+        this.$emit("progress", {
+          index: idx,
+          progress: parseInt(percentCompleted),
+          tempFile: this.files[idx]
+        });
+      },
+      /**
+       * 删除文件
+       * @param {Object} index
+       */
+      delFile(index) {
+        this.$emit("delete", {
+          index,
+          tempFile: this.files[index],
+          tempFilePath: this.files[index].url
+        });
+        this.files.splice(index, 1);
+        this.$nextTick(() => {
+          this.setEmit();
+        });
+      },
+      /**
+       * 获取文件名和后缀
+       * @param {Object} name
+       */
+      getFileExt(name) {
+        const last_len = name.lastIndexOf(".");
+        const len = name.length;
+        return {
+          name: name.substring(0, last_len),
+          ext: name.substring(last_len + 1, len)
+        };
+      },
+      /**
+       * 处理返回事件
+       */
+      setEmit() {
+        let data = [];
+        if (this.returnType === "object") {
+          data = this.backObject(this.files)[0];
+          this.localValue = data ? data : null;
+        } else {
+          data = this.backObject(this.files);
+          if (!this.localValue) {
+            this.localValue = [];
+          }
+          this.localValue = [...data];
+        }
+        this.$emit("update:modelValue", this.localValue);
+      },
+      /**
+       * 处理返回参数
+       * @param {Object} files
+       */
+      backObject(files) {
+        let newFilesData = [];
+        files.forEach((v2) => {
+          newFilesData.push({
+            extname: v2.extname,
+            fileType: v2.fileType,
+            image: v2.image,
+            name: v2.name,
+            path: v2.path,
+            size: v2.size,
+            fileID: v2.fileID,
+            url: v2.url,
+            // 修改删除一个文件后不能再上传的bug, #694
+            uuid: v2.uuid,
+            status: v2.status,
+            cloudPath: v2.cloudPath
+          });
+        });
+        return newFilesData;
+      },
+      async getTempFileURL(fileList) {
+        fileList = {
+          fileList: [].concat(fileList)
+        };
+        const urls = await Ws.getTempFileURL(fileList);
+        return urls.fileList[0].tempFileURL || "";
+      },
+      /**
+       * 获取父元素实例
+       */
+      getForm(name = "uniForms") {
+        let parent = this.$parent;
+        let parentName = parent.$options.name;
+        while (parentName !== name) {
+          parent = parent.$parent;
+          if (!parent)
+            return false;
+          parentName = parent.$options.name;
+        }
+        return parent;
+      }
+    }
+  };
+  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_upload_image = vue.resolveComponent("upload-image");
+    const _component_upload_file = vue.resolveComponent("upload-file");
+    return vue.openBlock(), vue.createElementBlock("view", { class: "uni-file-picker" }, [
+      $props.title ? (vue.openBlock(), vue.createElementBlock("view", {
+        key: 0,
+        class: "uni-file-picker__header"
+      }, [
+        vue.createElementVNode(
+          "text",
+          { class: "file-title" },
+          vue.toDisplayString($props.title),
+          1
+          /* TEXT */
+        ),
+        vue.createElementVNode(
+          "text",
+          { class: "file-count" },
+          vue.toDisplayString($options.filesList.length) + "/" + vue.toDisplayString($options.limitLength),
+          1
+          /* TEXT */
+        )
+      ])) : vue.createCommentVNode("v-if", true),
+      $props.fileMediatype === "image" && $options.showType === "grid" ? (vue.openBlock(), vue.createBlock(_component_upload_image, {
+        key: 1,
+        readonly: $props.readonly,
+        "image-styles": $props.imageStyles,
+        "files-list": $options.filesList,
+        limit: $options.limitLength,
+        disablePreview: $props.disablePreview,
+        delIcon: $props.delIcon,
+        onUploadFiles: $options.uploadFiles,
+        onChoose: $options.choose,
+        onDelFile: $options.delFile
+      }, {
+        default: vue.withCtx(() => [
+          vue.renderSlot(_ctx.$slots, "default", {}, () => [
+            vue.createElementVNode("view", { class: "is-add" }, [
+              vue.createElementVNode("view", { class: "icon-add" }),
+              vue.createElementVNode("view", { class: "icon-add rotate" })
+            ])
+          ], true)
+        ]),
+        _: 3
+        /* FORWARDED */
+      }, 8, ["readonly", "image-styles", "files-list", "limit", "disablePreview", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true),
+      $props.fileMediatype !== "image" || $options.showType !== "grid" ? (vue.openBlock(), vue.createBlock(_component_upload_file, {
+        key: 2,
+        readonly: $props.readonly,
+        "list-styles": $props.listStyles,
+        "files-list": $options.filesList,
+        showType: $options.showType,
+        delIcon: $props.delIcon,
+        onUploadFiles: $options.uploadFiles,
+        onChoose: $options.choose,
+        onDelFile: $options.delFile
+      }, {
+        default: vue.withCtx(() => [
+          vue.renderSlot(_ctx.$slots, "default", {}, () => [
+            vue.createElementVNode("button", {
+              type: "primary",
+              size: "mini"
+            }, "选择文件")
+          ], true)
+        ]),
+        _: 3
+        /* FORWARDED */
+      }, 8, ["readonly", "list-styles", "files-list", "showType", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true)
+    ]);
+  }
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-418f48eb"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
+  const _sfc_main$8 = {
+    data() {
+      return {
+        inputContent: "",
+        // 用户输入的内容
+        remainingCount: 200
+        // 剩余字数
+      };
+    },
+    watch: {
+      inputContent(newValue) {
+        this.remainingCount = 200 - newValue.length;
+      }
+    }
+  };
+  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0);
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 发布 "),
+        vue.createElementVNode("view", { class: "uploadBody" }, [
+          vue.createElementVNode("view", { class: "uploadBodyTit" }, [
+            vue.createElementVNode("view", { class: "uploadBodyTitLine" }),
+            vue.createElementVNode("view", { class: "uploadBodyTit_t" }, [
+              vue.createTextVNode("今日免费发布次数剩余 "),
+              vue.createElementVNode("text", null, "3"),
+              vue.createTextVNode("次")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodyForm" }, [
+            vue.createElementVNode("input", {
+              "placeholder-style": "font-size:30rpx",
+              class: "uploadBodyFormInp",
+              type: "text",
+              placeholder: "请输入完整帖子标题（5-30个字）",
+              maxlength: "30"
+            }),
+            vue.withDirectives(vue.createElementVNode(
+              "textarea",
+              {
+                "placeholder-style": "font-size:30rpx",
+                class: "uploadBodyFormTexarea",
+                maxlength: 200,
+                placeholder: "请输入内容",
+                onInput: _cache[0] || (_cache[0] = (...args) => _ctx.handleInput && _ctx.handleInput(...args)),
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.inputContent = $event)
+              },
+              null,
+              544
+              /* NEED_HYDRATION, NEED_PATCH */
+            ), [
+              [vue.vModelText, $data.inputContent]
+            ]),
+            vue.createElementVNode(
+              "view",
+              { class: "uploadBodyFormCount" },
+              "剩余字数：" + vue.toDisplayString($data.remainingCount),
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodyCityClass" }, [
+            vue.createElementVNode("view", { class: "uploadBodyCityClassBtn" }, "选择城市"),
+            vue.createElementVNode("view", { class: "uploadBodyCityClassBtn" }, "选择圈子")
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodyUpCon" }, [
+            vue.createVNode(_component_uni_file_picker, {
+              limit: "9",
+              title: "最多选择9张图片",
+              class: "uploadBodyUpImg"
+            }),
+            vue.createVNode(_component_uni_file_picker, {
+              limit: "1",
+              "file-mediatype": "video"
+            }, {
+              default: vue.withCtx(() => [
+                vue.createElementVNode("view", { class: "uploadBodyUpImg" }, [
+                  vue.createElementVNode("image", {
+                    src: "/static/images/upload_2.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode("text", null, "上传视频 | 最多选择1个视频")
+                ])
+              ]),
+              _: 1
+              /* STABLE */
+            }),
+            vue.createElementVNode("view", { class: "uploadBodyUpConTip" }, "* 图片 和 视频 只能选择一种上传")
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodySub" }, " 提交 ")
+        ])
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
   const _sfc_main$7 = {
     name: "UniSwiperDot",
     emits: ["clickItem"],
@@ -8420,7 +10005,7 @@ ${i3}
     }
   };
   function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0);
+    const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$3);
     const _component_uni_swiper_dot = resolveEasycom(vue.resolveDynamicComponent("uni-swiper-dot"), __easycom_1);
     const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
     return vue.openBlock(), vue.createElementBlock("view", { class: "" }, [
@@ -8724,7 +10309,7 @@ ${i3}
     }
   };
   function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0$3);
+    const _component_uni_file_picker = resolveEasycom(vue.resolveDynamicComponent("uni-file-picker"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
@@ -8840,7 +10425,16 @@ ${i3}
   const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "E:/yikegongcheng/yike/pages/task/task-index.vue"]]);
   const _sfc_main$2 = {};
   function _sfc_render$1(_ctx, _cache) {
-    return null;
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 配件商城 "),
+        vue.createElementVNode("view", { class: "" })
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
   }
   const PagesGoodsGoodsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "E:/yikegongcheng/yike/pages/goods/goods-index.vue"]]);
   const _sfc_main$1 = {
@@ -8853,9 +10447,11 @@ ${i3}
     return vue.openBlock(), vue.createElementBlock("view");
   }
   const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
-  __definePage("pages/forum/forum-con", PagesForumForumCon);
-  __definePage("pages/forum/forum-upload", PagesForumForumUpload);
+  __definePage("pages/goods/goods-content", PagesGoodsGoodsContent);
   __definePage("pages/forum/forum-index", PagesForumForumIndex);
+  __definePage("pages/forum/forum-list", PagesForumForumList);
+  __definePage("pages/forum/forum-content", PagesForumForumContent);
+  __definePage("pages/forum/forum-upload", PagesForumForumUpload);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/Merchant/signin", PagesMerchantSignin);
   __definePage("pages/login/login", PagesLoginLogin);

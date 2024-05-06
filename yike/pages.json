@@ -2,7 +2,28 @@
 	"pages": [ 
 		
 		{
-		  "path": "pages/forum/forum-con",
+		  "path": "pages/goods/goods-content",
+		  "style": {
+		    "navigationBarTitleText": "详情",
+			"navigationBarBackgroundColor":"#ffdb00",
+			"navigationBarTextStyle":"black"
+		  }
+		},{
+		  "path": "pages/forum/forum-index",
+		  "style": {
+		    "navigationBarTitleText": "友圈",
+			"navigationBarBackgroundColor":"#ffdb00",
+			"navigationBarTextStyle":"black"
+		  }
+		},{
+		  "path": "pages/forum/forum-list",
+		  "style": {
+		    "navigationBarTitleText": "圈子",
+			"navigationBarBackgroundColor":"#fff",
+			"navigationBarTextStyle":"black"
+		  }
+		},{
+		  "path": "pages/forum/forum-content",
 		  "style": {
 		    "navigationBarTitleText": "详情",
 			"navigationBarBackgroundColor":"#fff",
@@ -13,13 +34,6 @@
 		  "style": {
 		    "navigationBarTitleText": "发布帖子",
 			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/forum/forum-index",
-		  "style": {
-		    "navigationBarTitleText": "友圈",
-			"navigationBarBackgroundColor":"#ffdb00",
 			"navigationBarTextStyle":"black"
 		  }
 		},{
@@ -62,6 +76,13 @@
 		},
 		{
 			"path" : "pages/forum/forum-con/forum-con",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/goods/goods-con/goods-con",
 			"style" : 
 			{
 				"navigationBarTitleText" : ""

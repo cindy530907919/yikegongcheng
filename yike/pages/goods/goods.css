@@ -1,0 +1,20 @@
+.swiper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.swiper-box {
+  width: 90vw; /* 90% of viewport width */
+  max-width: 400px; /* maximum size */
+  height: 90vw; /* maintain aspect ratio to be square */
+  max-height: 400px;
+  background-color: #FFFFFF;
+}
+
+.swiper-image {
+  width: 100%; /* fill the swiper-item */
+  height: 100%;
+  object-fit: cover; /* ensure images cover the area well without distortion */
+}

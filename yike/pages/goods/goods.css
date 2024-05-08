@@ -1,20 +1,224 @@
+/* 商品详情    */
 .swiper-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+	float: left;
+	width: 100%;
 }
 
 .swiper-box {
-  width: 90vw; /* 90% of viewport width */
-  max-width: 400px; /* maximum size */
-  height: 90vw; /* maintain aspect ratio to be square */
-  max-height: 400px;
-  background-color: #FFFFFF;
+	width: 750rpx;
+	height: 750rpx;
 }
 
 .swiper-image {
-  width: 100%; /* fill the swiper-item */
-  height: 100%;
-  object-fit: cover; /* ensure images cover the area well without distortion */
+	width: 100%;
+	/* fill the swiper-item */
+	height: 100%;
+	object-fit: cover;
+	/* ensure images cover the area well without distortion */
+}
+
+.goodsCon {
+	padding: 30rpx;
+	width: 100%;
+	float: left;
+	box-sizing: border-box;
+	background: #fff;
+	border-bottom: 10px solid #f8f8f8;
+	padding-bottom: 30rpx;
+}
+
+.goodsConTit {
+	width: 100%;
+	float: left;
+	font-size: 34rpx;
+	color: #222;
+	line-height: 46rpx;
+}
+
+.goodsConLi {
+	width: 100%;
+	float: left;
+	padding-bottom: 30rpx;
+	border-bottom: 1px solid #f8f8f8;
+	margin-top: 40rpx;
+}
+
+.goodsConLiLeft image {
+	width: 36rpx;
+	float: left;
+}
+
+.goodsConLiLeft text {
+	float: left;
+	font-size: 30rpx;
+	color: #666;
+	margin-left: 10rpx;
+}
+
+.goodsConLiRight {
+	float: right;
+}
+
+.goodsConLiRight image {
+	width: 36rpx;
+	float: left;
+}
+
+.goodsConLiRight text {
+	float: left;
+	font-size: 30rpx;
+	color: #666;
+	margin-left: 10rpx;
+}
+
+.goodsConLi2 {
+	width: 100%;
+	float: left;
+	padding-bottom: 30rpx;
+	border-bottom: 1px solid #f8f8f8;
+	margin-top: 30rpx;
+}
+
+.goodsConLi3 {
+	width: 100%;
+	float: left;
+	padding-bottom: 30rpx;
+	margin-top: 30rpx;
+}
+
+.goodsConLi2Img {
+	width: 40rpx;
+	float: left;
+}
+
+.goodsConLi2_t1 {
+	font-size: 30rpx;
+	color: #666;
+	margin-left: 10rpx;
+}
+
+.goodsConLi2Icon {
+	float: right;
+}
+
+.goodsConComment {
+	width: 100%;
+	float: left;
+}
+
+.goodsConComment_t {
+	font-size: 32rpx;
+	color: #222;
+	float: left;
+	font-weight: bold;
+}
+
+.goodsConCommentGo {
+	float: right
+}
+
+.goodsConCommentGo text {
+	font-size: 30rpx;
+	color: #999;
+	float: right;
+}
+
+.goodsConCommentGoIcon {
+	float: right;
+	margin-top: 4rpx;
+	margin-left: 10rpx;
+}
+
+.goodsConCommentUl {
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+}
+
+.goodsConCommentUlLi {
+	width: 100%;
+	float: left;
+	padding-bottom: 30rpx;
+	margin-top: 30rpx;
+	border-bottom: 1px solid #f8f8f8;
+}
+
+.goodsConCommentUlLiImg {
+	width: 100rpx;
+	float: left;
+	height: 100rpx;
+	border-radius: 50%;
+}
+
+.goodsConCommentUlLiLeft {
+	width: calc(100% - 120rpx);
+	float: right;
+}
+
+.goodsConCommentUlLiLeft_t1 {
+	width: 100%;
+	float: left;
+	font-size: 30rpx;
+	color: #999;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.goodsConCommentUlLiLeft_t2 {
+	width: 100%;
+	float: left;
+	font-size: 30rpx;
+	color: #222;
+	margin-top: 20rpx;
+	line-height: 46rpx;
+}
+.goodsConShopImg{
+	width: 100rpx;
+	height: 100rpx;
+	float: left;
+	border-radius: 10px;
+}
+.goodsConShopLeft{
+	width: calc(100% - 150rpx);
+	float: right;
+}
+.goodsConShopLeft_t{
+	width: 100%;
+	float: left;
+}
+.goodsConShop_t_Bot{
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+}
+.goodsConShop_t_top{
+	width: 100%;
+	float: left;
+	font-size: 30rpx;
+	color: #222;
+}
+.goodsConShop_t_Bot_V{
+	float: left;
+	margin-right: 50rpx;
+	
+}
+.goodsConShop_t_Bot_V image{
+	width: 34rpx;
+	float: left;
+	margin-right: 10px;
+	margin-top: 4rpx;
+}
+.goodsConShop_t_Bot_V text{
+	font-size: 30rpx;
+	color: #ff9860;
+	float: left;
+}
+.goodsConShop_t_Bot_score{
+	float: left;
+	color: #222;
+	font-size: 30rpx;
+}
+.goodsConShop_t_Bot_score text{
+	color: #00d000;
 }

@@ -5,7 +5,7 @@
 		  "path": "pages/goods/goods-content",
 		  "style": {
 		    "navigationBarTitleText": "详情",
-			"navigationBarBackgroundColor":"#ffdb00",
+			"navigationBarBackgroundColor":"#fff",
 			"navigationBarTextStyle":"black"
 		  }
 		},{
@@ -74,20 +74,7 @@
 		    "navigationBarTitleText": "我的"
 		  }
 		},
-		{
-			"path" : "pages/forum/forum-con/forum-con",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
-			}
-		},
-		{
-			"path" : "pages/goods/goods-con/goods-con",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
-			}
-		}
+		
 	],
 	"easycom": {
 		"autoscan": true,

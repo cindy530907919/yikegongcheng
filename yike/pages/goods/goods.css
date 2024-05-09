@@ -1,3 +1,206 @@
+/* 商品列表 */
+.indexTopPositionConSearch {
+	width: 100%;
+	float: left;
+	background: #caffd4;
+	padding: 20rpx 5% 30rpx;
+	box-sizing: border-box;
+}
+
+.indexTopPositionConSearchInput {
+	width: 80%;
+	float: left;
+	margin-left: 6px;
+	background: #fff;
+	padding: 15rpx 20rpx;
+	border-radius: 50px;
+	box-sizing: border-box;
+}
+
+.indexTopPositionConSearchInput image {
+	width: 35rpx;
+	float: left;
+}
+
+.indexTopPositionConSearchInput input {
+	width: calc(100% - 60rpx);
+	float: left;
+	margin-left: 20rpx;
+	font-size: 12px;
+	margin-top: 4rpx;
+}
+
+.indexTopPositionConSearchMesR {
+	float: right;
+	margin-top: 20rpx;
+}
+
+.indexTopPositionConBanner image {
+	width: 100%;
+	float: left;
+}
+
+.indexTopPositionConSearchMesNew {
+	float: right;
+	width: 20rpx;
+	height: 20rpx;
+	border-radius: 50%;
+	margin-top: 20rpx;
+	background: #f00;
+	margin-left: 10rpx;
+}
+
+.indexTopPositionConSearchMes {
+	width: 40rpx;
+	float: right;
+}
+
+.goodsClassTop {
+	width: 100%;
+	float: left;
+	background: #fff;
+}
+
+.goodsClassList {
+	white-space: nowrap;
+	width: 100%;
+	float: left;
+	padding: 30rpx;
+	box-sizing: border-box;
+	border-bottom: 1px solid #f8f8f8;
+	padding-bottom: 20rpx;
+}
+
+.goodsClassListLi {
+	display: inline-block;
+	margin-right: 30rpx;
+	border-radius: 4px;
+	width: 120rpx;
+	text-align: center;
+}
+
+.goodsClassListLiLine {
+	width: 60rpx;
+	float: left;
+	height: 6px;
+	border-radius: 10px;
+	background: #ffdb00;
+	margin-left: 30rpx;
+	margin-top: 10rpx;
+}
+
+.goodsClassTopScreen {
+	width: 100%;
+	float: left;
+	padding: 30rpx;
+	box-sizing: border-box;
+}
+
+.goodsClassTopScreen_t1 {
+	float: left;
+	font-size: 30rpx;
+	color: #222;
+}
+
+.goodsClassTopScreen_t2 {
+	float: right;
+	font-size: 30rpx;
+	color: #222;
+	margin-left: 30rpx;
+}
+
+.goodsUl {
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+	margin-bottom: 200rpx;
+}
+
+.goodsUlLi {
+	width: 45.5%;
+	float: left;
+	margin-top: 30rpx;
+	margin-left: 3%;
+	background: #fff;
+	box-shadow: 0 4px 10px #eee;
+	border-radius: 30rpx;
+}
+
+.goodsUlLiCon {
+	width: 100%;
+	float: left;
+	padding: 20rpx;
+	box-sizing: border-box;
+}
+
+.goodsUlLiTit {
+	width: 100%;
+	float: left;
+	color: #222;
+	font-size: 30rpx;
+	line-height: 46rpx;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+
+.goodsUlLiImg {
+	width: 100%;
+	float: left;
+	height: 360rpx;
+	border-radius: 30rpx 30rpx 0 0;
+}
+
+.goodsUlLiHot {
+	width: 100%;
+	float: left;
+	margin-top: 15rpx;
+}
+
+.goodsUlLiHotImg {
+	width: 34rpx;
+	float: left;
+}
+
+.goodsUlLiHot_t1 {
+	float: left;
+	margin-left: 10rpx;
+	font-size: 30rpx;
+	color: #222;
+}
+.goodsUlLiPrice{
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+	font-size: 30rpx;
+	color: #f00;
+}
+.goodsUlLiPrice text{
+	padding: 0 10rpx;
+	float: left;
+	background: #ffc9c9;
+	color: #f00;
+	font-size: 30rpx;
+	border-radius: 4px;
+	margin-right: 10rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 商品详情    */
 .swiper-container {
 	float: left;
@@ -82,19 +285,22 @@
 .goodsConLi3 {
 	width: 100%;
 	float: left;
-	padding-bottom: 30rpx;
+	padding-bottom: 10rpx;
 	margin-top: 30rpx;
 }
 
 .goodsConLi2Img {
 	width: 40rpx;
 	float: left;
+	margin-top: 6rpx;
 }
 
 .goodsConLi2_t1 {
 	font-size: 30rpx;
 	color: #666;
-	margin-left: 10rpx;
+	margin-left: 20rpx;
+	margin-top: 8rpx;
+	float: left;
 }
 
 .goodsConLi2Icon {
@@ -173,52 +379,312 @@
 	margin-top: 20rpx;
 	line-height: 46rpx;
 }
-.goodsConShopImg{
+
+.goodsConShopImg {
 	width: 100rpx;
 	height: 100rpx;
 	float: left;
 	border-radius: 10px;
 }
-.goodsConShopLeft{
+
+.goodsConShopLeft {
 	width: calc(100% - 150rpx);
 	float: right;
 }
-.goodsConShopLeft_t{
+
+.goodsConShopLeft_t {
 	width: 100%;
 	float: left;
 }
-.goodsConShop_t_Bot{
+
+.goodsConShop_t_Bot {
 	width: 100%;
 	float: left;
 	margin-top: 20rpx;
 }
-.goodsConShop_t_top{
+
+.goodsConShop_t_top {
 	width: 100%;
 	float: left;
 	font-size: 30rpx;
 	color: #222;
 }
-.goodsConShop_t_Bot_V{
+
+.goodsConShop_t_Bot_V {
 	float: left;
 	margin-right: 50rpx;
-	
+
 }
-.goodsConShop_t_Bot_V image{
+
+.goodsConShop_t_Bot_V image {
 	width: 34rpx;
 	float: left;
 	margin-right: 10px;
 	margin-top: 4rpx;
 }
-.goodsConShop_t_Bot_V text{
+
+.goodsConShop_t_Bot_V text {
 	font-size: 30rpx;
 	color: #ff9860;
 	float: left;
 }
-.goodsConShop_t_Bot_score{
+
+.goodsConShop_t_Bot_score {
 	float: left;
 	color: #222;
 	font-size: 30rpx;
 }
-.goodsConShop_t_Bot_score text{
+
+.goodsConShop_t_Bot_score text {
 	color: #00d000;
+}
+
+.goodsConPTTit {
+	width: 80%;
+	float: left;
+	margin: 30px 10%;
+}
+
+.goodsConPTTitLine {
+	width: 120rpx;
+	height: 2rpx;
+	float: left;
+	background-color: #eee;
+	margin-top: 10rpx;
+}
+
+.goodsConPT {
+	width: 100%;
+	float: left;
+	padding: 30rpx;
+	box-sizing: border-box
+}
+
+.goodsConPTTit_t {
+	width: calc(100% - 240rpx);
+	float: left;
+	text-align: center;
+	font-size: 30rpx;
+	color: #222;
+}
+
+.goodsConPrice {
+	width: 100%;
+	float: left;
+	margin-top: 30rpx;
+}
+
+.goodsConPrice image {
+	width: 100%;
+	float: left;
+
+}
+
+.goodsConMeun {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 9;
+	padding: 30rpx;
+	box-sizing: border-box;
+	background: #fff;
+	border-top: 1rpx solid #eee;
+}
+
+.goodsConMeunLi {
+	width: 16%;
+	float: left;
+}
+
+.goodsConMeunLi image {
+	width: 40rpx;
+	float: left;
+	margin-left: calc(50% - 20rpx);
+}
+
+.goodsConMeunLi text {
+	width: 100%;
+	float: left;
+	text-align: center;
+	color: #222;
+	font-size: 30rpx;
+	margin-top: 10rpx;
+}
+
+.goodsConMeunBtn {
+	width: 40%;
+	float: right;
+	background: #ff9860;
+	padding: 22rpx 0;
+	text-align: center;
+	color: #fff;
+	font-size: 30rpx;
+	border-radius: 100rpx;
+}
+
+.margin200rpx {
+	width: 100%;
+	float: left;
+	margin-bottom: 200rpx;
+}
+
+.goodsPopup {
+	width: calc(100% - 60rpx);
+	float: left;
+	height: 700rpx;
+	overflow-y: scroll;
+	margin-top: 20rpx;
+	background: #fff;
+	border-radius: 20rpx 20rpx 0 0;
+	padding: 30rpx;
+}
+
+.goodsPopupTit {
+	width: 100%;
+	float: left;
+	font-size: 34rpx;
+	margit-top: 20rpx;
+	color: #222;
+	line-height: 55rpx;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.goodsPopupPrice {
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+	font-size: 45rpx;
+	color: #ff9860;
+	font-weight: bold;
+}
+
+.goodsPopupPrice text {
+	font-size: 30rpx;
+	margin-left: 4rpx;
+	font-weight: 500;
+}
+
+.goodsPopupAddress {
+	width: 100%;
+	float: left;
+	background: #fff;
+	border-radius: 30rpx;
+	box-shadow: 0 4px 10px #ddd;
+	box-sizing: border-box;
+	padding: 30rpx;
+	margin-top: 30rpx;
+}
+
+.goodsPopupAddressImg {
+	width: 50rpx;
+	float: left;
+	margin-top: 20rpx;
+}
+
+.goodsPopupAddressTxt {
+	width: calc(100% - 140rpx);
+	float: left;
+	margin-left: 20rpx;
+}
+
+.goodsPopupAddressTxt text {
+	width: 100%;
+	float: left;
+	font-size: 30rpx;
+	color: #222;
+	line-height: 46rpx;
+}
+
+.goodsPopupAddressIcon {
+	float: right;
+	margin-top: 16rpx;
+}
+
+.goodsModel {
+	width: 100%;
+	float: left;
+}
+
+.goodsModelLi {
+	width: 100%;
+	float: left;
+}
+
+.goodsModelLiTit {
+	width: 100%;
+	float: left;
+	margin-top: 10rpx;
+	color: #222;
+	font-size: 32rpx;
+}
+
+.goodsModelLi_t {
+	padding: 4rpx 14rpx;
+	background: #f7f7f7;
+	float: left;
+	margin-right: 10rpx;
+	color: #222;
+	font-size: 30rpx;
+	border-radius: 10rpx;
+	margin-top: 20rpx;
+}
+
+.goodsPopupNum {
+	float: left;
+	font-size: 30rpx;
+	color: #222;
+}
+
+.goodsPopupNumAdd {
+	float: right
+}
+
+.goodsPopupNumAdd_1 {
+	width: 40rpx;
+	height: 40rpx;
+	float: right;
+	background: #f7f7f7;
+	border-radius: 4px;
+	font-size: 30rpx;
+	color: #222;
+	line-height: 40rpx;
+	text-align: center;
+}
+
+.goodsPopupNumAdd_2 {
+	width: 40rpx;
+	height: 40rpx;
+	float: right;
+	background: #f7f7f7;
+	border-radius: 4px;
+	font-size: 30rpx;
+	color: #222;
+	line-height: 40rpx;
+	text-align: center;
+}
+
+.goodsPopupNumAdd_Int {
+	float: right;
+	width: 100rpx;
+	border: none;
+	font-size: 30rpx;
+	color: #222;
+	text-align: center;
+}
+
+.goodsPopupBtn {
+	width: 100%;
+	float: left;
+	padding: 30rpx 0;
+	text-align: center;
+	margin-top: 140rpx;
+	font-size: 34rpx;
+	color: #fff;
+	background: #ff9860;
+
 }

@@ -2,6 +2,13 @@
 	"pages": [ 
 		
 		{
+		  "path": "pages/goods/goods-index",
+		  "style": {
+		    "navigationBarTitleText": "配件商城",
+			"navigationBarBackgroundColor":"#caffd4",
+			"navigationBarTextStyle":"black"
+		  }
+		},{
 		  "path": "pages/goods/goods-content",
 		  "style": {
 		    "navigationBarTitleText": "详情",
@@ -62,18 +69,13 @@
 		    "navigationBarTitleText": "适时任务"
 		  }
 		},
-		{
-		  "path": "pages/goods/goods-index",
-		  "style": {
-		    "navigationBarTitleText": "配件商城"
-		  }
-		},
+		
 		{
 		  "path": "pages/user/user",
 		  "style": {
 		    "navigationBarTitleText": "我的"
 		  }
-		},
+		}
 		
 	],
 	"easycom": {

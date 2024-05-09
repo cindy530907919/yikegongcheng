@@ -24,13 +24,57 @@
 				<uni-icons class="goodsConLi2Icon" type="right" size="26" color="#c0c0c0"></uni-icons>
 			</navigator>
 
-			<view hover-class="none" class="goodsConLi3">
+			<view class="goodsConLi3"  @click="open">
 				<image src="../../static/images/goods_5.png" mode="widthFix" class="goodsConLi2Img"></image>
 				<text class="goodsConLi2_t1">型号 · 规格</text>
 				<uni-icons class="goodsConLi2Icon" type="right" size="26" color="#c0c0c0"></uni-icons>
 			</view>
 		</view>
-
+		<!-- 查看规格 弹窗 -->
+		<uni-popup ref="popup" type="bottom">
+			<view class="goodsPopup">
+				<view class="goodsPopupTit">标题标题标题标题标题标题标题标题标题</view>
+				<view class="goodsPopupPrice"><text>实付价</text>￥99.99</view>
+				<view class="goodsPopupAddress">
+					<image class="goodsPopupAddressImg" src="../../static/images/goods_11.png" mode="widthFix"></image>
+					<uni-icons type="right" size="24" class="goodsPopupAddressIcon"color="#999"></uni-icons>
+					<view class="goodsPopupAddressTxt">
+						<text>难哄的驴 13866668888</text>
+						<text>吉林省长春市南关区1栋101室小区街道1栋101室</text>
+					</view>
+				</view>
+				<view class="goodsPopupAddress">
+					<view class="goodsModel">
+						<view class="goodsModelLi">
+							<text class="goodsModelLiTit">规格</text>
+							<view class="goodsModelLi_t">HJ8382白色</view>
+							<view class="goodsModelLi_t">HJ8382白色</view>
+							<view class="goodsModelLi_t">HJ8382白色</view>
+							<view class="goodsModelLi_t">HJ8382白色</view>
+							<view class="goodsModelLi_t">HJ8382白色</view>
+						</view>
+						
+						<view class="goodsModelLi">
+							<text class="goodsModelLiTit">尺寸</text>
+							<view class="goodsModelLi_t">100cm*120cm</view>
+							<view class="goodsModelLi_t">100cm*120cm</view>
+						</view>
+					</view>
+				</view>
+				<view class="goodsPopupAddress">
+					<view class="goodsPopupNum">数量</view>
+					<view class="goodsPopupNumAdd">
+						<view class="goodsPopupNumAdd_1">+</view>
+						<input type="number" value="1" class="goodsPopupNumAdd_Int"/>
+						<view class="goodsPopupNumAdd_2">-</view>
+					</view>
+				</view>
+				<view class="goodsPopupBtn">立即支付￥99.99</view>
+			</view>
+		</uni-popup>
+		
+		
+		
 		<view class="goodsCon">
 			<view class="goodsConComment">
 				<view class="goodsConComment_t">商品评价</view>
@@ -94,9 +138,30 @@
 							</view>
 						</view>
 					</view>
-					
 				</view>
 			</view>
+		</view>
+		<view class="goodsConPT">
+			<view class="goodsConPTTit">
+				<view class="goodsConPTTitLine"></view>
+				<text class="goodsConPTTit_t">商品详情</text>
+				<view class="goodsConPTTitLine"></view>
+			</view>
+			<view class="goodsConPrice">
+				<image src="../../static/images/goods_1.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<view class="margin200rpx"></view>
+		<view class="goodsConMeun">
+			<navigator hover-class="none" class="goodsConMeunLi">
+				<image src="../../static/images/goods_8.png" mode="widthFix"></image>
+				<text>店铺</text>
+			</navigator>
+			<navigator hover-class="none" class="goodsConMeunLi">
+				<image src="../../static/images/goods_9.png" mode="widthFix"></image>
+				<text>客服</text>
+			</navigator>
+			<view class="goodsConMeunBtn">立即购买</view>
 		</view>
 	</view>
 </template>
@@ -114,8 +179,21 @@
 					{
 						url: '/static/images/goods_1.png'
 					}
-				]
+				],
+				show: false
 			};
+		},
+		methods :{
+			// 查看全部回复弹窗
+			open() {
+				this.$refs.popup.open('bottom')
+			},
+			close() {
+				this.$refs.popup.close()
+			},
+			change(e) {
+				this.show = e.show
+			}
 		}
 	}
 </script>

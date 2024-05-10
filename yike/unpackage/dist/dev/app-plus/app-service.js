@@ -31,314 +31,6 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$n = {
-    props: {
-      activePage: {
-        type: Number,
-        default: 0
-      }
-    },
-    data() {
-      return {
-        currentIndex: 0,
-        // 当前选中的tab索引
-        tabs: [
-          {
-            pagePath: "/pages/index/index",
-            iconPath: "/static/images/meun_1.png",
-            selectedIconPath: "/static/images/meun_1_on.png",
-            text: "首页"
-          },
-          {
-            pagePath: "/pages/forum/forum-index",
-            iconPath: "/static/images/meun_2.png",
-            selectedIconPath: "/static/images/meun_2_on.png",
-            text: "友圈"
-          },
-          {
-            pagePath: "/pages/task/task-index",
-            iconPath: "/static/images/meun_3.png",
-            selectedIconPath: "/static/images/meun_3_on.png",
-            text: "适时任务"
-          },
-          {
-            pagePath: "/pages/goods/goods-index",
-            iconPath: "/static/images/meun_4.png",
-            selectedIconPath: "/static/images/meun_4_on.png",
-            text: "商城"
-          },
-          {
-            pagePath: "/pages/user/user",
-            iconPath: "/static/images/meun_5.png",
-            selectedIconPath: "/static/images/meun_5_on",
-            text: "我的"
-          }
-        ]
-      };
-    },
-    methods: {
-      onChange(index) {
-        uni.navigateTo({
-          url: this.tabs[index].pagePath
-        });
-      }
-    }
-  };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
-      (vue.openBlock(true), vue.createElementBlock(
-        vue.Fragment,
-        null,
-        vue.renderList($data.tabs, (item, index) => {
-          return vue.openBlock(), vue.createElementBlock("view", {
-            class: "tab-item",
-            key: index,
-            onClick: ($event) => $options.onChange(index)
-          }, [
-            index == 2 ? (vue.openBlock(), vue.createElementBlock("image", {
-              key: 0,
-              class: "nav-icon-scan",
-              src: item.iconPath
-            }, null, 8, ["src"])) : (vue.openBlock(), vue.createElementBlock("image", {
-              key: 1,
-              class: "nav-icon",
-              src: $props.activePage == index ? item.selectedIconPath : item.iconPath
-            }, null, 8, ["src"])),
-            vue.createElementVNode(
-              "view",
-              {
-                class: vue.normalizeClass($props.activePage == index ? "active" : "nav-text")
-              },
-              vue.toDisplayString(item.text),
-              3
-              /* TEXT, CLASS */
-            )
-          ], 8, ["onClick"]);
-        }),
-        128
-        /* KEYED_FRAGMENT */
-      ))
-    ]);
-  }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
-  function formatAppLog(type, filename, ...args) {
-    if (uni.__log__) {
-      uni.__log__(type, filename, ...args);
-    } else {
-      console[type].apply(console, [...args, filename]);
-    }
-  }
-  function resolveEasycom(component, easycom2) {
-    return typeof component === "string" ? easycom2 : component;
-  }
-  const _sfc_main$m = {
-    data() {
-      return {
-        items: [
-          { id: 1 },
-          { id: 2 },
-          { id: 3 },
-          { id: 4 },
-          { id: 5 },
-          { id: 6 },
-          { id: 7 },
-          { id: 8 },
-          { id: 9 },
-          { id: 10 }
-        ],
-        activeId: 1
-      };
-    },
-    methods: {
-      handleClick(id) {
-        this.activeId = id;
-      }
-    }
-  };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
-    return vue.openBlock(), vue.createElementBlock(
-      vue.Fragment,
-      null,
-      [
-        vue.createCommentVNode(" 配件商城 "),
-        vue.createElementVNode("view", { class: "" }, [
-          vue.createElementVNode("view", { class: "indexTopPositionConSearch" }, [
-            vue.createCommentVNode(" 搜索 "),
-            vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/index_6.png",
-                mode: "widthFix"
-              }),
-              vue.createElementVNode("input", {
-                type: "text",
-                placeholder: "请输入搜索关键字"
-              })
-            ]),
-            vue.createCommentVNode(" 消息 "),
-            vue.createElementVNode("view", { class: "indexTopPositionConSearchMesR" }, [
-              vue.createElementVNode("view", { class: "indexTopPositionConSearchMesNew" }),
-              vue.createElementVNode("image", {
-                src: "/static/images/index_2.png",
-                class: "indexTopPositionConSearchMes",
-                mode: "widthFix"
-              })
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "goodsClassTop" }, [
-            vue.createElementVNode("scroll-view", {
-              "scroll-x": "true",
-              class: "goodsClassList"
-            }, [
-              (vue.openBlock(true), vue.createElementBlock(
-                vue.Fragment,
-                null,
-                vue.renderList($data.items, (item) => {
-                  return vue.openBlock(), vue.createElementBlock("view", {
-                    key: item.id,
-                    class: vue.normalizeClass([{ "active": item.id === $data.activeId }, "goodsClassListLi"]),
-                    onClick: ($event) => $options.handleClick(item.id)
-                  }, [
-                    vue.createTextVNode(
-                      " Item " + vue.toDisplayString(item.id) + " ",
-                      1
-                      /* TEXT */
-                    ),
-                    vue.createCommentVNode(" 显示额外的View当项目被选中 "),
-                    item.id === $data.activeId ? (vue.openBlock(), vue.createElementBlock("view", {
-                      key: 0,
-                      class: "goodsClassListLiLine"
-                    })) : vue.createCommentVNode("v-if", true)
-                  ], 10, ["onClick"]);
-                }),
-                128
-                /* KEYED_FRAGMENT */
-              ))
-            ]),
-            vue.createElementVNode("view", { class: "goodsClassTopScreen" }, [
-              vue.createElementVNode("view", { class: "goodsClassTopScreen_t1" }, "默认筛选"),
-              vue.createElementVNode("view", { class: "goodsClassTopScreen_t2" }, "好评"),
-              vue.createElementVNode("view", { class: "goodsClassTopScreen_t2" }, "销量")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "goodsUl" }, [
-            vue.createElementVNode("navigator", {
-              url: "",
-              "hover-class": "none",
-              class: "goodsUlLi"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/goods_1.png",
-                class: "goodsUlLiImg"
-              }),
-              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
-                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
-                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
-                  vue.createElementVNode("image", {
-                    class: "goodsUlLiHotImg",
-                    src: "/static/images/goods_2.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
-                ]),
-                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
-                  vue.createElementVNode("text", null, "惊喜价"),
-                  vue.createTextVNode(" ￥88.88 ")
-                ])
-              ])
-            ]),
-            vue.createElementVNode("navigator", {
-              url: "",
-              "hover-class": "none",
-              class: "goodsUlLi"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/goods_1.png",
-                class: "goodsUlLiImg"
-              }),
-              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
-                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
-                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
-                  vue.createElementVNode("image", {
-                    class: "goodsUlLiHotImg",
-                    src: "/static/images/goods_2.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
-                ]),
-                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
-                  vue.createElementVNode("text", null, "惊喜价"),
-                  vue.createTextVNode(" ￥88.88 ")
-                ])
-              ])
-            ]),
-            vue.createElementVNode("navigator", {
-              url: "",
-              "hover-class": "none",
-              class: "goodsUlLi"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/goods_1.png",
-                class: "goodsUlLiImg"
-              }),
-              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
-                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
-                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
-                  vue.createElementVNode("image", {
-                    class: "goodsUlLiHotImg",
-                    src: "/static/images/goods_2.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
-                ]),
-                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
-                  vue.createElementVNode("text", null, "惊喜价"),
-                  vue.createTextVNode(" ￥88.88 ")
-                ])
-              ])
-            ]),
-            vue.createElementVNode("navigator", {
-              url: "",
-              "hover-class": "none",
-              class: "goodsUlLi"
-            }, [
-              vue.createElementVNode("image", {
-                src: "/static/images/goods_1.png",
-                class: "goodsUlLiImg"
-              }),
-              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
-                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
-                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
-                  vue.createElementVNode("image", {
-                    class: "goodsUlLiHotImg",
-                    src: "/static/images/goods_2.png",
-                    mode: "widthFix"
-                  }),
-                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
-                ]),
-                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
-                  vue.createElementVNode("text", null, "惊喜价"),
-                  vue.createTextVNode(" ￥88.88 ")
-                ])
-              ])
-            ])
-          ]),
-          vue.createVNode(_component_custom_tabs_bar, { activePage: _ctx.activePage }, null, 8, ["activePage"]),
-          vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
-        ])
-      ],
-      2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-    );
-  }
-  const PagesGoodsGoodsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__file", "E:/yikegongcheng/yike/pages/goods/goods-index.vue"]]);
   const fontData = [
     {
       "font_class": "arrow-down",
@@ -985,11 +677,18 @@ if (uni.restoreGlobal) {
       "unicode": ""
     }
   ];
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const getVal = (val) => {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$l = {
+  const _sfc_main$o = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1043,7 +742,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -1058,7 +757,358 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$n], ["__scopeId", "data-v-946bce22"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  function formatAppLog(type, filename, ...args) {
+    if (uni.__log__) {
+      uni.__log__(type, filename, ...args);
+    } else {
+      console[type].apply(console, [...args, filename]);
+    }
+  }
+  function resolveEasycom(component, easycom2) {
+    return typeof component === "string" ? easycom2 : component;
+  }
+  const _sfc_main$n = {
+    data() {
+      return {};
+    },
+    methods: {}
+  };
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$5);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "payCon" }, [
+      vue.createElementVNode("view", { class: "goodsPopupAddress" }, [
+        vue.createElementVNode("image", {
+          class: "goodsPopupAddressImg",
+          src: "/static/images/goods_11.png",
+          mode: "widthFix"
+        }),
+        vue.createVNode(_component_uni_icons, {
+          type: "right",
+          size: "24",
+          class: "goodsPopupAddressIcon",
+          color: "#999"
+        }),
+        vue.createElementVNode("view", { class: "goodsPopupAddressTxt" }, [
+          vue.createElementVNode("text", null, "难哄的驴 13866668888"),
+          vue.createElementVNode("text", null, "吉林省长春市南关区1栋101室小区街道1栋101室")
+        ])
+      ])
+    ]);
+  }
+  const PagesPayPay = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/pay/pay.vue"]]);
+  const _sfc_main$m = {
+    props: {
+      activePage: {
+        type: Number,
+        default: 0
+      }
+    },
+    data() {
+      return {
+        currentIndex: 0,
+        // 当前选中的tab索引
+        tabs: [
+          {
+            pagePath: "/pages/index/index",
+            iconPath: "/static/images/meun_1.png",
+            selectedIconPath: "/static/images/meun_1_on.png",
+            text: "首页"
+          },
+          {
+            pagePath: "/pages/forum/forum-index",
+            iconPath: "/static/images/meun_2.png",
+            selectedIconPath: "/static/images/meun_2_on.png",
+            text: "友圈"
+          },
+          {
+            pagePath: "/pages/task/task-index",
+            iconPath: "/static/images/meun_3.png",
+            selectedIconPath: "/static/images/meun_3_on.png",
+            text: "适时任务"
+          },
+          {
+            pagePath: "/pages/goods/goods-index",
+            iconPath: "/static/images/meun_4.png",
+            selectedIconPath: "/static/images/meun_4_on.png",
+            text: "商城"
+          },
+          {
+            pagePath: "/pages/user/user",
+            iconPath: "/static/images/meun_5.png",
+            selectedIconPath: "/static/images/meun_5_on",
+            text: "我的"
+          }
+        ]
+      };
+    },
+    methods: {
+      onChange(index) {
+        uni.navigateTo({
+          url: this.tabs[index].pagePath
+        });
+      }
+    }
+  };
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
+      (vue.openBlock(true), vue.createElementBlock(
+        vue.Fragment,
+        null,
+        vue.renderList($data.tabs, (item, index) => {
+          return vue.openBlock(), vue.createElementBlock("view", {
+            class: "tab-item",
+            key: index,
+            onClick: ($event) => $options.onChange(index)
+          }, [
+            index == 2 ? (vue.openBlock(), vue.createElementBlock("image", {
+              key: 0,
+              class: "nav-icon-scan",
+              src: item.iconPath
+            }, null, 8, ["src"])) : (vue.openBlock(), vue.createElementBlock("image", {
+              key: 1,
+              class: "nav-icon",
+              src: $props.activePage == index ? item.selectedIconPath : item.iconPath
+            }, null, 8, ["src"])),
+            vue.createElementVNode(
+              "view",
+              {
+                class: vue.normalizeClass($props.activePage == index ? "active" : "nav-text")
+              },
+              vue.toDisplayString(item.text),
+              3
+              /* TEXT, CLASS */
+            )
+          ], 8, ["onClick"]);
+        }),
+        128
+        /* KEYED_FRAGMENT */
+      ))
+    ]);
+  }
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__scopeId", "data-v-a6d140ed"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
+  const _sfc_main$l = {
+    data() {
+      return {
+        items: [
+          {
+            id: 1
+          },
+          {
+            id: 2
+          },
+          {
+            id: 3
+          },
+          {
+            id: 4
+          },
+          {
+            id: 5
+          },
+          {
+            id: 6
+          },
+          {
+            id: 7
+          },
+          {
+            id: 8
+          },
+          {
+            id: 9
+          },
+          {
+            id: 10
+          }
+        ],
+        activeId: 1,
+        activePage: 3
+      };
+    },
+    methods: {
+      handleClick(id) {
+        this.activeId = id;
+      }
+    }
+  };
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_2);
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 配件商城 "),
+        vue.createElementVNode("view", { class: "" }, [
+          vue.createElementVNode("view", { class: "indexTopPositionConSearch" }, [
+            vue.createCommentVNode(" 搜索 "),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchInput" }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/index_6.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("input", {
+                type: "text",
+                placeholder: "请输入搜索关键字"
+              })
+            ]),
+            vue.createCommentVNode(" 消息 "),
+            vue.createElementVNode("view", { class: "indexTopPositionConSearchMesR" }, [
+              vue.createElementVNode("view", { class: "indexTopPositionConSearchMesNew" }),
+              vue.createElementVNode("image", {
+                src: "/static/images/index_2.png",
+                class: "indexTopPositionConSearchMes",
+                mode: "widthFix"
+              })
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "goodsClassTop" }, [
+            vue.createElementVNode("scroll-view", {
+              "scroll-x": "true",
+              class: "goodsClassList"
+            }, [
+              (vue.openBlock(true), vue.createElementBlock(
+                vue.Fragment,
+                null,
+                vue.renderList($data.items, (item) => {
+                  return vue.openBlock(), vue.createElementBlock("view", {
+                    key: item.id,
+                    class: vue.normalizeClass([{ "active": item.id === $data.activeId }, "goodsClassListLi"]),
+                    onClick: ($event) => $options.handleClick(item.id)
+                  }, [
+                    vue.createTextVNode(
+                      " Item " + vue.toDisplayString(item.id) + " ",
+                      1
+                      /* TEXT */
+                    ),
+                    vue.createCommentVNode(" 显示额外的View当项目被选中 "),
+                    item.id === $data.activeId ? (vue.openBlock(), vue.createElementBlock("view", {
+                      key: 0,
+                      class: "goodsClassListLiLine"
+                    })) : vue.createCommentVNode("v-if", true)
+                  ], 10, ["onClick"]);
+                }),
+                128
+                /* KEYED_FRAGMENT */
+              ))
+            ]),
+            vue.createElementVNode("view", { class: "goodsClassTopScreen" }, [
+              vue.createElementVNode("view", { class: "goodsClassTopScreen_t1" }, "默认筛选"),
+              vue.createElementVNode("view", { class: "goodsClassTopScreen_t2" }, "好评"),
+              vue.createElementVNode("view", { class: "goodsClassTopScreen_t2" }, "销量")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "goodsUl" }, [
+            vue.createElementVNode("navigator", {
+              url: "./goods-content",
+              "hover-class": "none",
+              class: "goodsUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/goods_1.png",
+                class: "goodsUlLiImg"
+              }),
+              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
+                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
+                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
+                  vue.createElementVNode("image", {
+                    class: "goodsUlLiHotImg",
+                    src: "/static/images/goods_2.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
+                ]),
+                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
+                  vue.createElementVNode("text", null, "惊喜价"),
+                  vue.createTextVNode(" ￥88.88 ")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              "hover-class": "none",
+              class: "goodsUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/goods_1.png",
+                class: "goodsUlLiImg"
+              }),
+              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
+                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
+                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
+                  vue.createElementVNode("image", {
+                    class: "goodsUlLiHotImg",
+                    src: "/static/images/goods_2.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
+                ]),
+                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
+                  vue.createElementVNode("text", null, "惊喜价"),
+                  vue.createTextVNode(" ￥88.88 ")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              "hover-class": "none",
+              class: "goodsUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/goods_1.png",
+                class: "goodsUlLiImg"
+              }),
+              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
+                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
+                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
+                  vue.createElementVNode("image", {
+                    class: "goodsUlLiHotImg",
+                    src: "/static/images/goods_2.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
+                ]),
+                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
+                  vue.createElementVNode("text", null, "惊喜价"),
+                  vue.createTextVNode(" ￥88.88 ")
+                ])
+              ])
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              "hover-class": "none",
+              class: "goodsUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/goods_1.png",
+                class: "goodsUlLiImg"
+              }),
+              vue.createElementVNode("view", { class: "goodsUlLiCon" }, [
+                vue.createElementVNode("text", { class: "goodsUlLiTit" }, "配件标题配件标题配件标题配件标题标题"),
+                vue.createElementVNode("view", { class: "goodsUlLiHot" }, [
+                  vue.createElementVNode("image", {
+                    class: "goodsUlLiHotImg",
+                    src: "/static/images/goods_2.png",
+                    mode: "widthFix"
+                  }),
+                  vue.createElementVNode("text", { class: "goodsUlLiHot_t1" }, "销量：5684")
+                ]),
+                vue.createElementVNode("view", { class: "goodsUlLiPrice" }, [
+                  vue.createElementVNode("text", null, "惊喜价"),
+                  vue.createTextVNode(" ￥88.88 ")
+                ])
+              ])
+            ])
+          ]),
+          vue.createVNode(_component_custom_tabs_bar, { activePage: $data.activePage }, null, 8, ["activePage"]),
+          vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
+        ])
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesGoodsGoodsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/goods/goods-index.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -1435,7 +1485,7 @@ if (uni.restoreGlobal) {
       [vue.vShow, $data.isShow]
     ]);
   }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
   const _sfc_main$j = {
     name: "uniPopup",
     components: {},
@@ -1846,7 +1896,7 @@ if (uni.restoreGlobal) {
       /* CLASS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__scopeId", "data-v-7db519c7"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__scopeId", "data-v-7db519c7"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
   const _sfc_main$i = {
     data() {
       return {
@@ -2158,7 +2208,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesGoodsGoodsContent = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__file", "E:/yikegongcheng/yike/pages/goods/goods-content.vue"]]);
+  const PagesGoodsGoodsContent = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/goods/goods-content.vue"]]);
   const isObject = (val) => val !== null && typeof val === "object";
   const defaultDelimiters = ["{", "}"];
   class BaseFormatter {
@@ -2627,8 +2677,16 @@ if (uni.restoreGlobal) {
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__scopeId", "data-v-2c1dd21f"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
   const pages = [
+    {
+      path: "pages/pay/pay",
+      style: {
+        navigationBarTitleText: "确认订单",
+        navigationBarBackgroundColor: "#fff",
+        navigationBarTextStyle: "black"
+      }
+    },
     {
       path: "pages/goods/goods-index",
       style: {
@@ -6164,7 +6222,7 @@ ${i3}
       ])
     ]);
   }
-  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
+  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
   const _sfc_main$f = {
     name: "UniDataPicker",
     emits: ["popupopened", "popupclosed", "nodeclick", "input", "change", "update:modelValue", "inputclick"],
@@ -6535,7 +6593,7 @@ ${i3}
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__scopeId", "data-v-e10759db"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
   const _sfc_main$e = {
     name: "uni-data-select",
     mixins: [Ws.mixinDatacom || {}],
@@ -6928,7 +6986,7 @@ ${i3}
       )
     ]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-123e8af9"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__scopeId", "data-v-123e8af9"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
   const _sfc_main$d = {
     components: {
       CustomTabsBar: __easycom_2
@@ -7767,7 +7825,7 @@ ${i3}
       /* NEED_HYDRATION */
     );
   }
-  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
   const _sfc_main$c = {
     data() {
       return {
@@ -8274,7 +8332,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesForumForumList = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-list.vue"]]);
+  const PagesForumForumList = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-list.vue"]]);
   const _sfc_main$b = {
     data() {
       return {
@@ -8751,7 +8809,7 @@ ${i3}
       ])
     ]);
   }
-  const PagesForumForumContent = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-content.vue"]]);
+  const PagesForumForumContent = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-content.vue"]]);
   const ERR_MSG_OK = "chooseAndUploadFile:ok";
   const ERR_MSG_FAIL = "chooseAndUploadFile:fail";
   function chooseImage(opts) {
@@ -9273,7 +9331,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-6f3c6077"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
+  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-6f3c6077"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
   const _sfc_main$9 = {
     name: "uploadFile",
     emits: ["uploadFiles", "choose", "delFile"],
@@ -9492,7 +9550,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-86fc2bba"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
+  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__scopeId", "data-v-86fc2bba"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
   const _sfc_main$8 = {
     name: "uniFilePicker",
     components: {
@@ -10058,7 +10116,7 @@ ${i3}
       }, 8, ["readonly", "list-styles", "files-list", "showType", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-418f48eb"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-418f48eb"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
   const _sfc_main$7 = {
     data() {
       return {
@@ -10157,7 +10215,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
+  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
   const _sfc_main$6 = {
     name: "UniSwiperDot",
     emits: ["clickItem"],
@@ -10390,7 +10448,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-0667e3db"], ["__file", "E:/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__scopeId", "data-v-0667e3db"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
   const _sfc_main$5 = {
     components: {
       CustomTabsBar: __easycom_2
@@ -10723,7 +10781,7 @@ ${i3}
       vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__file", "E:/yikegongcheng/yike/pages/index/index.vue"]]);
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/index/index.vue"]]);
   const _sfc_main$4 = {
     data() {
       return {
@@ -10828,7 +10886,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesMerchantSignin = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "E:/yikegongcheng/yike/pages/Merchant/signin.vue"]]);
+  const PagesMerchantSignin = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/Merchant/signin.vue"]]);
   const _sfc_main$3 = {};
   function _sfc_render$2(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock(
@@ -10872,12 +10930,12 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "E:/yikegongcheng/yike/pages/login/login.vue"]]);
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/login/login.vue"]]);
   const _sfc_main$2 = {};
   function _sfc_render$1(_ctx, _cache) {
     return null;
   }
-  const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "E:/yikegongcheng/yike/pages/task/task-index.vue"]]);
+  const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/task/task-index.vue"]]);
   const _sfc_main$1 = {
     data() {
       return {};
@@ -10887,7 +10945,8 @@ ${i3}
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view");
   }
-  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
+  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user.vue"]]);
+  __definePage("pages/pay/pay", PagesPayPay);
   __definePage("pages/goods/goods-index", PagesGoodsGoodsIndex);
   __definePage("pages/goods/goods-content", PagesGoodsGoodsContent);
   __definePage("pages/forum/forum-index", PagesForumForumIndex);
@@ -10910,7 +10969,7 @@ ${i3}
       formatAppLog("log", "at App.vue:10", "App Hide");
     }
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "E:/yikegongcheng/yike/App.vue"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/App.vue"]]);
   function createApp() {
     const app = vue.createVueApp(App);
     return {

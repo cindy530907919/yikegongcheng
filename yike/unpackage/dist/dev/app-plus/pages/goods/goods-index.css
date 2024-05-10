@@ -155,7 +155,7 @@
 	width: 100%;
 	float: left;
 	margin-top: 0.625rem;
-	margin-bottom: 6.25rem;
+	padding-bottom: 8.125rem;
 }
 .goodsUlLi {
 	width: 45.5%;
@@ -638,6 +638,6 @@
 	color: #fff;
 	background: #ff9860;
 }
-body{
+body {
 		background: #fbfbfb;
 }

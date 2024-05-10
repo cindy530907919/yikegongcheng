@@ -2,6 +2,13 @@
 	"pages": [ 
 		
 		{
+		  "path": "pages/pay/pay",
+		  "style": {
+		    "navigationBarTitleText": "确认订单",
+			"navigationBarBackgroundColor":"#fff",
+			"navigationBarTextStyle":"black"
+		  }
+		},{
 		  "path": "pages/goods/goods-index",
 		  "style": {
 		    "navigationBarTitleText": "配件商城",
@@ -76,7 +83,6 @@
 		    "navigationBarTitleText": "我的"
 		  }
 		}
-		
 	],
 	"easycom": {
 		"autoscan": true,

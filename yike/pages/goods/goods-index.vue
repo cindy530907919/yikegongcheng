@@ -17,7 +17,8 @@
 
 		<view class="goodsClassTop">
 			<scroll-view scroll-x="true" class="goodsClassList">
-				<view v-for="item in items" :key="item.id" :class="{'active': item.id === activeId}" @click="handleClick(item.id)" class="goodsClassListLi">
+				<view v-for="item in items" :key="item.id" :class="{'active': item.id === activeId}"
+					@click="handleClick(item.id)" class="goodsClassListLi">
 					Item {{ item.id }}
 					<!-- 显示额外的View当项目被选中 -->
 					<view v-if="item.id === activeId" class="goodsClassListLiLine">
@@ -31,10 +32,10 @@
 			</view>
 		</view>
 		<view class="goodsUl">
-			<navigator url="" hover-class="none" class="goodsUlLi">
+			<navigator url="./goods-content" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
-					
+
 					<text class="goodsUlLiTit">配件标题配件标题配件标题配件标题标题</text>
 					<view class="goodsUlLiHot">
 						<image class="goodsUlLiHotImg" src="../../static/images/goods_2.png" mode="widthFix"></image>
@@ -46,11 +47,11 @@
 					</view>
 				</view>
 			</navigator>
-			
+
 			<navigator url="" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
-					
+
 					<text class="goodsUlLiTit">配件标题配件标题配件标题配件标题标题</text>
 					<view class="goodsUlLiHot">
 						<image class="goodsUlLiHotImg" src="../../static/images/goods_2.png" mode="widthFix"></image>
@@ -62,11 +63,11 @@
 					</view>
 				</view>
 			</navigator>
-			
+
 			<navigator url="" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
-					
+
 					<text class="goodsUlLiTit">配件标题配件标题配件标题配件标题标题</text>
 					<view class="goodsUlLiHot">
 						<image class="goodsUlLiHotImg" src="../../static/images/goods_2.png" mode="widthFix"></image>
@@ -78,11 +79,11 @@
 					</view>
 				</view>
 			</navigator>
-			
+
 			<navigator url="" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
-					
+
 					<text class="goodsUlLiTit">配件标题配件标题配件标题配件标题标题</text>
 					<view class="goodsUlLiHot">
 						<image class="goodsUlLiHotImg" src="../../static/images/goods_2.png" mode="widthFix"></image>
@@ -101,34 +102,55 @@
 
 <script>
 	export default {
-	  data() {
-	    return {
-	      items: [
-	        { id: 1 },
-	        { id: 2 },
-	        { id: 3 },
-	        { id: 4 },
-	        { id: 5 },
-			{ id: 6 },
-			{ id: 7 },
-			{ id: 8 },
-			{ id: 9 },
-			{ id: 10 }
-	      ],
-	      activeId: 1
-	    };
-	  },
-	  methods: {
-	    handleClick(id) {
-	      this.activeId = id; // 设置当前活跃id为点击的id
-	    }
-	  }
+		data() {
+			return {
+				items: [{
+						id: 1
+					},
+					{
+						id: 2
+					},
+					{
+						id: 3
+					},
+					{
+						id: 4
+					},
+					{
+						id: 5
+					},
+					{
+						id: 6
+					},
+					{
+						id: 7
+					},
+					{
+						id: 8
+					},
+					{
+						id: 9
+					},
+					{
+						id: 10
+					}
+				],
+				activeId: 1,
+				activePage: 3
+			};
+		},
+		methods: {
+			handleClick(id) {
+				this.activeId = id; // 设置当前活跃id为点击的id
+			}
+		}
 	}
 </script>
 
 <style>
 	@import url(./goods.css);
-	page{
+
+	page {
 		background: #fbfbfb;
 	}
 </style>

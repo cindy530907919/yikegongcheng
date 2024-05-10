@@ -531,14 +531,14 @@
   text-align: center;
 }
 
-body {
+body{
 		background: #f8f8f8;
 }
-.payCon{
+.addressCon{
 		width: 90%;
 		float: left;
-		margin-left: 5%;
-		padding: 0.625rem 0;
+		margin: 0.625rem 5%;
+		padding: 0 0 5rem;
 }
 .goodsPopupAddress {
 		width: 100%;
@@ -571,106 +571,23 @@ body {
 		float: right;
 		margin-top: 0.5rem;
 }
-.payGoodsTit{
+.addressConBtn{
 		width: 100%;
-		float: left;
-		font-size: 1.0625rem;
-		color: #222;
-		margin-bottom: 0.625rem;
-}
-.payGoodsConTxt{
-		width: calc(100% - 5rem);
-		float: right;
-}
-.payGoodsConImg{
-		width: 4.375rem;
-		height: 4.375rem;
-		float: left;
-		border-radius: 0.625rem;
-}
-.payGoodsConTxt_1{
-		width: 100%;
-		float: left;
-		font-size: 0.9375rem;
-		color: #222;
-		overflow: hidden; 
-		white-space: nowrap; 
-		text-overflow: ellipsis;
-}
-.payGoodsConTxt_2{
-		width: 100%;
-		float: left;
-		font-size: 0.8125rem;
-		color: #666;
-		margin-top: 0.25rem;
-}
-.payGoodsConTxt_3{
-		width: 100%;
-		float: left;
-		margin-top: 0.6875rem;
-}
-.payGoodsConTxt_3_t1{
-		float: left;
-		color: #f00;
-		font-size: 1.25rem;
-}
-.payGoodsConTxt_3_t2{
-		float: right;
-		font-size: 0.9375rem;
-		color: #666;
-		margin-top: 0.5rem;
-}
-.payMode{
-		width: 100%;
-		float: left;
-		margin-top: 0.625rem;
-}
-.payMode uni-image{
-		width: 1.25rem;
-		float: left;
-		margin-top: 0.125rem;
-}
-.payMode uni-text{
-		float: left;
-		color: #222;
-		margin-left: 0.625rem;
-		font-size: 0.9375rem;
-}
-.payMode uni-view{
-		width: 0.78125rem;
-		height: 0.78125rem;
-		border-radius: 50%;
-		float: right;
-		background: #ffd042;
-		margin-top: 0.4375rem;
-}
-.payMeunB{
+		padding: 0.9375rem 0;
+		background: #fff;
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		z-index: 9;
-		padding: 0.9375rem;
-		width: 100%;
-		background: #fff;
-		box-sizing: border-box;
 }
-.payMeunB_t1{
+.addressConBtn1{
+		width: 80%;
 		float: left;
-		font-size: 1.0625rem;
-		color: #222;
-		margin-top: 0.5625rem;
-}
-.payMeunB_t1 uni-text{
-		color: #f00;
-}
-.payMeunB_Btn{
-		width: 30%;
-		float: right;
-		background: #ffb400;
-		height: 2.5rem;
-		line-height: 2.5rem;
-		text-align: center;
+		height: 3.125rem;
+		line-height: 3.125rem;
 		color: #fff;
-		font-size: 1rem;
+		background: #ffb400;
 		border-radius: 100px;
+		text-align: center;
+		margin-left: 10%;
 }

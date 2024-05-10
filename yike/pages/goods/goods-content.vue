@@ -69,7 +69,7 @@
 						<view class="goodsPopupNumAdd_2">-</view>
 					</view>
 				</view>
-				<view class="goodsPopupBtn">立即支付￥99.99</view>
+				<navigator url="/pages/pay/pay" class="goodsPopupBtn">立即支付￥99.99</navigator>
 			</view>
 		</uni-popup>
 		
@@ -78,10 +78,10 @@
 		<view class="goodsCon">
 			<view class="goodsConComment">
 				<view class="goodsConComment_t">商品评价</view>
-				<view class="goodsConCommentGo">
+				<navigator url="../../pages/goods/comment" class="goodsConCommentGo">
 					<uni-icons class="goodsConCommentGoIcon" type="right" size="20" color="#999"></uni-icons>
 					<text>全部</text>
-				</view>
+				</navigator>
 			</view>
 			<view class="goodsConCommentUl">
 				<view class="goodsConCommentUlLi">
@@ -161,7 +161,7 @@
 				<image src="../../static/images/goods_9.png" mode="widthFix"></image>
 				<text>客服</text>
 			</navigator>
-			<view class="goodsConMeunBtn">立即购买</view>
+			<navigator url="/pages/pay/pay" class="goodsConMeunBtn">立即购买</navigator>
 		</view>
 	</view>
 </template>

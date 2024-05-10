@@ -48,7 +48,7 @@
 				</view>
 			</navigator>
 
-			<navigator url="" hover-class="none" class="goodsUlLi">
+			<navigator url="./goods-content" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
 
@@ -64,7 +64,7 @@
 				</view>
 			</navigator>
 
-			<navigator url="" hover-class="none" class="goodsUlLi">
+			<navigator url="./goods-content" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
 
@@ -80,7 +80,7 @@
 				</view>
 			</navigator>
 
-			<navigator url="" hover-class="none" class="goodsUlLi">
+			<navigator url="./goods-content" hover-class="none" class="goodsUlLi">
 				<image src="../../static/images/goods_1.png" class="goodsUlLiImg"></image>
 				<view class="goodsUlLiCon">
 

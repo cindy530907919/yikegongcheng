@@ -171,14 +171,16 @@
 	font-size: 30rpx;
 	color: #222;
 }
-.goodsUlLiPrice{
+
+.goodsUlLiPrice {
 	width: 100%;
 	float: left;
 	margin-top: 20rpx;
 	font-size: 30rpx;
 	color: #f00;
 }
-.goodsUlLiPrice text{
+
+.goodsUlLiPrice text {
 	padding: 0 10rpx;
 	float: left;
 	background: #ffc9c9;
@@ -687,4 +689,70 @@
 	color: #fff;
 	background: #ff9860;
 
+}
+
+/* 全部评论 */
+.commentCon {
+	width: 90%;
+	float: left;
+	margin: 0 5% ;
+	padding: 30rpx 30rpx 50rpx;
+	box-sizing: border-box;
+}
+
+.commentConLi {
+	width: 100%;
+	float: left;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 20rpx;
+	margin-top: 20rpx;
+}
+
+.commentConLiImg {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	float: left;
+}
+
+.commentConLiLeft {
+	width: calc(100% - 120rpx);
+	float: right;
+}
+
+.commentConLiLeft_t1 {
+	width: 100%;
+	float: left;
+	font-size: 30rpx;
+	color: #999;
+	margin-top: 10rpx;
+	overflow: hidden; 
+	white-space: nowrap; 
+	text-overflow: ellipsis; 
+}
+
+.commentConLiLeft_t2 {
+	width: 100%;
+	float: left;
+	font-size: 30rpx;
+	color: #222;
+	line-height: 40rpx;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-top: 10rpx;
+}
+.commentConLiLeftI{
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+}
+.commentConLiLeftI image{
+	width: 130rpx;
+	float: left;
+	height: 130rpx;
+	margin-right: 20rpx;
 }

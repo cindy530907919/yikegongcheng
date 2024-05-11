@@ -1,0 +1,156 @@
+
+.indexTopPositionConSearch {
+		width: 100%;
+		float: left;
+		background: #caffd4;
+		padding: 0.625rem 5% 0.9375rem;
+		box-sizing: border-box;
+}
+.indexTopPositionConSearchInput {
+		width: 80%;
+		float: left;
+		margin-left: 6px;
+		background: #fff;
+		padding: 0.46875rem 0.625rem;
+		border-radius: 50px;
+		box-sizing: border-box;
+}
+.indexTopPositionConSearchInput uni-image {
+		width: 1.09375rem;
+		float: left;
+}
+.indexTopPositionConSearchInput uni-input {
+		width: calc(100% - 1.875rem);
+		float: left;
+		margin-left: 0.625rem;
+		font-size: 12px;
+		margin-top: 0.125rem;
+}
+.indexTopPositionConSearchMesR {
+		float: right;
+		margin-top: 0.625rem;
+}
+.indexTopPositionConBanner uni-image {
+		width: 100%;
+		float: left;
+}
+.indexTopPositionConSearchMesNew {
+		float: right;
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 50%;
+		margin-top: 0.625rem;
+		background: #f00;
+		margin-left: 0.3125rem;
+}
+.indexTopPositionConSearchMes {
+		width: 1.25rem;
+		float: right;
+}
+.goodsClassTop {
+		width: 100%;
+		float: left;
+		background: #fff;
+}
+.goodsClassList {
+		white-space: nowrap;
+		width: 100%;
+		float: left;
+		padding: 0.9375rem;
+		box-sizing: border-box;
+		border-bottom: 1px solid #f8f8f8;
+		padding-bottom: 0.625rem;
+}
+.goodsClassListLi {
+		display: inline-block;
+		margin-right: 0.9375rem;
+		border-radius: 4px;
+		width: 3.75rem;
+		text-align: center;
+}
+.goodsClassListLiLine {
+		width: 1.875rem;
+		float: left;
+		height: 6px;
+		border-radius: 10px;
+		background: #ffdb00;
+		margin-left: 0.9375rem;
+		margin-top: 0.3125rem;
+}
+.goodsClassTopScreen {
+		width: 100%;
+		float: left;
+		padding: 0.9375rem;
+		box-sizing: border-box;
+}
+.goodsClassTopScreen_t1 {
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+}
+.goodsClassTopScreen_t2 {
+		float: right;
+		font-size: 0.9375rem;
+		color: #222;
+		margin-left: 0.9375rem;
+}
+.leasingUl {
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		padding-bottom: 1.5625rem;
+}
+.leasingUlLi {
+		width: 100%;
+		float: left;
+		padding: 0.9375rem;
+		box-sizing: border-box;
+		background: #fff;
+		border-radius: 0.625rem;
+		box-shadow: 0 0.1875rem 0.625rem #eee;
+		margin-top: 0.9375rem;
+}
+.leasingUlLiImg {
+		width: 5.625rem;
+		height: 5.625rem;
+		float: left;
+		border-radius: 0.625rem;
+}
+.leasingUlLiTxt {
+		width: calc(100% - 6.25rem);
+		float: right;
+}
+.leasingUlLiTxt_t1 {
+		width: 100%;
+		float: left;
+		font-size: 1rem;
+		color: #222;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		word-break: break-all;
+		overflow: hidden;
+		text-overflow: ellipsis;
+}
+.leasingUlLiTxt_t2{
+		width: 100%;
+		float: left;
+		font-size: 0.9375rem;
+		color: #999;
+		margin-top: 0.1875rem;
+}
+.indexServiceLiTT1Label{
+		width: 100%;
+		float: left;
+		margin-top: 0.3125rem;
+}
+.indexServiceLiTT1Label uni-text{
+		padding: 0.15625rem 0.625rem;
+		color: #fff;
+		border-radius: 100px;
+		float: left;
+		margin-right: 0.3125rem;
+		font-size: 14px;
+		text-shadow: 0px 1px 1px #bbb;
+}
+	

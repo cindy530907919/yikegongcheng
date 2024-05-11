@@ -34,15 +34,15 @@
     </view>
 	<!-- 板块图片 -->
 	<view class="indexFourClass">
-		<navigator url="">
+		<navigator url="../goods/goods-index">
 		<view class="indexFourClassLi  indexFourClassLiY">
 			<text>配件商城</text>
 			<image src="../../static/images/index_3.png"></image>
 		</view>
 		</navigator>
-		<navigator url="">
+		<navigator url="../../pages/machinery/leasing">
 		<view class="indexFourClassLi indexFourClassLiG">
-			<text>车辆租赁</text>
+			<text>机械租赁</text>
 			<image src="../../static/images/index_3.png"></image>
 		</view>
 		</navigator>
@@ -65,7 +65,7 @@
 	  		<image src="../../static/images/index_3.png"></image>
 	  	</view>
 		</navigator>
-		<navigator url="">
+		<navigator url="../../pages/local/service">
 	  	<view class="indexFourClassLi indexFourClassLiP">
 	  		<text>本地服务</text>
 	  		<image src="../../static/images/index_3.png"></image>
@@ -82,7 +82,7 @@
 	</view>
 	<!-- 本地服务 -->
 	<view class="indexService">
-		<navigator url=""  class="indexServiceLi">
+		<navigator url="../../pages/local/service-con"  class="indexServiceLi">
 			<image src="../../static/images/index_7.png" class="indexServiceLiImg"></image>
 			<view class="indexServiceLiT">
 				<text class="indexServiceLiTT1">本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题</text>
@@ -93,7 +93,7 @@
 				</view>
 			</view>
 		</navigator>
-		<navigator url=""  class="indexServiceLi">
+		<navigator url="../../pages/local/service-con"  class="indexServiceLi">
 			<image src="../../static/images/index_7.png" class="indexServiceLiImg"></image>
 			<view class="indexServiceLiT">
 				<text class="indexServiceLiTT1">本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题本地服务标题</text>
@@ -521,7 +521,7 @@ export default {
 		margin-top: 10rpx;
 	}
 	.indexServiceLiTT1Label text{
-		padding: 2rpx 20rpx;
+		padding: 5rpx 20rpx;
 		color: #fff;
 		border-radius: 100px;
 		float: left;

@@ -306,7 +306,7 @@
 		</view>
 		<view class="page">
 			<view class="forumSelectbtn" :class="{ expanded: isExpanded }" @click="toggleButton">
-				<navigator url="../index/index" hover-class="none">
+				<navigator url="../../pages/forum/forum-upload" hover-class="none">
 					<image class="forumSelectbtn_1" src="../../static/images/forum_10.png" mode="widthFix"></image>
 				</navigator>
 				<navigator url="" hover-class="none">

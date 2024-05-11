@@ -1,109 +1,158 @@
 {
-	"pages": [ 
+	"pages": [
 		{
-		  "path": "pages/address/index",
-		  "style": {
-		    "navigationBarTitleText": "收货地址",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/address/add",
-		  "style": {
-		    "navigationBarTitleText": "编辑收货地址",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/goods/comment",
-		  "style": {
-		    "navigationBarTitleText": "全部评价",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom"
+			}
 		},
 		{
-		  "path": "pages/goods/goods-index",
-		  "style": {
-		    "navigationBarTitleText": "配件商城",
-			"navigationBarBackgroundColor":"#caffd4",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/pay/pay",
-		  "style": {
-		    "navigationBarTitleText": "确认订单",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/goods/goods-content",
-		  "style": {
-		    "navigationBarTitleText": "详情",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/forum/forum-index",
-		  "style": {
-		    "navigationBarTitleText": "友圈",
-			"navigationBarBackgroundColor":"#ffdb00",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/forum/forum-list",
-		  "style": {
-		    "navigationBarTitleText": "圈子",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/forum/forum-content",
-		  "style": {
-		    "navigationBarTitleText": "详情",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
-		  "path": "pages/forum/forum-upload",
-		  "style": {
-		    "navigationBarTitleText": "发布帖子",
-			"navigationBarBackgroundColor":"#fff",
-			"navigationBarTextStyle":"black"
-		  }
-		},{
+			"path": "pages/job/job-pus",
+			"style": {
+				"navigationBarTitleText": "发布"
+			}
+		}, {
+			"path": "pages/job/job-list",
+			"style": {
+				"navigationBarTitleText": "招牌求职",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/local/publish",
+			"style": {
+				"navigationBarTitleText": "发布服务",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "亦可工程",
-				"navigationBarBackgroundColor":"#adfdc0",
-				"navigationBarTextStyle":"black"
+				"navigationBarBackgroundColor": "#adfdc0",
+				"navigationBarTextStyle": "black"
 			},
 			"custom": true
-		},{
-			"path": "pages/Merchant/signin",
+		}, {
+			"path": "pages/local/service-con",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/local/service",
+			"style": {
+				"navigationBarTitleText": "本地服务",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/machinery/leasing",
+			"style": {
+				"navigationBarTitleText": "机械租赁",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/machinery/leasing-con",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/address/index",
+			"style": {
+				"navigationBarTitleText": "收货地址",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/address/add",
+			"style": {
+				"navigationBarTitleText": "编辑收货地址",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/goods/comment",
+			"style": {
+				"navigationBarTitleText": "全部评价",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/goods/goods-index",
+			"style": {
+				"navigationBarTitleText": "配件商城",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/pay/pay",
+			"style": {
+				"navigationBarTitleText": "确认订单",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/goods/goods-content",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/forum/forum-index",
+			"style": {
+				"navigationBarTitleText": "友圈",
+				"navigationBarBackgroundColor": "#ffdb00",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/forum/forum-list",
+			"style": {
+				"navigationBarTitleText": "圈子",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/forum/forum-content",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/forum/forum-upload",
+			"style": {
+				"navigationBarTitleText": "发布帖子",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}, {
+			"path": "pages/merchant/signin",
 			"style": {
 				"navigationBarTitleText": "商户入驻"
 			}
-		},{
+		}, {
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "微信登录"
 			}
 		},
-		
+
 		{
-		  "path": "pages/task/task-index",
-		  "style": {
-		    "navigationBarTitleText": "适时任务"
-		  }
-		},
-		
-		{
-		  "path": "pages/user/user",
-		  "style": {
-		    "navigationBarTitleText": "我的"
-		  }
+			"path": "pages/task/task-index",
+			"style": {
+				"navigationBarTitleText": "适时任务"
+			}
 		}
+		
 	],
 	"easycom": {
 		"autoscan": true,
@@ -120,44 +169,44 @@
 	},
 	"uniIdRouter": {},
 	"tabBar": {
-	  "color": "#666",
-	  "selectedColor": "#f08800",
-	  "backgroundColor": "#fff",
+		"color": "#666",
+		"selectedColor": "#f08800",
+		"backgroundColor": "#fff",
 		"custom": true
 		// ,
-	 //  "list": [
-	 //    {
-	 //      "pagePath": "pages/index/index",
-	 //      "iconPath": "static/images/meun_1.png",
-	 //      "selectedIconPath": "static/images/meun_1_on.png",
-	 //      "text": "首页"
-	 //    },
-	 //    {
-	 //      "pagePath": "pages/forum/forum-index",
-	 //      "iconPath": "static/images/meun_2.png",
-	 //      "selectedIconPath": "static/images/meun_2_on.png",
-	 //      "text": "友圈"
-	 //    },
-	 //    {
-	 //      "pagePath": "pages/task/task-index",
-	 //      "iconPath": "static/images/meun_3.png",
-	 //      "selectedIconPath": "static/images/meun_3_on.png",
-	 //      "text": "适时任务"
-	 //    },
+		//  "list": [
+		//    {
+		//      "pagePath": "pages/index/index",
+		//      "iconPath": "static/images/meun_1.png",
+		//      "selectedIconPath": "static/images/meun_1_on.png",
+		//      "text": "首页"
+		//    },
+		//    {
+		//      "pagePath": "pages/forum/forum-index",
+		//      "iconPath": "static/images/meun_2.png",
+		//      "selectedIconPath": "static/images/meun_2_on.png",
+		//      "text": "友圈"
+		//    },
+		//    {
+		//      "pagePath": "pages/task/task-index",
+		//      "iconPath": "static/images/meun_3.png",
+		//      "selectedIconPath": "static/images/meun_3_on.png",
+		//      "text": "适时任务"
+		//    },
 		// {
 		//     "pagePath": "pages/goods/goods-index",
 		//     "iconPath": "static/images/meun_4.png",
 		//     "selectedIconPath": "static/images/meun_4_on.png",
 		//     "text": "商城"
 		// },
-		  
-	 //    {
-	 //      "pagePath": "pages/user/user",
-	 //      "iconPath": "static/images/meun_5.png",
-	 //      "selectedIconPath": "static/images/meun_5_on",
-	 //      "text": "我的"
-	 //    }
-	 //  ]
+
+		//    {
+		//      "pagePath": "pages/user/user",
+		//      "iconPath": "static/images/meun_5.png",
+		//      "selectedIconPath": "static/images/meun_5_on",
+		//      "text": "我的"
+		//    }
+		//  ]
 	}
-	
+
 }

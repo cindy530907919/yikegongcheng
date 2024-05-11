@@ -1,0 +1,124 @@
+
+.uploadBody{
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		padding: 1.5625rem 0;
+}
+.uploadBodyTit{
+		width: 100%;
+		float: left;
+		margin-top: 0.3125rem;
+}
+.uploadBodyTitLine{
+		width: 0.25rem;
+		height: 1.25rem;
+		float: left;
+		background: #6f5af5;
+		border-radius: 10px;
+		margin-top: 0.125rem;
+}
+.uploadBodyTit_t{
+		float: left;
+		font-size: 1rem;
+		color: #222;
+		margin-left: 0.625rem;
+}
+.uploadBodyTit_t2{
+		float: left;
+		font-size: 0.9375rem;
+		color: #999;
+		margin-left: 0.75rem;
+		margin-top: 0.625rem;
+}
+.uploadBodyTit_t uni-text{
+		color: #f00;
+}
+.uploadBodyForm{
+		width: 100%;
+		float: left;
+		margin-top: 0.9375rem;
+}
+.uploadBodyFormInp{
+		width: calc(100% - 1.25rem);
+		float: left;
+		border-bottom: 1px solid #eee;
+		padding: 0.625rem;
+		font-size: 0.9375rem;
+		color: #222;
+}
+.uploadBodyFormTexarea{
+		width: 100%;
+		float: left;
+		height: 6.25rem;
+		margin-top: 0.625rem;
+		padding: 0.625rem;
+		border-bottom: 1px solid #eee !important;
+		font-size: 0.9375rem;
+		color: #222;
+		box-sizing: border-box;
+}
+.uploadBodyFormCount{
+		float: left;
+		margin-top: 0.625rem;
+		font-size: 0.8125rem;
+		color: #999;
+		margin-left: 0.625rem;
+}
+.uploadBodyCityClass{
+		width: 100%;
+		float: left;
+		margin-top: 2.1875rem;
+}
+.uploadBodyCityClassBtn{
+		float: left;
+		margin-left: 0.625rem;
+		border-radius: 100px;
+		background: #eee;
+		color: #222;
+		font-size: 0.9375rem;
+		padding: 0.5rem 1.125rem;
+		margin-right: 0.625rem;
+}
+.uploadBodyUpImg{
+		float: left;
+		margin-right: 0.625rem;
+		margin-top: 2.5rem;
+}
+.uploadBodyUpImg uni-image{
+		width: 1.5625rem;
+		float: left;
+}
+.uploadBodyUpImg uni-text{
+		float: left;
+		margin-left: 0.625rem;
+		font-size: 0.9375rem;
+		color: #222;
+}
+.uploadBodyUpImg uni-text{
+		margin-left: 0 !important;
+}
+.uploadBodyUpCon{
+		width: calc(100% - 1.25rem);
+		float: left;
+		margin-left: 0.625rem;
+}
+.uploadBodyUpConTip{
+		width: 100%;
+		float: left;
+		margin-top: 0.625rem;
+		color: #f00;
+		font-size: 0.8125rem;
+}
+.uploadBodySub{
+		width: 40%;
+		float: left;
+		height: 2.8125rem;
+		background: #6f5af5;
+		margin: 4.0625rem 30% 1.875rem;
+		color: #fff;
+		font-size: 0.9375rem;
+		line-height: 2.8125rem;
+		text-align: center;
+		border-radius: 100px;
+}

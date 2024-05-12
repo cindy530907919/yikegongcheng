@@ -31,133 +31,6 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const _sfc_main$y = {
-    data() {
-      return {};
-    },
-    methods: {}
-  };
-  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", null, [
-      vue.createElementVNode("view", { class: "userBack" }, [
-        vue.createElementVNode("image", {
-          class: "userBackImg",
-          src: "/static/images/user_1.png"
-        }),
-        vue.createElementVNode("view", { class: "userTit" }, "个人中心"),
-        vue.createElementVNode("image", {
-          src: "/static/images/user_5.png",
-          class: "userBackSkin"
-        }),
-        vue.createElementVNode("view", { class: "userBackInformation" }, [
-          vue.createElementVNode("view", { class: "userBackInformationLeft" }, [
-            vue.createElementVNode("image", {
-              src: "/static/images/user_21.png",
-              class: "userBackInformationAvatar"
-            }),
-            vue.createElementVNode("image", {
-              src: "/static/images/user_3.png",
-              mode: "widthFix",
-              class: "userBackInformationAvatarVip"
-            })
-          ]),
-          vue.createElementVNode("view", { class: "userBackInformationRight" }, [
-            vue.createElementVNode("view", { class: "userBackInformationRightName" }, [
-              vue.createElementVNode("view", { class: "userBackInformationRightName_t" }, " 泰国人没有心 "),
-              vue.createElementVNode("view", { class: "indexServiceLiTT1Label" }, [
-                vue.createElementVNode("text", { style: { "background": "#71e58d" } }, "电工"),
-                vue.createElementVNode("text", { style: { "background": "#ffdb00" } }, "车主")
-              ])
-            ])
-          ])
-        ])
-      ]),
-      vue.createElementVNode("view", { class: "userCon" }, [
-        vue.createElementVNode("view", { class: "userBackInformationRightSignature" }, "个性签名：娃哈哈哈哈哈")
-      ])
-    ]);
-  }
-  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$x], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user.vue"]]);
-  const _sfc_main$x = {
-    data() {
-      return {
-        inputContent: "",
-        // 用户输入的内容
-        remainingCount: 200
-        // 剩余字数
-      };
-    },
-    watch: {
-      inputContent(newValue) {
-        this.remainingCount = 200 - newValue.length;
-      }
-    }
-  };
-  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(
-      vue.Fragment,
-      null,
-      [
-        vue.createCommentVNode(" 发布 "),
-        vue.createElementVNode("view", { class: "uploadBody" }, [
-          vue.createElementVNode("view", { class: "uploadBodyTit" }, [
-            vue.createElementVNode("view", { class: "uploadBodyTitLine" }),
-            vue.createElementVNode("view", { class: "uploadBodyTit_t" }, [
-              vue.createTextVNode("今日免费发布次数剩余 "),
-              vue.createElementVNode("text", null, "3"),
-              vue.createTextVNode("次")
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodyForm" }, [
-            vue.createElementVNode("input", {
-              "placeholder-style": "font-size:30rpx",
-              class: "uploadBodyFormInp",
-              type: "text",
-              placeholder: "请输入完整服务标题（5-30个字）",
-              maxlength: "30"
-            }),
-            vue.withDirectives(vue.createElementVNode(
-              "textarea",
-              {
-                "placeholder-style": "font-size:30rpx",
-                class: "uploadBodyFormTexarea",
-                maxlength: 200,
-                placeholder: "请输入内容",
-                onInput: _cache[0] || (_cache[0] = (...args) => _ctx.handleInput && _ctx.handleInput(...args)),
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.inputContent = $event)
-              },
-              null,
-              544
-              /* NEED_HYDRATION, NEED_PATCH */
-            ), [
-              [vue.vModelText, $data.inputContent]
-            ]),
-            vue.createElementVNode(
-              "view",
-              { class: "uploadBodyFormCount" },
-              "剩余字数：" + vue.toDisplayString($data.remainingCount),
-              1
-              /* TEXT */
-            )
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodyCityClass" }, [
-            vue.createElementVNode("view", { class: "uploadBodyCityClassBtn" }, "选择城市")
-          ]),
-          vue.createElementVNode("view", { class: "uploadBodySub" }, " 提交 ")
-        ])
-      ],
-      2112
-      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-    );
-  }
-  const PagesJobJobPus = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$w], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/job/job-pus.vue"]]);
   const fontData = [
     {
       "font_class": "arrow-down",
@@ -804,11 +677,18 @@ if (uni.restoreGlobal) {
       "unicode": ""
     }
   ];
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
   const getVal = (val) => {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$w = {
+  const _sfc_main$y = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -862,7 +742,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$x(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -877,7 +757,7 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$v], ["__scopeId", "data-v-946bce22"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$x], ["__scopeId", "data-v-946bce22"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -888,6 +768,361 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom2) {
     return typeof component === "string" ? easycom2 : component;
   }
+  const _sfc_main$x = {
+    data() {
+      return {
+        number: 1543637
+      };
+    },
+    methods: {},
+    computed: {
+      formattedNumber() {
+        if (this.number >= 1e5) {
+          return (this.number / 1e4).toFixed(0) + "w";
+        } else if (this.number >= 1e4) {
+          return (this.number / 1e4).toFixed(1) + "w";
+        } else {
+          return this.number;
+        }
+      }
+    }
+  };
+  function _sfc_render$w(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$5);
+    return vue.openBlock(), vue.createElementBlock("view", null, [
+      vue.createElementVNode("view", { class: "userBack" }, [
+        vue.createElementVNode("image", {
+          class: "userBackImg",
+          src: "/static/images/user_1.png"
+        }),
+        vue.createElementVNode("view", { class: "userTit" }, "个人中心"),
+        vue.createElementVNode("image", {
+          src: "/static/images/user_5.png",
+          class: "userBackSkin"
+        }),
+        vue.createElementVNode("view", { class: "userVipPopul" }, [
+          vue.createElementVNode("image", {
+            src: "/static/images/user_4.png",
+            class: "userVipPopulImg"
+          }),
+          vue.createElementVNode("view", { class: "userVipPopulText" }, "大v认证：通过累计点赞超过20万获得")
+        ]),
+        vue.createElementVNode("view", { class: "userBackInformation" }, [
+          vue.createElementVNode("view", { class: "userBackInformationLeft" }, [
+            vue.createElementVNode("image", {
+              src: "/static/images/user_21.png",
+              class: "userBackInformationAvatar"
+            }),
+            vue.createElementVNode("image", {
+              src: "/static/images/user_3.png",
+              mode: "widthFix",
+              class: "userBackInformationAvatarVip"
+            })
+          ]),
+          vue.createElementVNode("view", { class: "userBackInformationRight" }, [
+            vue.createElementVNode("view", { class: "userBackInformationRightName" }, [
+              vue.createElementVNode("view", { class: "userBackInformationRightName_t" }, " 泰国人没有心 "),
+              vue.createElementVNode("view", { class: "indexServiceLiTT1Label" }, [
+                vue.createElementVNode("text", { style: { "background": "#71e58d" } }, "电工"),
+                vue.createElementVNode("text", { style: { "background": "#ffdb00" } }, "车主")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      vue.createElementVNode("view", { class: "userCon" }, [
+        vue.createElementVNode("view", { class: "userBackInformationRightSignature" }, "个性签名：娃哈哈哈哈哈"),
+        vue.createElementVNode("image", {
+          src: "/static/images/user_6.png",
+          mode: "widthFix",
+          class: "userConBanner"
+        }),
+        vue.createElementVNode("view", { class: "userConMyInfo" }, [
+          vue.createElementVNode("view", { class: "userConMyInfoLi" }, [
+            vue.createElementVNode("span", null, "588"),
+            vue.createElementVNode("p", null, "我的亦可币")
+          ]),
+          vue.createElementVNode("view", { class: "userConMyInfoLi" }, [
+            vue.createElementVNode("span", null, "12"),
+            vue.createElementVNode("p", null, "我的帖子")
+          ]),
+          vue.createElementVNode("view", { class: "userConMyInfoLi" }, [
+            vue.createElementVNode(
+              "span",
+              null,
+              vue.toDisplayString($options.formattedNumber),
+              1
+              /* TEXT */
+            ),
+            vue.createElementVNode("p", null, "收到的赞")
+          ]),
+          vue.createElementVNode("view", { class: "userConMyMessage" }, [
+            vue.createElementVNode("image", {
+              class: "userConMyMessageImg",
+              src: "/static/images/user_7.png"
+            }),
+            vue.createElementVNode("view", { class: "userConMyMessageText" }, [
+              vue.createElementVNode("view", { class: "userConMyMessageText_t1" }, [
+                vue.createTextVNode("互动消息"),
+                vue.createElementVNode("view")
+              ]),
+              vue.createElementVNode("view", { class: "userConMyMessageText_t2" }, "难哄的驴 点赞了你的评论")
+            ]),
+            vue.createVNode(_component_uni_icons, {
+              type: "right",
+              "font-size": "20",
+              color: "#222",
+              class: "userConMyMessageIcon"
+            })
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "userConFunction" }, [
+          vue.createElementVNode("view", { class: "userConFunctionTit" }, "常用功能"),
+          vue.createElementVNode("view", { class: "userConFunctionUl" }, [
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_8.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "账号充值")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_9.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "我的私聊")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_10.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "荣誉称号")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_11.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "我的发帖")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_12.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "我的订单")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_13.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "收获地址")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_14.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "个人信息")
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunctionUlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_15.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("view", null, "我的发布")
+            ])
+          ])
+        ]),
+        vue.createElementVNode("view", { class: "userConFunction" }, [
+          vue.createElementVNode("view", { class: "userConFunctionTit" }, "辅助功能"),
+          vue.createElementVNode("view", { class: "userConFunction2Ul" }, [
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunction2UlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_16.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("text", null, "app客服"),
+              vue.createVNode(_component_uni_icons, {
+                class: "userConFunction2UlLiIcon",
+                type: "right",
+                "font-size": "20",
+                color: "#c7c7c7"
+              })
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunction2UlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_17.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("text", null, "用户反馈"),
+              vue.createVNode(_component_uni_icons, {
+                class: "userConFunction2UlLiIcon",
+                type: "right",
+                "font-size": "20",
+                color: "#c7c7c7"
+              })
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunction2UlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_18.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("text", null, "商户入驻"),
+              vue.createVNode(_component_uni_icons, {
+                class: "userConFunction2UlLiIcon",
+                type: "right",
+                "font-size": "20",
+                color: "#c7c7c7"
+              })
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunction2UlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_19.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("text", null, "隐私声明"),
+              vue.createVNode(_component_uni_icons, {
+                class: "userConFunction2UlLiIcon",
+                type: "right",
+                "font-size": "20",
+                color: "#c7c7c7"
+              })
+            ]),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "userConFunction2UlLi"
+            }, [
+              vue.createElementVNode("image", {
+                src: "/static/images/user_20.png",
+                mode: "widthFix"
+              }),
+              vue.createElementVNode("text", null, "退出登录"),
+              vue.createVNode(_component_uni_icons, {
+                class: "userConFunction2UlLiIcon",
+                type: "right",
+                "font-size": "20",
+                color: "#c7c7c7"
+              })
+            ])
+          ])
+        ])
+      ])
+    ]);
+  }
+  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$w], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user.vue"]]);
+  const _sfc_main$w = {
+    data() {
+      return {
+        inputContent: "",
+        // 用户输入的内容
+        remainingCount: 200
+        // 剩余字数
+      };
+    },
+    watch: {
+      inputContent(newValue) {
+        this.remainingCount = 200 - newValue.length;
+      }
+    }
+  };
+  function _sfc_render$v(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 发布 "),
+        vue.createElementVNode("view", { class: "uploadBody" }, [
+          vue.createElementVNode("view", { class: "uploadBodyTit" }, [
+            vue.createElementVNode("view", { class: "uploadBodyTitLine" }),
+            vue.createElementVNode("view", { class: "uploadBodyTit_t" }, [
+              vue.createTextVNode("今日免费发布次数剩余 "),
+              vue.createElementVNode("text", null, "3"),
+              vue.createTextVNode("次")
+            ])
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodyForm" }, [
+            vue.createElementVNode("input", {
+              "placeholder-style": "font-size:30rpx",
+              class: "uploadBodyFormInp",
+              type: "text",
+              placeholder: "请输入完整服务标题（5-30个字）",
+              maxlength: "30"
+            }),
+            vue.withDirectives(vue.createElementVNode(
+              "textarea",
+              {
+                "placeholder-style": "font-size:30rpx",
+                class: "uploadBodyFormTexarea",
+                maxlength: 200,
+                placeholder: "请输入内容",
+                onInput: _cache[0] || (_cache[0] = (...args) => _ctx.handleInput && _ctx.handleInput(...args)),
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.inputContent = $event)
+              },
+              null,
+              544
+              /* NEED_HYDRATION, NEED_PATCH */
+            ), [
+              [vue.vModelText, $data.inputContent]
+            ]),
+            vue.createElementVNode(
+              "view",
+              { class: "uploadBodyFormCount" },
+              "剩余字数：" + vue.toDisplayString($data.remainingCount),
+              1
+              /* TEXT */
+            )
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodyCityClass" }, [
+            vue.createElementVNode("view", { class: "uploadBodyCityClassBtn" }, "选择城市")
+          ]),
+          vue.createElementVNode("view", { class: "uploadBodySub" }, " 提交 ")
+        ])
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesJobJobPus = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$v], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/job/job-pus.vue"]]);
   const _sfc_main$v = {
     data() {
       return {
@@ -10235,15 +10470,26 @@ ${i3}
           }
         ],
         activePage: 1,
-        scrollText: ["哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈", "嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
+        scrollText: [
+          "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",
+          "嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈",
+          "红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈",
+          "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+        ],
         scrollHeight: 40,
         // 滚动区域的高度，根据实际情况调整
         scrollTimer: null,
         // 定时器
         valueSe: 1,
         range: [
-          { value: 0, text: "按热度" },
-          { value: 1, text: "按发布时间" }
+          {
+            value: 0,
+            text: "按热度"
+          },
+          {
+            value: 1,
+            text: "按发布时间"
+          }
         ],
         number: 1,
         cnumber: 12e3,
@@ -10276,12 +10522,16 @@ ${i3}
         this.$refs.scrollView.scrollTo(0, 0);
       },
       changeSe(e2) {
-        formatAppLog("log", "at pages/forum/forum-index.vue:396", "e:", e2);
+        formatAppLog("log", "at pages/forum/forum-index.vue:432", "e:", e2);
       },
       // 点击查看放大图片
       previewImage() {
         uni.previewImage({
-          urls: ["http://www.moehosp.com/Public/home/images/about/about_team.png", "http://www.moehosp.com/Public/home/images/about/about_team.png", "http://www.moehosp.com/Public/home/images/about/about_team.png"],
+          urls: [
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png",
+            "http://www.moehosp.com/Public/home/images/about/about_team.png"
+          ],
           // 可以放置多个图片URL，用于滑动查看
           current: "http://www.moehosp.com/Public/home/images/about/about_team.png"
           // 当前显示的图片URL

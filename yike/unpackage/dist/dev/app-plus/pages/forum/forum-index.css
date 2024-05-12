@@ -1331,86 +1331,86 @@
 }
 
 
-body{
+body {
 		background: #fffbe4;
 }
-.indexTopPosition{
+.indexTopPosition {
 		width: 100%;
 		float: left;
 		position: relative;
 		min-height: 15.625rem;
 }
-.indexTopPositionBack{
+.indexTopPositionBack {
 		width: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: 0;
 }
-.indexTopPositionCon{
+.indexTopPositionCon {
 		width: 100%;
 		position: absolute;
 		top: 0;
 		left: 0;
 		z-index: 2;
 }
-.indexTopPositionConSearch{
+.indexTopPositionConSearch {
 		width: 90%;
 		float: left;
 		margin: 20px 5%;
 }
-.indexTopPositionConSearchCity{
+.indexTopPositionConSearchCity {
 		float: left;
 		margin-top: 0.3125rem;
 }
-.input-value-border{
+.input-value-border {
 		border: none !important;
-		margin:0 0 !important;
+		margin: 0 0 !important;
 		padding: 0 0 !important;
 }
-.input-value{
+.input-value {
 		height: 1.375rem !important;
 }
-.placeholder{
+.placeholder {
 		color: #222 !important;
 }
-.indexTopPositionConSearchCityIcon{
+.indexTopPositionConSearchCityIcon {
 		width: 1.125rem;
 		float: left;
 }
-.indexTopPositionConSearchCityPick{
+.indexTopPositionConSearchCityPick {
 		float: left;
 		margin-left: 4px;
 }
-.indexTopPositionConSearchInput{
+.indexTopPositionConSearchInput {
 		width: 50%;
 		float: left;
 		margin-left: 6px;
 		background: #fff;
-		padding: 0.46875rem  0.625rem;
+		padding: 0.46875rem 0.625rem;
 		border-radius: 50px;
 		box-sizing: border-box;
 }
-.indexTopPositionConSearchInput uni-image{
+.indexTopPositionConSearchInput uni-image {
 		width: 1.09375rem;
 		float: left;
 }
-.indexTopPositionConSearchInput uni-input{
+.indexTopPositionConSearchInput uni-input {
 		width: calc(100% - 1.875rem);
 		float: left;
 		margin-left: 0.625rem;
 		font-size: 12px;
 		margin-top: 0.125rem;
 }
-.indexTopPositionConSearchMesR{
+.indexTopPositionConSearchMesR {
 		float: right;
 		margin-top: 0.625rem;
 }
-.indexTopPositionConBanner uni-image{
+.indexTopPositionConBanner uni-image {
 		width: 100%;
 		float: left;
 }
-.indexTopPositionConSearchMesNew{
+.indexTopPositionConSearchMesNew {
 		float: right;
 		width: 0.625rem;
 		height: 0.625rem;
@@ -1419,52 +1419,53 @@ body{
 		background: #f00;
 		margin-left: 0.3125rem;
 }
-.indexTopPositionConSearchMes{
+.indexTopPositionConSearchMes {
 		width: 1.25rem;
 		float: right;
 }
 .title {
-			font-size: 14px;
-			font-weight: bold;
-			margin: 20px 0 5px 0;
+		font-size: 14px;
+		font-weight: bold;
+		margin: 20px 0 5px 0;
 }
 .data-pickerview {
-			height: 400px;
-			border: 1px #e5e5e5 solid;
+		height: 400px;
+		border: 1px #e5e5e5 solid;
 }
 .popper__arrow {
-	    top: -6px;
-	    left: 50%;
-	    margin-right: 3px;
-	    border-top-width: 0;
-	    border-bottom-color: #EBEEF5;
+		top: -6px;
+		left: 50%;
+		margin-right: 3px;
+		border-top-width: 0;
+		border-bottom-color: #EBEEF5;
 }
 .popper__arrow {
-	    top: -6px;
-	    left: 50%;
-	    margin-right: 3px;
-	    border-top-width: 0;
-	    border-bottom-color: #EBEEF5;
+		top: -6px;
+		left: 50%;
+		margin-right: 3px;
+		border-top-width: 0;
+		border-bottom-color: #EBEEF5;
 }
+
 	/* 推荐 */
-.fourmRecommend{
+.fourmRecommend {
 		width: 100%;
 		position: absolute;
 		left: 0;
 		top: 4.6875rem;
 		z-index: 1;
 }
-.fourmRecommendTop{
+.fourmRecommendTop {
 		width: 90%;
 		margin-left: 5%;
 		float: left;
 }
-.fourmRecommendTopImg1{
+.fourmRecommendTopImg1 {
 		width: 0.75rem;
 		float: left;
 		height: 2.5rem;
 }
-.fourmRecommendTopLine{
+.fourmRecommendTopLine {
 		width: calc(100% - 0.75rem);
 		float: left;
 		padding: 0 0.3125rem;
@@ -1472,58 +1473,58 @@ body{
 		height: 2.5rem;
 		background: #ffb955;
 }
-.fourmRecommendTopImg2{
+.fourmRecommendTopImg2 {
 		width: 1.71875rem;
 		float: left;
 		margin-top: 0.46875rem;
 }
-.fourmRecommendTopT1{
+.fourmRecommendTopT1 {
 		font-size: 1.0625rem;
 		float: left;
 		margin-left: 0.9375rem;
 		color: #222;
 		margin-top: 10px;
 }
-.fourmRecommendBot{
-		width:calc(90% - 0.75rem);
+.fourmRecommendBot {
+		width: calc(90% - 0.75rem);
 		float: left;
 		padding: 0.3125rem 0.3125rem 0.875rem;
 		background: #fff;
 		border: 1px solid #ffb955;
 		margin-left: 5%;
 }
-.fourmRecommendBotLi{
+.fourmRecommendBotLi {
 		width: 47%;
 		float: left;
 		margin-left: 2%;
 		margin-top: 0.625rem;
 }
-.fourmRecommendBotLiImg{
+.fourmRecommendBotLiImg {
 		width: 2.1875rem;
 		height: 2.1875rem;
 		float: left;
 		border-radius: 0.3125rem;
 }
-.fourmRecommendBotLiTxt{
+.fourmRecommendBotLiTxt {
 		width: calc(100% - 2.5rem);
 		float: right;
 }
-.fourmRecommendBotLiTxt_t1{
+.fourmRecommendBotLiTxt_t1 {
 		font-size: 1rem;
 		float: left;
 		color: #222;
 		width: 100%;
 }
-.fourmRecommendBotLiTxt_t2{
+.fourmRecommendBotLiTxt_t2 {
 		float: left;
 		width: 100%;
 }
-.fourmRecommendBotLiTxt_t4{
+.fourmRecommendBotLiTxt_t4 {
 		color: #999;
 		font-size: 0.875rem;
 		float: left;
 }
-.fourmRecommendBotLiTxt_t3{
+.fourmRecommendBotLiTxt_t3 {
 		padding: 0 0.0625rem;
 		background: #ffdb00;
 		color: #f00;
@@ -1534,8 +1535,9 @@ body{
 		border: 1px solid #f00;
 		margin-top: 0.25rem;
 }
+
 	/* 公告 */
-.indexNewTask{
+.indexNewTask {
 		width: 90%;
 		float: left;
 		border: 1px solid #c6bb7a;
@@ -1544,34 +1546,34 @@ body{
 		box-sizing: border-box;
 		margin: 0.9375rem 5% 0.625rem;
 }
-.indexNewTaskImg{
+.indexNewTaskImg {
 		width: 1.25rem;
 		float: left;
 		margin-top: 0.5rem;
 		margin-right: 0.625rem;
 }
 .scroll-text {
-	  width: calc(100% - 1.875rem);
-	  padding: 0;
-	  float: left;
-	  margin-top: 0.125rem;
-	  height: 30px;
-	  overflow: hidden;
-	  line-height: 30px;
+		width: calc(100% - 1.875rem);
+		padding: 0;
+		float: left;
+		margin-top: 0.125rem;
+		height: 30px;
+		overflow: hidden;
+		line-height: 30px;
 }
 .scroll-item {
-	  display: inline-block;
-	  padding: 0;
-	  margin: 0;
-	  line-height: 30px;
-	  width: 100%;
-	  font-size: 16px;
-	  color: #222;
-	  overflow: hidden;
-	    text-overflow: ellipsis;
-	    white-space: nowrap;
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		line-height: 30px;
+		width: 100%;
+		font-size: 16px;
+		color: #222;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 }
-.forumClass{
+.forumClass {
 		width: 90%;
 		float: left;
 		position: relative;
@@ -1580,199 +1582,212 @@ body{
 		padding: 0 5%;
 }
 .sticky {
-	  position: fixed;
-	  top: 0;
-	  width: 100%;
-	  background-color: #fffbe4;
-	  z-index: 3;  /* 保证吸顶元素在最前面 */
-	  box-shadow: 0 4px 0.3125rem rgba(205,195,140,0.2);
+		position: fixed;
+		top: 0;
+		width: 100%;
+		background-color: #fffbe4;
+		z-index: 3;
+		/* 保证吸顶元素在最前面 */
+		box-shadow: 0 4px 0.3125rem rgba(205, 195, 140, 0.2);
 }
 .scroll-view {
 		margin: 0.9375rem 0 0.625rem;
-	    white-space: nowrap; /* 使所有子元素在一行显示 */
-	    overflow-x: auto; /* 允许在X轴方向上滚动 */
-	    width: 100%; /* 视图宽度设置为100% */
+		white-space: nowrap;
+		/* 使所有子元素在一行显示 */
+		overflow-x: auto;
+		/* 允许在X轴方向上滚动 */
+		width: 100%;
+		/* 视图宽度设置为100% */
 }
 .forumClassLi {
-	    display: inline-block; /* 设置为内联块，保持在一行 */
-	    margin-right: 10px; /* 在分类之间添加一些间隔 */
+		display: inline-block;
+		/* 设置为内联块，保持在一行 */
+		margin-right: 10px;
+		/* 在分类之间添加一些间隔 */
 }
-.forumClassLi uni-text{
-		  font-size: 0.9375rem;
-		  color: #222
+.forumClassLi uni-text {
+		font-size: 0.9375rem;
+		color: #222
 }
 .forumClassLiLine {
-	    height: 0.1875rem; /* 线条高度 */
-	    background-color: #ffdb00; /* 线条颜色 */
-	    width: 1.875rem; /* 线条宽度 */
+		height: 0.1875rem;
+		/* 线条高度 */
+		background-color: #ffdb00;
+		/* 线条颜色 */
+		width: 1.875rem;
+		/* 线条宽度 */
 		margin-left: calc(50% - 0.9375rem);
 		margin-top: 0.3125rem;
 		border-radius: 10px;
 }
-.forumSelect{
-		  width: 100%;
-		  float: left;
-		  padding: 0.625rem 0 0;
+.forumSelect {
+		width: 100%;
+		float: left;
+		padding: 0.625rem 0 0;
 }
-.forumSelectTit{
-		  font-size: 0.9375rem;
-		  color: #222;
-		  float: left;
-		  margin-left: 5%;
-		  padding: 0.4375rem 0.625rem;
+.forumSelectTit {
+		font-size: 0.9375rem;
+		color: #222;
+		float: left;
+		margin-left: 5%;
+		padding: 0.4375rem 0.625rem;
 }
-.forumSelectC{
-		  float: right !important;
-		  width: 30% !important;
-		  margin-right: 5% !important;
+.forumSelectC {
+		float: right !important;
+		width: 30% !important;
+		margin-right: 5% !important;
 }
-.uni-select{
-		  float: right !important;
-		  width: 100% !important;
-		  border: none !important;
+.uni-select {
+		float: right !important;
+		width: 100% !important;
+		border: none !important;
 }
-.forumSelectUl{
-		  width: 90%;
-		  float: left;
-		  margin-left: 5%;
-		  margin-bottom: 10.625rem;
+.forumSelectUl {
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		margin-bottom: 10.625rem;
 }
-.forumSelectUlLi{
-		  width: 100%;
-		  float: left;
-		  margin-top: 0.9375rem;
-		  background: #fff;
-		  border-radius: 0.625rem;
-		  padding: 0.625rem;
-		  box-sizing: border-box;
-		  box-shadow: 0 0.3125rem 0.3125rem rgba(196,184,115,0.2);
+.forumSelectUlLi {
+		width: 100%;
+		float: left;
+		margin-top: 0.9375rem;
+		background: #fff;
+		border-radius: 0.625rem;
+		padding: 0.625rem;
+		box-sizing: border-box;
+		box-shadow: 0 0.3125rem 0.3125rem rgba(196, 184, 115, 0.2);
 }
-.forumSelectUlLiTop{
-		  width: 100%;
-		  float: left;
+.forumSelectUlLiTop {
+		width: 100%;
+		float: left;
 }
-.forumSelectUlLiTopImg{
-		  width: 2.5rem;
-		  height: 2.5rem;
-		  border-radius: 0.3125rem;
-		  float: left;
+.forumSelectUlLiTopImg {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.3125rem;
+		float: left;
 }
-.forumSelectUlLiTopLeft{
-		  width: calc(100% - 6.25rem);
-		  float: left;
-		  margin-left: 0.625rem;
+.forumSelectUlLiTopLeft {
+		width: calc(100% - 6.25rem);
+		float: left;
+		margin-left: 0.625rem;
 }
-.forumSelectUlLiTopLeftName{
-		  width: 100%;
-		  float: left;
+.forumSelectUlLiTopLeftName {
+		width: 100%;
+		float: left;
 }
-.forumSelectUlLiTopLeftNameTxt{
-		  float: left;
-		  font-size: 0.9375rem;
-		  color: #222;
-		  overflow: hidden;
-		  text-overflow: ellipsis;
-		  white-space: nowrap;
-		  width: 50%;
+.forumSelectUlLiTopLeftNameTxt {
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 50%;
 }
-.forumSelectUlLiTopLeftNameTab{
-		  float: left;
-		  font-size: 0.78125rem;
-		  color: #fff;
-		  background: #ffdb00;
-		  border-radius: 100px;
-		  padding: 0.09375rem 0.3125rem;
-		  margin-right: 0.3125rem;
+.forumSelectUlLiTopLeftNameTab {
+		float: left;
+		font-size: 0.78125rem;
+		color: #fff;
+		background: #ffdb00;
+		border-radius: 100px;
+		padding: 0.09375rem 0.3125rem;
+		margin-right: 0.3125rem;
 }
-.forumSelectUlLiTopLeftTime{
-		  width: 100%;
-		  float: left;
-		  font-size: 0.8125rem;
-		  color: #999;
-		  margin-top: 0.3125rem;
+.forumSelectUlLiTopLeftTime {
+		width: 100%;
+		float: left;
+		font-size: 0.8125rem;
+		color: #999;
+		margin-top: 0.3125rem;
 }
-.forumSelectUlLiTopLeftUp{
-		  width: 3.125rem;
-		  float: right;
+.forumSelectUlLiTopLeftUp {
+		width: 3.125rem;
+		float: right;
 }
-.forumSelectUlLiCon{
-		  width: 100%;
-		  float: left;
-		  margin-top: 0.3125rem;
+.forumSelectUlLiCon {
+		width: 100%;
+		float: left;
+		margin-top: 0.3125rem;
 }
-.forumSelectUlLiConTxt{
-		  width: 100%;
-		  float: left;
-		  font-size: 0.9375rem;
-		  color: #222;
-		  line-height: 1.4375rem;
-		  margin: 0.9375rem 0 0.625rem;
+.forumSelectUlLiConTxt {
+		width: 100%;
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+		line-height: 1.4375rem;
+		margin: 0.9375rem 0 0.625rem;
 }
-.forumSelectUlLiConImg{
-		  width: 100%;
-		  float: left;
-		  margin-top: 0.3125rem;
+.forumSelectUlLiConImg {
+		width: 100%;
+		float: left;
+		margin-top: 0.3125rem;
 }
-.forumSelectUlLiConImgBack{
-		  width: 5.625rem;
-		  height: 5.625rem;
-		  float: left;
-		  margin-right:0.625rem;
-		  margin-top: 0.3125rem;
-		  background-size: cover !important;
-		  border-radius: 0.3125rem;
+.forumSelectUlLiConImgBack {
+		width: 5.625rem;
+		height: 5.625rem;
+		float: left;
+		margin-right: 0.625rem;
+		margin-top: 0.3125rem;
+		background-size: cover !important;
+		border-radius: 0.3125rem;
 }
-.forumSelectUlLiConBot{
-		  width: 100%;
-		  float: left;
-		  margin-top: 1.25rem;
+.forumSelectUlLiConBot {
+		width: 100%;
+		float: left;
+		margin-top: 1.25rem;
 }
-.forumSelectUlLiConBotComment{
-		  float: left;
+.forumSelectUlLiConBotComment {
+		float: left;
 }
-.forumSelectUlLiConBotComment uni-image{
-		  width: 1.25rem;
-		  float: left;
+.forumSelectUlLiConBotComment uni-image {
+		width: 1.25rem;
+		float: left;
 }
-.forumSelectUlLiConBotComment uni-text{
-		  float: left;
-		  font-size: 0.9375rem;
-		  color: #222;
-		  margin-left: 0.3125rem;
+.forumSelectUlLiConBotComment uni-text {
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+		margin-left: 0.3125rem;
 }
-.forumSelectUlLiConBotGood{
-		  float: right;
+.forumSelectUlLiConBotGood {
+		float: right;
 }
-.forumSelectUlLiConBotGood uni-image{
-		  width: 1.25rem;
-		  float: right;
+.forumSelectUlLiConBotGood uni-image {
+		width: 1.25rem;
+		float: right;
 }
-.forumSelectUlLiConBotGood uni-text{
-		  float: right;
-		  font-size: 0.9375rem;
-		  color: #222;
-		  margin-right: 0.3125rem;
+.forumSelectUlLiConBotGood uni-text {
+		float: right;
+		font-size: 0.9375rem;
+		color: #222;
+		margin-right: 0.3125rem;
 }
-.handleScroll{
-		  overflow: auto;
-		  height: 100vh;
+.handleScroll {
+		overflow: auto;
+		height: 100vh;
 }
-	  /* 控制 forumSelectbtn 的基本样式和位置 */
+
+	/* 控制 forumSelectbtn 的基本样式和位置 */
 .forumSelectbtn {
-	    position: fixed;
-	    right: 0.625rem;
-	    bottom: 7.5rem; /* 中间位置，可调整 */
-	    transform: translateY(-50%);
-	    width: 2.1875rem; /* 默认只显示部分 */
-	    overflow: hidden;
-	    transition: width 0.3s ease-in-out;
+		position: fixed;
+		right: 0.625rem;
+		bottom: 7.5rem;
+		/* 中间位置，可调整 */
+		transform: translateY(-50%);
+		width: 2.1875rem;
+		/* 默认只显示部分 */
+		overflow: hidden;
+		transition: width 0.3s ease-in-out;
 		z-index: 4;
 }
-	  
-	  /* 当展开时的样式 */
+
+	/* 当展开时的样式 */
 .forumSelectbtn.expanded {
-	    width: 6.25rem; /* 全部展开的宽度，根据需要调整 */
+		width: 6.25rem;
+		/* 全部展开的宽度，根据需要调整 */
 }
-.forumSelectbtn_1{
-		  width: 6.25rem;
+.forumSelectbtn_1 {
+		width: 6.25rem;
 }

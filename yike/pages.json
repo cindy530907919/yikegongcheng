@@ -1,6 +1,26 @@
 {
 	"pages": [
 		{
+			"path": "pages/user/user-my-invitation",
+			"style": {
+				"navigationBarTitleText": "我的帖子"
+			}
+		},{
+			"path": "pages/user/user-honorary-title",
+			"style": {
+				"navigationBarTitleText": "荣誉称号"
+			}
+		},{
+			"path": "pages/user/user-service",
+			"style": {
+				"navigationBarTitleText": "APP客服"
+			}
+		},{
+			"path": "pages/user/user-invitation-message",
+			"style": {
+				"navigationBarTitleText": "全部消息"
+			}
+		},{
 			"path": "pages/user/user",
 			"style": {
 				"navigationBarTitleText": "个人中心",

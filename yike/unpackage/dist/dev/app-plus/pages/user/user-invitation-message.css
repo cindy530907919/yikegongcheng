@@ -1,0 +1,44 @@
+
+.userInMe{
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		margin-bottom: 1.25rem;
+		margin-top: 0.625rem;
+}
+.userInMeLi{
+		width: 100%;
+		float: left;
+		padding-bottom: 0.9375rem;
+		border-bottom: 1px solid #f8f8f8;
+		margin-top: 0.9375rem;
+}
+.userInMeLiImg{
+		width: 3.75rem;
+		height: 3.75rem;
+		float: left;
+		border-radius: 0.625rem;
+}
+.userInMeLiText{
+		width: calc(100% - 4.375rem);
+		float: right;
+}
+.userInMeLiT1{
+		width: 100%;
+		float: left;
+		font-size: 1rem;
+		color: #222;
+}
+.userInMeLiT2{
+		width: 100%;
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+}
+.userInMeLiT3{
+		font-size: 0.8125rem;
+		color: #999;
+		width: 100%;
+		float: left;
+		margin-top: 0.125rem;
+}

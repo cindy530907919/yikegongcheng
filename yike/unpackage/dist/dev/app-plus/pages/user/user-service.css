@@ -1,0 +1,30 @@
+
+.userInMe{
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		margin-bottom: 1.25rem;
+		margin-top: 0.625rem;
+}
+.userInMeCode{
+		width: 30%;
+		float: left;
+		margin-left: 35%;
+		margin-top: 3.125rem;
+}
+.userServiceT1{
+		width: 100%;
+		float: left;
+		margin-top: 0.9375rem;
+		text-align: center;
+		font-size: 0.9375rem;
+		color: #222;
+}
+.userServiceT2{
+		width: 100%;
+		float: left;
+		margin-top: 0.3125rem;
+		text-align: center;
+		font-size: 1.0625rem;
+		color: #222;
+}

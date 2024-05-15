@@ -1,0 +1,84 @@
+
+.goodsClassList {
+		white-space: nowrap;
+		width: 100%;
+		float: left;
+		padding: 0.9375rem;
+		box-sizing: border-box;
+		border-bottom: 0.3125rem solid #f8f8f8;
+		padding-bottom: 0.625rem;
+}
+.goodsClassListLi {
+		display: inline-block;
+		margin-right: 0.9375rem;
+		border-radius: 4px;
+		width: 3.75rem;
+		text-align: center;
+}
+.goodsClassListLiLine {
+		width: 1.875rem;
+		float: left;
+		height: 6px;
+		border-radius: 10px;
+		background: #ffdb00;
+		margin-left: 0.9375rem;
+		margin-top: 0.3125rem;
+}
+.goodsClassTopScreen {
+		width: 100%;
+		float: left;
+		padding: 0.9375rem;
+		box-sizing: border-box;
+}
+.goodsClassTopScreen_t1 {
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+}
+.goodsClassTopScreen_t2 {
+		float: right;
+		font-size: 0.9375rem;
+		color: #222;
+		margin-left: 0.9375rem;
+}
+.honoraryTit{
+		width: 90%;
+		float: left;
+		margin-top: 0.625rem;
+		color: #222;
+		margin-left: 5%;
+		font-size: 1rem;
+}
+.honoraryUl{
+		width: 100%;
+		float: left;
+		margin-top: 0.625rem;
+}
+.honoraryUlLi{
+		float: left;
+		margin-right: 1.0625rem;
+		margin-left: 1.0625rem;
+		margin-top: 0.625rem;
+		width: 15%;
+}
+.honoraryUlLi_t1{
+		padding: 0.3125rem 0.4375rem;
+		color: #fff;
+		border-radius: 6px;
+		font-size: 0.9375rem;
+		float: left;
+		text-align: center;
+		width: 100%;
+}
+.honoraryUlLi_t2{
+		padding: 0.1875rem 0.4375rem;
+		color: #222;
+		font-size: 0.9375rem;
+		float: left;
+		text-align: center;
+		width: 100%;
+		margin-top: 0.1875rem;
+}
+.honoraryUlLi_t2On{
+		color: #528bff;
+}

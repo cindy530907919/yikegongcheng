@@ -120,12 +120,16 @@
 				</view>
 			</view>
 		</view>
-
+	<custom-tabs-bar :activePage="activePage"></custom-tabs-bar>
 	</view>
 </template>
 
 <script>
+	import CustomTabsBar from '@/components/custom-tabs-bar/custom-tabs-bar.vue';
 	export default {
+		components: {
+			CustomTabsBar
+		},
 		data() {
 			return {
 				number: 1543637,
@@ -293,6 +297,7 @@
 		width: 90%;
 		float: left;
 		margin: 20rpx 5%;
+		padding-bottom: 260rpx;
 	}
 
 	.userBackInformationRightSignature {

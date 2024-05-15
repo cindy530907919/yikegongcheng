@@ -13038,7 +13038,7 @@ ${i3}
               mode: "widthFix",
               class: "loginWechatIcon"
             }),
-            vue.createElementVNode("text", null, "微信登录")
+            vue.createElementVNode("text", null, "微信登录11")
           ]),
           vue.createElementVNode("label", { class: "loginRadio" }, [
             vue.createElementVNode("checkbox", {

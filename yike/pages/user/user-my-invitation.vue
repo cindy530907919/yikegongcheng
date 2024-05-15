@@ -119,6 +119,7 @@
 		float: left;
 		margin-left: 5%;
 		margin-top: 30rpx;
+		padding-bottom: 100rpx;
 	}
 	.myInvitationLi{
 		width: 100%;

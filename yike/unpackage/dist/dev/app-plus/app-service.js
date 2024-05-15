@@ -757,7 +757,7 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$B], ["__scopeId", "data-v-946bce22"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$B], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -964,7 +964,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesUserUserMyInvitation = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$A], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user-my-invitation.vue"]]);
+  const PagesUserUserMyInvitation = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$A], ["__file", "E:/yikegongcheng/yike/pages/user/user-my-invitation.vue"]]);
   const _sfc_main$A = {
     data() {
       return {
@@ -1110,7 +1110,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesUserUserHonoraryTitle = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$z], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user-honorary-title.vue"]]);
+  const PagesUserUserHonoraryTitle = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$z], ["__file", "E:/yikegongcheng/yike/pages/user/user-honorary-title.vue"]]);
   const _sfc_main$z = {};
   function _sfc_render$y(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock(
@@ -1132,7 +1132,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesUserUserService = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$y], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user-service.vue"]]);
+  const PagesUserUserService = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$y], ["__file", "E:/yikegongcheng/yike/pages/user/user-service.vue"]]);
   const _sfc_main$y = {};
   function _sfc_render$x(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock(
@@ -1202,7 +1202,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesUserUserInvitationMessage = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$x], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user-invitation-message.vue"]]);
+  const PagesUserUserInvitationMessage = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["render", _sfc_render$x], ["__file", "E:/yikegongcheng/yike/pages/user/user-invitation-message.vue"]]);
   const _sfc_main$x = {
     props: {
       activePage: {
@@ -1292,7 +1292,7 @@ if (uni.restoreGlobal) {
       ))
     ]);
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$w], ["__scopeId", "data-v-a6d140ed"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["render", _sfc_render$w], ["__scopeId", "data-v-a6d140ed"], ["__file", "E:/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
   const _sfc_main$w = {
     components: {
       CustomTabsBar: __easycom_2
@@ -1579,7 +1579,7 @@ if (uni.restoreGlobal) {
       vue.createVNode(_component_custom_tabs_bar, { activePage: _ctx.activePage }, null, 8, ["activePage"])
     ]);
   }
-  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$v], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/user/user.vue"]]);
+  const PagesUserUser = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["render", _sfc_render$v], ["__file", "E:/yikegongcheng/yike/pages/user/user.vue"]]);
   const _sfc_main$v = {
     data() {
       return {
@@ -1652,7 +1652,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesJobJobPus = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$u], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/job/job-pus.vue"]]);
+  const PagesJobJobPus = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$u], ["__file", "E:/yikegongcheng/yike/pages/job/job-pus.vue"]]);
   const _sfc_main$u = {
     data() {
       return {
@@ -1822,7 +1822,7 @@ if (uni.restoreGlobal) {
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesJobJobList = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$t], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/job/job-list.vue"]]);
+  const PagesJobJobList = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$t], ["__file", "E:/yikegongcheng/yike/pages/job/job-list.vue"]]);
   const pages = [
     {
       path: "pages/user/user-my-invitation",
@@ -5254,7 +5254,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$s], ["__scopeId", "data-v-6f3c6077"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
+  const uploadImage = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$s], ["__scopeId", "data-v-6f3c6077"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-image.vue"]]);
   const _sfc_main$s = {
     name: "uploadFile",
     emits: ["uploadFiles", "choose", "delFile"],
@@ -5473,7 +5473,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$r], ["__scopeId", "data-v-86fc2bba"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
+  const uploadFile = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["render", _sfc_render$r], ["__scopeId", "data-v-86fc2bba"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/upload-file.vue"]]);
   const _sfc_main$r = {
     name: "uniFilePicker",
     components: {
@@ -6039,7 +6039,7 @@ ${i3}
       }, 8, ["readonly", "list-styles", "files-list", "showType", "delIcon", "onUploadFiles", "onChoose", "onDelFile"])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$q], ["__scopeId", "data-v-418f48eb"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["render", _sfc_render$q], ["__scopeId", "data-v-418f48eb"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue"]]);
   const _sfc_main$q = {
     data() {
       return {
@@ -6122,7 +6122,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLocalPublish = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$p], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/local/publish.vue"]]);
+  const PagesLocalPublish = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$p], ["__file", "E:/yikegongcheng/yike/pages/local/publish.vue"]]);
   const isObject = (val) => val !== null && typeof val === "object";
   const defaultDelimiters = ["{", "}"];
   class BaseFormatter {
@@ -6591,7 +6591,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$o], ["__scopeId", "data-v-2c1dd21f"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$o], ["__scopeId", "data-v-2c1dd21f"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
   const dataPicker = {
     props: {
       localdata: {
@@ -7330,7 +7330,7 @@ ${i3}
       ])
     ]);
   }
-  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$n], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
+  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["render", _sfc_render$n], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
   const _sfc_main$n = {
     name: "UniDataPicker",
     emits: ["popupopened", "popupclosed", "nodeclick", "input", "change", "update:modelValue", "inputclick"],
@@ -7701,7 +7701,7 @@ ${i3}
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__scopeId", "data-v-e10759db"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["render", _sfc_render$m], ["__scopeId", "data-v-e10759db"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
   const _sfc_main$m = {
     name: "UniSwiperDot",
     emits: ["clickItem"],
@@ -7934,7 +7934,7 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__scopeId", "data-v-0667e3db"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["render", _sfc_render$l], ["__scopeId", "data-v-0667e3db"], ["__file", "E:/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
   const _sfc_main$l = {
     components: {
       CustomTabsBar: __easycom_2
@@ -8267,7 +8267,7 @@ ${i3}
       vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/index/index.vue"]]);
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["render", _sfc_render$k], ["__file", "E:/yikegongcheng/yike/pages/index/index.vue"]]);
   const _sfc_main$k = {
     methods: {
       makePhoneCall() {
@@ -8335,7 +8335,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLocalServiceCon = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/local/service-con.vue"]]);
+  const PagesLocalServiceCon = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$j], ["__file", "E:/yikegongcheng/yike/pages/local/service-con.vue"]]);
   const _sfc_main$j = {
     data() {
       return {
@@ -8556,7 +8556,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLocalService = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/local/service.vue"]]);
+  const PagesLocalService = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["render", _sfc_render$i], ["__file", "E:/yikegongcheng/yike/pages/local/service.vue"]]);
   const _sfc_main$i = {
     data() {
       return {
@@ -8777,7 +8777,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesMachineryLeasing = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/machinery/leasing.vue"]]);
+  const PagesMachineryLeasing = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$h], ["__file", "E:/yikegongcheng/yike/pages/machinery/leasing.vue"]]);
   const _sfc_main$h = {
     methods: {
       makePhoneCall() {
@@ -8845,7 +8845,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesMachineryLeasingCon = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/machinery/leasing-con.vue"]]);
+  const PagesMachineryLeasingCon = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["render", _sfc_render$g], ["__file", "E:/yikegongcheng/yike/pages/machinery/leasing-con.vue"]]);
   const _sfc_main$g = {
     methods: {
       goToAddressPage() {
@@ -8926,7 +8926,7 @@ ${i3}
       ])
     ]);
   }
-  const PagesAddressIndex = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/address/index.vue"]]);
+  const PagesAddressIndex = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__file", "E:/yikegongcheng/yike/pages/address/index.vue"]]);
   const _sfc_main$f = {
     data() {
       return {
@@ -9033,7 +9033,7 @@ ${i3}
       ])
     ]);
   }
-  const PagesAddressAdd = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/address/add.vue"]]);
+  const PagesAddressAdd = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["render", _sfc_render$e], ["__file", "E:/yikegongcheng/yike/pages/address/add.vue"]]);
   const _sfc_main$e = {};
   function _sfc_render$d(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "commentCon" }, [
@@ -9114,7 +9114,7 @@ ${i3}
       ])
     ]);
   }
-  const PagesGoodsComment = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/goods/comment.vue"]]);
+  const PagesGoodsComment = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["render", _sfc_render$d], ["__file", "E:/yikegongcheng/yike/pages/goods/comment.vue"]]);
   const _sfc_main$d = {
     data() {
       return {
@@ -9336,7 +9336,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesGoodsGoodsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/goods/goods-index.vue"]]);
+  const PagesGoodsGoodsIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["render", _sfc_render$c], ["__file", "E:/yikegongcheng/yike/pages/goods/goods-index.vue"]]);
   const _sfc_main$c = {
     data() {
       return {};
@@ -9400,7 +9400,7 @@ ${i3}
       ])
     ]);
   }
-  const PagesPayPay = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/pay/pay.vue"]]);
+  const PagesPayPay = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$b], ["__file", "E:/yikegongcheng/yike/pages/pay/pay.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -9777,7 +9777,7 @@ ${i3}
       [vue.vShow, $data.isShow]
     ]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$a], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
   const _sfc_main$a = {
     name: "uniPopup",
     components: {},
@@ -10188,7 +10188,7 @@ ${i3}
       /* CLASS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-7db519c7"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-7db519c7"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
   const _sfc_main$9 = {
     data() {
       return {
@@ -10509,7 +10509,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesGoodsGoodsContent = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/goods/goods-content.vue"]]);
+  const PagesGoodsGoodsContent = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$8], ["__file", "E:/yikegongcheng/yike/pages/goods/goods-content.vue"]]);
   const _sfc_main$8 = {
     name: "uni-data-select",
     mixins: [Ws.mixinDatacom || {}],
@@ -10902,7 +10902,7 @@ ${i3}
       )
     ]);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-123e8af9"], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$7], ["__scopeId", "data-v-123e8af9"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue"]]);
   const _sfc_main$7 = {
     components: {
       CustomTabsBar: __easycom_2
@@ -11756,7 +11756,7 @@ ${i3}
       /* NEED_HYDRATION */
     );
   }
-  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
+  const PagesForumForumIndex = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$6], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-index.vue"]]);
   const _sfc_main$6 = {
     data() {
       return {
@@ -12263,7 +12263,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesForumForumList = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-list.vue"]]);
+  const PagesForumForumList = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$5], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-list.vue"]]);
   const _sfc_main$5 = {
     data() {
       return {
@@ -12740,7 +12740,7 @@ ${i3}
       ])
     ]);
   }
-  const PagesForumForumContent = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-content.vue"]]);
+  const PagesForumForumContent = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["render", _sfc_render$4], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-content.vue"]]);
   const _sfc_main$4 = {
     data() {
       return {
@@ -12839,7 +12839,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
+  const PagesForumForumUpload = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$3], ["__file", "E:/yikegongcheng/yike/pages/forum/forum-upload.vue"]]);
   const _sfc_main$3 = {
     data() {
       return {
@@ -12875,7 +12875,7 @@ ${i3}
           });
           return;
         }
-        formatAppLog("log", "at pages/merchant/signin.vue:80", 111111112);
+        formatAppLog("log", "at pages/Merchant/signin.vue:80", 111111112);
       }
     }
   };
@@ -12944,7 +12944,7 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesMerchantSignin = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/merchant/signin.vue"]]);
+  const PagesMerchantSignin = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$2], ["__scopeId", "data-v-79519696"], ["__file", "E:/yikegongcheng/yike/pages/Merchant/signin.vue"]]);
   const _sfc_main$2 = {};
   function _sfc_render$1(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock(
@@ -12988,12 +12988,12 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/login/login.vue"]]);
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$1], ["__file", "E:/yikegongcheng/yike/pages/login/login.vue"]]);
   const _sfc_main$1 = {};
   function _sfc_render(_ctx, _cache) {
     return null;
   }
-  const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/pages/task/task-index.vue"]]);
+  const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/task/task-index.vue"]]);
   __definePage("pages/user/user-my-invitation", PagesUserUserMyInvitation);
   __definePage("pages/user/user-honorary-title", PagesUserUserHonoraryTitle);
   __definePage("pages/user/user-service", PagesUserUserService);
@@ -13031,7 +13031,7 @@ ${i3}
       formatAppLog("log", "at App.vue:10", "App Hide");
     }
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "M:/2024亦可工程/yikegongcheng/yikegongcheng/yike/App.vue"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "E:/yikegongcheng/yike/App.vue"]]);
   function createApp() {
     const app = vue.createVueApp(App);
     return {

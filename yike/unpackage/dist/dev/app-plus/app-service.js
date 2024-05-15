@@ -688,7 +688,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$C = {
+  const _sfc_main$D = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -742,7 +742,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$B(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$C(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -757,7 +757,7 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$B], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$C], ["__scopeId", "data-v-946bce22"], ["__file", "E:/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   function formatAppLog(type, filename, ...args) {
     if (uni.__log__) {
       uni.__log__(type, filename, ...args);
@@ -768,6 +768,72 @@ if (uni.restoreGlobal) {
   function resolveEasycom(component, easycom2) {
     return typeof component === "string" ? easycom2 : component;
   }
+  const _sfc_main$C = {};
+  function _sfc_render$B(_ctx, _cache) {
+    const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$5);
+    return vue.openBlock(), vue.createElementBlock(
+      vue.Fragment,
+      null,
+      [
+        vue.createCommentVNode(" 待发货 "),
+        vue.createElementVNode("view", { class: "" }, [
+          vue.createElementVNode("view", { class: "orderDfhTit" }, [
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "orderDfhTitLi orderDfhTitLiOn"
+            }, "待发货"),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "orderDfhTitLi"
+            }, "待收货"),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "orderDfhTitLi"
+            }, "已完成"),
+            vue.createElementVNode("navigator", {
+              url: "",
+              class: "orderDfhTitLi"
+            }, "退款退货")
+          ]),
+          vue.createElementVNode("view", { class: "orderDfhUl" }, [
+            vue.createElementVNode("view", { class: "orderDfhUlLi" }, [
+              vue.createElementVNode("view", { class: "orderDfhUlLiTop" }, [
+                vue.createElementVNode("text", { class: "orderDfhUlLiTopT1" }, "店铺名称"),
+                vue.createVNode(_component_uni_icons, {
+                  type: "right",
+                  "font-size": "26",
+                  color: "#222",
+                  class: "orderDfhUlLiTopIcon"
+                }),
+                vue.createElementVNode("view", { class: "orderDfhUlLiTopT2" }, "商家发货中")
+              ]),
+              vue.createElementVNode("view", { class: "orderDfhUlLiCenter" }, [
+                vue.createElementVNode("image", {
+                  class: "orderDfhUlLiCenterImg",
+                  src: "/static/images/goods_1.png"
+                }),
+                vue.createElementVNode("view", { class: "orderDfhUlLiCenterRight" }, [
+                  vue.createElementVNode("view", { class: "orderDfhUlLiCenterRightT1" }, "配件标题配件标题配件"),
+                  vue.createElementVNode("view", { class: "orderDfhUlLiCenterRightT2" }, "规格：NK8900 尺寸：100cm"),
+                  vue.createElementVNode("view", { class: "orderDfhUlLiCenterRightT3" }, [
+                    vue.createElementVNode("p", null, "￥1995.00"),
+                    vue.createElementVNode("span", null, "x2")
+                  ])
+                ])
+              ]),
+              vue.createElementVNode("view", { class: "orderDfhUlLiTop" }, [
+                vue.createElementVNode("view", { class: "orderDfhUlLiBotTime" }, "支付时间：2024-05-21 10:12:13"),
+                vue.createElementVNode("view", { class: "orderDfhUlLiBotBtn" }, "申请退款")
+              ])
+            ])
+          ])
+        ])
+      ],
+      2112
+      /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    );
+  }
+  const PagesUserOrderOrderDfh = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$B], ["__file", "E:/yikegongcheng/yike/pages/user-order/order-dfh.vue"]]);
   const _sfc_main$B = {
     data() {
       return {
@@ -1824,6 +1890,12 @@ if (uni.restoreGlobal) {
   }
   const PagesJobJobList = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["render", _sfc_render$t], ["__file", "E:/yikegongcheng/yike/pages/job/job-list.vue"]]);
   const pages = [
+    {
+      path: "pages/user-order/order-dfh",
+      style: {
+        navigationBarTitleText: "我的订单"
+      }
+    },
     {
       path: "pages/user/user-my-invitation",
       style: {
@@ -12994,6 +13066,7 @@ ${i3}
     return null;
   }
   const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "E:/yikegongcheng/yike/pages/task/task-index.vue"]]);
+  __definePage("pages/user-order/order-dfh", PagesUserOrderOrderDfh);
   __definePage("pages/user/user-my-invitation", PagesUserUserMyInvitation);
   __definePage("pages/user/user-honorary-title", PagesUserUserHonoraryTitle);
   __definePage("pages/user/user-service", PagesUserUserService);

@@ -1,6 +1,11 @@
 {
 	"pages": [
 		{
+			"path": "pages/user-order/order-dfh",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		},{
 			"path": "pages/user/user-my-invitation",
 			"style": {
 				"navigationBarTitleText": "我的帖子"

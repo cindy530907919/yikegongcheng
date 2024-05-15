@@ -8,12 +8,12 @@
 		<view class="clear"></view>
 		<navigator class="loginWechat">
 			<image src="../../static/images/wechat_b.png" mode="widthFix" class="loginWechatIcon"></image>
-			<text>微信登录11</text>
+			<text>微信登录</text>
 		</navigator>
 		<label class="loginRadio">
 			<checkbox checked="true" class="loginRadioC" value="1" checked-color="#FF5722" />
 			<view class="loginRadioText">
-				同 意
+				同意
 				<navigator url="">用户服务协议</navigator>
 				和
 				<navigator url="">隐私协议</navigator>

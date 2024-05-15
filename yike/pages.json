@@ -1,6 +1,21 @@
 {
 	"pages": [
 		{
+			"path": "pages/user-order/order-logistics",
+			"style": {
+				"navigationBarTitleText": "查询物流"
+			}
+		},{
+			"path": "pages/user-order/order-dsh",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		},{
+			"path": "pages/user-order/order-ywc",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		},{
 			"path": "pages/user-order/order-dfh",
 			"style": {
 				"navigationBarTitleText": "我的订单"

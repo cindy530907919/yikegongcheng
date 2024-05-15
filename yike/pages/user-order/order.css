@@ -1,108 +1,127 @@
-
-page{
+page {
 	background: #f8f8f8;
 }
-.orderDfhTit{
+
+.orderDfhTit {
 	width: 100%;
 	float: left;
 	padding: 20rpx 0;
 	background: #fff;
 }
-.orderDfhTitLi{
+
+.orderDfhTitLi {
 	width: 25%;
 	float: left;
 	text-align: center;
 	font-size: 32rpx;
 	color: #222;
 }
-.orderDfhTitLiOn{
+
+.orderDfhTitLiOn {
 	font-weight: bold !important;
 }
-.orderDfhUl{
+
+.orderDfhUl {
 	width: 90%;
 	float: left;
 	margin: 20rpx 5%;
 }
-.orderDfhUlLi{
+
+.orderDfhUlLi {
 	width: 100%;
 	float: left;
 	padding: 30rpx;
 	box-sizing: border-box;
 	background: #fff;
 	border-radius: 20rpx;
+	margin-top: 20rpx;
 }
-.orderDfhUlLiTop{
+
+.orderDfhUlLiTop {
 	width: 100%;
 	float: left;
 }
-.orderDfhUlLiTopT1{
+
+.orderDfhUlLiTopT1 {
 	float: left;
 	font-size: 30rpx;
 	color: #222;
 }
-.orderDfhUlLiTopIcon{
+
+.orderDfhUlLiTopIcon {
 	float: left;
 	margin-left: 10rpx;
 	margin-top: 4rpx;
 }
-.orderDfhUlLiTopT2{
+
+.orderDfhUlLiTopT2 {
 	float: right;
 	font-size: 30rpx;
 	color: #ffa60c;
 }
-.orderDfhUlLiCenter{
+
+.orderDfhUlLiCenter {
 	width: 100%;
 	float: left;
 	padding: 20rpx 0;
 	margin-top: 20rpx;
 	border-top: 1px solid #eee;
 }
-.orderDfhUlLiCenterImg{
+
+.orderDfhUlLiCenterImg {
 	width: 140rpx;
 	height: 140rpx;
 	float: left;
 	border-radius: 20rpx;
 }
-.orderDfhUlLiCenterRight{
+
+.orderDfhUlLiCenterRight {
 	width: calc(100% - 160rpx);
 	float: right;
 }
-.orderDfhUlLiCenterRightT1{
+
+.orderDfhUlLiCenterRightT1 {
 	width: 100%;
 	float: left;
 	font-size: 32rpx;
 	color: #222;
 }
-.orderDfhUlLiCenterRightT2{
+
+.orderDfhUlLiCenterRightT2 {
 	width: 100%;
 	float: left;
 	font-size: 30rpx;
 	color: #999;
 }
-.orderDfhUlLiCenterRightT3{
+
+.orderDfhUlLiCenterRightT3 {
 	width: 100%;
 	float: left;
 	margin-top: 4rpx;
 }
-.orderDfhUlLiCenterRightT3 p{
+
+.orderDfhUlLiCenterRightT3 p {
 	font-size: 40rpx;
 	color: #222;
 	float: left;
 }
-.orderDfhUlLiCenterRightT3 span{
+
+.orderDfhUlLiCenterRightT3 span {
 	font-size: 30rpx;
 	color: #222;
 	float: right;
 	margin-top: 20rpx;
 }
-.orderDfhUlLiBotTime{
+
+.orderDfhUlLiBotTime {
 	width: 100%;
 	float: left;
 	color: #999;
 	font-size: 30rpx;
 	margin-top: 20rpx;
 }
-.orderDfhUlLiBotBtn{
+
+.orderDfhUlLiBotBtn {
 	float: right;
 	font-size: 30rpx;
 	color: #222;
@@ -110,4 +129,70 @@ page{
 	border-radius: 100px;
 	padding: 10rpx 20rpx;
 	margin-top: 30rpx;
+}
+
+.orderDfhUlLiBotBtn_W {
+	float: left;
+	font-size: 30rpx;
+	color: #ff8d1e;
+	border: 1px solid #ff8d1e;
+	border-radius: 100px;
+	padding: 10rpx 20rpx;
+	margin-top: 30rpx;
+}
+
+.orderDfhUlLiBotBtn_Q {
+	float: left;
+	font-size: 30rpx;
+	color: #fff;
+	background: #ff3131;
+	border-radius: 100px;
+	padding: 10rpx 20rpx;
+	margin-top: 30rpx;
+	margin-right: 20rpx;
+}
+/* 查询物流 */
+.status-btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	height: 92rpx;
+	margin: 30rpx;
+	background-color: #ff850d;
+}
+
+.example-body {
+	/* #ifndef APP-NVUE */
+	display: block;
+	/* #endif */
+	padding: 15px;
+	flex-direction: row;
+}
+.orderLogistics{
+	width: 90%;
+	float: left;
+	padding: 30rpx;
+	box-sizing: border-box;
+	background: #fff;
+	border-radius: 20rpx;
+	margin-top: 30rpx;
+	margin-left: 5%;
+}
+.orderLogisticsCon{
+	width: 100%;
+	float: left;
+	margin-top: 20rpx;
+}
+.uni-steps__column-title{
+	color: #222 !important;
+}
+.uni-steps__column-tex{
+	border-bottom-color: #f8f8f8;
+}
+.orderLogisticsTit{
+	width: 100%;
+	float: left;
+	color: #222;
+	font-size: 30rpx;
 }

@@ -1,6 +1,39 @@
 {
 	"pages": [
 		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationBarTextStyle": "black",
+				"navigationStyle": "custom"
+			}
+		},{
+			"path": "pages/user/user-personal",
+			"style": {
+				"navigationBarTitleText": "个人资料",
+				"navigationBarTextStyle": "black"
+			}
+		},{
+			"path": "pages/user/user-toup",
+			"style": {
+				"navigationBarTitleText": "账号充值"
+			}
+		},{
+			"path": "pages/user/user-feedback",
+			"style": {
+				"navigationBarTitleText": "用户反馈"
+			}
+		},{
+			"path": "pages/user/user-my-service",
+			"style": {
+				"navigationBarTitleText": "我发布的服务"
+			}
+		},{
+			"path": "pages/user-order/issue-evaluate",
+			"style": {
+				"navigationBarTitleText": "发布评价"
+			}
+		},{
 			"path": "pages/user-order/order-logistics",
 			"style": {
 				"navigationBarTitleText": "查询物流"
@@ -39,13 +72,6 @@
 			"path": "pages/user/user-invitation-message",
 			"style": {
 				"navigationBarTitleText": "全部消息"
-			}
-		},{
-			"path": "pages/user/user",
-			"style": {
-				"navigationBarTitleText": "个人中心",
-				"navigationBarTextStyle": "black",
-				"navigationStyle": "custom"
 			}
 		},
 		{

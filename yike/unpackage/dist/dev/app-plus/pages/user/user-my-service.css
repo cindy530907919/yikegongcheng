@@ -531,332 +531,102 @@
   text-align: center;
 }
 
-.custom-tab-bar[data-v-a6d140ed] {
-  /* display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  background-color: #fff; */
-  display: flex;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 70px; /* 可根据实际需要调整 */
-    background-color: #fff;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    z-index: 1000; /* 确保tabbar在其他内容之上 */
-	padding-top: 0.3125rem;
+.myInvitation{
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+		margin-top: 0.3125rem;
+		padding-bottom: 3.125rem;
 }
-.tab-item[data-v-a6d140ed] {
-  display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-	/* width: 180rpx; */
-	text-align: center;
-	display: inline-table;
-	background: none;
-}
-.tab-item.active[data-v-a6d140ed] {
-  color: #007AFF; /* 选中项的颜色 */
-}
-.nav-icon[data-v-a6d140ed] {
-		width: 1.5625rem;
-		height: 1.5625rem;
-}
-	/* 导航 */
-.nav-text[data-v-a6d140ed] {
-		font-size: 0.75rem;
-		font-weight: 500;
-		color: #666;
-}
-.nav-icon-scan[data-v-a6d140ed]{
-		width: 3.125rem;
-		height: 3.125rem;
-		margin-top: -2.03125rem;
-		border-radius: 50%;
-		border: 0.3125rem solid #fff;
-		background: #fff;
-		font-size: 0.75rem;
-}
-.active[data-v-a6d140ed]{
-		font-size: 0.75rem;
-		font-weight: 500;
-		color: #222;
-		font-weight: bold;
-}
-
-
-body {
-		background: #f8f8f8;
-}
-.userBack {
+.myInvitationLi{
 		width: 100%;
+		float: left;
+		margin-top: 0.9375rem;
+		padding-bottom: 0.9375rem;
+		border-bottom: 1px solid #f8f8f8;
 		position: relative;
-		height: 16.875rem;
+}
+.myInvitationLiClass{
 		float: left;
-}
-.userBackImg {
-		width: 100%;
-		height: 12.5rem;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 1;
-}
-.userTit {
-		width: 100%;
-		position: absolute;
-		top: 2.5rem;
-		left: 0;
-		z-index: 2;
-		text-align: center;
-		color: #222;
-		font-size: 1.0625rem;
-		font-weight: bold;
-}
-.userBackSkin {
-		width: 1.875rem;
-		height: 1.875rem;
-		position: absolute;
-		top: 2.5rem;
-		right: 1.25rem;
-		z-index: 2;
-}
-.userVipPopul {
-		position: absolute;
-		top: 9.0625rem;
-		left: 8.125rem;
-		z-index: 4;
-		background: rgba(255, 255, 255, 0.7);
-		border-radius: 0.9375rem;
-		padding: 0.3125rem 0.3125rem;
-		width: 48%;
-}
-.userVipPopulImg {
-		width: 2.1875rem;
-		height: 2.1875rem;
-		float: left;
-		margin-top: 0.125rem;
-}
-.userVipPopulText {
-		float: right;
-		width: calc(100% - 2.5rem);
-		font-size: 0.9375rem;
-		color: #222;
-}
-.userBackInformation {
-		width: 90%;
-		position: absolute;
-		top: 16.5625rem;
-		left: 5%;
-		z-index: 2;
-}
-.userBackInformationLeft {
-		width: 6.25rem;
-		height: 6.25rem;
-		float: left;
-		border-radius: 50%;
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		z-index: 3;
-}
-.userBackInformationAvatar {
-		width: 100%;
-		height: 100%;
-}
-.userBackInformationAvatarVip {
-		width: 2.1875rem;
-		position: absolute;
-		right: -0.3125rem;
-		bottom: 0;
-		z-index: 3;
-}
-.userBackInformationRight {
-		width: calc(100% - 6.875rem);
-		position: absolute;
-		right: 0;
-		bottom: 0.3125rem;
-		z-index: 3;
-}
-.userBackInformationRightName {
-		width: 100%;
-		float: left;
-}
-.userBackInformationRightName_t {
-		float: left;
-		color: #222;
-		font-size: 1.0625rem;
-		width: 100%;
-		overflow: hidden;
-		/* 隐藏溢出的文本 */
-		white-space: nowrap;
-		/* 防止文本换行 */
-		text-overflow: ellipsis;
-}
-.indexServiceLiTT1Label {
-		width: 100%;
-		float: left;
-		margin-top: 0.3125rem;
-}
-.indexServiceLiTT1Label uni-text {
-		padding: 0.15625rem 0.625rem;
+		font-size: 0.8125rem;
 		color: #fff;
-		border-radius: 100px;
-		float: left;
-		margin-right: 0.3125rem;
-		font-size: 14px;
-		text-shadow: 0px 1px 1px #bbb;
+		background: #6c90fe;
+		border-radius: 60px;
+		padding: 0.15625rem 0.625rem;
 }
-.userCon {
-		width: 90%;
-		float: left;
-		margin: 0.625rem 5%;
-		padding-bottom: 8.125rem;
-}
-.userBackInformationRightSignature {
+.myInvitationLiT_1{
 		width: 100%;
 		float: left;
-		font-size: 0.9375rem;
-		color: #666;
 }
-.userConBanner {
-		width: 100%;
-		float: left;
-		margin-top: 0.9375rem;
-}
-.userConMyInfo {
-		width: 100%;
-		float: left;
-		padding: 0.9375rem;
-		box-sizing: border-box;
-		background: #fff;
-		border-radius: 0.9375rem;
-		margin-top: 0.9375rem;
-}
-.userConMyInfoLi {
-		width: 33.33%;
-		float: left;
-}
-.userConMyInfoLi span {
-		width: 100%;
-		float: left;
-		font-size: 1.25rem;
-		color: #222;
-		font-weight: bold;
-		text-align: center;
-}
-.userConMyInfoLi p {
-		width: 100%;
-		float: left;
-		font-size: 0.9375rem;
-		color: #222;
-		text-align: center;
-		margin-top: 0.3125rem;
-}
-.userConMyMessage {
-		width: 100%;
-		float: left;
-		margin-top: 0.9375rem;
-}
-.userConMyMessageImg {
-		width: 3.75rem;
-		float: left;
-		height: 3.75rem;
-		border-radius: 50%;
-}
-.userConMyMessageText {
-		width: calc(100% - 5.9375rem);
-		float: left;
-		margin-left: 0.625rem;
-}
-.userConMyMessageText_t1 {
+.myInvitationLiT_1_1{
 		width: 100%;
 		float: left;
 		font-size: 1rem;
-		color: #666;
+		font-weight: bold;
+		color: #222;
+		overflow: hidden; /* 隐藏溢出的文本 */ 
+		white-space: nowrap; /* 防止文本换行 */ 
+		text-overflow: ellipsis;
 		margin-top: 0.625rem;
 }
-.userConMyMessageText_t2 {
+.myInvitationLiTIcon{
+		float: right;
+		width: 1.875rem;
+		height: 1.25rem;
+		text-align: center;
+		line-height: 1.25rem;
+		background: #f8f8f8;
+		border-radius: 0.3125rem;
+		margin-top: 1.25rem;
+		margin-left: 0.625rem;
+}
+.myInvitationPup{
+		position: absolute;
+		right: 0;
+		top: 2.03125rem;
+		z-index: 1;
+		background: #fff;
+		box-shadow: 0 0.3125rem 0.625rem #eee;
+		padding: 0 0.625rem;
+		width: 4.375rem;
+		box-sizing: border-box;
+		border-radius: 10px;
+}
+.myInvitationPup uni-text{
+		width: 100%;
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+		text-align: center;
+		padding: 0.625rem 0;
+}
+.myInvitationLiT_2{
 		width: 100%;
 		float: left;
 		font-size: 0.9375rem;
 		color: #999;
+		margin-top: 0.4375rem;
 }
-.userConMyMessageIcon {
-		float: right;
-		margin-top: 1.5625rem;
-}
-.userConFunction {
-		width: 100%;
+.myInvitationLiT_3{
 		float: left;
-		background-image: linear-gradient(to bottom,
-				#fff7d4 0%,
-				#fff 30%
-				/* 这里不要有, */
-			);
-		border-radius: 0.9375rem;
-		margin-top: 0.9375rem;
+		margin-top: 1.0625rem;
 }
-.userConFunctionTit {
-		width: 90%;
+.myInvitationLiT_3 uni-image{
 		float: left;
-		font-size: 1.0625rem;
-		color: #222;
-		margin-left: 5%;
-		margin-top: 0.9375rem;
+		width: 1.25rem;
 }
-.userConFunctionUl {
-		width: 100%;
-		float: left;
-		margin-top: 0.625rem;
-}
-.userConFunctionUlLi {
-		width: 22.5%;
-		float: left;
-		margin-left: 2%;
-		margin-top: 0.625rem;
-		margin-bottom: 0.9375rem;
-}
-.userConFunctionUlLi uni-image {
-		width: 2.5rem;
-		float: left;
-		margin-left: calc(50% - 1.25rem);
-}
-.userConFunctionUlLi uni-view {
-		width: 100%;
-		float: left;
+.myInvitationLiT_3 uni-text{
 		font-size: 0.9375rem;
 		color: #222;
-		margin-top: 0.3125rem;
-		text-align: center;
-}
-.userConFunction2Ul {
-		width: 90%;
 		float: left;
-		margin-top: 0.625rem;
-		margin-left: 5%;
-}
-.userConFunction2UlLi {
-		width: 100%;
-		float: left;
-		padding-bottom: 0.9375rem;
-		margin-top: 0.9375rem;
-}
-.userConFunction2UlLi uni-image {
-		width: 1.5rem;
-		float: left;
-}
-.userConFunction2UlLi uni-text {
-		float: left;
-		color: #222;
-		font-size: 0.9375rem;
-		margin-left: 0.625rem;
+		margin-left: 0.3125rem;
 		margin-top: 0.125rem;
 }
-.userConFunction2UlLiIcon {
-		float: right !important;
-		margin-top: 0.625rem;
+.myInvitationLiT_4{
+		float: right;
+		padding: 0.25rem 0.625rem;
+		background-color: #ffe157;
+		color: #5f0303;
+		border-radius: 100px;
+		margin-top: 0.9375rem;
 }

@@ -10,15 +10,17 @@
 			</view>
 			<view class="userBackInformation">
 				<view class="userBackInformationLeft">
-					<image src="../../static/images/user_21.png" class="userBackInformationAvatar"></image>
-					<image src="../../static/images/user_3.png" mode="widthFix" class="userBackInformationAvatarVip"></image>
+					<image src="../../static/images/user_21.png" class="userBackInformationAvatar" @tap="goToPersonal">
+					</image>
+					<image src="../../static/images/user_3.png" mode="widthFix" class="userBackInformationAvatarVip">
+					</image>
 				</view>
 				<view class="userBackInformationRight">
 					<view class="userBackInformationRightName">
 						<view class="userBackInformationRightName_t">
 							泰国人没有心
 						</view>
-						<view class="indexServiceLiTT1Label">
+						<view class="indexServiceLiTT1Label" @tap="goToTitle">
 							<text style="background: #71e58d;">电工</text>
 							<text style="background: #ffdb00;">车主</text>
 						</view>
@@ -27,14 +29,14 @@
 			</view>
 		</view>
 		<view class="userCon">
-			<view class="userBackInformationRightSignature">个性签名：娃哈哈哈哈哈</view>
-			<image src="../../static/images/user_6.png" mode="widthFix" class="userConBanner"></image>
+			<view class="userBackInformationRightSignature" @tap="goToPersonal">个性签名：娃哈哈哈哈哈</view>
+			<image src="../../static/images/user_6.png" mode="widthFix" class="userConBanner" @tap="goToTitle"></image>
 			<view class="userConMyInfo">
 				<view class="userConMyInfoLi">
 					<span>588</span>
 					<p>我的亦可币</p>
 				</view>
-				<view class="userConMyInfoLi">
+				<view class="userConMyInfoLi" @tap="goToinvitation">
 					<span>12</span>
 					<p>我的帖子</p>
 				</view>
@@ -44,9 +46,8 @@
 				</view>
 				<view class="userConMyMessage">
 					<image class="userConMyMessageImg" src="../../static/images/user_7.png"></image>
-					<view class="userConMyMessageText">
-						<view class="userConMyMessageText_t1">互动消息<view></view>
-						</view>
+					<view class="userConMyMessageText" @tap="goToInvitationMessage">
+						<view class="userConMyMessageText_t1">互动消息<view></view></view>
 						<view class="userConMyMessageText_t2">难哄的驴 点赞了你的评论</view>
 					</view>
 					<uni-icons type="right" font-size="20" color="#222" class="userConMyMessageIcon"></uni-icons>
@@ -55,7 +56,7 @@
 			<view class="userConFunction">
 				<view class="userConFunctionTit">常用功能</view>
 				<view class="userConFunctionUl">
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/user/user-toup" class="userConFunctionUlLi">
 						<image src="../../static/images/user_8.png" mode="widthFix"></image>
 						<view>账号充值</view>
 					</navigator>
@@ -63,27 +64,27 @@
 						<image src="../../static/images/user_9.png" mode="widthFix"></image>
 						<view>我的私聊</view>
 					</navigator>
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/user/user-honorary-title" class="userConFunctionUlLi">
 						<image src="../../static/images/user_10.png" mode="widthFix"></image>
 						<view>荣誉称号</view>
 					</navigator>
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/user/user-my-invitation" class="userConFunctionUlLi">
 						<image src="../../static/images/user_11.png" mode="widthFix"></image>
 						<view>我的发帖</view>
 					</navigator>
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/user-order/order-dfh" class="userConFunctionUlLi">
 						<image src="../../static/images/user_12.png" mode="widthFix"></image>
 						<view>我的订单</view>
 					</navigator>
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/address/index" class="userConFunctionUlLi">
 						<image src="../../static/images/user_13.png" mode="widthFix"></image>
 						<view>收获地址</view>
 					</navigator>
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/user/user-personal" class="userConFunctionUlLi">
 						<image src="../../static/images/user_14.png" mode="widthFix"></image>
 						<view>个人信息</view>
 					</navigator>
-					<navigator url="" class="userConFunctionUlLi">
+					<navigator url="../../pages/user/user-my-service" class="userConFunctionUlLi">
 						<image src="../../static/images/user_15.png" mode="widthFix"></image>
 						<view>我的发布</view>
 					</navigator>
@@ -92,35 +93,40 @@
 			<view class="userConFunction">
 				<view class="userConFunctionTit">辅助功能</view>
 				<view class="userConFunction2Ul">
-					<navigator url="" class="userConFunction2UlLi">
+					<navigator url="../../pages/user/user-service" class="userConFunction2UlLi">
 						<image src="../../static/images/user_16.png" mode="widthFix"></image>
 						<text>app客服</text>
-						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20" color="#c7c7c7"></uni-icons>
+						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
+							color="#c7c7c7"></uni-icons>
 					</navigator>
-					<navigator url="" class="userConFunction2UlLi">
+					<navigator url="../../pages/user/user-feedback" class="userConFunction2UlLi">
 						<image src="../../static/images/user_17.png" mode="widthFix"></image>
 						<text>用户反馈</text>
-						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20" color="#c7c7c7"></uni-icons>
+						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
+							color="#c7c7c7"></uni-icons>
 					</navigator>
-					<navigator url="" class="userConFunction2UlLi">
+					<navigator url="../../pages/merchant/signin" class="userConFunction2UlLi">
 						<image src="../../static/images/user_18.png" mode="widthFix"></image>
 						<text>商户入驻</text>
-						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20" color="#c7c7c7"></uni-icons>
+						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
+							color="#c7c7c7"></uni-icons>
 					</navigator>
 					<navigator url="" class="userConFunction2UlLi">
 						<image src="../../static/images/user_19.png" mode="widthFix"></image>
 						<text>隐私声明</text>
-						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20" color="#c7c7c7"></uni-icons>
+						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
+							color="#c7c7c7"></uni-icons>
 					</navigator>
 					<navigator url="" class="userConFunction2UlLi">
 						<image src="../../static/images/user_20.png" mode="widthFix"></image>
 						<text>退出登录</text>
-						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20" color="#c7c7c7"></uni-icons>
+						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
+							color="#c7c7c7"></uni-icons>
 					</navigator>
 				</view>
 			</view>
 		</view>
-	<custom-tabs-bar :activePage="activePage"></custom-tabs-bar>
+		<custom-tabs-bar activePage="4"></custom-tabs-bar>
 	</view>
 </template>
 
@@ -136,7 +142,26 @@
 			}
 		},
 		methods: {
-
+			goToTitle() {
+				uni.navigateTo({
+					url: '../../pages/user/user-honorary-title'
+				});
+			},
+			goToPersonal() {
+				uni.navigateTo({
+					url: '../../pages/user/user-personal'
+				});
+			},
+			goToinvitation() {
+				uni.navigateTo({
+					url: '../../pages/user/user-my-invitation'
+				});
+			},
+			goToInvitationMessage() {
+				uni.navigateTo({
+					url: '../../pages/user/user-invitation-message'
+				});
+			}
 		},
 		computed: {
 			formattedNumber() {
@@ -434,30 +459,35 @@
 		margin-top: 10rpx;
 		text-align: center;
 	}
-	.userConFunction2Ul{
+
+	.userConFunction2Ul {
 		width: 90%;
 		float: left;
 		margin-top: 20rpx;
 		margin-left: 5%;
 	}
-	.userConFunction2UlLi{
+
+	.userConFunction2UlLi {
 		width: 100%;
 		float: left;
 		padding-bottom: 30rpx;
 		margin-top: 30rpx;
 	}
-	.userConFunction2UlLi image{
+
+	.userConFunction2UlLi image {
 		width: 48rpx;
 		float: left;
 	}
-	.userConFunction2UlLi text{
+
+	.userConFunction2UlLi text {
 		float: left;
 		color: #222;
 		font-size: 30rpx;
 		margin-left: 20rpx;
 		margin-top: 4rpx;
 	}
-	.userConFunction2UlLiIcon{
+
+	.userConFunction2UlLiIcon {
 		float: right !important;
 		margin-top: 20rpx;
 	}

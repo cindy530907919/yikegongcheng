@@ -48,7 +48,7 @@ export default {
        {
          pagePath: "/pages/user/user",
          iconPath: "/static/images/meun_5.png",
-         selectedIconPath: "/static/images/meun_5_on",
+         selectedIconPath: "/static/images/meun_5_on.png",
          text: "我的"
        }
       ]

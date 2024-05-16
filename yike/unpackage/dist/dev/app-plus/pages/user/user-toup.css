@@ -1,0 +1,104 @@
+
+body {
+		background: #fff;
+}
+.container {
+		padding: 0.625rem;
+		background-color: #ffffff;
+		width: 90%;
+		margin-left: 5%;
+		box-sizing: border-box;
+}
+.rules {
+		margin-bottom: 0.625rem;
+}
+.rules-title {
+		color: #ff3434;
+		font-weight: bold;
+		font-size: 0.9375rem;
+}
+.rules-text {
+		font-size: 0.9375rem;
+		color: #333333;
+		margin-top: 0.3125rem;
+		width: 100%;
+		display: block;
+}
+.packages {
+		margin-bottom: 0.625rem;
+}
+.packages-title {
+		font-size: 0.9375rem;
+		font-weight: bold;
+		color: #333333;
+		margin-bottom: 0.625rem;
+}
+.package {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		background: #fbfbfb;
+		padding: 0.9375rem;
+		margin-top: 0.9375rem;
+		border-radius: 0.625rem;
+}
+.package-info {
+		display: flex;
+		flex-direction: column;
+}
+.package-price {
+		font-size: 1.25rem;
+		color: #ff3434;
+		font-weight: bold;
+}
+.package-coins {
+		font-size: 0.9375rem;
+		color: #666666;
+}
+.radio {
+		width: 1.5625rem;
+		height: 1.5625rem;
+		transform: scale(0.8);
+}
+.pay-button {
+		width: 40%;
+		height: 2.5rem;
+		background-color: #ffb400;
+		color: #ffffff;
+		font-size: 1rem;
+		text-align: center;
+		line-height: 2.5rem;
+		border-radius: 3.125rem;
+		margin-bottom: 0.625rem;
+		border: none;
+		margin-left: 30%;
+		margin-top: 3.125rem;
+}
+.history {
+		margin-top: 2.8125rem;
+}
+.history-title {
+		font-size: 0.9375rem;
+		font-weight: bold;
+		color: #333333;
+		margin-bottom: 0.625rem;
+}
+.history-item {
+		margin-top: 0.625rem;
+		width: 100%;
+		padding-bottom: 0.625rem;
+		border-bottom: 1px solid #f8f8f8;
+		float: left;
+}
+.history-text {
+		font-size: 0.9375rem;
+		color: #222;
+		width: 100%;
+}
+.history-text2 {
+		font-size: 0.9375rem;
+		color: #999;
+		width: 100%;
+		float: left;
+		margin-top: 0.125rem;
+}

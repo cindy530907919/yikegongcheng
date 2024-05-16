@@ -1,0 +1,151 @@
+
+body {
+		background: #f8f8f8;
+}
+.issueCon {
+		width: 90%;
+		float: left;
+		margin-left: 5%;
+}
+.issueConEvaluate {
+		width: 100%;
+		float: left;
+		border: none;
+		padding: 0.9375rem;
+		border-radius: 0.625rem;
+		box-sizing: border-box;
+		background: #fff;
+		box-shadow: 0 10prx 0.625rem #eee;
+		font-size: 0.9375rem;
+		margin-top: 0.9375rem;
+}
+.issueConPicker {
+		width: 100%;
+		float: left;
+		margin-top: 0.9375rem;
+		padding: 0.9375rem;
+		border-radius: 0.625rem;
+		box-sizing: border-box;
+		background: #fff;
+		box-shadow: 0 10prx 0.625rem #eee;
+}
+.issueConBot{
+		width: 100%;
+		float: left;
+		margin-top: 0.9375rem;
+		padding: 0.9375rem;
+		background: #fff;
+		box-sizing: border-box;
+}
+.orderDfhUlLiCenter {
+		width: 100%;
+		float: left;
+}
+.orderDfhUlLiCenterImg {
+		width: 3.75rem;
+		height: 3.75rem;
+		float: left;
+		border-radius: 0.3125rem;
+}
+.orderDfhUlLiCenterRight {
+		width: calc(100% - 4.375rem);
+		float: right;
+}
+.orderDfhUlLiCenterRightT1 {
+		width: 100%;
+		float: left;
+		color: #222;
+		font-size: 0.9375rem;
+		margin-top: 0.3125rem;
+}
+.orderDfhUlLiCenterRightT2 {
+		width: 100%;
+		float: left;
+		color: #999;
+		font-size: 0.9375rem;
+		margin-top: 0.3125rem;
+}
+.issueConStar {
+		width: 100%;
+		float: left;
+		margin-top: 0.625rem;
+}
+.issueConStarRating {
+		float: left;
+		width: 100%;
+		margin-top: 0.625rem;
+}
+.label {
+		float: left;
+}
+.stars {
+		float: left;
+		margin-left: 10px;
+}
+.star {
+		float: left;
+		width: 20px;
+		height: 20px;
+		background: url('../../static/images/star-empty.png') no-repeat center;
+		background-size: contain;
+}
+.star.filled {
+		float: left;
+		background: url('../../static/images/star-filled.png') no-repeat center;
+		background-size: contain;
+}
+.score {
+		font-size: 16px;
+		color: #FF9900;
+		float: left;
+		margin-left: 0.625rem;
+}
+.issueBtn{
+		position: fixed;
+		bottom: 0;
+		z-index: 9;
+		left: 0;
+		background: #fff;
+		padding: 0.9375rem;
+		width: 100%;
+		box-sizing: border-box;
+}
+.issueBtnLeft{
+		width: 50%;
+		float: left;
+}
+.issueBtnLeftRadio{
+		width: 100%;
+		float: left;
+}
+.issueBtnLeftRadio uni-radio{
+		transform: scale(0.8);
+		float: left;
+}
+.issueBtnLeftRadio uni-text{
+		float: left;
+		font-size: 0.9375rem;
+		color: #222;
+		margin-left: 0.125rem;
+		margin-top: 0.125rem
+}
+.issueBtnLeftTit{
+		width: 100%;
+		float: left;
+		font-size: 0.9375rem;
+		color: #999;
+		margin-top: 0.3125rem;
+}
+.issueBtnRight{
+		width: 40%;
+		float: left;
+		font-size: 1.0625rem;
+		height: 2.8125rem;
+		line-height: 3.125rem;
+		background: #6c90fe;
+		color: #fff;
+		text-align: center;
+		border-radius: 100px;
+		margin-left: 30%;
+		margin-top: 3.125rem;
+}

@@ -1,6 +1,27 @@
 {
 	"pages": [
 		{
+			"path": "pages/device/device-lease",
+			"style": {
+				"navigationBarTitleText": "设备租赁",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		},{
+			"path": "pages/device/device-con",
+			"style": {
+				"navigationBarTitleText": "租赁详情",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		},{
+			"path": "pages/device/device-shop",
+			"style": {
+				"navigationBarTitleText": "设备商城",
+				"navigationBarBackgroundColor": "#caffd4",
+				"navigationBarTextStyle": "black"
+			}
+		},{
 			"path": "pages/user/user",
 			"style": {
 				"navigationBarTitleText": "个人中心",

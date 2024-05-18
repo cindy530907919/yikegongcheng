@@ -701,3 +701,12 @@
 body {
 		background: #fbfbfb;
 }
+.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		background-color: #fff;
+		z-index: 3;
+		/* 保证吸顶元素在最前面 */
+		box-shadow: 0 4px 0.3125rem rgba(205, 195, 140, 0.2);
+}

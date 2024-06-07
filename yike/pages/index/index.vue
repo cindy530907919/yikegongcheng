@@ -59,7 +59,7 @@
 	</view>
 	<!-- 板块图片 -->
 	<view class="indexFourClass">
-		<navigator url="">
+		<navigator url="../../pages/device/device-shop">
 	  	<view class="indexFourClassLi indexFourClassLiB">
 	  		<text>设备商城</text>
 	  		<image src="../../static/images/index_3.png"></image>
@@ -127,7 +127,7 @@
 			</view>
 		</navigator>
 	</view>
-	<custom-tabs-bar :activePage="activePage"></custom-tabs-bar> <!-- current属性指示哪个tab是活跃的 -->
+	<custom-tabs-bar activePage="0"></custom-tabs-bar> <!-- current属性指示哪个tab是活跃的 -->
   </view>
 </template>
 

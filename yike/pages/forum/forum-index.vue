@@ -348,7 +348,7 @@
 			</view>
 		</view>
 
-		<custom-tabs-bar :activePage="activePage"></custom-tabs-bar> <!-- current属性指示哪个tab是活跃的 -->
+		<custom-tabs-bar activePage="1"></custom-tabs-bar>  <!-- current属性指示哪个tab是活跃的 -->
 	</view>
 </template>
 

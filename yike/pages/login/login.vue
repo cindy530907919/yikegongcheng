@@ -8,21 +8,125 @@
 		<view class="clear"></view>
 		<navigator class="loginWechat">
 			<image src="../../static/images/wechat_b.png" mode="widthFix" class="loginWechatIcon"></image>
-			<text>微信登录</text>
+			<text @tap="loginEvent">微信登录</text>
 		</navigator>
 		<label class="loginRadio">
-			<checkbox checked="true" class="loginRadioC" value="1" checked-color="#FF5722" />
+			<checkbox-group style="zoom:85%;" placement="column" @change="change">
+			<checkbox checked="true" class="loginRadioC" value="1" checked-color="#FF5722"/>
 			<view class="loginRadioText">
 				同意
 				<navigator url="">用户服务协议</navigator>
 				和
 				<navigator url="">隐私协议</navigator>
 			</view>
+			</checkbox-group>
 		</label>
 	</view>
 </template>
 
 <script>
+	import {
+		TOKEN
+	} from "@/config/index";
+	import IndexApi from "@/api/index.js";
+	import {
+		showToast,
+		openUrl
+	} from '@/utils/index'
+	
+	export default {
+		data() {
+			return {
+				token: "",
+				yinsi: 1,
+				range: [{
+					"yinsi": 1,
+					"text": '请勾选《用户服务协议》及《隐私政策》'
+				}]
+			};
+		},
+		// 页面加载初始化
+		onLoad(params) {
+			
+		},
+	
+		// 页面显示
+		onShow() {},
+	
+		methods: {
+			change(n) {
+				if (this.yinsi == 0) {
+					this.yinsi = 1;
+				} else {
+					this.yinsi = 0;
+				}
+				console.log(this.yinsi);
+			},
+			openYinsi() {
+				uni.navigateTo({
+					url: `/pages/login/yinsi`
+				});
+			},
+			// 成功返回
+			loginEvent(e) {
+				console.log('this.yinsi==',this.yinsi);
+				if (this.yinsi == 0) {
+					uni.showToast({
+						title: '勾选隐私',
+						icon: 'error',
+						duration: 2000
+					});
+					return;
+				}
+				var self = this;
+				uni.showLoading({
+					title: '授权中...',
+				});
+				var action = 'login';
+				uni[action]({
+					provider: "weixin",
+					onlyAuthorize: true,
+					scope: "snsapi_userinfo",
+					success: (res) => {
+						console.log(res);
+						if (res.code) {
+							IndexApi.login({
+								code: res.code
+							}).then(res => {
+								console.log('业务登录有返回', res)
+								uni.hideLoading();
+								const {
+									code,
+									data
+								} = res
+								if (code == 1) {
+									uni.setStorageSync(TOKEN, data.token || '');
+									uni.navigateTo({
+									  url: '/pages/device/device-lease',
+									});
+								} else {
+									uni.hideLoading();
+									showToast(res.msg);
+								}
+							}).catch(res => {
+								console.log(res)
+								uni.hideLoading();
+							})
+						} else {
+							uni.hideLoading();
+						}
+					},
+					fail: (e) => {
+						console.log('授权失败, ', e)
+						uni.hideLoading();
+						showToast('授权失败');
+					},
+				});
+	
+			},
+	
+		},
+	};
 </script>
 
 <style>

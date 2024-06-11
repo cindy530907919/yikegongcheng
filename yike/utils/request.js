@@ -85,7 +85,7 @@ export function request({
 	params
 }) {
 	let header = {}
-	console.log(url)
+	console.log(apiUrl + url)
 	if (uni.getStorageSync(TOKEN)) {
 		header = {
 			'Authorization': 'Bearer ' + uni.getStorageSync(TOKEN)

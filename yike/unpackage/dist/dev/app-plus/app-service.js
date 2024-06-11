@@ -172,7 +172,7 @@ if (uni.restoreGlobal) {
     params
   }) {
     let header = {};
-    formatAppLog("log", "at utils/request.js:88", url);
+    formatAppLog("log", "at utils/request.js:88", apiUrl + url);
     if (uni.getStorageSync(TOKEN)) {
       header = {
         "Authorization": "Bearer " + uni.getStorageSync(TOKEN)

@@ -143,12 +143,32 @@
 		data() {
 			return {
 				number: 1543637,
-				userInfo:null,
+				userInfo:{
+					"uid":1,
+        "nickname": "张三",
+        "head_url": "xxx.png",
+        "phone": "",
+        "sex": "女",
+        "birthday": "2024-09-08",
+        "background": null,
+        "abstract": "个性签名",
+        "province": "吉林省",
+        "city": "长春市",
+        "area": "经开区",
+        "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
+        "ykb": 10,
+        "tie": 0,
+        "zan": 0,
+        "honor": [
+            "司机",
+            "称号2"
+        ]
+    },
 			}
 		},
 		// 页面加载初始化
 		onLoad(params) {
-			this.userInfo = uni.getStorageSync(USER_INFO);
+			// this.userInfo = uni.getStorageSync(USER_INFO);
 		},
 		methods: {
 			goToTitle() {

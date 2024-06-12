@@ -6989,12 +6989,31 @@ ${i3}
     data() {
       return {
         number: 1543637,
-        userInfo: null
+        userInfo: {
+          "uid": 1,
+          "nickname": "张三",
+          "head_url": "xxx.png",
+          "phone": "",
+          "sex": "女",
+          "birthday": "2024-09-08",
+          "background": null,
+          "abstract": "个性签名",
+          "province": "吉林省",
+          "city": "长春市",
+          "area": "经开区",
+          "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
+          "ykb": 10,
+          "tie": 0,
+          "zan": 0,
+          "honor": [
+            "司机",
+            "称号2"
+          ]
+        }
       };
     },
     // 页面加载初始化
     onLoad(params) {
-      this.userInfo = uni.getStorageSync(USER_INFO);
     },
     methods: {
       goToTitle() {
@@ -7023,20 +7042,20 @@ ${i3}
           content: "确认退出登录吗？",
           success: function(res) {
             if (res.confirm) {
-              formatAppLog("log", "at pages/user/user.vue:180", "用户点击确定");
+              formatAppLog("log", "at pages/user/user.vue:200", "用户点击确定");
               IndexApi.loginOut({
                 uid: 1
               }).then((res2) => {
-                formatAppLog("log", "at pages/user/user.vue:185", "业务退出登录有返回", res2);
+                formatAppLog("log", "at pages/user/user.vue:205", "业务退出登录有返回", res2);
                 uni.clearStorageSync();
                 uni.redirectTo({
                   url: "/pages/login/login"
                 });
               }).catch((res2) => {
-                formatAppLog("log", "at pages/user/user.vue:191", res2);
+                formatAppLog("log", "at pages/user/user.vue:211", res2);
               });
             } else if (res.cancel) {
-              formatAppLog("log", "at pages/user/user.vue:194", "用户点击取消");
+              formatAppLog("log", "at pages/user/user.vue:214", "用户点击取消");
             }
           }
         });
@@ -7397,7 +7416,7 @@ ${i3}
       },
       getUserData() {
         IndexApi.getUserInfo({
-          uid: 1
+          uid: parseInt(this.userInfo.uid)
         }).then((res) => {
           formatAppLog("log", "at pages/user/user-personal.vue:111", "业务获取个人信息有返回", res);
           this.userInfo = res.data;
@@ -7413,7 +7432,7 @@ ${i3}
       },
       putUserData() {
         IndexApi.editInfo({
-          uid: 1,
+          uid: parseInt(this.userInfo.uid),
           head_url: this.head_url,
           nickname: this.nickname,
           sex: this.gender,

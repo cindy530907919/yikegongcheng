@@ -106,7 +106,7 @@
 			getUserData(){
 				            // 这里执行确认后的操作
 							IndexApi.getUserInfo({
-								uid:1
+								uid:parseInt(this.userInfo.uid)
 							}).then(res => {
 								console.log('业务获取个人信息有返回', res)
 								this.userInfo = res.data;
@@ -123,7 +123,7 @@
 			putUserData(){
 				            // 这里执行确认后的操作
 							IndexApi.editInfo({
-								uid:1,
+								uid:parseInt(this.userInfo.uid),
 								head_url: this.head_url,
 								nickname: this.nickname,
 								sex: this.gender,

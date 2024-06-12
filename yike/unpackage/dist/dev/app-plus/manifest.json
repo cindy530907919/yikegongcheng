@@ -96,9 +96,10 @@
         ],
         "abiFilters": [
           "armeabi-v7a",
+          "arm64-v8a",
           "x86"
         ],
-        "targetSdkVersion": 30,
+        "targetSdkVersion": 34,
         "minSdkVersion": 21
       },
       "apple": {

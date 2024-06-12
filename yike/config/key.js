@@ -1,6 +1,7 @@
 // 缓存key
 export const TOKEN = "__token__";
 export const USER_INFO = "__user_info__";
+export const USER_ID = "__user_id__";
 export const CACHE_SYSTEM_INFO_KEY = "__cache_system_info_key__"; // 设备信息
 export const CACHE_SCENE_KEY = "__cache_scene_key__"; // 场景值
 export const CACHE_USER_INFO_KEY = "__cache_user_info_key__"; // 用户信息

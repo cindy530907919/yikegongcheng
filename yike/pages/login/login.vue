@@ -26,7 +26,7 @@
 
 <script>
 	import {
-		TOKEN
+		TOKEN,USER_ID,USER_INFO
 	} from "@/config/index";
 	import IndexApi from "@/api/index.js";
 	import {
@@ -101,12 +101,14 @@
 								} = res
 								if (code == 1) {
 									uni.setStorageSync(TOKEN, data.token || '');
-									uni.navigateTo({
-									  url: '/pages/device/device-lease',
+									uni.setStorageSync(USER_ID, data.id || '');
+									uni.setStorageSync(USER_INFO, data || '');
+									uni.redirectTo({
+									  url: '/pages/index/index',
 									});
 								} else {
 									uni.hideLoading();
-									showToast(res.msg);
+									showToast(res.info);
 								}
 							}).catch(res => {
 								console.log(res)

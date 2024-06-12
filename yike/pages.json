@@ -1,6 +1,14 @@
 {
 	"pages": [
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "亦可工程",
+				"navigationBarBackgroundColor": "#adfdc0",
+				"navigationBarTextStyle": "black"
+			},
+			"custom": true
+		},{
 			"path": "pages/login/login",
 			"style": {
 				"navigationBarTitleText": "微信登录"
@@ -120,15 +128,7 @@
 				"navigationBarBackgroundColor": "#fff",
 				"navigationBarTextStyle": "black"
 			}
-		}, {
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "亦可工程",
-				"navigationBarBackgroundColor": "#adfdc0",
-				"navigationBarTextStyle": "black"
-			},
-			"custom": true
-		}, {
+		},  {
 			"path": "pages/local/service-con",
 			"style": {
 				"navigationBarTitleText": "详情",

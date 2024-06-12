@@ -117,7 +117,7 @@
 						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
 							color="#c7c7c7"></uni-icons>
 					</navigator>
-					<navigator url="" class="userConFunction2UlLi">
+					<navigator class="userConFunction2UlLi" @click="goOut()">
 						<image src="../../static/images/user_20.png" mode="widthFix"></image>
 						<text>退出登录</text>
 						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
@@ -132,6 +132,10 @@
 
 <script>
 	import CustomTabsBar from '@/components/custom-tabs-bar/custom-tabs-bar.vue';
+	import IndexApi from "@/api/index.js";
+	import {
+		USER_INFO
+	} from "@/config/index";
 	export default {
 		components: {
 			CustomTabsBar
@@ -139,7 +143,12 @@
 		data() {
 			return {
 				number: 1543637,
+				userInfo:null,
 			}
+		},
+		// 页面加载初始化
+		onLoad(params) {
+			this.userInfo = uni.getStorageSync(USER_INFO);
 		},
 		methods: {
 			goToTitle() {
@@ -161,7 +170,34 @@
 				uni.navigateTo({
 					url: '../../pages/user/user-invitation-message'
 				});
-			}
+			},
+			goOut(){
+				uni.showModal({
+				    title: '提示',
+				    content: '确认退出登录吗？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            console.log('用户点击确定');
+				            // 这里执行确认后的操作
+							IndexApi.loginOut({
+								uid: 1 
+							}).then(res => {
+								console.log('业务退出登录有返回', res)
+								uni.clearStorageSync();
+								      uni.redirectTo({
+								        url: '/pages/login/login'
+								      });
+							}).catch(res => {
+								console.log(res)
+							})
+				        } else if (res.cancel) {
+				            console.log('用户点击取消');
+				            // 这里执行取消后的操作
+				        }
+				    }
+				});
+			},
+			
 		},
 		computed: {
 			formattedNumber() {

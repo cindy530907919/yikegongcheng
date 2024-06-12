@@ -7,7 +7,7 @@
 				<!-- 选择城市 -->
 				<view class="indexTopPositionConSearchCity">
 					<image src="../../static/images/index_1.png" class="indexTopPositionConSearchCityIcon" mode="widthFix"></image>
-					<uni-data-picker :clear-icon="false" class="indexTopPositionConSearchCityPick" :localdata="items" popup-title="城市"></uni-data-picker>
+					<uni-data-picker :clear-icon="false" class="indexTopPositionConSearchCityPick" :localdata="cityList" popup-title="城市"></uni-data-picker>
 				</view>
 				<!-- 搜索 -->
     			<view class="indexTopPositionConSearchInput">
@@ -22,9 +22,9 @@
 				<!-- 轮播 -->
 				<uni-swiper-dot :info="info" :current="current" field="content" :mode="mode" class="indexTopPositionConBanner">
 					<swiper class="swiper-box" @change="change">
-						<swiper-item v-for="(item ,index) in info" :key="index">
+						<swiper-item v-for="(item ,index) in bannerList" :key="index">
 							<view class="swiper-item">
-								<image :src="item.content"></image>
+								<image :src="item.img_url"></image>
 							</view>
 						</swiper-item>
 					</swiper>
@@ -140,31 +140,9 @@ export default {
 	},
   data() {
    return {
-		items: [{
-			text: "吉林",
-			value: "1-0",
-			children: [
-			   {
-				 text: "长春",
-				 value: "1-1"
-			   },
-			   {
-				 text: "四平",
-				 value: "1-2"
-			   }
-			]
-		   },
-		   {
-			 text: "辽宁",
-			 value: "2-0"
-		   },
-		   {
-			 text: "黑龙江",
-			 value: "3-0"
-		}],
-		   
+		cityList: [],
 		activePage: 0,   
-		info: [{
+		bannerList: [{
 			content: '../../static/images/banner.png'
 		}, {
 			content: '../../static/images/banner.png'
@@ -177,6 +155,11 @@ export default {
 		scrollHeight: 40, // 滚动区域的高度，根据实际情况调整
 		scrollTimer: null, // 定时器
 	}
+  },
+  // 页面加载初始化
+  onLoad(params) {
+  	this.getCity();
+	this.getBannerList();
   },
     mounted() {
 		this.startScroll();
@@ -199,6 +182,24 @@ export default {
 		  // 当滚动到底部时，强制滚动到顶部
 		  this.$refs.scrollView.scrollTo(0, 0);
 		},
+		getCity(){
+			IndexApi.loginOut({
+			}).then(res => {
+				console.log('业务获取城市有返回', res)
+				this.cityList = res.data;
+			}).catch(res => {
+				console.log(res)
+			})
+		},
+		getBannerList(){
+			IndexApi.getBanner({
+			}).then(res => {
+				console.log('业务获取轮播有返回', res)
+				this.bannerList = res.data;
+			}).catch(res => {
+				console.log(res)
+			})
+		}
     }
 };
 </script>

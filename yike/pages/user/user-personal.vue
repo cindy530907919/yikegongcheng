@@ -1,8 +1,8 @@
 <template>
 	<!-- 个人资料 -->
 	<view class="container">
-		<view class="avatar-section">
-			<image class="avatar" src="../../static/images/goods_6.png"></image>
+		<view class="avatar-section" @click="goUpload()">
+			<image class="avatar" :src="head_url"></image>
 			<text class="change-avatar">【更换头像】</text>
 		</view>
 		<view class="form-section">
@@ -13,7 +13,7 @@
 			<view class="form-item">
 				<text class="label">性别</text>
 				<view class="gender-options">
-					<radio-group>
+					<radio-group @change="radioChange">
 						<label class="radio-label">
 							<radio value="女"></radio>
 							<text>女</text>
@@ -35,7 +35,7 @@
 				<input class="input" type="text" placeholder="请输入输入生日" v-model="birthday"></input>
 			</view>
 		</view>
-		<view class="issueBtnRight">
+		<view class="issueBtnRight" @click="putUserData()">
 			发布
 		</view>
 	</view>
@@ -43,14 +43,104 @@
 
 
 <script>
+	import IndexApi from "@/api/index.js";
+	import {
+		USER_INFO
+	} from "@/config/index";
 	export default {
 		data() {
 			return {
 				nickname: '',
 				gender: '男',
 				signature: '',
-				birthday: ''
+				birthday: '',
+				userInfo:null,
+				head_url:''
 			};
+		},
+		// 页面加载初始化
+		onLoad(params) {
+			this.userInfo = uni.getStorageSync(USER_INFO);
+			this.getUserData();
+		},
+		methods: {
+			radioChange(e) {
+			      this.gender = e.detail.value;
+			    },
+			goUpload() {
+				uni.chooseImage({
+									count: 6, //默认9
+									sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+									sourceType: ['album'], //从相册选择
+									success: function (res) {
+										
+										Promise.all(res.tempFilePaths.map(file => {
+										  return new Promise((resolve, reject) => {
+										    uni.uploadFile({
+										      url: 'https://app.ykgcb.com/ykapi/Upload/file', // 服务器接收上传文件的URL
+										      filePath: file, // 文件路径
+										      name: 'file', // 这是后端接收文件时的字段名
+										      formData: {
+										        'user': 'test' // 其他POST请求中的额外参数
+										      },
+										      success: (uploadFileRes) => {
+										        console.log(uploadFileRes.data);
+												let datas = JSON.parse(uploadFileRes.data);
+												console.log(datas.data);
+												this.head_url = datas.data;
+										        resolve(uploadFileRes);
+										      },
+										      fail: (error) => {
+										        reject(error);
+										      }
+										    });
+										  });
+										})).then(res => {
+										  console.log('All files have been uploaded', res);
+										}).catch(error => {
+										  console.error('Error uploading files', error);
+										});
+									}
+								});
+			},
+			getUserData(){
+				            // 这里执行确认后的操作
+							IndexApi.getUserInfo({
+								uid:1
+							}).then(res => {
+								console.log('业务获取个人信息有返回', res)
+								this.userInfo = res.data;
+								uni.setStorageSync(USER_INFO, res.data || '');
+								this.nickname = res.data.nickname;
+								this.gender = res.data.sex;
+								this.signature = res.data.abstract;
+								this.birthday = res.data.birthday;
+								this.head_url = res.data.head_url;
+							}).catch(res => {
+								console.log(res)
+							})
+			},
+			putUserData(){
+				            // 这里执行确认后的操作
+							IndexApi.editInfo({
+								uid:1,
+								head_url: this.head_url,
+								nickname: this.nickname,
+								sex: this.gender,
+								abstract: this.signature,
+								birthday: this.birthday
+							}).then(res => {
+								console.log('业务修改个人信息有返回', res)
+								uni.showToast({
+									icon: "none",
+									title: "修改成功",
+									duration: 3000,
+								});
+								this.getUserData();
+							}).catch(res => {
+								console.log(res)
+							})
+			}
 		}
 	};
 </script>

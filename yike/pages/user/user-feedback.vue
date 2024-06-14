@@ -1,29 +1,38 @@
 <template>
 	<!-- 用户反馈 -->
 	<view class="issueCon">
-		<textarea class="issueConEvaluate" value="" placeholder="请输入您的反馈内容..." />
+		<textarea class="issueConEvaluate" v-model="content" placeholder="请输入您的反馈内容..." />
 		
-		<view class="issueBtnRight">
+		<view class="issueBtnRight" @click="toFankui()">
 			发布
 		</view>
 	</view>
 </template>
 
 <script>
+	import IndexApi from "@/api/index.js";
 	export default {
 		data() {
 			return {
-				rating: 4,
-				serviceRating: 5,
+				content: ''
 			};
 		},
 		methods: {
-			setRating(value) {
-				this.rating = value;
-			},
-			setServiceRating(value) {
-				this.serviceRating = value;
-			},
+			toFankui(){
+				            // 这里执行确认后的操作
+							IndexApi.fankui({
+								content: this.content
+							}).then(res => {
+								console.log('添加反馈有返回', res)
+								uni.showToast({
+									icon: "none",
+									title: "反馈成功",
+									duration: 3000,
+								});
+							}).catch(res => {
+								console.log(res)
+							})
+			}
 		},
 	};
 </script>

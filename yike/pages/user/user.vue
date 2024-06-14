@@ -10,7 +10,7 @@
 			</view>
 			<view class="userBackInformation">
 				<view class="userBackInformationLeft">
-					<image src="../../static/images/user_21.png" class="userBackInformationAvatar" @tap="goToPersonal">
+					<image :src="userInfo.head_url" class="userBackInformationAvatar" @tap="goToPersonal">
 					</image>
 					<image src="../../static/images/user_3.png" mode="widthFix" class="userBackInformationAvatarVip">
 					</image>
@@ -18,7 +18,7 @@
 				<view class="userBackInformationRight">
 					<view class="userBackInformationRightName">
 						<view class="userBackInformationRightName_t">
-							泰国人没有心
+							{{ userInfo.nickname }}
 						</view>
 						<view class="indexServiceLiTT1Label" @tap="goToTitle">
 							<text style="background: #71e58d;">电工</text>
@@ -29,15 +29,15 @@
 			</view>
 		</view>
 		<view class="userCon">
-			<view class="userBackInformationRightSignature" @tap="goToPersonal">个性签名：娃哈哈哈哈哈</view>
+			<view class="userBackInformationRightSignature" @tap="goToPersonal">个性签名：{{ userInfo.abstract }}</view>
 			<image src="../../static/images/user_6.png" mode="widthFix" class="userConBanner" @tap="goToTitle"></image>
 			<view class="userConMyInfo">
 				<view class="userConMyInfoLi">
-					<span>588</span>
+					<span>{{ userInfo.ykb }}</span>
 					<p>我的亦可币</p>
 				</view>
 				<view class="userConMyInfoLi" @tap="goToinvitation">
-					<span>12</span>
+					<span>{{ userInfo.tie }}</span>
 					<p>我的帖子</p>
 				</view>
 				<view class="userConMyInfoLi">
@@ -142,23 +142,22 @@
 		},
 		data() {
 			return {
-				number: 1543637,
 				userInfo:{
 					"uid":1,
         "nickname": "张三",
-        "head_url": "xxx.png",
+        "head_url": "https://app.ykgcb.com/upload/18/6b71086639a37ddf3710bfad4bed7a.png",
         "phone": "",
         "sex": "女",
         "birthday": "2024-09-08",
         "background": null,
-        "abstract": "个性签名",
+        "abstract": "海上明月共潮生",
         "province": "吉林省",
         "city": "长春市",
         "area": "经开区",
         "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
         "ykb": 10,
-        "tie": 0,
-        "zan": 0,
+        "tie": 56,
+        "zan": 1543637,
         "honor": [
             "司机",
             "称号2"
@@ -169,6 +168,7 @@
 		// 页面加载初始化
 		onLoad(params) {
 			// this.userInfo = uni.getStorageSync(USER_INFO);
+			uni.setStorageSync(USER_ID, 1);
 		},
 		methods: {
 			goToTitle() {
@@ -221,12 +221,12 @@
 		},
 		computed: {
 			formattedNumber() {
-				if (this.number >= 100000) {
-					return (this.number / 10000).toFixed(0) + 'w'; // 超过100,000显示为“10w”等
-				} else if (this.number >= 10000) {
-					return (this.number / 10000).toFixed(1) + 'w'; // 超过10,000显示为“1w”等
+				if (this.userInfo.zan >= 100000) {
+					return (this.userInfo.zan / 10000).toFixed(0) + 'w'; // 超过100,000显示为“10w”等
+				} else if (this.userInfo.zan >= 10000) {
+					return (this.userInfo.zan / 10000).toFixed(1) + 'w'; // 超过10,000显示为“1w”等
 				} else {
-					return this.number; // 不超过10,000直接显示数字
+					return this.userInfo.zan; // 不超过10,000直接显示数字
 				}
 			}
 		},

@@ -1,31 +1,15 @@
 <template>
 	<view class="addressCon">
-		<view class="goodsPopupAddress" @tap="goToAddressPage">
+		
+		<view class="goodsPopupAddress" v-for="(item, index) in addressList" :key="index" @tap="goToAddressPage(item.id)">
 			<image class="goodsPopupAddressImg" src="../../static/images/goods_11.png" mode="widthFix"></image>
 			<uni-icons type="right" size="24" class="goodsPopupAddressIcon"color="#999"></uni-icons>
 			<view class="goodsPopupAddressTxt">
-				<text><span style="color: #f00;">[默认]</span>难哄的驴 13866668888</text>
-				<text>吉林省长春市南关区1栋101室小区街道1栋101室</text>
+				<text><span style="color: #f00;" v-if="item.is_selected == 1">[默认]</span>{{ item.name }} {{ item.phone }}</text>
+				<text>{{ item.province+item.city+item.area+item.content }}</text>
 			</view>
 		</view>
 		
-		<view class="goodsPopupAddress" @tap="goToAddressPage">
-			<image class="goodsPopupAddressImg" src="../../static/images/goods_11.png" mode="widthFix"></image>
-			<uni-icons type="right" size="24" class="goodsPopupAddressIcon"color="#999"></uni-icons>
-			<view class="goodsPopupAddressTxt">
-				<text>难哄的驴 13866668888</text>
-				<text>吉林省长春市南关区1栋101室小区街道1栋101室</text>
-			</view>
-		</view>
-		
-		<view class="goodsPopupAddress">
-			<image class="goodsPopupAddressImg" src="../../static/images/goods_11.png" mode="widthFix"></image>
-			<uni-icons type="right" size="24" class="goodsPopupAddressIcon"color="#999"></uni-icons>
-			<view class="goodsPopupAddressTxt">
-				<text>难哄的驴 13866668888</text>
-				<text>吉林省长春市南关区1栋101室小区街道1栋101室</text>
-			</view>
-		</view>
 		<view class="addressConBtn">
 			<navigator class="addressConBtn1" url="../../pages/address/add">添加收货地址</navigator>
 		</view>
@@ -33,14 +17,33 @@
 </template>
 
 <script>
+	import AddressApi from "@/api/address.js";
 	export default {
+		data() {
+			return {
+				addressList: []
+			};
+		},
+		// 页面加载初始化
+		onLoad(params) {
+			this.getList();
+		},
 	  methods: {
-	    goToAddressPage() {
+	    goToAddressPage(id) {
 	      // 指定跳转的路径
 	      uni.navigateTo({
-	        url: '../address/add'
+	        url: `/pages/address/add?id=${id}`
 	      });
-	    }
+	    },
+		getList(){
+			AddressApi.getList({
+			}).then(res => {
+				console.log('业务获取收货地址有返回', res)
+				this.addressList = res.data;
+			}).catch(res => {
+				console.log(res)
+			})
+		}
 	  }
 	}
 </script>

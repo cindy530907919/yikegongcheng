@@ -15,11 +15,11 @@
 				<view class="gender-options">
 					<radio-group @change="radioChange">
 						<label class="radio-label">
-							<radio value="女"></radio>
+							<radio value="女" :checked="gender == '女'"></radio>
 							<text>女</text>
 						</label>
 						<label class="radio-label">
-							<radio value="男" checked="checked"></radio>
+							<radio value="男" :checked="gender == '男'"></radio>
 							<text>男</text>
 						</label>
 						
@@ -54,13 +54,33 @@
 				gender: '男',
 				signature: '',
 				birthday: '',
-				userInfo:null,
+				userInfo:{
+								"uid":1,
+				    "nickname": "张三",
+				    "head_url": "xxx.png",
+				    "phone": "",
+				    "sex": "女",
+				    "birthday": "2024-09-08",
+				    "background": null,
+				    "abstract": "个性签名",
+				    "province": "吉林省",
+				    "city": "长春市",
+				    "area": "经开区",
+				    "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
+				    "ykb": 10,
+				    "tie": 0,
+				    "zan": 0,
+				    "honor": [
+				        "司机",
+				        "称号2"
+				    ]
+				},
 				head_url:''
 			};
 		},
 		// 页面加载初始化
 		onLoad(params) {
-			this.userInfo = uni.getStorageSync(USER_INFO);
+			// this.userInfo = uni.getStorageSync(USER_INFO);
 			this.getUserData();
 		},
 		methods: {
@@ -104,9 +124,10 @@
 								});
 			},
 			getUserData(){
+				console.log('业务获取个人信息有返回==', this.userInfo.uid)
 				            // 这里执行确认后的操作
 							IndexApi.getUserInfo({
-								uid:parseInt(this.userInfo.uid)
+								uid:this.userInfo.uid
 							}).then(res => {
 								console.log('业务获取个人信息有返回', res)
 								this.userInfo = res.data;

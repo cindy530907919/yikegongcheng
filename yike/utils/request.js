@@ -27,12 +27,13 @@ export function request({
 			method: method,
 			data: {
 				...params,
-				uid:uni.getStorageSync(USER_ID)
+				uid:1
 			},
 			header,
 			dataType: "json",
 			success: (res) => {
 				const result = res.data;
+				console.log(res);
 				if (result.code === 1) {
 					resolve(result);
 				} else {

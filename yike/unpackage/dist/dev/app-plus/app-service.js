@@ -5661,7 +5661,7 @@ ${i3}
   const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$J], ["__scopeId", "data-v-a6d140ed"], ["__file", "D:/cindy/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
   const TOKEN = "__token__";
   const USER_INFO = "__user_info__";
-  const USER_ID = "__user_id__";
+  const USER_ID$1 = "__user_id__";
   const api_url_config = {
     dev: {
       hjs_request_url: "https://app.ykgcb.com/ykapi",
@@ -5708,12 +5708,13 @@ ${i3}
         method,
         data: {
           ...params,
-          uid: uni.getStorageSync(USER_ID)
+          uid: 1
         },
         header,
         dataType: "json",
         success: (res) => {
           const result = res.data;
+          formatAppLog("log", "at utils/request.js:36", res);
           if (result.code === 1) {
             resolve(result);
           } else {
@@ -5807,6 +5808,15 @@ ${i3}
         errorback,
         params
       });
+    },
+    /*用户反馈*/
+    fankui(params, errorback) {
+      return request({
+        url: "/Other/fankui",
+        method: "post",
+        errorback,
+        params
+      });
     }
   };
   const _sfc_main$J = {
@@ -5817,13 +5827,7 @@ ${i3}
       return {
         cityList: [],
         activePage: 0,
-        bannerList: [{
-          content: "../../static/images/banner.png"
-        }, {
-          content: "../../static/images/banner.png"
-        }, {
-          content: "../../static/images/banner.png"
-        }],
+        bannerList: [],
         current: 0,
         mode: "round",
         scrollText: ["哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈", "嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈", "啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"],
@@ -5858,19 +5862,19 @@ ${i3}
         this.$refs.scrollView.scrollTo(0, 0);
       },
       getCity() {
-        IndexApi.loginOut({}).then((res) => {
-          formatAppLog("log", "at pages/index/index.vue:188", "业务获取城市有返回", res);
+        IndexApi.getCityList({}).then((res) => {
+          formatAppLog("log", "at pages/index/index.vue:182", "业务获取城市有返回", res);
           this.cityList = res.data;
         }).catch((res) => {
-          formatAppLog("log", "at pages/index/index.vue:191", res);
+          formatAppLog("log", "at pages/index/index.vue:185", res);
         });
       },
       getBannerList() {
         IndexApi.getBanner({}).then((res) => {
-          formatAppLog("log", "at pages/index/index.vue:197", "业务获取轮播有返回", res);
+          formatAppLog("log", "at pages/index/index.vue:191", "业务获取轮播有返回", res);
           this.bannerList = res.data;
         }).catch((res) => {
-          formatAppLog("log", "at pages/index/index.vue:200", res);
+          formatAppLog("log", "at pages/index/index.vue:194", res);
         });
       }
     }
@@ -6204,7 +6208,7 @@ ${i3}
                 } = res2;
                 if (code == 1) {
                   uni.setStorageSync(TOKEN, data.token || "");
-                  uni.setStorageSync(USER_ID, data.id || "");
+                  uni.setStorageSync(USER_ID$1, data.id || "");
                   uni.setStorageSync(USER_INFO, data || "");
                   uni.redirectTo({
                     url: "/pages/index/index"
@@ -6988,23 +6992,22 @@ ${i3}
     },
     data() {
       return {
-        number: 1543637,
         userInfo: {
           "uid": 1,
           "nickname": "张三",
-          "head_url": "xxx.png",
+          "head_url": "https://app.ykgcb.com/upload/18/6b71086639a37ddf3710bfad4bed7a.png",
           "phone": "",
           "sex": "女",
           "birthday": "2024-09-08",
           "background": null,
-          "abstract": "个性签名",
+          "abstract": "海上明月共潮生",
           "province": "吉林省",
           "city": "长春市",
           "area": "经开区",
           "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
           "ykb": 10,
-          "tie": 0,
-          "zan": 0,
+          "tie": 56,
+          "zan": 1543637,
           "honor": [
             "司机",
             "称号2"
@@ -7014,6 +7017,7 @@ ${i3}
     },
     // 页面加载初始化
     onLoad(params) {
+      uni.setStorageSync(USER_ID, 1);
     },
     methods: {
       goToTitle() {
@@ -7063,12 +7067,12 @@ ${i3}
     },
     computed: {
       formattedNumber() {
-        if (this.number >= 1e5) {
-          return (this.number / 1e4).toFixed(0) + "w";
-        } else if (this.number >= 1e4) {
-          return (this.number / 1e4).toFixed(1) + "w";
+        if (this.userInfo.zan >= 1e5) {
+          return (this.userInfo.zan / 1e4).toFixed(0) + "w";
+        } else if (this.userInfo.zan >= 1e4) {
+          return (this.userInfo.zan / 1e4).toFixed(1) + "w";
         } else {
-          return this.number;
+          return this.userInfo.zan;
         }
       }
     }
@@ -7097,10 +7101,10 @@ ${i3}
         vue.createElementVNode("view", { class: "userBackInformation" }, [
           vue.createElementVNode("view", { class: "userBackInformationLeft" }, [
             vue.createElementVNode("image", {
-              src: "/static/images/user_21.png",
+              src: $data.userInfo.head_url,
               class: "userBackInformationAvatar",
               onClick: _cache[0] || (_cache[0] = (...args) => $options.goToPersonal && $options.goToPersonal(...args))
-            }),
+            }, null, 8, ["src"]),
             vue.createElementVNode("image", {
               src: "/static/images/user_3.png",
               mode: "widthFix",
@@ -7109,7 +7113,13 @@ ${i3}
           ]),
           vue.createElementVNode("view", { class: "userBackInformationRight" }, [
             vue.createElementVNode("view", { class: "userBackInformationRightName" }, [
-              vue.createElementVNode("view", { class: "userBackInformationRightName_t" }, " 泰国人没有心 "),
+              vue.createElementVNode(
+                "view",
+                { class: "userBackInformationRightName_t" },
+                vue.toDisplayString($data.userInfo.nickname),
+                1
+                /* TEXT */
+              ),
               vue.createElementVNode("view", {
                 class: "indexServiceLiTT1Label",
                 onClick: _cache[1] || (_cache[1] = (...args) => $options.goToTitle && $options.goToTitle(...args))
@@ -7122,10 +7132,16 @@ ${i3}
         ])
       ]),
       vue.createElementVNode("view", { class: "userCon" }, [
-        vue.createElementVNode("view", {
-          class: "userBackInformationRightSignature",
-          onClick: _cache[2] || (_cache[2] = (...args) => $options.goToPersonal && $options.goToPersonal(...args))
-        }, "个性签名：娃哈哈哈哈哈"),
+        vue.createElementVNode(
+          "view",
+          {
+            class: "userBackInformationRightSignature",
+            onClick: _cache[2] || (_cache[2] = (...args) => $options.goToPersonal && $options.goToPersonal(...args))
+          },
+          "个性签名：" + vue.toDisplayString($data.userInfo.abstract),
+          1
+          /* TEXT */
+        ),
         vue.createElementVNode("image", {
           src: "/static/images/user_6.png",
           mode: "widthFix",
@@ -7134,14 +7150,26 @@ ${i3}
         }),
         vue.createElementVNode("view", { class: "userConMyInfo" }, [
           vue.createElementVNode("view", { class: "userConMyInfoLi" }, [
-            vue.createElementVNode("span", null, "588"),
+            vue.createElementVNode(
+              "span",
+              null,
+              vue.toDisplayString($data.userInfo.ykb),
+              1
+              /* TEXT */
+            ),
             vue.createElementVNode("p", null, "我的亦可币")
           ]),
           vue.createElementVNode("view", {
             class: "userConMyInfoLi",
             onClick: _cache[4] || (_cache[4] = (...args) => $options.goToinvitation && $options.goToinvitation(...args))
           }, [
-            vue.createElementVNode("span", null, "12"),
+            vue.createElementVNode(
+              "span",
+              null,
+              vue.toDisplayString($data.userInfo.tie),
+              1
+              /* TEXT */
+            ),
             vue.createElementVNode("p", null, "我的帖子")
           ]),
           vue.createElementVNode("view", { class: "userConMyInfoLi" }, [
@@ -7359,13 +7387,32 @@ ${i3}
         gender: "男",
         signature: "",
         birthday: "",
-        userInfo: null,
+        userInfo: {
+          "uid": 1,
+          "nickname": "张三",
+          "head_url": "xxx.png",
+          "phone": "",
+          "sex": "女",
+          "birthday": "2024-09-08",
+          "background": null,
+          "abstract": "个性签名",
+          "province": "吉林省",
+          "city": "长春市",
+          "area": "经开区",
+          "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
+          "ykb": 10,
+          "tie": 0,
+          "zan": 0,
+          "honor": [
+            "司机",
+            "称号2"
+          ]
+        },
         head_url: ""
       };
     },
     // 页面加载初始化
     onLoad(params) {
-      this.userInfo = uni.getStorageSync(USER_INFO);
       this.getUserData();
     },
     methods: {
@@ -7395,9 +7442,9 @@ ${i3}
                     // 其他POST请求中的额外参数
                   },
                   success: (uploadFileRes) => {
-                    formatAppLog("log", "at pages/user/user-personal.vue:87", uploadFileRes.data);
+                    formatAppLog("log", "at pages/user/user-personal.vue:107", uploadFileRes.data);
                     let datas = JSON.parse(uploadFileRes.data);
-                    formatAppLog("log", "at pages/user/user-personal.vue:89", datas.data);
+                    formatAppLog("log", "at pages/user/user-personal.vue:109", datas.data);
                     this.head_url = datas.data;
                     resolve(uploadFileRes);
                   },
@@ -7407,18 +7454,19 @@ ${i3}
                 });
               });
             })).then((res2) => {
-              formatAppLog("log", "at pages/user/user-personal.vue:99", "All files have been uploaded", res2);
+              formatAppLog("log", "at pages/user/user-personal.vue:119", "All files have been uploaded", res2);
             }).catch((error) => {
-              formatAppLog("error", "at pages/user/user-personal.vue:101", "Error uploading files", error);
+              formatAppLog("error", "at pages/user/user-personal.vue:121", "Error uploading files", error);
             });
           }
         });
       },
       getUserData() {
+        formatAppLog("log", "at pages/user/user-personal.vue:127", "业务获取个人信息有返回==", this.userInfo.uid);
         IndexApi.getUserInfo({
-          uid: parseInt(this.userInfo.uid)
+          uid: this.userInfo.uid
         }).then((res) => {
-          formatAppLog("log", "at pages/user/user-personal.vue:111", "业务获取个人信息有返回", res);
+          formatAppLog("log", "at pages/user/user-personal.vue:132", "业务获取个人信息有返回", res);
           this.userInfo = res.data;
           uni.setStorageSync(USER_INFO, res.data || "");
           this.nickname = res.data.nickname;
@@ -7427,7 +7475,7 @@ ${i3}
           this.birthday = res.data.birthday;
           this.head_url = res.data.head_url;
         }).catch((res) => {
-          formatAppLog("log", "at pages/user/user-personal.vue:120", res);
+          formatAppLog("log", "at pages/user/user-personal.vue:141", res);
         });
       },
       putUserData() {
@@ -7439,7 +7487,7 @@ ${i3}
           abstract: this.signature,
           birthday: this.birthday
         }).then((res) => {
-          formatAppLog("log", "at pages/user/user-personal.vue:133", "业务修改个人信息有返回", res);
+          formatAppLog("log", "at pages/user/user-personal.vue:154", "业务修改个人信息有返回", res);
           uni.showToast({
             icon: "none",
             title: "修改成功",
@@ -7447,7 +7495,7 @@ ${i3}
           });
           this.getUserData();
         }).catch((res) => {
-          formatAppLog("log", "at pages/user/user-personal.vue:141", res);
+          formatAppLog("log", "at pages/user/user-personal.vue:162", res);
         });
       }
     }
@@ -7497,14 +7545,17 @@ ${i3}
                   },
                   [
                     vue.createElementVNode("label", { class: "radio-label" }, [
-                      vue.createElementVNode("radio", { value: "女" }),
+                      vue.createElementVNode("radio", {
+                        value: "女",
+                        checked: $data.gender == "女"
+                      }, null, 8, ["checked"]),
                       vue.createElementVNode("text", null, "女")
                     ]),
                     vue.createElementVNode("label", { class: "radio-label" }, [
                       vue.createElementVNode("radio", {
                         value: "男",
-                        checked: "checked"
-                      }),
+                        checked: $data.gender == "男"
+                      }, null, 8, ["checked"]),
                       vue.createElementVNode("text", null, "男")
                     ])
                   ],
@@ -7681,16 +7732,23 @@ ${i3}
   const _sfc_main$B = {
     data() {
       return {
-        rating: 4,
-        serviceRating: 5
+        content: ""
       };
     },
     methods: {
-      setRating(value) {
-        this.rating = value;
-      },
-      setServiceRating(value) {
-        this.serviceRating = value;
+      toFankui() {
+        IndexApi.fankui({
+          content: this.content
+        }).then((res) => {
+          formatAppLog("log", "at pages/user/user-feedback.vue:26", "添加反馈有返回", res);
+          uni.showToast({
+            icon: "none",
+            title: "反馈成功",
+            duration: 3e3
+          });
+        }).catch((res) => {
+          formatAppLog("log", "at pages/user/user-feedback.vue:33", res);
+        });
       }
     }
   };
@@ -7701,12 +7759,23 @@ ${i3}
       [
         vue.createCommentVNode(" 用户反馈 "),
         vue.createElementVNode("view", { class: "issueCon" }, [
-          vue.createElementVNode("textarea", {
-            class: "issueConEvaluate",
-            value: "",
-            placeholder: "请输入您的反馈内容..."
-          }),
-          vue.createElementVNode("view", { class: "issueBtnRight" }, " 发布 ")
+          vue.withDirectives(vue.createElementVNode(
+            "textarea",
+            {
+              class: "issueConEvaluate",
+              "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => $data.content = $event),
+              placeholder: "请输入您的反馈内容..."
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.content]
+          ]),
+          vue.createElementVNode("view", {
+            class: "issueBtnRight",
+            onClick: _cache[1] || (_cache[1] = ($event) => $options.toFankui())
+          }, " 发布 ")
         ])
       ],
       2112
@@ -11142,11 +11211,66 @@ ${i3}
     );
   }
   const PagesMachineryLeasingCon = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["render", _sfc_render$f], ["__file", "D:/cindy/yikegongcheng/yike/pages/machinery/leasing-con.vue"]]);
+  let AddressApi = {
+    /*添加收货地址*/
+    addAddress(params, errorback) {
+      return request({
+        url: "/Other/address",
+        method: "post",
+        errorback,
+        params
+      });
+    },
+    /*收货地址列表*/
+    getList(params, errorback) {
+      return request({
+        url: "/Other/addressList",
+        method: "get",
+        errorback,
+        params
+      });
+    },
+    /*删除地址*/
+    delAddress(params, errorback) {
+      return request({
+        url: "/Other/delAddress",
+        method: "get",
+        errorback,
+        params
+      });
+    },
+    /*地址详情*/
+    getInfo(params, errorback) {
+      return request({
+        url: "/Other/getInfo",
+        method: "get",
+        errorback,
+        params
+      });
+    }
+  };
   const _sfc_main$f = {
+    data() {
+      return {
+        addressList: []
+      };
+    },
+    // 页面加载初始化
+    onLoad(params) {
+      this.getList();
+    },
     methods: {
-      goToAddressPage() {
+      goToAddressPage(id) {
         uni.navigateTo({
-          url: "../address/add"
+          url: `/pages/address/add?id=${id}`
+        });
+      },
+      getList() {
+        AddressApi.getList({}).then((res) => {
+          formatAppLog("log", "at pages/address/index.vue:41", "业务获取收货地址有返回", res);
+          this.addressList = res.data;
+        }).catch((res) => {
+          formatAppLog("log", "at pages/address/index.vue:44", res);
         });
       }
     }
@@ -11154,66 +11278,51 @@ ${i3}
   function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$6);
     return vue.openBlock(), vue.createElementBlock("view", { class: "addressCon" }, [
-      vue.createElementVNode("view", {
-        class: "goodsPopupAddress",
-        onClick: _cache[0] || (_cache[0] = (...args) => $options.goToAddressPage && $options.goToAddressPage(...args))
-      }, [
-        vue.createElementVNode("image", {
-          class: "goodsPopupAddressImg",
-          src: "/static/images/goods_11.png",
-          mode: "widthFix"
+      (vue.openBlock(true), vue.createElementBlock(
+        vue.Fragment,
+        null,
+        vue.renderList($data.addressList, (item, index) => {
+          return vue.openBlock(), vue.createElementBlock("view", {
+            class: "goodsPopupAddress",
+            key: index,
+            onClick: ($event) => $options.goToAddressPage(item.id)
+          }, [
+            vue.createElementVNode("image", {
+              class: "goodsPopupAddressImg",
+              src: "/static/images/goods_11.png",
+              mode: "widthFix"
+            }),
+            vue.createVNode(_component_uni_icons, {
+              type: "right",
+              size: "24",
+              class: "goodsPopupAddressIcon",
+              color: "#999"
+            }),
+            vue.createElementVNode("view", { class: "goodsPopupAddressTxt" }, [
+              vue.createElementVNode("text", null, [
+                item.is_selected == 1 ? (vue.openBlock(), vue.createElementBlock("span", {
+                  key: 0,
+                  style: { "color": "#f00" }
+                }, "[默认]")) : vue.createCommentVNode("v-if", true),
+                vue.createTextVNode(
+                  vue.toDisplayString(item.name) + " " + vue.toDisplayString(item.phone),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              vue.createElementVNode(
+                "text",
+                null,
+                vue.toDisplayString(item.province + item.city + item.area + item.content),
+                1
+                /* TEXT */
+              )
+            ])
+          ], 8, ["onClick"]);
         }),
-        vue.createVNode(_component_uni_icons, {
-          type: "right",
-          size: "24",
-          class: "goodsPopupAddressIcon",
-          color: "#999"
-        }),
-        vue.createElementVNode("view", { class: "goodsPopupAddressTxt" }, [
-          vue.createElementVNode("text", null, [
-            vue.createElementVNode("span", { style: { "color": "#f00" } }, "[默认]"),
-            vue.createTextVNode("难哄的驴 13866668888")
-          ]),
-          vue.createElementVNode("text", null, "吉林省长春市南关区1栋101室小区街道1栋101室")
-        ])
-      ]),
-      vue.createElementVNode("view", {
-        class: "goodsPopupAddress",
-        onClick: _cache[1] || (_cache[1] = (...args) => $options.goToAddressPage && $options.goToAddressPage(...args))
-      }, [
-        vue.createElementVNode("image", {
-          class: "goodsPopupAddressImg",
-          src: "/static/images/goods_11.png",
-          mode: "widthFix"
-        }),
-        vue.createVNode(_component_uni_icons, {
-          type: "right",
-          size: "24",
-          class: "goodsPopupAddressIcon",
-          color: "#999"
-        }),
-        vue.createElementVNode("view", { class: "goodsPopupAddressTxt" }, [
-          vue.createElementVNode("text", null, "难哄的驴 13866668888"),
-          vue.createElementVNode("text", null, "吉林省长春市南关区1栋101室小区街道1栋101室")
-        ])
-      ]),
-      vue.createElementVNode("view", { class: "goodsPopupAddress" }, [
-        vue.createElementVNode("image", {
-          class: "goodsPopupAddressImg",
-          src: "/static/images/goods_11.png",
-          mode: "widthFix"
-        }),
-        vue.createVNode(_component_uni_icons, {
-          type: "right",
-          size: "24",
-          class: "goodsPopupAddressIcon",
-          color: "#999"
-        }),
-        vue.createElementVNode("view", { class: "goodsPopupAddressTxt" }, [
-          vue.createElementVNode("text", null, "难哄的驴 13866668888"),
-          vue.createElementVNode("text", null, "吉林省长春市南关区1栋101室小区街道1栋101室")
-        ])
-      ]),
+        128
+        /* KEYED_FRAGMENT */
+      )),
       vue.createElementVNode("view", { class: "addressConBtn" }, [
         vue.createElementVNode("navigator", {
           class: "addressConBtn1",
@@ -11226,38 +11335,82 @@ ${i3}
   const _sfc_main$e = {
     data() {
       return {
+        name: "",
+        phone: "",
+        province: "",
+        city: "",
+        area: "",
+        content: "",
+        is_selected: 0,
+        id: 0,
         selectedRegion: [],
         // 存储选中的省市区
-        regionData: [
-          {
-            text: "北京市",
-            value: "beijing",
-            children: [
-              {
-                text: "市辖区",
-                value: "shixiaqu",
-                children: [
-                  {
-                    text: "东城区",
-                    value: "dongcheng"
-                  },
-                  {
-                    text: "西城区",
-                    value: "xicheng"
-                  }
-                  // 更多区...
-                ]
-              }
-              // 更多市...
-            ]
-          }
-          // 更多省...
-        ]
+        regionData: [],
+        isChecked: false
       };
     },
+    onLoad(params) {
+      this.getCity();
+      if (params) {
+        this.id = params.id || 0;
+      }
+    },
     methods: {
+      radioChange() {
+        this.isChecked = !this.isChecked;
+        if (this.isChecked) {
+          this.is_selected = 1;
+        } else {
+          this.is_selected = 0;
+        }
+        formatAppLog("log", "at pages/address/add.vue:72", "this.is_selected==", this.is_selected);
+      },
       onChange(event) {
         this.selectedRegion = event.value;
+        formatAppLog("log", "at pages/address/add.vue:76", JSON.stringify(this.selectedRegion));
+      },
+      getCity() {
+        IndexApi.getCityList({}).then((res) => {
+          formatAppLog("log", "at pages/address/add.vue:81", "业务获取城市有返回", res);
+          this.regionData = res.data;
+        }).catch((res) => {
+          formatAppLog("log", "at pages/address/add.vue:84", res);
+        });
+      },
+      getInfo() {
+        AddressApi.getInfo({
+          id: this.id > 0 ? this.id : 0
+        }).then((res) => {
+          formatAppLog("log", "at pages/address/add.vue:91", "业务获取地址信息有返回", res);
+          this.name = res.data.name;
+          this.phone = res.data.phone;
+          this.is_selected = res.data.is_selected;
+          this.id = res.data.id;
+          this.content = res.data.content;
+        }).catch((res) => {
+          formatAppLog("log", "at pages/address/add.vue:98", res);
+        });
+      },
+      saveAddress() {
+        AddressApi.addAddress({
+          name: this.name,
+          phone: this.phone,
+          province: this.province,
+          city: this.city,
+          area: this.area,
+          content: this.content,
+          is_selected: this.is_selected,
+          id: this.id > 0 ? this.id : 0
+        }).then((res) => {
+          formatAppLog("log", "at pages/address/add.vue:113", "业务保存地址有返回", res);
+          uni.showToast({
+            icon: "none",
+            title: "保存成功",
+            duration: 3e3
+          });
+        }).catch((res) => {
+          formatAppLog("log", "at pages/address/add.vue:120", res);
+        });
       }
     }
   };
@@ -11268,7 +11421,10 @@ ${i3}
         vue.createElementVNode("view", { class: "addressTit" }, [
           vue.createElementVNode("view", { class: "addressTit_1" }, "地址信息"),
           vue.createElementVNode("label", { class: "radio" }, [
-            vue.createElementVNode("radio", { value: "" }),
+            vue.createElementVNode("radio", {
+              checked: $data.isChecked,
+              onClick: _cache[0] || (_cache[0] = (...args) => $options.radioChange && $options.radioChange(...args))
+            }, null, 8, ["checked"]),
             vue.createElementVNode("text", null, "默认收货地址")
           ])
         ]),
@@ -11277,22 +11433,40 @@ ${i3}
             vue.createTextVNode("收件人"),
             vue.createElementVNode("span", { style: { "color": "#f00" } }, "*")
           ]),
-          vue.createElementVNode("input", {
-            class: "addressLi_Int",
-            type: "text",
-            placeholder: "收货人名字"
-          })
+          vue.withDirectives(vue.createElementVNode(
+            "input",
+            {
+              class: "addressLi_Int",
+              type: "text",
+              placeholder: "收货人名字",
+              "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => $data.name = $event)
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.name]
+          ])
         ]),
         vue.createElementVNode("view", { class: "addressLi" }, [
           vue.createElementVNode("text", { class: "addressLi_t1" }, [
             vue.createTextVNode("手机号"),
             vue.createElementVNode("span", { style: { "color": "#f00" } }, "*")
           ]),
-          vue.createElementVNode("input", {
-            class: "addressLi_Int",
-            type: "number",
-            placeholder: "手机号"
-          })
+          vue.withDirectives(vue.createElementVNode(
+            "input",
+            {
+              class: "addressLi_Int",
+              type: "number",
+              placeholder: "手机号",
+              "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => $data.phone = $event)
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.phone]
+          ])
         ]),
         vue.createElementVNode("view", { class: "addressLi" }, [
           vue.createElementVNode("text", { class: "addressLi_t1" }, [
@@ -11313,17 +11487,27 @@ ${i3}
             vue.createTextVNode("详细地址"),
             vue.createElementVNode("span", { style: { "color": "#f00" } }, "*")
           ]),
-          vue.createElementVNode("input", {
-            class: "addressLi_Int",
-            type: "number",
-            placeholder: "小区/写字楼/门牌号"
-          })
+          vue.withDirectives(vue.createElementVNode(
+            "input",
+            {
+              class: "addressLi_Int",
+              type: "number",
+              placeholder: "小区/写字楼/门牌号",
+              "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => $data.content = $event)
+            },
+            null,
+            512
+            /* NEED_PATCH */
+          ), [
+            [vue.vModelText, $data.content]
+          ])
         ])
       ]),
       vue.createElementVNode("view", { class: "addressConBtn" }, [
         vue.createElementVNode("navigator", {
           class: "addressConBtn1",
-          url: "../../pages/address/add"
+          url: "../../pages/address/add",
+          onClick: _cache[4] || (_cache[4] = ($event) => $options.saveAddress())
         }, "保存"),
         vue.createElementVNode("view", { class: "addressConBtnDel" }, " 删除地址 ")
       ])

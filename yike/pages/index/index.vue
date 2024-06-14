@@ -142,13 +142,7 @@ export default {
    return {
 		cityList: [],
 		activePage: 0,   
-		bannerList: [{
-			content: '../../static/images/banner.png'
-		}, {
-			content: '../../static/images/banner.png'
-		}, {
-			content: '../../static/images/banner.png'
-		}],
+		bannerList: [],
 		current: 0,
 		mode: 'round',
 		scrollText: ['哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈', '嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈', '红红火火嘿嘿红红火火恍恍惚惚哈哈哈哈哈哈', '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊'],
@@ -183,7 +177,7 @@ export default {
 		  this.$refs.scrollView.scrollTo(0, 0);
 		},
 		getCity(){
-			IndexApi.loginOut({
+			IndexApi.getCityList({
 			}).then(res => {
 				console.log('业务获取城市有返回', res)
 				this.cityList = res.data;

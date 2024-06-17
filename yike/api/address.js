@@ -33,7 +33,7 @@ let AddressApi = {
   /*地址详情*/
   getInfo(params, errorback) {
   	return request({
-  		url: "/Other/getInfo",
+  		url: "/Other/addressInfo",
   		method: 'get',
   		errorback: errorback,
   		params

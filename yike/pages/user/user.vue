@@ -47,7 +47,8 @@
 				<view class="userConMyMessage">
 					<image class="userConMyMessageImg" src="../../static/images/user_7.png"></image>
 					<view class="userConMyMessageText" @tap="goToInvitationMessage">
-						<view class="userConMyMessageText_t1">互动消息<view></view></view>
+						<view class="userConMyMessageText_t1">互动消息<view></view>
+						</view>
 						<view class="userConMyMessageText_t2">难哄的驴 点赞了你的评论</view>
 					</view>
 					<uni-icons type="right" font-size="20" color="#222" class="userConMyMessageIcon"></uni-icons>
@@ -142,27 +143,27 @@
 		},
 		data() {
 			return {
-				userInfo:{
-					"uid":1,
-        "nickname": "张三",
-        "head_url": "https://app.ykgcb.com/upload/18/6b71086639a37ddf3710bfad4bed7a.png",
-        "phone": "",
-        "sex": "女",
-        "birthday": "2024-09-08",
-        "background": null,
-        "abstract": "海上明月共潮生",
-        "province": "吉林省",
-        "city": "长春市",
-        "area": "经开区",
-        "openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
-        "ykb": 10,
-        "tie": 56,
-        "zan": 1543637,
-        "honor": [
-            "司机",
-            "称号2"
-        ]
-    },
+				userInfo: {
+					"uid": 1,
+					"nickname": "张三",
+					"head_url": "https://app.ykgcb.com/upload/18/6b71086639a37ddf3710bfad4bed7a.png",
+					"phone": "",
+					"sex": "女",
+					"birthday": "2024-09-08",
+					"background": null,
+					"abstract": "海上明月共潮生",
+					"province": "吉林省",
+					"city": "长春市",
+					"area": "经开区",
+					"openid": "opYhc6_Yeil7o3KKPMcquGw5JsK8",
+					"ykb": 10,
+					"tie": 56,
+					"zan": 1543637,
+					"honor": [
+						"司机",
+						"称号2"
+					]
+				},
 			}
 		},
 		// 页面加载初始化
@@ -191,33 +192,33 @@
 					url: '../../pages/user/user-invitation-message'
 				});
 			},
-			goOut(){
+			goOut() {
 				uni.showModal({
-				    title: '提示',
-				    content: '确认退出登录吗？',
-				    success: function (res) {
-				        if (res.confirm) {
-				            console.log('用户点击确定');
-				            // 这里执行确认后的操作
+					title: '提示',
+					content: '确认退出登录吗？',
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
+							// 这里执行确认后的操作
 							IndexApi.loginOut({
-								uid: 1 
+								uid: 1
 							}).then(res => {
 								console.log('业务退出登录有返回', res)
 								uni.clearStorageSync();
-								      uni.redirectTo({
-								        url: '/pages/login/login'
-								      });
+								uni.redirectTo({
+									url: '/pages/login/login'
+								});
 							}).catch(res => {
 								console.log(res)
 							})
-				        } else if (res.cancel) {
-				            console.log('用户点击取消');
-				            // 这里执行取消后的操作
-				        }
-				    }
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+							// 这里执行取消后的操作
+						}
+					}
 				});
 			},
-			
+
 		},
 		computed: {
 			formattedNumber() {

@@ -1115,19 +1115,19 @@ body {
 		color: #222;
 		margin-top: 0.15625rem;
 }
-.addressLi{
+.addressLi {
 		width: 100%;
 		float: left;
 		margin-top: 0.9375rem;
 }
-.addressLi_t1{
+.addressLi_t1 {
 		width: 28%;
 		float: left;
 		font-size: 0.9375rem;
 		color: #222;
 		margin-top: 0.4375rem;
 }
-.addressLi_Int{
+.addressLi_Int {
 		width: calc(70% - 1.25rem);
 		float: right;
 		background: #f8f8f8;
@@ -1145,7 +1145,7 @@ body {
 		font-size: 0.9375rem;
 		color: #222;
 }
-.input-value-border{
+.input-value-border {
 		border: none !important;
 }
 .addressConBtn {
@@ -1168,7 +1168,7 @@ body {
 		text-align: center;
 		margin-left: 10%;
 }
-.addressConBtnDel{
+.addressConBtnDel {
 		color: #f00;
 		font-size: 0.9375rem;
 		float: left;

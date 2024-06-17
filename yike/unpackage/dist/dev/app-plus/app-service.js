@@ -7046,20 +7046,20 @@ ${i3}
           content: "确认退出登录吗？",
           success: function(res) {
             if (res.confirm) {
-              formatAppLog("log", "at pages/user/user.vue:200", "用户点击确定");
+              formatAppLog("log", "at pages/user/user.vue:201", "用户点击确定");
               IndexApi.loginOut({
                 uid: 1
               }).then((res2) => {
-                formatAppLog("log", "at pages/user/user.vue:205", "业务退出登录有返回", res2);
+                formatAppLog("log", "at pages/user/user.vue:206", "业务退出登录有返回", res2);
                 uni.clearStorageSync();
                 uni.redirectTo({
                   url: "/pages/login/login"
                 });
               }).catch((res2) => {
-                formatAppLog("log", "at pages/user/user.vue:211", res2);
+                formatAppLog("log", "at pages/user/user.vue:212", res2);
               });
             } else if (res.cancel) {
-              formatAppLog("log", "at pages/user/user.vue:214", "用户点击取消");
+              formatAppLog("log", "at pages/user/user.vue:215", "用户点击取消");
             }
           }
         });
@@ -11242,7 +11242,7 @@ ${i3}
     /*地址详情*/
     getInfo(params, errorback) {
       return request({
-        url: "/Other/getInfo",
+        url: "/Other/addressInfo",
         method: "get",
         errorback,
         params
@@ -11353,6 +11353,7 @@ ${i3}
       this.getCity();
       if (params) {
         this.id = params.id || 0;
+        this.getInfo();
       }
     },
     methods: {
@@ -11366,22 +11367,21 @@ ${i3}
         formatAppLog("log", "at pages/address/add.vue:72", "this.is_selected==", this.is_selected);
       },
       onChange(event) {
-        this.selectedRegion = event.value;
         formatAppLog("log", "at pages/address/add.vue:76", JSON.stringify(this.selectedRegion));
       },
       getCity() {
         IndexApi.getCityList({}).then((res) => {
-          formatAppLog("log", "at pages/address/add.vue:81", "业务获取城市有返回", res);
+          formatAppLog("log", "at pages/address/add.vue:80", "业务获取城市有返回", res);
           this.regionData = res.data;
         }).catch((res) => {
-          formatAppLog("log", "at pages/address/add.vue:84", res);
+          formatAppLog("log", "at pages/address/add.vue:83", res);
         });
       },
       getInfo() {
         AddressApi.getInfo({
-          id: this.id > 0 ? this.id : 0
+          address_id: this.id > 0 ? this.id : 0
         }).then((res) => {
-          formatAppLog("log", "at pages/address/add.vue:91", "业务获取地址信息有返回", res);
+          formatAppLog("log", "at pages/address/add.vue:90", "业务获取地址信息有返回", res);
           this.name = res.data.name;
           this.phone = res.data.phone;
           this.is_selected = res.data.is_selected;
@@ -11389,6 +11389,35 @@ ${i3}
           this.content = res.data.content;
         }).catch((res) => {
           formatAppLog("log", "at pages/address/add.vue:98", res);
+        });
+      },
+      delAddress() {
+        uni.showModal({
+          title: "提示",
+          content: "确认删除该地址吗？",
+          success: function(res) {
+            if (res.confirm) {
+              formatAppLog("log", "at pages/address/add.vue:107", "用户点击确定");
+              AddressApi.delAddress({
+                id: this.id > 0 ? this.id : 0
+              }).then((res2) => {
+                formatAppLog("log", "at pages/address/add.vue:111", "业务删除有返回", res2);
+                uni.showToast({
+                  icon: "none",
+                  title: "删除成功",
+                  duration: 3e3
+                });
+                uni.navigateBack({
+                  delta: 1
+                  // 返回的页面数，1表示返回到上一页
+                });
+              }).catch((res2) => {
+                formatAppLog("log", "at pages/address/add.vue:121", res2);
+              });
+            } else if (res.cancel) {
+              formatAppLog("log", "at pages/address/add.vue:124", "用户点击取消");
+            }
+          }
         });
       },
       saveAddress() {
@@ -11402,14 +11431,14 @@ ${i3}
           is_selected: this.is_selected,
           id: this.id > 0 ? this.id : 0
         }).then((res) => {
-          formatAppLog("log", "at pages/address/add.vue:113", "业务保存地址有返回", res);
+          formatAppLog("log", "at pages/address/add.vue:142", "业务保存地址有返回", res);
           uni.showToast({
             icon: "none",
             title: "保存成功",
             duration: 3e3
           });
         }).catch((res) => {
-          formatAppLog("log", "at pages/address/add.vue:120", res);
+          formatAppLog("log", "at pages/address/add.vue:149", res);
         });
       }
     }
@@ -11509,7 +11538,10 @@ ${i3}
           url: "../../pages/address/add",
           onClick: _cache[4] || (_cache[4] = ($event) => $options.saveAddress())
         }, "保存"),
-        vue.createElementVNode("view", { class: "addressConBtnDel" }, " 删除地址 ")
+        vue.createElementVNode("view", {
+          class: "addressConBtnDel",
+          onClick: _cache[5] || (_cache[5] = ($event) => $options.delAddress())
+        }, " 删除地址 ")
       ])
     ]);
   }

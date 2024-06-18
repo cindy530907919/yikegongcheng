@@ -13,13 +13,13 @@
 		<label class="loginRadio">
 			<checkbox-group style="zoom:85%;" placement="column" @change="change">
 			<checkbox checked="true" class="loginRadioC" value="1" checked-color="#FF5722"/>
-			<view class="loginRadioText">
-				同意
-				<navigator url="">用户服务协议</navigator>
-				和
-				<navigator url="">隐私协议</navigator>
-			</view>
 			</checkbox-group>
+			<view class="loginRadioText">
+				请勾选
+				<text @tap="openYinsi(1)" class="link">用户服务协议</text>
+				及
+				<text @tap="openYinsi(2)" class="link">隐私协议</text>
+			</view>
 		</label>
 	</view>
 </template>
@@ -62,9 +62,9 @@
 				}
 				console.log(this.yinsi);
 			},
-			openYinsi() {
+			openYinsi(id) {
 				uni.navigateTo({
-					url: `/pages/login/yinsi`
+					url: `https://app.ykgcb.com/ykapi/text/getText?id=${id}`
 				});
 			},
 			// 成功返回
@@ -214,5 +214,10 @@
 		transform: scale(0.9);
 		margin-right: 10rpx;
 		/* 设置单选框和文本之间的间隔 */
+	}
+	.link {
+	  color: #007AFF;
+	  text-decoration: underline;
+	  cursor: pointer;
 	}
 </style>

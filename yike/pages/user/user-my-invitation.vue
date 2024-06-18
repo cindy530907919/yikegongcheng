@@ -1,18 +1,18 @@
 <template>
 	<!-- 我的帖子 -->
 	<view class="myInvitation">
-		<view class="myInvitationLi">
+		<view class="myInvitationLi" v-for="(item, index) in tieList" :key="index">
 			<view class="myInvitationLiT_1">
-				<view class="myInvitationLiClass">失信老赖</view>
-				<uni-icons class="myInvitationLiTIcon" type="more-filled" font-size="28" color="#222" @click="toggleElement"></uni-icons>
-				<view v-show="showElement" class="myInvitationPup">
-					<text>编辑</text>
-					<text>删除</text>
+				<view class="myInvitationLiClass">{{ item.cname ? item.cname : '暂无' }}</view>
+				<uni-icons class="myInvitationLiTIcon" type="more-filled" font-size="28" color="#222" @click="toggleElement(item.id)"></uni-icons>
+				<view v-show="showElementId === item.id" class="myInvitationPup">
+					<text @click="editItem(item)">编辑</text>
+					<text @click="deleteItem(item)">删除</text>
 				</view> 
 					
-				<text class="myInvitationLiT_1_1">帖子标题帖子标题帖子标题帖子标题帖子标题</text>
+				<text class="myInvitationLiT_1_1">{{ item.title }}</text>
 			</view>
-			<view class="myInvitationLiT_2">2024-04-15  16:09:32</view>
+			<view class="myInvitationLiT_2">{{ item.create_time }}</view>
 			<view class="myInvitationLiT_3">
 				<image src="../../static/images/forum_8.png" mode="widthFix"></image>
 				<text>251</text>
@@ -20,95 +20,69 @@
 			<view class="myInvitationLiT_4">刷新置顶</view>
 		</view>
 		
-		<view class="myInvitationLi">
-			<view class="myInvitationLiT_1">
-				<view class="myInvitationLiClass">失信老赖</view>
-				<uni-icons class="myInvitationLiTIcon" type="more-filled" font-size="28" color="#222" @click="toggleElement"></uni-icons>
-				<view v-show="showElement" class="myInvitationPup">
-					<text>编辑</text>
-					<text>删除</text>
-				</view> 
-					
-				<text class="myInvitationLiT_1_1">帖子标题帖子标题帖子标题帖子标题帖子标题</text>
-			</view>
-			<view class="myInvitationLiT_2">2024-04-15  16:09:32</view>
-			<view class="myInvitationLiT_3">
-				<image src="../../static/images/forum_8.png" mode="widthFix"></image>
-				<text>251</text>
-			</view>
-			<view class="myInvitationLiT_4">刷新置顶</view>
-		</view>
-		
-		<view class="myInvitationLi">
-			<view class="myInvitationLiT_1">
-				<view class="myInvitationLiClass">失信老赖</view>
-				<uni-icons class="myInvitationLiTIcon" type="more-filled" font-size="28" color="#222" @click="toggleElement"></uni-icons>
-				<view v-show="showElement" class="myInvitationPup">
-					<text>编辑</text>
-					<text>删除</text>
-				</view> 
-					
-				<text class="myInvitationLiT_1_1">帖子标题帖子标题帖子标题帖子标题帖子标题</text>
-			</view>
-			<view class="myInvitationLiT_2">2024-04-15  16:09:32</view>
-			<view class="myInvitationLiT_3">
-				<image src="../../static/images/forum_8.png" mode="widthFix"></image>
-				<text>251</text>
-			</view>
-			<view class="myInvitationLiT_4">刷新置顶</view>
-		</view>
-		
-		<view class="myInvitationLi">
-			<view class="myInvitationLiT_1">
-				<view class="myInvitationLiClass">失信老赖</view>
-				<uni-icons class="myInvitationLiTIcon" type="more-filled" font-size="28" color="#222" @click="toggleElement"></uni-icons>
-				<view v-show="showElement" class="myInvitationPup">
-					<text>编辑</text>
-					<text>删除</text>
-				</view> 
-					
-				<text class="myInvitationLiT_1_1">帖子标题帖子标题帖子标题帖子标题帖子标题</text>
-			</view>
-			<view class="myInvitationLiT_2">2024-04-15  16:09:32</view>
-			<view class="myInvitationLiT_3">
-				<image src="../../static/images/forum_8.png" mode="widthFix"></image>
-				<text>251</text>
-			</view>
-			<view class="myInvitationLiT_4">刷新置顶</view>
-		</view>
-		
-		<view class="myInvitationLi">
-			<view class="myInvitationLiT_1">
-				<view class="myInvitationLiClass">失信老赖</view>
-				<uni-icons class="myInvitationLiTIcon" type="more-filled" font-size="28" color="#222" @click="toggleElement"></uni-icons>
-				<view v-show="showElement" class="myInvitationPup">
-					<text>编辑</text>
-					<text>删除</text>
-				</view> 
-					
-				<text class="myInvitationLiT_1_1">帖子标题帖子标题帖子标题帖子标题帖子标题</text>
-			</view>
-			<view class="myInvitationLiT_2">2024-04-15  16:09:32</view>
-			<view class="myInvitationLiT_3">
-				<image src="../../static/images/forum_8.png" mode="widthFix"></image>
-				<text>251</text>
-			</view>
-			<view class="myInvitationLiT_4">刷新置顶</view>
-		</view>
 	</view>
 </template>
 
 <script>
+	import TieApi from "@/api/tie.js";
 	export default {  
 	  data() {  
 	    return {  
-	      showElement: false  
+	      showElementId: null,
+			tieList:[]
 	    };  
-	  },  
+	  }, 
+	   // 页面加载初始化
+	   onLoad(params) {
+	   	this.getList();
+	   },
 	  methods: {  
-	    toggleElement() {  
-	      this.showElement = !this.showElement;  
-	    }  
+	    toggleElement(id) {  
+	      this.showElementId = this.showElementId === id ? null : id;  
+	    },
+		  getList(){
+		  	TieApi.getMyList({
+				page:1,pageSize:20
+		  	}).then(res => {
+		  		console.log('业务获取帖子列表有返回', res)
+		  		this.tieList = res.data;
+		  	}).catch(res => {
+		  		console.log(res)
+		  	})
+		  },
+		  editItem(item) {
+		        // handle edit
+		        console.log('Edit', item);
+		      },
+		      deleteItem(item) {
+		        // handle delete
+		        console.log('Delete', item);
+				uni.showModal({
+					title: '提示',
+					content: '确认删除该帖吗？',
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
+							TieApi.delPost({
+								tid: item.id,
+							}).then(res => {
+								console.log('业务删除有返回', res)
+								uni.showToast({
+									icon: "none",
+									title: "删除成功",
+									duration: 3000,
+								});
+								this.getList();
+							}).catch(res => {
+								console.log(res)
+							})
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+							// 这里执行取消后的操作
+						}
+					}
+				});
+		      }
 	  }  
 	};  
 </script>

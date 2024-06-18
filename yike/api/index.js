@@ -66,6 +66,15 @@ let IndexApi = {
   		params
   	});
   },
+  /*隐私协议*/
+  getYinsi(params, errorback) {
+  	return request({
+  		url: "/Other/getText",
+  		method: 'get',
+  		errorback: errorback,
+  		params
+  	});
+  },
   /*用户反馈*/
   fankui(params, errorback) {
   	return request({

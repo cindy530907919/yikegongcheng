@@ -112,7 +112,7 @@
 						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
 							color="#c7c7c7"></uni-icons>
 					</navigator>
-					<navigator url="" class="userConFunction2UlLi">
+					<navigator url="/pages/login/yinsi?id=2" class="userConFunction2UlLi">
 						<image src="../../static/images/user_19.png" mode="widthFix"></image>
 						<text>隐私声明</text>
 						<uni-icons class="userConFunction2UlLiIcon" type="right" font-size="20"
@@ -169,7 +169,7 @@
 		// 页面加载初始化
 		onLoad(params) {
 			// this.userInfo = uni.getStorageSync(USER_INFO);
-			uni.setStorageSync(USER_ID, 1);
+			// uni.setStorageSync(USER_ID, 1);
 		},
 		methods: {
 			goToTitle() {

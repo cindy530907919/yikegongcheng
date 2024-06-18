@@ -73,3 +73,8 @@
 		margin-right: 0.3125rem;
 		/* 设置单选框和文本之间的间隔 */
 }
+.link {
+	  color: #007AFF;
+	  text-decoration: underline;
+	  cursor: pointer;
+}

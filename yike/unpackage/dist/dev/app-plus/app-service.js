@@ -359,7 +359,7 @@ if (uni.restoreGlobal) {
   const {
     t: t$1
   } = initVueI18n(messages);
-  const _sfc_main$Q = {
+  const _sfc_main$R = {
     name: "UniLoadMore",
     emits: ["clickLoadMore"],
     props: {
@@ -441,7 +441,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$Q(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", {
       class: "uni-load-more",
       onClick: _cache[0] || (_cache[0] = (...args) => $options.onClick && $options.onClick(...args))
@@ -516,7 +516,7 @@ if (uni.restoreGlobal) {
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$P], ["__scopeId", "data-v-2c1dd21f"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
+  const __easycom_0$7 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$Q], ["__scopeId", "data-v-2c1dd21f"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue"]]);
   const fontData = [
     {
       "font_class": "arrow-down",
@@ -1167,7 +1167,7 @@ if (uni.restoreGlobal) {
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$P = {
+  const _sfc_main$Q = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -1221,7 +1221,7 @@ if (uni.restoreGlobal) {
       }
     }
   };
-  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$P(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -1236,7 +1236,7 @@ if (uni.restoreGlobal) {
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$O], ["__scopeId", "data-v-946bce22"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$P], ["__scopeId", "data-v-946bce22"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   const pages = [
     {
       path: "pages/index/index",
@@ -1251,6 +1251,12 @@ if (uni.restoreGlobal) {
       path: "pages/login/login",
       style: {
         navigationStyle: "custom"
+      }
+    },
+    {
+      path: "pages/webview/webview",
+      style: {
+        navigationBarTitleText: "外部链接"
       }
     },
     {
@@ -4779,7 +4785,7 @@ ${i3}
       }
     }
   };
-  const _sfc_main$O = {
+  const _sfc_main$P = {
     name: "UniDataPickerView",
     emits: ["nodeclick", "change", "datachange", "update:modelValue"],
     mixins: [dataPicker],
@@ -4883,7 +4889,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$O(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$7);
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-data-pickerview" }, [
       !_ctx.isCloudDataList ? (vue.openBlock(), vue.createElementBlock("scroll-view", {
@@ -4973,8 +4979,8 @@ ${i3}
       ])
     ]);
   }
-  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$N], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
-  const _sfc_main$N = {
+  const DataPickerView = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$O], ["__scopeId", "data-v-9bf6d4b8"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue"]]);
+  const _sfc_main$O = {
     name: "UniDataPicker",
     emits: ["popupopened", "popupclosed", "nodeclick", "input", "change", "update:modelValue", "inputclick"],
     mixins: [dataPicker],
@@ -5178,7 +5184,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$N(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_load_more = resolveEasycom(vue.resolveDynamicComponent("uni-load-more"), __easycom_0$7);
     const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$6);
     const _component_data_picker_view = vue.resolveComponent("data-picker-view");
@@ -5344,8 +5350,8 @@ ${i3}
       ])) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$M], ["__scopeId", "data-v-e10759db"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
-  const _sfc_main$M = {
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$N], ["__scopeId", "data-v-e10759db"], ["__file", "D:/cindy/yikegongcheng/yike/node_modules/@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue"]]);
+  const _sfc_main$N = {
     name: "UniSwiperDot",
     emits: ["clickItem"],
     props: {
@@ -5417,7 +5423,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$M(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "uni-swiper__warp" }, [
       vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
       $props.mode === "default" ? (vue.openBlock(), vue.createElementBlock(
@@ -5577,8 +5583,8 @@ ${i3}
       )) : vue.createCommentVNode("v-if", true)
     ]);
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$L], ["__scopeId", "data-v-0667e3db"], ["__file", "D:/cindy/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
-  const _sfc_main$L = {
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$M], ["__scopeId", "data-v-0667e3db"], ["__file", "D:/cindy/yikegongcheng/yike/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot.vue"]]);
+  const _sfc_main$M = {
     props: {
       activePage: {
         type: Number,
@@ -5631,7 +5637,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$L(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "custom-tab-bar" }, [
       (vue.openBlock(true), vue.createElementBlock(
         vue.Fragment,
@@ -5667,7 +5673,7 @@ ${i3}
       ))
     ]);
   }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$K], ["__scopeId", "data-v-a6d140ed"], ["__file", "D:/cindy/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$L], ["__scopeId", "data-v-a6d140ed"], ["__file", "D:/cindy/yikegongcheng/yike/components/custom-tabs-bar/custom-tabs-bar.vue"]]);
   const TOKEN = "__token__";
   const USER_INFO = "__user_info__";
   const USER_ID = "__user_id__";
@@ -5837,7 +5843,7 @@ ${i3}
       });
     }
   };
-  const _sfc_main$K = {
+  const _sfc_main$L = {
     components: {
       CustomTabsBar: __easycom_0$4
     },
@@ -5897,7 +5903,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$K(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_uni_data_picker = resolveEasycom(vue.resolveDynamicComponent("uni-data-picker"), __easycom_0$5);
     const _component_uni_swiper_dot = resolveEasycom(vue.resolveDynamicComponent("uni-swiper-dot"), __easycom_1$1);
     const _component_custom_tabs_bar = resolveEasycom(vue.resolveDynamicComponent("custom-tabs-bar"), __easycom_0$4);
@@ -6161,8 +6167,8 @@ ${i3}
       vue.createCommentVNode(" current属性指示哪个tab是活跃的 ")
     ]);
   }
-  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$J], ["__file", "D:/cindy/yikegongcheng/yike/pages/index/index.vue"]]);
-  const _sfc_main$J = {
+  const PagesIndexIndex = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$K], ["__file", "D:/cindy/yikegongcheng/yike/pages/index/index.vue"]]);
+  const _sfc_main$K = {
     data() {
       return {
         token: "",
@@ -6186,16 +6192,20 @@ ${i3}
         } else {
           this.yinsi = 0;
         }
-        formatAppLog("log", "at pages/login/login.vue:63", this.yinsi);
+        formatAppLog("log", "at pages/login/login.vue:65", this.yinsi);
       },
       openYinsi(id) {
-        uni.navigateTo({
-          url: `https://app.ykgcb.com/ykapi/text/getText?id=${id}`
-        });
+        formatAppLog("log", "at pages/login/login.vue:68", "openYinsi clicked with type:", id);
+        let url = `https://app.ykgcb.com/ykapi/text/getText?id=${id}`;
+        {
+          uni.navigateTo({
+            url: `/pages/webview/webview?url=${encodeURIComponent(url)}`
+          });
+        }
       },
       // 成功返回
       loginEvent(e2) {
-        formatAppLog("log", "at pages/login/login.vue:72", "this.yinsi==", this.yinsi);
+        formatAppLog("log", "at pages/login/login.vue:83", "this.yinsi==", this.yinsi);
         if (this.yinsi == 0) {
           uni.showToast({
             title: "勾选隐私",
@@ -6213,12 +6223,12 @@ ${i3}
           onlyAuthorize: true,
           scope: "snsapi_userinfo",
           success: (res) => {
-            formatAppLog("log", "at pages/login/login.vue:91", res);
+            formatAppLog("log", "at pages/login/login.vue:102", res);
             if (res.code) {
               IndexApi.login({
                 code: res.code
               }).then((res2) => {
-                formatAppLog("log", "at pages/login/login.vue:96", "业务登录有返回", res2);
+                formatAppLog("log", "at pages/login/login.vue:107", "业务登录有返回", res2);
                 uni.hideLoading();
                 const {
                   code,
@@ -6236,15 +6246,15 @@ ${i3}
                   showToast(res2.info);
                 }
               }).catch((res2) => {
-                formatAppLog("log", "at pages/login/login.vue:114", res2);
+                formatAppLog("log", "at pages/login/login.vue:125", res2);
                 uni.hideLoading();
               });
             } else {
               uni.hideLoading();
             }
           },
-          fail: (e3) => {
-            formatAppLog("log", "at pages/login/login.vue:122", "授权失败, ", e3);
+          fail: (e22) => {
+            formatAppLog("log", "at pages/login/login.vue:133", "授权失败, ", e22);
             uni.hideLoading();
             showToast("授权失败");
           }
@@ -6252,7 +6262,7 @@ ${i3}
       }
     }
   };
-  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$J(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       vue.Fragment,
       null,
@@ -6314,7 +6324,23 @@ ${i3}
       /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
     );
   }
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$I], ["__file", "D:/cindy/yikegongcheng/yike/pages/login/login.vue"]]);
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$J], ["__file", "D:/cindy/yikegongcheng/yike/pages/login/login.vue"]]);
+  const _sfc_main$J = {
+    data() {
+      return {
+        webPageUrl: ""
+      };
+    },
+    onLoad(options) {
+      if (options.url) {
+        this.webPageUrl = decodeURIComponent(options.url);
+      }
+    }
+  };
+  function _sfc_render$I(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("web-view", { src: $data.webPageUrl }, null, 8, ["src"]);
+  }
+  const PagesWebviewWebview = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$I], ["__file", "D:/cindy/yikegongcheng/yike/pages/webview/webview.vue"]]);
   const _sfc_main$I = {
     components: {},
     props: {},
@@ -15722,6 +15748,7 @@ ${i3}
   const PagesTaskTaskIndex = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render], ["__file", "D:/cindy/yikegongcheng/yike/pages/task/task-index.vue"]]);
   __definePage("pages/index/index", PagesIndexIndex);
   __definePage("pages/login/login", PagesLoginLogin);
+  __definePage("pages/webview/webview", PagesWebviewWebview);
   __definePage("pages/login/yinsi", PagesLoginYinsi);
   __definePage("pages/device/device-lease", PagesDeviceDeviceLease);
   __definePage("pages/device/device-con", PagesDeviceDeviceCon);

@@ -12,7 +12,7 @@
 		</navigator>
 		<label class="loginRadio">
 			<checkbox-group style="zoom:85%;" placement="column" @change="change">
-			<checkbox checked="true" class="loginRadioC" value="1" checked-color="#FF5722"/>
+				<checkbox checked="true" class="loginRadioC" value="1" checked-color="#FF5722" />
 			</checkbox-group>
 			<view class="loginRadioText">
 				请勾选
@@ -26,14 +26,16 @@
 
 <script>
 	import {
-		TOKEN,USER_ID,USER_INFO
+		TOKEN,
+		USER_ID,
+		USER_INFO
 	} from "@/config/index";
 	import IndexApi from "@/api/index.js";
 	import {
 		showToast,
 		openUrl
 	} from '@/utils/index'
-	
+
 	export default {
 		data() {
 			return {
@@ -47,12 +49,12 @@
 		},
 		// 页面加载初始化
 		onLoad(params) {
-			
+
 		},
-	
+
 		// 页面显示
 		onShow() {},
-	
+
 		methods: {
 			change(n) {
 				if (this.yinsi == 0) {
@@ -63,13 +65,22 @@
 				console.log(this.yinsi);
 			},
 			openYinsi(id) {
-				uni.navigateTo({
-					url: `https://app.ykgcb.com/ykapi/text/getText?id=${id}`
-				});
+				console.log('openYinsi clicked with type:', id);
+				let url = `https://app.ykgcb.com/ykapi/text/getText?id=${id}`;
+
+				// 在H5环境中打开外部链接
+				if (process.env.UNI_PLATFORM === 'h5') {
+					window.location.href = url;
+				} else {
+					// 在非H5环境中使用web-view组件打开外部链接
+					uni.navigateTo({
+						url: `/pages/webview/webview?url=${encodeURIComponent(url)}`
+					});
+				}
 			},
 			// 成功返回
 			loginEvent(e) {
-				console.log('this.yinsi==',this.yinsi);
+				console.log('this.yinsi==', this.yinsi);
 				if (this.yinsi == 0) {
 					uni.showToast({
 						title: '勾选隐私',
@@ -104,7 +115,7 @@
 									uni.setStorageSync(USER_ID, data.id || '');
 									uni.setStorageSync(USER_INFO, data || '');
 									uni.redirectTo({
-									  url: '/pages/index/index',
+										url: '/pages/index/index',
 									});
 								} else {
 									uni.hideLoading();
@@ -124,9 +135,9 @@
 						showToast('授权失败');
 					},
 				});
-	
+
 			},
-	
+
 		},
 	};
 </script>
@@ -215,9 +226,10 @@
 		margin-right: 10rpx;
 		/* 设置单选框和文本之间的间隔 */
 	}
+
 	.link {
-	  color: #007AFF;
-	  text-decoration: underline;
-	  cursor: pointer;
+		color: #007AFF;
+		text-decoration: underline;
+		cursor: pointer;
 	}
 </style>
